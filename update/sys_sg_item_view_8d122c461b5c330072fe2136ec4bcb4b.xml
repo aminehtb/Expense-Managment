@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_sg_item_view">
+    <sys_sg_item_view action="INSERT_OR_UPDATE">
+        <data_item display_value="Expense Sheet Data">d985e8fd1b90330072fe2136ec4bcb0b</data_item>
+        <dependency_fields>expected_start,estimated_end,short_description,number</dependency_fields>
+        <item_view_json>{&#13;
+  "Type": "ViewGroup",&#13;
+  "BackgroundColor" : "pink"&#13;
+  "Margin": {&#13;
+    "Top": 16,&#13;
+    "Bottom": 16&#13;
+  },&#13;
+  "Orientation": "Horizontal",&#13;
+  "Alignment": "Center",&#13;
+  "Distribution": "Auto",&#13;
+  "Children": [&#13;
+    {&#13;
+      "Type": "ViewGroup",&#13;
+      "Orientation": "Vertical",&#13;
+      "Alignment": "Left",&#13;
+      "Distribution": "Auto",&#13;
+      "Children": [&#13;
+        {&#13;
+          "Type": "Text",&#13;
+          "Margin": {&#13;
+            "Top": 3&#13;
+          },&#13;
+          "CellId": "&lt;field_name&gt;",&#13;
+          "TextColor": "#293e40",&#13;
+          "TextAlignment": "Left",&#13;
+          "MaxLines": 1,&#13;
+          "Font": {&#13;
+            "Weight": "regular",&#13;
+            "Size": 12&#13;
+          },&#13;
+          "Width": 60,&#13;
+          "Text": "PLACEHOLDER"&#13;
+        },&#13;
+        {&#13;
+          "Type": "Text",&#13;
+          "Width": 60,&#13;
+          "Margin": {&#13;
+            "Top": 9&#13;
+          },&#13;
+          "Text": "PLACEHOLDER",&#13;
+          "CellId": "&lt;field_name&gt;",&#13;
+          "TextColor": "#293e40",&#13;
+          "TextAlignment": "Left",&#13;
+          "MaxLines": 1,&#13;
+          "Font": {&#13;
+            "Weight": "regular",&#13;
+            "Size": 12&#13;
+          }&#13;
+        }&#13;
+      ],&#13;
+      "Margin": {},&#13;
+      "Width": 60&#13;
+    },&#13;
+    {&#13;
+      "Type": "Text",&#13;
+      "Margin": {&#13;
+        "Right": 13,&#13;
+        "Left": 8&#13;
+      },&#13;
+      "TextColor": "#ff8c3e",&#13;
+      "TextAlignment": "Left",&#13;
+      "MaxLines": 1,&#13;
+      "Font": {&#13;
+        "Weight": "regular"&#13;
+      },&#13;
+      "CornerRadius": 2,&#13;
+      "BackgroundColor": "#ff924e",&#13;
+      "Height": 46,&#13;
+      "Width": 3&#13;
+    },&#13;
+    {&#13;
+      "Type": "ViewGroup",&#13;
+      "Orientation": "Vertical",&#13;
+      "Alignment": "Left",&#13;
+      "Distribution": "Auto",&#13;
+      "Children": [&#13;
+        {&#13;
+          "Type": "Text",&#13;
+          "TextColor": "#293e40",&#13;
+          "TextAlignment": "Left",&#13;
+          "MaxLines": 1,&#13;
+          "Font": {&#13;
+            "Weight": "medium",&#13;
+            "Size": 16&#13;
+          },&#13;
+          "CellId": "&lt;field_name&gt;"&#13;
+        },&#13;
+        {&#13;
+          "Type": "ViewGroup",&#13;
+          "Margin": {&#13;
+            "Top": 6&#13;
+          },&#13;
+          "Orientation": "Horizontal",&#13;
+          "Alignment": "Center",&#13;
+          "Distribution": "Auto",&#13;
+          "Children": [&#13;
+            {&#13;
+              "Type": "Text",&#13;
+              "TextColor": "#7d8a8c",&#13;
+              "TextAlignment": "Left",&#13;
+              "MaxLines": 1,&#13;
+              "Font": {&#13;
+                "Weight": "regular",&#13;
+                "Size": 13&#13;
+              },&#13;
+              "CellId": "&lt;field_name&gt;"&#13;
+            }&#13;
+          ]&#13;
+        }&#13;
+      ],&#13;
+      "Margin": {}&#13;
+    }&#13;
+  ]&#13;
+}</item_view_json>
+        <name>Expense Sheet Calender view</name>
+        <short_description>calender of project</short_description>
+        <sys_class_name>sys_sg_item_view</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-03-21 08:43:30</sys_created_on>
+        <sys_id>8d122c461b5c330072fe2136ec4bcb4b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Expense Sheet Calender view</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sys_sg_item_view_8d122c461b5c330072fe2136ec4bcb4b</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-03-21 08:43:30</sys_updated_on>
+        <ui_styles/>
+    </sys_sg_item_view>
+    <sys_translated_text action="delete_multiple" query="documentkey=8d122c461b5c330072fe2136ec4bcb4b"/>
+</record_update>

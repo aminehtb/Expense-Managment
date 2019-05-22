@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_sg_screen_field">
+    <sys_sg_screen_field action="INSERT_OR_UPDATE">
+        <data_item_field_name>description</data_item_field_name>
+        <hidden>false</hidden>
+        <order>40</order>
+        <screen display_value="Details">0666fc481b24330072fe2136ec4bcba2</screen>
+        <screen_data_item_table>x_315710_expense_m_mileage_expense</screen_data_item_table>
+        <sys_class_name>sys_sg_screen_field</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-03-28 14:57:54</sys_created_on>
+        <sys_id>38cbfdd81b24330072fe2136ec4bcb97</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>description</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sys_sg_screen_field_38cbfdd81b24330072fe2136ec4bcb97</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-03-28 14:57:54</sys_updated_on>
+        <type>auto</type>
+    </sys_sg_screen_field>
+</record_update>

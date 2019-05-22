@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_sg_item_view">
+    <sys_sg_item_view action="INSERT_OR_UPDATE">
+        <data_item display_value="Expense Bill Data">ea18d31d1bd0330072fe2136ec4bcb88</data_item>
+        <dependency_fields/>
+        <item_view_json/>
+        <name>related detail item view</name>
+        <short_description/>
+        <sys_class_name>sys_sg_item_view</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-03-24 20:55:38</sys_created_on>
+        <sys_id>71476e871b50330072fe2136ec4bcbda</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>related detail item view</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sys_sg_item_view_71476e871b50330072fe2136ec4bcbda</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-03-24 20:55:38</sys_updated_on>
+        <ui_styles/>
+    </sys_sg_item_view>
+    <sys_translated_text action="delete_multiple" query="documentkey=71476e871b50330072fe2136ec4bcbda"/>
+</record_update>

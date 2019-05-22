@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Category" max_length="40" name="x_315710_expense_m_category" type="collection">
+        <element label="Description" max_length="600" name="description" type="string"/>
+        <element label="Name" mandatory="true" max_length="20" name="name" type="string"/>
+    </element>
+</database>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_sg_related_lists_screen">
+    <sys_sg_related_lists_screen action="INSERT_OR_UPDATE">
+        <application_roles/>
+        <available_offline>false</available_offline>
+        <data_item/>
+        <description/>
+        <fetch_type>background</fetch_type>
+        <hidden>false</hidden>
+        <icon display_value="file-alt">166ba58a1b10730072fe2136ec4bcb68</icon>
+        <name>Related List</name>
+        <order>30</order>
+        <parent>02f9e44e1b5c330072fe2136ec4bcb00</parent>
+        <parent_table>sys_sg_master_item</parent_table>
+        <roles_override/>
+        <show_count>true</show_count>
+        <sys_class_name>sys_sg_related_lists_screen</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-03-21 09:14:14</sys_created_on>
+        <sys_id>5af9e44e1b5c330072fe2136ec4bcb75</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>Related List</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sys_sg_related_lists_screen_5af9e44e1b5c330072fe2136ec4bcb75</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-03-21 14:00:10</sys_updated_on>
+        <table>sys_user</table>
+    </sys_sg_related_lists_screen>
+    <sys_translated_text action="delete_multiple" query="documentkey=5af9e44e1b5c330072fe2136ec4bcb75"/>
+</record_update>

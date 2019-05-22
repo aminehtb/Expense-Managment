@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element extends="fm_rate_card" label="Rate" max_length="40" name="x_315710_expense_m_rate" type="collection">
+        <element choice="1" label="Distance unit" mandatory="true" max_length="40" name="distance_unit" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="KM" sequence="0" value="km"/>
+                <element inactive_on_update="false" label="MI" sequence="1" value="mi"/>
+            </choice>
+        </element>
+        <element label="Fixed Rate" mandatory="true" max_length="40" name="fixed_rate" type="float"/>
+        <element choice="1" label="Vehicle type" mandatory="true" max_length="40" name="vehicle_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Car" sequence="0" value="car"/>
+                <element inactive_on_update="false" label="Moped" sequence="1" value="moped"/>
+                <element inactive_on_update="false" label="Motocycle" sequence="2" value="motocycle"/>
+                <element inactive_on_update="false" label="Scooter" sequence="3" value="scooter"/>
+                <element inactive_on_update="false" label="Bicycle" sequence="4" value="bicycle"/>
+            </choice>
+        </element>
+        <element label="Year" mandatory="true" max_length="40" name="year" type="integer"/>
+    </element>
+</database>

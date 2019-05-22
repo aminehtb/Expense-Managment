@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_push_notif_msg_content">
+    <sys_push_notif_msg_content action="INSERT_OR_UPDATE">
+        <name>Expense content message</name>
+        <push_app display_value="ServiceNow Mobile Application">05ed2fb177002300258da2e2c81061c2</push_app>
+        <script><![CDATA[(function buildJSON(/*GlideRecord*/ current, /*String*/ message, /*Object*/ attributes) {
+
+ var json = {};
+
+json = {
+        "aps" : {
+            "sound" : "default"
+        },
+        "Redirection" : {
+            "Title" : "Work Order Task Acceptance Push Notification",
+            "To" : "Embedded",
+            "Destination": {
+                "DocumentId": "0283e51b1b58330072fe2136ec4bcb97",
+                "ItemId": "0261bb631b54330072fe2136ec4bcb77"// current.sys_id+""
+            }
+        },
+        "Layout" : {
+            "Identifier" : "fhgfgf",//current.number+"",
+            //"Description" : current.short_description,
+           // "AdditionalInfo" : current.location.getDisplayValue(),
+           // "StatusImage": current.priority_image + ".iix?t=small"
+        }
+    };
+    
+
+ return json;
+
+})(current, message, attributes);]]></script>
+        <sys_class_name>sys_push_notif_msg_content</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-03-27 10:15:45</sys_created_on>
+        <sys_id>c5f0f3bb1b50330072fe2136ec4bcb7d</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>Expense content message</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sys_push_notif_msg_content_c5f0f3bb1b50330072fe2136ec4bcb7d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-03-27 12:54:35</sys_updated_on>
+    </sys_push_notif_msg_content>
+</record_update>

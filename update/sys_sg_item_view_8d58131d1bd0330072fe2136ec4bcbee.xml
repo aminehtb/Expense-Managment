@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_sg_item_view">
+    <sys_sg_item_view action="INSERT_OR_UPDATE">
+        <data_item display_value="Expense Bill Data">ea18d31d1bd0330072fe2136ec4bcb88</data_item>
+        <dependency_fields>number,title,image,user.first_name</dependency_fields>
+        <item_view_json>{"Type":"ViewGroup","Margin":{"Bottom":15,"Top":17},"Orientation":"Vertical","Alignment":"Left","Distribution":"Auto","Children":[{"Type":"Text","Margin":{},"studio_template_field_id":"E1","TextColor":"#7d8a8c","TextAlignment":"Left","MaxLines":1,"Font":{"Weight":"regular","Size":13},"CellId":"number"},{"Type":"Text","Margin":{"Top":10},"studio_template_field_id":"E2","TextColor":"#293E40","TextAlignment":"Left","MaxLines":1,"Font":{"Size":18,"Weight":"medium"},"CellId":"title"},{"Type":"ViewGroup","Margin":{"Top":11},"Orientation":"Horizontal","Alignment":"Center","Distribution":"Auto","Children":[{"Type":"Image","CornerRadius":11,"Height":22,"Width":22,"Margin":{"Right":8},"studio_template_field_id":"E3","Scaling":"Fill","CellId":"image"},{"Type":"Text","Margin":{},"studio_template_field_id":"E4","TextColor":"#293e40","TextAlignment":"Center","MaxLines":1,"Font":{"Weight":"regular","Size":15},"CellId":"user.first_name"}]}],"studio_card_id":"91f9e01173c12300d396c8168bf6a747"}</item_view_json>
+        <name>Expense bill item view</name>
+        <short_description/>
+        <sys_class_name>sys_sg_item_view</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-03-19 14:00:34</sys_created_on>
+        <sys_id>8d58131d1bd0330072fe2136ec4bcbee</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Expense bill item view</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sys_sg_item_view_8d58131d1bd0330072fe2136ec4bcbee</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-03-27 12:35:16</sys_updated_on>
+        <ui_styles/>
+    </sys_sg_item_view>
+    <sys_translated_text action="delete_multiple" query="documentkey=8d58131d1bd0330072fe2136ec4bcbee"/>
+</record_update>

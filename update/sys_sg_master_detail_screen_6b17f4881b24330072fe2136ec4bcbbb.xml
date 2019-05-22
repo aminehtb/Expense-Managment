@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_sg_master_detail_screen">
+    <sys_sg_master_detail_screen action="INSERT_OR_UPDATE">
+        <application_roles/>
+        <available_offline>false</available_offline>
+        <data_item display_value="Vehicle Data">90b6b0881b24330072fe2136ec4bcb19</data_item>
+        <description/>
+        <fetch_type>not_required</fetch_type>
+        <hidden>false</hidden>
+        <icon display_value="file-alt">9193d59c1ba0330072fe2136ec4bcb85</icon>
+        <name>Vehicle</name>
+        <order>20</order>
+        <parent>3286303d1bd0330072fe2136ec4bcb59</parent>
+        <parent_table>sys_sg_folder</parent_table>
+        <roles_override/>
+        <sys_class_name>sys_sg_master_detail_screen</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-03-27 15:19:30</sys_created_on>
+        <sys_id>6b17f4881b24330072fe2136ec4bcbbb</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Vehicle</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sys_sg_master_detail_screen_6b17f4881b24330072fe2136ec4bcbbb</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-03-28 12:02:24</sys_updated_on>
+    </sys_sg_master_detail_screen>
+    <sys_translated_text action="delete_multiple" query="documentkey=6b17f4881b24330072fe2136ec4bcbbb"/>
+</record_update>

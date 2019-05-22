@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_sg_button_instance">
+    <sys_sg_button_instance action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <button display_value="Category">f456b9d41b24330072fe2136ec4bcbee</button>
+        <description/>
+        <field_name/>
+        <label>Liste Of Category</label>
+        <location>top</location>
+        <name>Liste Of Category</name>
+        <order>3</order>
+        <parent>7994b0081b24330072fe2136ec4bcb97</parent>
+        <parent_table>sys_sg_master_detail_screen</parent_table>
+        <sys_class_name>sys_sg_button_instance</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-03-28 14:41:11</sys_created_on>
+        <sys_id>bfe7bd181b24330072fe2136ec4bcb99</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Liste Of Category</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sys_sg_button_instance_bfe7bd181b24330072fe2136ec4bcb99</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-03-28 14:41:11</sys_updated_on>
+        <table/>
+    </sys_sg_button_instance>
+    <sys_translated_text action="delete_multiple" query="documentkey=bfe7bd181b24330072fe2136ec4bcb99"/>
+</record_update>

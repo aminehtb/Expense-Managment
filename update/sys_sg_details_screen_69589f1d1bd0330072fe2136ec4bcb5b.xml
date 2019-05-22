@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_sg_details_screen">
+    <sys_sg_details_screen action="INSERT_OR_UPDATE">
+        <application_roles/>
+        <available_offline>false</available_offline>
+        <data_item display_value="Expense Bill Data">ea18d31d1bd0330072fe2136ec4bcb88</data_item>
+        <description/>
+        <fetch_type>not_required</fetch_type>
+        <hidden>false</hidden>
+        <icon display_value="thumbs-up">78581f1d1bd0330072fe2136ec4bcb61</icon>
+        <item_view display_value="Expense bill detail item view">81585f1d1bd0330072fe2136ec4bcbed</item_view>
+        <name>Details</name>
+        <order>10</order>
+        <parent>19585f1d1bd0330072fe2136ec4bcbf1</parent>
+        <parent_table>sys_sg_master_item</parent_table>
+        <roles_override/>
+        <sys_class_name>sys_sg_details_screen</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-03-19 14:00:35</sys_created_on>
+        <sys_id>69589f1d1bd0330072fe2136ec4bcb5b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Details</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sys_sg_details_screen_69589f1d1bd0330072fe2136ec4bcb5b</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-03-19 14:00:35</sys_updated_on>
+    </sys_sg_details_screen>
+    <sys_translated_text action="delete_multiple" query="documentkey=69589f1d1bd0330072fe2136ec4bcb5b"/>
+</record_update>

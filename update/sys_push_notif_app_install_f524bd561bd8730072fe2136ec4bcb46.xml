@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_push_notif_app_install">
+    <sys_push_notif_app_install action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <last_registered_on>2019-03-22 09:16:49</last_registered_on>
+        <sys_class_name>sys_push_notif_app_install</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-03-22 09:16:49</sys_created_on>
+        <sys_id>f524bd561bd8730072fe2136ec4bcb46</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>d0RmGK9GL38:APA91bFDGSVlQni7_bR-pynPYEef-ACka_Ff41fuAfTvgDRMPBnXE6_LDQ0l1ogj89xjDPc7rebvjiPBX3sBwzD4l3QBEcN8vR0sq2OPuFavPksqh5tDy1Ops4v8j2ZfPCbZ39WW6asm</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_push_application_id display_value="ServiceNow Classic Mobile Application">ab704041ff1102009738ffffffffff33</sys_push_application_id>
+        <sys_push_platform_id display_value="Google">53e75f30ff0002009738ffffffffff12</sys_push_platform_id>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sys_push_notif_app_install_f524bd561bd8730072fe2136ec4bcb46</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-03-22 09:16:49</sys_updated_on>
+        <sys_user_id display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</sys_user_id>
+        <token>d0RmGK9GL38:APA91bFDGSVlQni7_bR-pynPYEef-ACka_Ff41fuAfTvgDRMPBnXE6_LDQ0l1ogj89xjDPc7rebvjiPBX3sBwzD4l3QBEcN8vR0sq2OPuFavPksqh5tDy1Ops4v8j2ZfPCbZ39WW6asm</token>
+    </sys_push_notif_app_install>
+</record_update>

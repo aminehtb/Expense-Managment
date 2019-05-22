@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_sg_details_screen">
+    <sys_sg_details_screen action="INSERT_OR_UPDATE">
+        <application_roles/>
+        <available_offline>false</available_offline>
+        <data_item display_value="Mileage Expense Data">7b8574481b24330072fe2136ec4bcb1e</data_item>
+        <description/>
+        <fetch_type>not_required</fetch_type>
+        <hidden>false</hidden>
+        <icon display_value="map">bf5cf8a51b20330072fe2136ec4bcb33</icon>
+        <item_view display_value="Mileage detail item view">dc6c38a51b20330072fe2136ec4bcbfb</item_view>
+        <name>Details</name>
+        <order>10</order>
+        <parent>dc6c78a51b20330072fe2136ec4bcb7d</parent>
+        <parent_table>sys_sg_map_screen</parent_table>
+        <roles_override/>
+        <sys_class_name>sys_sg_details_screen</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-04-01 07:33:24</sys_created_on>
+        <sys_id>e46cf8a51b20330072fe2136ec4bcb37</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Details</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sys_sg_details_screen_e46cf8a51b20330072fe2136ec4bcb37</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-04-01 07:33:24</sys_updated_on>
+    </sys_sg_details_screen>
+    <sys_translated_text action="delete_multiple" query="documentkey=e46cf8a51b20330072fe2136ec4bcb37"/>
+</record_update>

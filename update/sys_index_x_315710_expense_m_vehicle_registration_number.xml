@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_index">
+    <sys_index action="INSERT_OR_UPDATE">
+        <col_name_string>registration_number</col_name_string>
+        <index_col_name element="registration_number" name="x_315710_expense_m_vehicle">ec9f51651b003f0072fe2136ec4bcb99</index_col_name>
+        <logical_table_name>x_315710_expense_m_vehicle</logical_table_name>
+        <sys_class_name>sys_index</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2019-03-11 14:04:49</sys_created_on>
+        <sys_id>699c4eb21b84ff0072fe2136ec4bcb79</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_315710_expense_m_vehicle</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sys_index_x_315710_expense_m_vehicle_registration_number</sys_update_name>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2019-03-11 14:04:49</sys_updated_on>
+        <table display_value="Vehicle" name="x_315710_expense_m_vehicle">b92fa4a11b8cfb0072fe2136ec4bcbd1</table>
+        <unique_index>true</unique_index>
+    </sys_index>
+</record_update>

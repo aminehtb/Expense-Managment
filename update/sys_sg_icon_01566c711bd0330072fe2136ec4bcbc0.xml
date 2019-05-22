@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_sg_icon">
+    <sys_sg_icon action="INSERT_OR_UPDATE">
+        <icon>{"Shape":"Circle","FontName":"Font Awesome 5 Free","Value":"f2b5","FontColor":"#7070B3","BackgroundColor":"#7070B3","Name":"handshake"}</icon>
+        <name>handshake</name>
+        <sys_class_name>sys_sg_icon</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-03-20 14:19:50</sys_created_on>
+        <sys_id>01566c711bd0330072fe2136ec4bcbc0</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>handshake</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sys_sg_icon_01566c711bd0330072fe2136ec4bcbc0</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-03-21 10:49:20</sys_updated_on>
+    </sys_sg_icon>
+</record_update>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_sg_button">
+    <sys_sg_button action="INSERT_OR_UPDATE">
+        <allow_images_upload>false</allow_images_upload>
+        <auto_redirection>false</auto_redirection>
+        <cancel_label/>
+        <condition/>
+        <condition_script/>
+        <condition_type>script</condition_type>
+        <confirm_label/>
+        <confirmation_message/>
+        <context>global</context>
+        <description/>
+        <destination_screen/>
+        <external_browser>false</external_browser>
+        <failure_message/>
+        <field_name/>
+        <jump_to_screen>false</jump_to_screen>
+        <link_label/>
+        <link_url/>
+        <mail_address/>
+        <mail_content/>
+        <mail_subject/>
+        <name>Add Payment Instrument</name>
+        <phone_number/>
+        <phone_type>cellular</phone_type>
+        <relative_url>true</relative_url>
+        <roles/>
+        <select_current_record>false</select_current_record>
+        <show_confirmation>false</show_confirmation>
+        <show_signature>false</show_signature>
+        <sms/>
+        <success_message>Success</success_message>
+        <sys_class_name>sys_sg_button</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-03-26 12:44:58</sys_created_on>
+        <sys_id>5c0a4b671bd0330072fe2136ec4bcb44</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Add Payment Instrument</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sys_sg_button_5c0a4b671bd0330072fe2136ec4bcb44</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-03-27 13:29:30</sys_updated_on>
+        <table/>
+        <take_value_from_field>false</take_value_from_field>
+        <type>write_back</type>
+        <write_back_action_item display_value="Add Payment Instrument">e5a883271bd0330072fe2136ec4bcb9a</write_back_action_item>
+    </sys_sg_button>
+    <sys_translated_text action="delete_multiple" query="documentkey=5c0a4b671bd0330072fe2136ec4bcb44"/>
+</record_update>

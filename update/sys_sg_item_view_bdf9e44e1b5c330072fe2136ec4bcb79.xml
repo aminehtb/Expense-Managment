@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_sg_item_view">
+    <sys_sg_item_view action="INSERT_OR_UPDATE">
+        <data_item display_value="Employee Data">0549ec0e1b5c330072fe2136ec4bcb05</data_item>
+        <dependency_fields>photo,name,email,phone</dependency_fields>
+        <item_view_json>{"Type":"ViewGroup","Margin":{"Top":14,"Bottom":16},"Orientation":"Horizontal","Alignment":"Top","Distribution":"Auto","Children":[{"Type":"Image","CornerRadius":24,"Height":48,"Width":48,"Margin":{"Right":16},"studio_template_field_id":"E1","Scaling":"Fill","CellId":"photo"},{"Type":"ViewGroup","Margin":{},"Orientation":"Vertical","Alignment":"Left","Distribution":"Auto","Children":[{"Type":"Text","studio_template_field_id":"E2","TextColor":"#293e40","TextAlignment":"Left","MaxLines":1,"Font":{"Weight":"medium","Size":18},"CellId":"name"},{"Type":"Text","Margin":{"Top":4},"studio_template_field_id":"E3","TextColor":"#293e40","TextAlignment":"Left","MaxLines":1,"Font":{"Weight":"regular","Size":14},"CellId":"email"},{"Type":"Text","Margin":{"Top":5},"studio_template_field_id":"E4","TextColor":"#7d8a8c","TextAlignment":"Left","MaxLines":1,"Font":{"Weight":"regular","Size":13},"CellId":"phone"}]}],"studio_card_id":"6a08b23023052300a8ed7f4fc7bf6558"}</item_view_json>
+        <name>Employee Directory item view</name>
+        <short_description/>
+        <sys_class_name>sys_sg_item_view</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-03-21 09:14:12</sys_created_on>
+        <sys_id>bdf9e44e1b5c330072fe2136ec4bcb79</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Employee Directory item view</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sys_sg_item_view_bdf9e44e1b5c330072fe2136ec4bcb79</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-03-25 10:03:04</sys_updated_on>
+        <ui_styles/>
+    </sys_sg_item_view>
+    <sys_translated_text action="delete_multiple" query="documentkey=bdf9e44e1b5c330072fe2136ec4bcb79"/>
+</record_update>

@@ -1,0 +1,842 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope,$http) {	
+		var c = this;
+		//Id de marchant qui recuperer depuit la fonction testExiste
+		var merchId ; 
+
+		$scope.files = []; 
+		/*****User*****/
+		$scope.data.user = {
+			displayValue:c.data.userConName,
+			value:c.data.userCon 
+		};
+		$scope.data.dated = {
+			displayValue: '',
+			value: '',
+			name: 'c.data.dated'
+		};
+		$scope.data.processd = {
+			displayValue: '',
+			value: '',
+			name: 'c.data.processd'
+		};	
+
+		c.action = function(action) {
+			c.data.action = action;
+
+			c.server.update().then(function() {
+				c.data.action = undefined;
+			})
+		}
+		//Traitement D'image 
+			$scope.setFiles = function(element) {
+				$scope.$apply(function() {
+				 var dates=[];
+					for (var i = 0; i < element.files.length; i++) {
+						$scope.files.push(element.files[i]);
+					
+						Tesseract : SCan Image
+						Tesseract.recognize(element.files[i])
+							.then(function(result){
+							console.log(result.lines);
+							//Parcour line result
+							for(var i=0 ; i<result.lines.length;i++){	
+								var model = result.lines[i].text ;
+								//Merchant
+								var test = testExiste(model);
+								if (test.name != null){
+									merchId = test.sys_id ; 
+										document.getElementById('merchName').value =test.name;
+										document.getElementById('vatNumber').value =test.vat_number;
+										document.getElementById('city').value =test.city;
+										document.getElementById('zipCode').value =test.zip_code;
+									}
+								 test Existe Mode de Payement 
+								var testPay = testExistePay(model);
+								if(testPay.name != null){
+									c.data.payment = { 
+										displayValue:testPay.name,
+										value:testPay.sys_id 
+									}
+								}
+								//Date
+								var dd = model.match("([a-zA-Z]{3,}|[0-9]{1,4})(\-|\/|\ |\.)([a-zA-Z]{3,}|[0-9]{1,4})(\-|\/|\. |\ )[0-9]{1,4}");
+										if ( dd != null){
+											var regex = /[0-9]{1,4}(\-|\/|\ |\.)([a-zA-Z]{3,}|[0-9]{1,4})(\-|\/|\. |\ )[0-9]{1,4}/mg;
+											var regex2 = /([a-zA-Z]{3,}|[0-9]{1,4})(\-|\/|\ |\.)[0-9]{1,4}(\-|\/|\. |\ )[0-9]{1,4}/mg;
+											var s = $scope.getDate(regex,model);
+											console.log('res'+s);
+											if(s != undefined){
+												if($scope.validateDate(s._i)){
+													if(!findDuplicate(dates,s)){
+														dates.push(s._i);
+														console.log('date found : '+s.toString());
+													}
+											}
+											s = $scope.getDate(regex2,model);
+												if($scope.validateDate(s._i)){
+													if(!findDuplicate(dates,s)){
+														dates.push(s._i);
+														console.log('date found 2 : '+s.toString());
+														//var dd = new Date(s._i) ;
+														var r = convert(s);
+														console.log("rrrrrrrrr" + r);
+														document.getElementById('sp_formfield_').value=r;
+													}
+												}
+											}
+										
+										}
+									var l =model;
+								  model.toUpperCase();
+								//Date
+								if(model.indexOf("DATE") != -1){
+									console.log(model);
+									console.log("indexOf Date :"+model.indexOf(" "));
+									l=model.substring(model.indexOf("DATE"),model.indexOf(lastIndexOfDigit(model)));
+									console.log("********** la date : "+l);
+								}
+								//Total
+									if(model.indexOf('TO') !=-1)	{	
+												console.log("indexOf : "+model.indexOf('TO'));
+												l=model.substring(model.indexOf('TO'),model.indexOf(' '));
+												console.log("chaine : "+l);
+											}
+									if(model.indexOf('PRIX') !=-1)	{	
+												l=model.substring(model.indexOf('PRIX'),model.indexOf(' '));
+												console.log("chaine : "+l);
+											}	
+								//Test pour récuperer Value
+								if(JaroWrinker(l.toUpperCase(),'TO') > 0.70  || JaroWrinker(l.toUpperCase(),'PRIX') > 0.70)
+								{  
+										var matches = model.match(/\d{1,3}[,\\.]?(\\d{1,2})?/g).join("");
+										console.log(matches);
+								    var val = parseInt(matches+"" ,10);
+										document.getElementById('value').value =val;
+										c.data.value=val;
+								}
+					 }
+							
+							console.log(dates);
+							});
+						}});
+					};
+				 $scope.removeFiles = function(fname) {
+					var index = $scope.files.indexOf(fname);
+					if(index>-1)
+						$scope.files.splice(index,1);
+				};  
+				$scope.scanFiles = function() {
+					$scope.files.forEach(function(file){
+						var formData = new FormData();
+
+						formData.append('file', file);
+						var request = {
+							method: 'POST',
+							url: 'https://api.ocr.space/parse/image',
+							data:formData,
+							headers: {
+								'Content-Type': undefined,
+								'apikey':'616fed4edc88957',
+								'scale':true,
+								'Accept':'application/json'         
+							}
+						};
+						console.log('HTTP request : '+request);
+
+						// SEND THE FILES.
+						$http(request)
+							.success(function (d) {
+							// On success code here
+							console.log('response :',d.ParsedResults[0].ParsedText);
+							
+						})
+							.error(function (err) {
+							// On error code here
+							console.log('error :',err);
+						});
+
+					});
+
+				}
+			  $scope.uploadFiles = function() { 
+								$scope.fd = new FormData();
+							$scope.files.forEach(function(file){
+								$scope.fd.set('files', file);
+								var request = {
+									method: 'POST',
+									url: 'https://'+c.data.instanceName+'.service-now.com/api/now/attachment/file?table_name='+c.data.table+'&table_sys_id='+c.data.tableSys+'&file_name='+file.name,
+									data: $scope.fd.get('files'),
+									headers: {
+										'Content-Type': file.type,
+										'Accept':'application/json'         
+									}
+								};
+								console.log('HTTP request:',request);
+
+								// SEND THE FILES.
+									$http(request)
+										.success(function (d) {
+									 var json_data = JSON.stringify(d);
+									json_data = JSON.parse(json_data);
+									 c.data.action = 'append_image';
+									 c.data.rec_id = c.data.id;
+									 c.data.attachment_id = json_data.result.sys_id;
+									 c.server.update().then(function(){
+								c.data.action = undefined;
+								})
+												})
+										.error(function (err) {
+										// On error code here
+									});
+
+							});
+
+					 }
+				 $scope.submit_record=function() {
+						console.log('started submit');
+					 
+						c.data.action = 'insert';
+					
+						c.data.billable =$scope.data.billable;
+						c.data.reimburse = $scope.data.reimburse;
+						c.data.title = $scope.data.title;
+						c.data.value=$scope.data.value;
+						c.data.tips=$scope.data.tips;
+						c.data.processd= $scope.data.processd; 
+						c.data.dated= $scope.data.dated;
+						c.data.state=$scope.data.state;
+						c.data.type=$scope.data.type;
+						c.data.sheet=$scope.data.sheet; 
+						c.data.payment = $scope.data.payment;
+						c.data.category = $scope.data.category ;
+						c.data.card = $scope.data.card ;
+						c.data.country = $scope.data.country ;
+						c.data.user = $scope.data.user ;
+					 c.data.merchId = merchId ; 
+					 
+					 c.data.merchname = $scope.data.merchname;
+					 console.log("salma test  : "+  $scope.data.merchId);
+					 
+					 c.data.merchVat = $scope.data.merchVat;
+					 
+					c.data.merchCity = $scope.data.merchCity;
+					c.data.merchZipCode = $scope.data.merchZipCode;
+						c.server.update().then(function(){
+
+								c.data.table = 'x_315710_expense_m_expense_bill';
+								c.data.tableSys = c.data.id;
+								console.log('id : '+c.data.id);
+								console.log('tbl : '+c.data.table);
+								$scope.uploadFiles();
+
+							 c.data.action = undefined;
+						});
+
+				};
+	
+				/********* test merch ******/
+				function testExiste(ligne){
+					var res = {};
+					var number = c.data.merch.length ;
+					var i=0 ;
+					var ok = false ;
+					while(i < number && !ok){
+						if(JaroWrinker(ligne.toUpperCase(), c.data.merch[i].name) > 0.80) {
+							res = c.data.merch[i];
+							c.data.merchname = res.name ;
+							c.data.merchCity = res.city ;
+							c.data.merchZipCode = res.zip_code;
+							c.data.merchVat = res.vat_number;
+		
+							ok=true;
+
+						}
+						else
+							 i++;
+					}
+					return res ;
+				}
+
+			  /********* test PAyment ******/
+
+			  function testExistePay(lignee){
+					var resPay = {};
+					var number = c.data.payList.length ;
+					var i=0 ;
+					var ok = false ;
+					while(i < number && !ok){
+						var name = c.data.payList[i].name ;
+						var res = parseFloat(""+JaroWrinker(lignee.toUpperCase(),name.toUpperCase() )).toFixed(1);
+						if(res >= 0.7) {
+							resPay = c.data.payList[i];
+							ok=true;
+						}
+						i++;
+					}
+					return resPay ;
+			}
+
+	    //Function of Similarity
+		  function JaroWrinker (s1, s2) {
+						var m = 0;
+						// Exit early if either are empty.
+						if ( s1.length === 0 || s2.length === 0 ) {
+								return 0;
+						}
+						// Exit early if they're an exact match.
+						if ( s1 === s2 ) {
+								return 1;
+						}
+						var range     = (Math.floor(Math.max(s1.length, s2.length) / 2)) - 1,
+								s1Matches = new Array(s1.length),
+								s2Matches = new Array(s2.length);
+						for ( i = 0; i < s1.length; i++ ) {
+								var low  = (i >= range) ? i - range : 0,
+										high = (i + range <= s2.length) ? (i + range) : (s2.length - 1);
+								for ( j = low; j <= high; j++ ) {
+								if ( s1Matches[i] !== true && s2Matches[j] !== true && s1[i] === s2[j] ) {
+										++m;
+										s1Matches[i] = s2Matches[j] = true;
+										break;
+								}
+								}
+						}
+						// Exit early if no matches were found.
+						if ( m === 0 ) {
+								return 0;
+						}
+						// Count the transpositions.
+						var k = 0 ;
+							var n_trans = 0;
+						for ( i = 0; i < s1.length; i++ ) {
+								if ( s1Matches[i] === true ) {
+								for ( j = k; j < s2.length; j++ ) {
+										if ( s2Matches[j] === true ) {
+										k = j + 1;
+										break;
+										}
+								}
+								if ( s1[i] !== s2[j] ) {
+										++n_trans;
+								}
+								}
+						}
+						var weight = (m / s1.length + m / s2.length + (m - (n_trans / 2)) / m) / 3,
+								l      = 0,
+								p      = 0.1;
+
+						if ( weight > 0.7 ) {
+								while ( s1[l] === s2[l] && l < 4 ) {
+								++l;
+								}
+								weight = weight + l * p * (1 - weight);
+						}
+						/* if ( weight > 0.7 ) {	
+									console.log(" jaro weight : "+s1+" , "+s2+" = "+weight);
+						 }*/
+						return weight;
+				} 
+
+ //Test de Date 
+			$scope.getDate=function(regex,str){
+			var m;
+			var d;
+			var flag=false;
+			while ((m = regex.exec(str)) !== null) {
+				// This is necessary to avoid infinite loops with zero-width matches
+				if (m.index === regex.lastIndex) {
+					regex.lastIndex++;
+				} // The result can be accessed through the `m`-variable.
+
+			var list = [
+										'M/d/yyyy',
+										'M/d/yy',
+										'M/dd/yy',
+										'MM/dd/yy',
+										'MM/dd/yy',
+										'MM/dd/yyyy',
+										'yy/MM/dd',
+										'L',
+										'LL',
+										'l',
+										'll',
+										'yyyy-MM-dd',
+										'dd-MMM-yy',
+										'DD-MM-YYYY'
+										];
+									d = moment(m[0], list) ;
+									if(d.isValid() )
+									{ 
+										console.log(d._i);
+										flag=true;
+									}
+			}
+			if(flag)
+				return d;
+				}
+
+				findDuplicate = function(tab,obj){
+					tab.forEach(function(item){
+						var b= item+'' == obj+'';
+						console.log( typeof obj+' testin '+typeof item+"  are "+b );
+						if(b)
+							return true;
+					});
+					return false;
+				}
+			$scope.validateDate= function(str){
+				if(str.split('-').length==3|
+					str.split(' ').length==3|
+					str.split('.').length==3|
+					str.split('/').length==3)
+					 return true;
+					 else
+					 return false;
+			}
+			function convert(str) {
+				var date = new Date(str),
+						mnth = ("0" + (date.getMonth()+1)).slice(-2),
+						day  = ("0" + date.getDate()).slice(-2);
+				return [ date.getFullYear(), mnth, day ].join("-");
+		  }
+		/*	
+			
+function stringToDate(_date,_format,_delimiter)
+{
+            var formatLowerCase=_format.toLowerCase();
+            var formatItems=formatLowerCase.split(_delimiter);
+            var dateItems=_date.split(_delimiter);
+            var monthIndex=formatItems.indexOf("mm");
+            var dayIndex=formatItems.indexOf("dd");
+            var yearIndex=formatItems.indexOf("yyyy");
+            var month=parseInt(dateItems[monthIndex]);
+            month-=1;
+            var formatedDate = new Date(dateItems[yearIndex],month,dateItems[dayIndex]);
+            return formatedDate;
+}*/
+	
+	function lastIndexOfDigit(str) {
+        var last_indices = [];
+        [1, 2, 3, 4, 5, 6, 7, 8, 9].map(function (digit) {
+            last_indices.push(str.lastIndexOf(digit));
+        });
+        var indices = last_indices.sort(function (a, b) {
+            return a - b;
+        });
+        return indices[indices.length - 1];
+} 
+			
+}
+
+
+	]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.input-group {
+    display: table;
+    white-space: nowrap;
+    vertical-align: top;
+    width: 100%;
+}
+.input-group .form-control {
+    display: table-cell;
+    vertical-align: top;
+    width: 100%;
+}
+.input-group .input-group-addon {
+    display: table-cell;
+    width: 1%;
+    vertical-align: top;
+   /* background: #2f353e;*/
+    color: #686666;
+    font-size: 1.15rem;
+    line-height: 19px;
+    padding-left: 10px;
+    padding-right: 10px;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>expense_bill_form</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Expense Bill Form</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+	/** Get uSer Connecter **/
+	var user = gs.getUserID();
+		gs.warn("user sys_id: " + user.street+" , "+user.city);
+	var myUserObject = gs.getUser() ;
+gs.warn(myUserObject.getFirstName()); //print the first name of the user you are currently logged in as 
+
+	data.userCon = user  ;
+	data.userConName = myUserObject.name ;
+	 gs.warn("incident.commented "+ gs.getUserID()+" " +gs.getUserName())
+	gs.warn("idUser : "+data.userCon);
+		gs.warn("NameUser : "+data.userConName);
+
+	data.table ='x_315710_expense_m_expense_bill';
+	data.instanceName = gs.getProperty('instance_name');
+	data.merch=[];
+	var merch = new GlideRecord("x_315710_expense_m_merchant");
+	merch.query();
+	while(merch.next()){
+		merchobj={};
+		$sp.getRecordValues(merchobj,merch,"sys_id,name,city,vat_number,zip_code")
+		data.merch.push(merchobj);
+	}
+	
+	/****** Liste des payment *****/
+	data.payList=[];
+	
+		var p = new GlideRecord('x_315710_expense_m_payment_instrument');
+	p.query();
+	while(p.next()){
+		payObj={};
+		$sp.getRecordValues(payObj,p,"name,sys_id");
+		data.payList.push(payObj);
+	}
+
+	if(input && input.action){
+        gs.warn('script called');
+		var action=input.action;
+			
+        data.title=input.title;
+
+		/*Recuperer Merchant*/
+		gs.warn("name merchant : "+input.merchname);
+		data.merchZipCode = input.merchZipCode ;
+		data.merchCity = input.merchCity ;
+		data.merchVat = input.merchVat ;
+		data.merchName = input.merchname ;
+		gs.warn ("merchant : "+data.merchName+" , "+data.merchCity+" , "+data.merchVat+" , "+data.merchZipCode);
+		/*bill*/
+	    data.value=input.value;
+		data.vat = input.vat ;
+	    data.tips = input.tips ;
+	    data.process = input.processd ;
+		data.payment = input.payment ;
+		data.category = input.category;
+		data.user = input.user ;
+		data.card = input.card ;
+	    data.date = input.dated ;
+	    data.state = input.state ;
+		data.sheet=input.sheet;
+		data.country = input.country ;
+		data.reimburse =input.reimburse ;
+		data.billable = input.billable ;
+	    data.type=input.type;
+		data.merchId = input.merchId ;
+		gs.warn("id depuis clinet script : "+data.merchId);
+        if(action=='insert'){
+					var gr = new GlideRecord(data.table);
+            gs.warn('insert started');   
+					
+					/*Merchant*/
+					merch.addQuery('name',data.merchName);
+					merch.addQuery('city',data.merchCity);
+					merch.addQuery('vat_number',data.merchVat);
+					merch.addQuery('zip_code',data.merchZipCode);
+					merch.query();
+					var idM  ;
+					while(merch.next()){
+							idM = merch.sys_id; 
+						}
+					gs.warn("id : "+idM);
+					//var sysIdMerch ;
+					if(idM== null ){
+					merch.vat_number = data.merchVat ;
+					merch.name = data.merchName ; 
+					merch.city = data.merchCity ; 
+					merch.zip_code = data.merchZipCode ;
+			    idM =merch.insert();
+						gs.warn("new merchant !!!!"+idM);
+					}
+					data.merchId = idM;
+					/*Add Bill*/
+            gr.title = data.title; 
+            gr.value = data.value; 
+            gr.state = data.state;
+            gr.process_date = data.process;
+            gr.date=data.date;
+            gr.type=data.type;
+            gr.tips=data.tips;
+            gr.expense_sheet=data.sheet.value;
+            gr.payment_instrument=data.payment.value;
+            gr.category = data.category.value ;
+            gr.rate_card = data.card.value ;
+            gr.country = data.country.value ;
+            gr.user = data.user.value ;
+            gr.billable_to_client = data.billable;
+            gr.to_reimburse= data.reimburse;
+					  gr.vat = data.vat ;
+					  gr.merchant =data.merchId ;
+            var idd = gr.insert();
+					
+		  data.id = idd;
+					gs.warn("idddd : "+data.id+idd);
+        }
+    }   
+	
+	if(input && input.action=='append_image'){
+		gs.warn('append started by attach : '+input.attachment_id+' and id is : '+input.rec_id);
+		if(input.rec_id && input.attachment_id){
+
+			var r = new GlideRecord(data.table);
+			r.get(input.rec_id);
+			r.image = input.attachment_id;
+			var ress = r.update();
+			gs.warn('saved  : '+ress);
+				gs.addInfoMessage("Success");
+			
+		}
+	}
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-04-02 12:26:12</sys_created_on>
+        <sys_id>97f88f391b20730072fe2136ec4bcb23</sys_id>
+        <sys_mod_count>1170</sys_mod_count>
+        <sys_name>Expense Bill Form</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sp_widget_97f88f391b20730072fe2136ec4bcb23</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-05-22 07:19:10</sys_updated_on>
+        <template><![CDATA[<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<script src='https://cdn.jsdelivr.net/gh/naptha/tesseract.js@v1.0.14/dist/tesseract.min.js'></script>       
+<form class="form-horizontal" >
+<div class="but_list">
+							<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+								<ul id="myTab" class="nav nav-tabs" role="tablist">
+								  <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true"><i class="glyphicon glyphicon-pencil"></i> Bill</a></li>
+								  <li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile"><i class="glyphicon glyphicon-shopping-cart"></i> Merchant</a></li>
+								</ul>
+							<div id="myTabContent" class="tab-content">
+							  <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
+                  <br/><br/>
+									   <div class="form-group">
+										  <label class="col-md-3 control-label" >Expense Sheet</label>
+										  <div class="col-md-4">
+											<sn-record-picker field="c.data.sheet"
+											   table="'x_315710_expense_m_expense_sheet'" 
+											   display-field="'name'" value-field="'sys_id'" search-fields="'name'" 
+												page-size="100"  ></sn-record-picker>
+												 </div>
+									   </div>
+
+									  <div class="form-group">
+										  <label class="col-md-3 control-label" >Category</label>
+										  <div class="col-md-4">
+											<sn-record-picker field="c.data.category"
+											   table="'x_315710_expense_m_category'" 
+											   display-field="'name'" value-field="'sys_id'" search-fields="'name'" 
+												page-size="100"  ></sn-record-picker>
+												</div>
+									   </div>
+               
+										<div class="form-group">
+										  <label class="col-md-3 control-label" >Title</label>
+										  <div class="col-md-4">
+											<input id="Title" type="text" placeholder="" class="form-control" name="title" ng-model="c.data.title" />
+										  </div>
+									   </div>
+
+                           
+										 <div class="form-group">
+											<label class="col-md-3 control-label" >Value</label>
+											<div class="col-md-4">
+											  <input id="value" type="number" class="form-control" name="value"  ng-model="c.data.value" />
+											</div>
+										 </div>
+                
+                   
+									   <div class="form-group">
+
+											  <label class="col-md-3 control-label" >VAT</label>
+
+											 <div class="col-md-4">
+												<div class="input-group">
+												<input min="0" max="100" id="vat" type="number" class="form-control" name="vat"  ng-model="c.data.vat" />
+												<label class="input-group-addon" for="number">%</label> 
+										   </div>
+										 </div>
+										</div>
+                         
+										<div class="form-group">
+										  <label class="col-md-3 control-label" >Tip(s)</label>
+										  <div class="col-md-4">
+											<input id="tips" type="number" class="form-control" name="tips" ng-model="c.data.tips" />
+										  </div>
+									   </div>
+										<div class="form-group">
+											  <label class="col-md-3 control-label" >Payment Instrument</label>
+											  <div class="col-md-4">
+										<sn-record-picker field="c.data.payment"
+										   table="'x_315710_expense_m_payment_instrument'" 
+										   display-field="'name'" value-field="'sys_id'" search-fields="'name'" 
+											page-size="100"  default-query="c.assigned_to_query" ></sn-record-picker>
+										  </div>
+										   </div>
+										   <div class="form-group">
+											  <label class="col-md-3 control-label" >Date</label>
+											  <div class="col-md-4">
+										 <sp-date-picker field="c.data.dated" sn-change="" ng-model="c.data.dated"  id='date' ></sp-date-picker>
+											 </div>
+											</div>
+
+										 <div class="form-group">
+										  <label class="col-md-3 control-label" >Date Process</label>
+										  <div class="col-md-4">
+													<sp-date-picker field="c.data.processd" ng-model="c.data.processd" ></sp-date-picker>
+										   </div>
+										</div>
+										 <div class="form-group">
+										  <label class="col-md-3 control-label" >User</label>
+										  <div class="col-md-4">
+											<div ng-if="c.data.userConName == 'admin'">
+											  <sn-record-picker field="c.data.user" table="'sys_user'" 
+											 display-field="'name'" value-field="'sys_id'" search-fields="'name'" 
+											   page-size="100"  ></sn-record-picker>
+											</div>
+											<div ng-if="c.data.userConName != 'admin'">
+											  <sn-record-picker sn-disabled="c.data.userConName" field="c.data.user" table="'sys_user'" 
+											 display-field="'name'" value-field="'sys_id'" search-fields="'name'" 
+											   page-size="100"  ></sn-record-picker>
+											</div>
+									  </div>
+									   </div>
+
+										 <div class="form-group">
+										  <label class="col-md-3 control-label" >Rate Card</label>
+										  <div class="col-md-4">
+									<sn-record-picker field="c.data.card"
+									   table="'fm_rate_card'" 
+									   display-field="'name'" value-field="'sys_id'" search-fields="'name'" 
+										page-size="100"  ></sn-record-picker>
+									  </div>
+									   </div>
+
+										 <div class="form-group">
+										  <label class="col-md-3 control-label" >Country</label>
+										  <div class="col-md-4">
+									<sn-record-picker field="c.data.country"
+									   table="'core_country'" 
+									   display-field="'name'" value-field="'sys_id'" search-fields="'name'" 
+										page-size="100"  ></sn-record-picker>
+									  </div>
+									   </div>
+
+										<div class="form-group">
+									  <label class="col-md-3 control-label" >To Reimburse</label>
+									  <div class="col-md-4">
+										<input id="To_Reimburse" type="checkbox" class="custom-control-input" name="To_Reimburse" ng-model="c.data.reimburse"  ng-checked="true" />
+									  </div>
+								   </div>
+
+								   <div class="form-group">
+									  <label class="col-md-3 control-label" >Billable to client</label>
+									  <div class="col-md-4">
+										<input id="Billable" type="checkbox"  class="custom-control-input" name="Billable" ng-model="c.data.billable" />
+									  </div>
+								   </div>
+
+									   <div class="form-group">
+										  <label class="col-md-3 control-label" >Type</label>
+										  <div class="col-md-4">
+											<select class="form-control" name="type" id="type" ng-model="c.data.type">
+												<option value="">---Please select---</option> <!-- not selected / blank option -->
+												<option value="Capex">Capex</option> 
+												<option value="Opex">Opex</option>
+											</select>
+										  </div>
+									   </div>
+
+										<div class="form-group">
+											  <label class="col-md-3 control-label" >State</label>
+											  <div class="col-md-4">
+												<select class="form-control" name="state" id="state" ng-model="c.data.state">
+													<option value="">---Please select---</option> <!-- not selected / blank option -->
+													<option value="Pending">Pending</option> 
+													<option value="Processed">Processed</option>
+												</select>
+											  </div>
+										   </div>
+											<div class="form-group">
+											  <label class="col-md-3 control-label" >Image</label>
+
+											  <div class="col-md-4">
+												 <label class="btn btn-info btn-sm"> <span><i class="glyphicon glyphicon-paperclip"
+																		aria-hidden="true"></i> <b>Choose file</b></span>
+											   <input  style='opacity:0; width:0px; height:0px;' type="file" id="fileToUpload" multiple onchange="angular.element(this).scope().setFiles(this)"/>
+												</label> 
+												   <br/>  <div ng-show="files.length">
+													  <div ng-repeat="file in files.slice(0)">
+														  <span>{{file.webkitRelativePath || file.name}}</span>
+														  (<span ng-switch="file.size > 1024*1024">
+															  <span ng-switch-when="true">{{file.size / 1024 / 1024 | number:2}} MB</span>
+															  <span ng-switch-default>{{file.size / 1024 | number:2}} kB</span>
+														  </span>)<span class="glyphicon glyphicon-remove-circle" id="removeicon" ng-click="removeFiles(file)"></span>
+												</div></div>
+
+											  </div>
+								   </div>
+                </div>
+							  <div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
+                  <br/><br/>
+									<div class="form-group">
+										   <label class="col-md-3 control-label" >Name</label>
+										   <div class="col-md-4">
+											   <input id="merchName" type="text" placeholder="" class="form-control" name="n" ng-model="c.data.merchname"  />
+											</div>
+									 </div>
+									<div class="form-group">
+									<label class="col-md-3 control-label" >Vat Number</label>
+									 <div class="col-md-4">
+										<input id="vatNumber" type="text" placeholder="" class="form-control" name="v" ng-model="c.data.merchVat"  />
+									  </div>
+								   </div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" >City</label>
+										 <div class="col-md-4">
+											<input id="city" type="text" placeholder="" class="form-control" name="c" ng-model="c.data.merchCity"/>
+										 </div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" >Zip Code</label>
+										<div class="col-md-4">
+											<input id="zipCode" type="text" placeholder="" class="form-control" name="z" ng-model="c.data.merchZipCode" />
+										</div>
+									</div>
+
+							</div>
+							 
+							</div>
+					   </div>
+					   
+					     <button type="button" id="submit" ng-click="submit_record()" name="submit" class="btn btn-primary pull-left">Submit </button>
+					   </div>
+
+
+ 
+       
+
+
+</form>
+
+]]></template>
+    </sp_widget>
+</record_update>

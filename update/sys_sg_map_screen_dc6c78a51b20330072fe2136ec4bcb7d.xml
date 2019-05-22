@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_sg_map_screen">
+    <sys_sg_map_screen action="INSERT_OR_UPDATE">
+        <application_roles/>
+        <available_offline>false</available_offline>
+        <data_item display_value="Mileage Expense Data">7b8574481b24330072fe2136ec4bcb1e</data_item>
+        <data_item_table>x_315710_expense_m_mileage_expense</data_item_table>
+        <description/>
+        <fetch_type>not_required</fetch_type>
+        <hidden>false</hidden>
+        <icon display_value="map">bf5cf8a51b20330072fe2136ec4bcb33</icon>
+        <info>user.name</info>
+        <location>vehicle</location>
+        <name>Mileage</name>
+        <order>80</order>
+        <parent>cd0653d91bd0330072fe2136ec4bcb74</parent>
+        <parent_table>sys_sg_folder</parent_table>
+        <phone>user.mobile_phone</phone>
+        <pin_color>#FF0000</pin_color>
+        <pin_color_type>default</pin_color_type>
+        <roles_override/>
+        <sub_title>title</sub_title>
+        <sys_class_name>sys_sg_map_screen</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-04-01 07:33:23</sys_created_on>
+        <sys_id>dc6c78a51b20330072fe2136ec4bcb7d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Mileage</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sys_sg_map_screen_dc6c78a51b20330072fe2136ec4bcb7d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-04-01 07:33:23</sys_updated_on>
+        <tag>arrival</tag>
+        <tag_background_color>#7d8a8c</tag_background_color>
+        <tag_font_color>#ffffff</tag_font_color>
+        <tag_style/>
+        <title>departure</title>
+    </sys_sg_map_screen>
+    <sys_translated_text action="delete_multiple" query="documentkey=dc6c78a51b20330072fe2136ec4bcb7d"/>
+</record_update>

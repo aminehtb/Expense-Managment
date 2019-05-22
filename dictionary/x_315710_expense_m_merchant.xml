@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Merchant" max_length="40" name="x_315710_expense_m_merchant" type="collection">
+        <element label="City" max_length="50" name="city" type="string"/>
+        <element label="Name" max_length="20" name="name" type="string"/>
+        <element label="VAT Number" max_length="40" name="vat_number" type="longint"/>
+        <element label="Zip Code" max_length="150" name="zip_code" type="string"/>
+    </element>
+</database>
