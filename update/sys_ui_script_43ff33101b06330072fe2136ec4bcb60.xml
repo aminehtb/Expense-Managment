@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_script">
+    <sys_ui_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description/>
+        <global>false</global>
+        <name>x_315710_expense_m.chartist-plugin-fill-</name>
+        <script><![CDATA[!function(t,e){"function"==typeof define&&define.amd?define(["chartist"],e):"object"==typeof exports?module.exports=e(require("chartist")):t["Chartist.plugins.fillDonut"]=e(t.Chartist)}(this,function(t){return function(t,e){"use strict";var i={fillClass:"ct-fill-donut",label:{html:"div","class":"ct-fill-donut-label"},items:[{}]};e.plugins=e.plugins||{},e.plugins.fillDonut=function(l){return l=e.extend({},i,l),function(i){if(i instanceof e.Pie){var o=i.container;o.style.position="relative";var n,s=function(t){if("slice"===t.type){0===t.index&&(n=o.querySelector("svg"));var e=t.group._node.cloneNode(!0);l.fillClass.split(" ").forEach(function(t){e.setAttribute("class",e.getAttribute("class")+" "+t)}),[].forEach.call(e.querySelectorAll("path"),function(t){[].forEach.call(t.querySelectorAll("animate"),function(t){t.parentNode.removeChild(t)}),t.removeAttribute("stroke-dashoffset")}),n.insertBefore(e,n.childNodes[0])}};i.on("draw",function(t){s(t)}),i.on("created",function(n){var f=0;i.options.fillDonutOptions&&(l=e.extend({},l,i.options.fillDonutOptions),s(n)),[].forEach.call(l.items,function(i){var n=t.createElement(l.label.html);l.label["class"].split(" ").forEach(function(t){n.classList?n.classList.add(t):n.className+=" "+t});var s=e.extend({},{"class":"",id:"",content:"fillText",position:"center",offsetY:0,offsetX:0},i);s.id.length>0&&n.setAttribute("id",s.id),s["class"].length>0&&n.setAttribute("class",s["class"]),[].forEach.call(o.querySelectorAll('*[data-fill-index$="fdid-'+f+'"]'),function(t){t.parentNode.removeChild(t)}),n.setAttribute("data-fill-index","fdid-"+f),f+=1,n.insertAdjacentHTML("beforeend",s.content),n.style.position="absolute",o.appendChild(n);var a=Math.ceil(o.offsetWidth/2),c=Math.ceil(o.clientHeight/2),r=Math.ceil(n.offsetWidth/2),d=Math.ceil(n.clientHeight/2),u={bottom:{bottom:0+s.offsetY+"px",left:a-r+s.offsetX+"px"},top:{top:0+s.offsetY+"px",left:a-r+s.offsetX+"px"},left:{top:c-d+s.offsetY+"px",left:0+s.offsetX+"px"},right:{top:c-d+s.offsetY+"px",right:0+s.offsetX+"px"},center:{top:c-d+s.offsetY+"px",left:a-r+s.offsetX+"px"}};e.extend(n.style,u[s.position])})})}}}}(document,t),t.plugins.fillDonut});
+//# sourceMappingURL=chartist-plugin-fill-donut.min.js.map]]></script>
+        <script_name>chartist-plugin-fill-donut</script_name>
+        <sys_class_name>sys_ui_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-06-11 14:10:00</sys_created_on>
+        <sys_id>43ff33101b06330072fe2136ec4bcb60</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_315710_expense_m.chartist-plugin-fill-</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sys_ui_script_43ff33101b06330072fe2136ec4bcb60</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-06-11 14:10:00</sys_updated_on>
+        <ui_type>10</ui_type>
+        <use_scoped_format>false</use_scoped_format>
+    </sys_ui_script>
+</record_update>

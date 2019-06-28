@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function() {
+  /* widget controller */
+  var c = this;
+		dragonfly('.drag-container', function () {
+        console.log('This is a callback');
+    });
+	angular.element(function () {
+    console.log('page loading completed');
+	
+});
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Segoe UI Symbol", "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 14px;
+    line-height: 1.5;
+    color: #24292e;
+    background-color: #ffffff;
+}
+
+.drag-container {
+    box-sizing: border-box;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    width: 400px;
+    padding: 8px;
+    margin: 0 auto;
+}
+.drag-box {
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 3px;
+    padding: 4px 8px;
+    margin: 4px;
+    cursor: pointer;
+    background-color: #eeeeee;
+}
+.drag-box:hover {
+    background-color: #ffff99;
+}
+
+.drag-helper {
+    box-sizing: border-box;
+    position: absolute;
+    display: none;
+    top: auto;
+    left: auto;
+}
+.drag-box-dragging .drag-box {
+    background-color: #ff99cc;
+    opacity: 0.5;
+    transform: scale(1.5);
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>salmaexpemledrag</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>SalmaExpemleDrag</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {  /* populate the 'data' object */  /* e.g., data.table = $sp.getValue('table'); */})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-06-25 07:56:00</sys_created_on>
+        <sys_id>d8b0f6341b12330072fe2136ec4bcb2a</sys_id>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_name>SalmaExpemleDrag</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sp_widget_d8b0f6341b12330072fe2136ec4bcb2a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-06-25 08:27:29</sys_updated_on>
+        <template><![CDATA[<div>
+<div class="drag-container">
+    <div class="drag-box" id="item1">Item #1</div>
+    <div class="drag-box" id="item2">Item #2</div>
+    <div class="drag-box" id="item3">Item #3</div>
+    <div class="drag-box" id="item4">Item #4</div>
+    <div class="drag-box" id="item5">Item #5</div>
+    <div class="drag-box" id="item6">Item #6</div>
+    <div class="drag-box" id="item7">Item #7</div>
+    <div class="drag-box" id="item8">Item #8</div>
+    <div class="drag-box" id="item9">Item #9</div>
+    <div class="drag-box" id="item10">Item #10</div>
+    <div class="drag-box" id="item11">Item #11</div>
+    <div class="drag-box" id="item12">Item #12</div>
+</div>
+ 
+</div>]]></template>
+    </sp_widget>
+</record_update>

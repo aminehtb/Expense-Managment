@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope,spUtil, $rootScope) {
+	/* widget controller */
+	var c = this;
+	$rootScope.$on('selectBill', function(event,data) { 
+		c.data.myWidget = null ;
+		console.log('Listener caught BillID: ' + $rootScope.billID); 
+		console.log("appel au update : "+ $rootScope.billID);
+		spUtil.get("widget_update_bill", {idbill:$rootScope.billID}).then(function(response) {
+			c.data.myWidget= response;
+		});
+	});
+	$rootScope.$on('listB', function(event,data) { 
+		c.data.myWidget = null ;
+		console.log('Listener caught BillID: ' + $rootScope.ok); 
+		console.log("appel au update : "+ $rootScope.ok);
+		spUtil.get("widget_list_of_bill").then(function(response) {
+			c.data.myWidget= response;
+		});
+	});
+	
+	var widg="";
+
+
+	$scope.formBill=function(action) {
+		c.data.myWidget = null ;
+		if(action=="addBill"){
+			console.log("addBill");
+			widg="expense_bill_form"; 	
+			console.log(widg);
+
+		}
+		if(action=="ListBill"){
+			console.log("ListBill ");
+
+			widg="widget_list_of_bill";
+			console.log(widg);
+
+		}
+
+		spUtil.get(widg).then(function(response) {
+			c.data.myWidget = response;
+			console.log(c.data.myWidget);
+		});
+
+	}
+	$scope.formSheet=function(action) {
+		c.data.myWidget = null ;
+
+		if(action=="addSheet"){
+			console.log("addSheet");
+			widg="widget-form"; 	
+			console.log(widg);
+	
+   spUtil.get(widg, { table: "x_315710_expense_m_expense_sheet", sys_id: "-1", hideRelatedLists: false }).then(function(response) {
+			c.data.myWidget= response;
+		});
+		}
+		
+	}
+
+	/*c.action = function(action) {
+		c.data.action = action;
+
+			c.server.update().then(function() {
+				c.data.action = undefined;
+			})
+		}*/
+	/*$scope.formBill=function(widgetApp) {
+
+		console.log('Apple Widget : '+widgetApp) ;
+		c.data.action = 'AppelWidget';
+		c.data.widg =widgetApp;
+		c.server.update().then(function(response){
+			console.log(response);
+							c.data.myWidget = response.myWidget;
+
+						});
+
+	}*/
+
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>
+.scrollmenu {
+ 
+  overflow: auto;
+  white-space: nowrap;
+}
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>widget_expense</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>widget_expense</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	//data.myWidget=$sp.getWidget('widget_list_of_bill');
+/*	if(input && input.action == 'AppelWidget'){
+		data.myWidget="";
+		var app =input.widg ;
+			gs.warn("input widget un if  :"+app);
+		if(app == "addBill"){
+    data.myWidget = $sp.getWidget('expense_bill_form');
+		gs.warn("***** IF Add bill "+JSON.stringify(data.myWidget));
+		}
+		else if(app == "ListBill"){
+    data.myWidget = $sp.getWidget('widget_list_of_bill');
+			gs.warn("***** IF List bill "+JSON.stringify(data.myWidget));
+		}
+	}*/
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-06-06 22:36:01</sys_created_on>
+        <sys_id>06e3408b1bf1330072fe2136ec4bcb31</sys_id>
+        <sys_mod_count>262</sys_mod_count>
+        <sys_name>widget_expense</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sp_widget_06e3408b1bf1330072fe2136ec4bcb31</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-06-27 15:17:49</sys_updated_on>
+        <template><![CDATA[  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<div class="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu 2-columns  " data-open="click" data-menu="vertical-modern-menu" data-col="2-columns">
+
+      <!-- BEGIN: Header-->
+   <!-- <header class="page-topbar" id="header">
+      <div class="navbar navbar-fixed"> 
+        <nav class="navbar-main navbar-color nav-collapsible sideNav-lock navbar-dark gradient-45deg-indigo-purple no-shadow">
+          <div class="nav-wrapper">
+            <div class="header-search-wrapper hide-on-med-and-down"><i class="material-icons">search</i>
+              <input class="header-search-input z-depth-2" type="text" name="Search" placeholder="               Search">
+            </div>
+            <ul class="navbar-list right">
+              <li class="hide-on-med-and-down"><a class="waves-effect waves-block waves-light translation-button" href="javascript:void(0);" data-target="translation-dropdown"><span class="flag-icon flag-icon-gb"></span></a></li>
+              <li class="hide-on-large-only"><a class="waves-effect waves-block waves-light search-button" href="javascript:void(0);"><i class="material-icons">search</i></a></li>
+              <li><a class="waves-effect waves-block waves-light notification-button" href="javascript:void(0);" data-target="notifications-dropdown"><i class="material-icons">notifications_none<small class="notification-badge">0</small></i></a></li>
+              <li><a class="waves-effect waves-block waves-light sidenav-trigger" href="#" data-target="slide-out-right"><i class="material-icons">format_indent_increase</i></a></li>
+            </ul>
+           
+            <ul class="dropdown-content" id="translation-dropdown">
+              <li><a class="grey-text text-darken-1" href="#!"><i class="flag-icon flag-icon-gb"></i> English</a></li>
+              <li><a class="grey-text text-darken-1" href="#!"><i class="flag-icon flag-icon-fr"></i> French</a></li>
+              <li><a class="grey-text text-darken-1" href="#!"><i class="flag-icon flag-icon-cn"></i> Chinese</a></li>
+              <li><a class="grey-text text-darken-1" href="#!"><i class="flag-icon flag-icon-de"></i> German</a></li>
+            </ul>
+        
+            <ul class="dropdown-content" id="notifications-dropdown">
+              <li>
+                <h6>NOTIFICATIONS</h6>
+              </li>
+             
+            </ul>
+            
+          </div>
+          
+        </nav>
+      </div>
+    </header>-->
+    <!-- END: Header-->
+
+
+
+    <!-- BEGIN: SideNav-->
+    <aside class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-light sidenav-active-square  "  id="style-2">
+      
+      <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
+        <li ><a href="#"><i class="material-icons">settings_input_svideo</i>Dashboard</a>
+        </li>
+        <li class="navigation-header"><a class="navigation-header-text">Users</a><i class="navigation-header-icon material-icons">more_horiz</i>
+        </li>
+        <li class="bold"><a class="waves-effect waves-cyan " href="#"><i class="material-icons">group</i><span class="menu-title" data-i18n="">Users</span></a>
+        </li>
+        <li class="navigation-header"><a class="navigation-header-text">Expense</a><i class="navigation-header-icon material-icons">more_horiz</i>
+        </li>
+        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">receipt</i><span class="menu-title" data-i18n="">Bills</span></a>
+          <div class="collapsible-body">
+            <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+              <li><a class="collapsible-body" ng-click="formBill('ListBill')" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>List</span></a></li>
+                    <li><a class="collapsible-body"   ng-click="formBill('addBill')" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add</span></a>
+                    </li>
+            </ul>
+          </div>
+        </li>
+        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">assignment</i><span class="menu-title" data-i18n="">Sheets</span></a>
+          <div class="collapsible-body">
+            <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+              <li><a class="collapsible-body" href="#" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>List</span></a></li>
+                    <li><a class="collapsible-body"  ng-click="formSheet('addSheet')" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add</span></a>
+                    </li>
+            </ul>
+          </div>
+        </li>
+        <li class="bold"><a class="waves-effect waves-cyan " href="#"><i class="material-icons">time_to_leave</i><span class="menu-title" data-i18n="">Vehicles</span></a>
+        </li>
+        <li class="navigation-header"><a class="navigation-header-text">Company</a><i class="navigation-header-icon material-icons">more_horiz</i>
+        </li>
+        <li class="bold"><a class="waves-effect waves-cyan " href="#"><i class="material-icons">class</i><span class="menu-title" data-i18n="">Categories</span></a>
+        </li>
+        <li class="bold"><a class="waves-effect waves-cyan " href="#"><i class="material-icons">payment</i><span class="menu-title" data-i18n="">Payment Instruments</span></a>
+        </li>
+        <li class="bold"><a class="waves-effect waves-cyan " href="#"><i class="material-icons">rate_review</i><span class="menu-title" data-i18n="">Rates</span></a>
+        </li>
+        <li class="bold"><a class="waves-effect waves-cyan " href="#"><i class="material-icons">store</i><span class="menu-title" data-i18n="">Merchants</span></a>
+        </li>
+        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">rv_hookup</i><span class="menu-title" data-i18n="">Mileage expenses</span></a>
+          <div class="collapsible-body">
+            <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+              <li><a class="collapsible-body" href="#" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>List</span></a></li>
+                    <li><a class="collapsible-body" href="#" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add</span></a>
+                    </li>
+            </ul>
+          </div>
+        </li>
+        <li class="bold"><a class="waves-effect waves-cyan " href="#"><i class="material-icons">settings</i><span class="menu-title" data-i18n="">Company Settings</span></a>
+        </li>
+       </ul>
+      <div class="navigation-background"></div><a class="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium waves-effect waves-light hide-on-large-only" href="#" data-target="slide-out"><i class="material-icons">menu</i></a>
+    </aside>
+ 
+  
+  
+  
+
+  
+ 
+ 
+  
+   <div id="main">
+<div class="row">
+  <div class="col s12">
+    <div id="input-fields" class="card card-tabs">
+      <div class="card-content">
+       
+        <div id="view-input-fields">
+          <div class="row scrollmenu">
+            <div  ng-if="c.data.myWidget" class="col s12">
+            <sp-widget widget="c.data.myWidget"></sp-widget>
+              
+      </div>
+    </div>
+        </div></div></div>
+   
+   </div>
+   
+  </div>
+     <script src="x_315710_expense_m.vendors.jsdbx" language="javascript"></script>
+       <script src="x_315710_expense_m.plugins.jsdbx" language="javascript"></script>
+     
+  <script src="x_315710_expense_m.customizer.jsdbx" language="javascript"></script>
+      <script src="x_315710_expense_m.data-tables.jsdbx" language="javascript"></script>
+ 
+
+     
+
+]]></template>
+    </sp_widget>
+</record_update>

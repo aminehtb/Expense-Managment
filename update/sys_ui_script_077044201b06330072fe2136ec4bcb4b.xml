@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_script">
+    <sys_ui_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description/>
+        <global>false</global>
+        <name>x_315710_expense_m.intro</name>
+        <script><![CDATA[$(window).on('load', function () {
+
+    $('.modal').modal({
+        'onOpenEnd': initCarouselModal,
+    });
+
+    setTimeout(function () { $('.modal').modal('open'); }, 1800)
+
+
+    $('.btn-next').on('click', function (e) {
+        $('.intro-carousel').carousel('next');
+    })
+
+    $('.btn-prev').on('click', function (e) {
+        $('.intro-carousel').carousel('prev');
+    })
+
+    // Inti carousel when modal pops up
+
+    function initCarouselModal() {
+        $('.carousel.carousel-slider').carousel({
+            fullWidth: true,
+            indicators: true,
+            onCycleTo: function () {
+
+                // When carousel is at it's first step disable prev button
+
+                if ($('.carousel-item.active').index() == 1) {
+                    $('.btn-prev').addClass('disabled');
+
+                }
+
+                // When carousel is at 2nd or 3rd step 
+
+                else if ($('.carousel-item.active').index() > 1) {
+
+                    // activate button
+
+                    $('.btn-prev').removeClass('disabled');
+                    $('.btn-next').removeClass('disabled');
+
+                    // on 3rd step add and remove elements
+
+                    if ($('.carousel-item.active').index() == 3) {
+                        $('.btn-next').addClass('disabled');
+                    }
+                }
+            }
+        })
+    }
+
+});]]></script>
+        <script_name>intro</script_name>
+        <sys_class_name>sys_ui_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-06-11 14:12:08</sys_created_on>
+        <sys_id>077044201b06330072fe2136ec4bcb4b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_315710_expense_m.intro</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sys_ui_script_077044201b06330072fe2136ec4bcb4b</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-06-11 14:12:08</sys_updated_on>
+        <ui_type>10</ui_type>
+        <use_scoped_format>false</use_scoped_format>
+    </sys_ui_script>
+</record_update>

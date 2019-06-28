@@ -5,7 +5,7 @@
 		var c = this;
 		//Id de marchant qui recuperer depuit la fonction testExiste
 		var merchId ; 
-
+	    var BASE64_MARKER = ';base64,';
 		$scope.files = []; 
 		/*****User*****/
 		$scope.data.user = {
@@ -35,9 +35,22 @@
 				$scope.$apply(function() {
 				 var dates=[];
 					for (var i = 0; i < element.files.length; i++) {
+						var type = element.files[i].type;
 						$scope.files.push(element.files[i]);
-					
-						Tesseract : SCan Image
+						  var datass = []; 
+            pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.2.2/pdf.worker.js';   
+					if( type  == 'application/pdf')
+						{
+							var input =element.files[i];
+							var fReader = new FileReader();
+							fReader.readAsDataURL(input);
+							console.log(input);
+								fReader.onloadend = function (event) {
+								convertDataURIToBinary(event.target.result);
+								}
+						}
+					if (type == 'image/jpeg'){
+						//Tesseract : SCan Image
 						Tesseract.recognize(element.files[i])
 							.then(function(result){
 							console.log(result.lines);
@@ -53,9 +66,11 @@
 										document.getElementById('city').value =test.city;
 										document.getElementById('zipCode').value =test.zip_code;
 									}
-								 test Existe Mode de Payement 
+								// test Existe Mode de Payement 
 								var testPay = testExistePay(model);
-								if(testPay.name != null){
+								if(testPay.sys_id != null ){
+									console.log("txt de i : "+model);
+									console.log("mode de payment : "+testPay);
 									c.data.payment = { 
 										displayValue:testPay.name,
 										value:testPay.sys_id 
@@ -117,11 +132,11 @@
 										document.getElementById('value').value =val;
 										c.data.value=val;
 								}
-					 }
+							}
 							
 							console.log(dates);
 							});
-						}});
+						}}});
 					};
 				 $scope.removeFiles = function(fname) {
 					var index = $scope.files.indexOf(fname);
@@ -150,7 +165,7 @@
 						$http(request)
 							.success(function (d) {
 							// On success code here
-							console.log('response :',d.ParsedResults[0].ParsedText);
+							console.log('response :',d.ParsedResults[0]);
 							
 						})
 							.error(function (err) {
@@ -269,7 +284,7 @@
 					var ok = false ;
 					while(i < number && !ok){
 						var name = c.data.payList[i].name ;
-						var res = parseFloat(""+JaroWrinker(lignee.toUpperCase(),name.toUpperCase() )).toFixed(1);
+						var res = parseFloat(""+JaroWrinker(lignee.toUpperCase(),name.toUpperCase())).toFixed(1);
 						if(res >= 0.7) {
 							resPay = c.data.payList[i];
 							ok=true;
@@ -279,67 +294,7 @@
 					return resPay ;
 			}
 
-	    //Function of Similarity
-		  function JaroWrinker (s1, s2) {
-						var m = 0;
-						// Exit early if either are empty.
-						if ( s1.length === 0 || s2.length === 0 ) {
-								return 0;
-						}
-						// Exit early if they're an exact match.
-						if ( s1 === s2 ) {
-								return 1;
-						}
-						var range     = (Math.floor(Math.max(s1.length, s2.length) / 2)) - 1,
-								s1Matches = new Array(s1.length),
-								s2Matches = new Array(s2.length);
-						for ( i = 0; i < s1.length; i++ ) {
-								var low  = (i >= range) ? i - range : 0,
-										high = (i + range <= s2.length) ? (i + range) : (s2.length - 1);
-								for ( j = low; j <= high; j++ ) {
-								if ( s1Matches[i] !== true && s2Matches[j] !== true && s1[i] === s2[j] ) {
-										++m;
-										s1Matches[i] = s2Matches[j] = true;
-										break;
-								}
-								}
-						}
-						// Exit early if no matches were found.
-						if ( m === 0 ) {
-								return 0;
-						}
-						// Count the transpositions.
-						var k = 0 ;
-							var n_trans = 0;
-						for ( i = 0; i < s1.length; i++ ) {
-								if ( s1Matches[i] === true ) {
-								for ( j = k; j < s2.length; j++ ) {
-										if ( s2Matches[j] === true ) {
-										k = j + 1;
-										break;
-										}
-								}
-								if ( s1[i] !== s2[j] ) {
-										++n_trans;
-								}
-								}
-						}
-						var weight = (m / s1.length + m / s2.length + (m - (n_trans / 2)) / m) / 3,
-								l      = 0,
-								p      = 0.1;
-
-						if ( weight > 0.7 ) {
-								while ( s1[l] === s2[l] && l < 4 ) {
-								++l;
-								}
-								weight = weight + l * p * (1 - weight);
-						}
-						/* if ( weight > 0.7 ) {	
-									console.log(" jaro weight : "+s1+" , "+s2+" = "+weight);
-						 }*/
-						return weight;
-				} 
-
+	  
  //Test de Date 
 			$scope.getDate=function(regex,str){
 			var m;
@@ -402,22 +357,7 @@
 						day  = ("0" + date.getDate()).slice(-2);
 				return [ date.getFullYear(), mnth, day ].join("-");
 		  }
-		/*	
-			
-function stringToDate(_date,_format,_delimiter)
-{
-            var formatLowerCase=_format.toLowerCase();
-            var formatItems=formatLowerCase.split(_delimiter);
-            var dateItems=_date.split(_delimiter);
-            var monthIndex=formatItems.indexOf("mm");
-            var dayIndex=formatItems.indexOf("dd");
-            var yearIndex=formatItems.indexOf("yyyy");
-            var month=parseInt(dateItems[monthIndex]);
-            month-=1;
-            var formatedDate = new Date(dateItems[yearIndex],month,dateItems[dayIndex]);
-            return formatedDate;
-}*/
-	
+		
 	function lastIndexOfDigit(str) {
         var last_indices = [];
         [1, 2, 3, 4, 5, 6, 7, 8, 9].map(function (digit) {
@@ -427,7 +367,256 @@ function stringToDate(_date,_format,_delimiter)
             return a - b;
         });
         return indices[indices.length - 1];
-} 
+}
+	 //Function of Similarity
+		  function JaroWrinker (s1, s2) {
+						var m = 0;
+						// Exit early if either are empty.
+						if ( s1.length === 0 || s2.length === 0 ) {
+								return 0;
+						}
+						// Exit early if they're an exact match.
+						if ( s1 === s2 ) {
+								return 1;
+						}
+						var range     = (Math.floor(Math.max(s1.length, s2.length) / 2)) - 1,
+								s1Matches = new Array(s1.length),
+								s2Matches = new Array(s2.length);
+						for ( i = 0; i < s1.length; i++ ) {
+								var low  = (i >= range) ? i - range : 0,
+										high = (i + range <= s2.length) ? (i + range) : (s2.length - 1);
+								for ( j = low; j <= high; j++ ) {
+								if ( s1Matches[i] !== true && s2Matches[j] !== true && s1[i] === s2[j] ) {
+										++m;
+										s1Matches[i] = s2Matches[j] = true;
+										break;
+								}
+								}
+						}
+						// Exit early if no matches were found.
+						if ( m === 0 ) {
+								return 0;
+						}
+						// Count the transpositions.
+						var k = 0 ;
+							var n_trans = 0;
+						for ( i = 0; i < s1.length; i++ ) {
+								if ( s1Matches[i] === true ) {
+								for ( j = k; j < s2.length; j++ ) {
+										if ( s2Matches[j] === true ) {
+										k = j + 1;
+										break;
+										}
+								}
+								if ( s1[i] !== s2[j] ) {
+										++n_trans;
+								}
+								}
+						}
+						var weight = (m / s1.length + m / s2.length + (m - (n_trans / 2)) / m) / 3,
+								l      = 0,
+								p      = 0.1;
+
+						if ( weight > 0.7 ) {
+								while ( s1[l] === s2[l] && l < 4 ) {
+								++l;
+								}
+								weight = weight + l * p * (1 - weight);
+						}
+						/* if ( weight > 0.7 ) {	
+									console.log(" jaro weight : "+s1+" , "+s2+" = "+weight);
+						 }*/
+						return weight;
+				} 
+//Convertion PDF Array
+
+		function pdfAsArray(pdfAsArray) {
+            var l = pdfjsLib.getDocument(pdfAsArray);
+            l.promise.then(function (pdf) {
+                console.log( pdf);
+                var pdfDocument = pdf;
+                // Create an array that will contain our promises
+                var pagesPromises = [];
+                for (var i = 1; i <= pdf.numPages; i++) {
+                    // Required to prevent that i is always the total of pages
+                    // Store the promise of getPageText that returns the text of a page
+                        pagesPromises.push(getPageText(i, pdfDocument));
+						
+
+                }
+                // Execute all the promises
+                Promise.all(pagesPromises).then(function (pagesText) {
+					//var tab= new RegExp('[\r\n]');
+                    // Display text of all the pages in the console
+					// e.g ["Text content page 1", "Text content page 2", "Text content page 3" ... ]
+					var txt ; 
+                    pagesText.forEach(function(item){
+						 txt = item.split('  ');
+										
+					}); 
+					txt.splice(0,' ');
+					for ( var i = 0 ; i< txt.length ; i++){
+					var m = txt[i].split(' ');
+                   
+						var l ;
+						txt[i].toUpperCase();
+						console.log(txt[i]);
+					
+						/************************ TOTAL ************************/
+                        var ch = 'TOTAL';
+						if(txt[i].indexOf(ch) !=-1)	{	
+							console.log("Total indexOf : "+txt[i].indexOf(ch));
+							l=txt[i].substring(txt[i].indexOf(ch),txt[i].indexOf(ch)+ch.length+50) ;
+							console.log("chaine tot : "+l);
+						}
+						var ch2 = "PRIX";
+						if(txt[i].indexOf(ch2) !=-1)	{	
+								l=txt[i].substring(txt[i].indexOf(ch2),txt[i].indexOf(ch2)+ch2.length+50) ;
+							console.log("chaine tot : "+l);
+						}	
+						
+						//Test pour récuperer Value
+						if(JaroWrinker(txt[i].toUpperCase(),'TOTAL') > 0.70  || JaroWrinker(txt[i].toUpperCase(),'PRIX') > 0.70){  
+							var matches = l.match(/\d{1,3}[,\\.]?(\\d{1,2})?/g).join("");
+							console.log("Res TOTAL "+matches);
+							var val = parseInt(matches+"" ,10);
+						
+							document.getElementById('value').value =val;
+							c.data.value = val ; 
+							/***************************TVA*********************************/
+							var tva = "TVA";
+							var t ;
+							if(txt[i].indexOf(tva) !=-1)	{	
+								t=txt[i].substring(txt[i].indexOf(tva),txt[i].indexOf(tva)+tva.length+4) ;
+							console.log("TVA: "+t);
+									var matches = t.match(/\d{1,3}[,\\.]?(\\d{1,2})?/g).join("");
+									console.log("Res TOTAL "+matches);
+									var val = parseInt(matches+"",10);
+
+									document.getElementById('vat').value =val;
+								c.data.value= val ;
+							}	
+							
+						}
+						/************************ Mode de PAyment  ************************/
+						var testPay = testExistePay(txt[i]);
+								if(testPay.sys_id != null ){
+									console.log("txt de i : "+txt[i]);
+									console.log("mode de payment : "+testPay);
+									c.data.payment = { 
+										displayValue:testPay.name,
+										value:testPay.sys_id 
+									}
+								}
+						/************************ Merchant ************************/
+						var test = testExiste(txt[i]);
+								if (test.name != null ){
+									merchId = test.sys_id ; 
+										document.getElementById('merchName').value =test.name;
+										document.getElementById('vatNumber').value =test.vat_number;
+										document.getElementById('city').value =test.city;
+										document.getElementById('zipCode').value =test.zip_code;
+									}
+					/************************ Date  ************************/
+						var rech = "Emise le";
+					 var pos = txt[i].indexOf(rech); //+rech.length
+					 console.log("position : "+pos+" length "+rech.length);
+					 console.log("Date chercher: "+txt[i].substring(pos,pos+rech.length+11));
+						var o = txt[i].substring(pos,pos+rech.length+11) ;
+						console.log("O : "+o);
+						var ddd = o.match("[0-9]{2}([\-\/\ \.])[0-9]{2}[\-\/\ \.][0-9]{4}");
+								if ( ddd != null){
+									var date = ddd[0].split('/');
+									console.log(ddd[0] +' aaa');
+									var m = moment(ddd[0]).format("YYYY-MM-DD");;
+									console.log("moment :"+m);
+									document.getElementById('sp_formfield_').value=m;
+									
+								}
+								else{
+										var dates=[];
+										var dd = txt[i].match("([a-zA-Z]{3,}|[0-9]{1,4})(\-|\/|\ |\.)([a-zA-Z]{3,}|[0-9]{1,4})(\-|\/|\. |\ )[0-9]{1,4}");
+														if ( dd != null){
+															var regex = /[0-9]{1,4}(\-|\/|\ |\.)([a-zA-Z]{3,}|[0-9]{1,4})(\-|\/|\. |\ )[0-9]{1,4}/mg;
+															var regex2 = /([a-zA-Z]{3,}|[0-9]{1,4})(\-|\/|\ |\.)[0-9]{1,4}(\-|\/|\. |\ )[0-9]{1,4}/mg;
+															var s = $scope.getDate(regex,txt[i]);
+															console.log('res'+s);
+															if(s != undefined){
+																if($scope.validateDate(s._i)){
+																	if(!findDuplicate(dates,s)){
+																		dates.push(s._i);
+																	}
+															}
+															s = $scope.getDate(regex2,txt[i]);
+																if($scope.validateDate(s._i)){
+																	if(!findDuplicate(dates,s)){
+																		dates.push(s._i);
+																		var r = convert(s);
+																			document.getElementById('sp_formfield_').value=r;
+																	}
+																}
+															}
+
+														}
+
+												//Date
+												if(txt[i].indexOf("DATE") != -1 ){
+													l=model.substring(txt[i].indexOf("DATE"),txt[i].indexOf(lastIndexOfDigit(txt[i])));
+													
+												}
+									}
+												
+								}
+												});
+											
+            }, function (reason) {
+                // PDF loading error
+                console.error(reason);
+            });
+        }
+
+		//Convertion To Binary
+        function convertDataURIToBinary(dataURI) {
+            var base64Index = dataURI.indexOf(BASE64_MARKER) + BASE64_MARKER.length;
+            var base64 = dataURI.substring(base64Index);
+            var raw = window.atob(base64);
+            var rawLength = raw.length;
+            var array = new Uint8Array(new ArrayBuffer(rawLength));
+            for (var i = 0; i < rawLength; i++) {
+                array[i] = raw.charCodeAt(i);
+            }
+            pdfAsArray(array);
+        }
+
+		// Return Text Of Page
+        function getPageText(pageNum, PDFDocumentInstance) {
+            // Return a Promise that is solved once the text of the page is retrieven
+            return new Promise(function (resolve, reject) {
+                PDFDocumentInstance.getPage(pageNum).then(function (pdfPage) {
+                    // The main trick to obtain the text of the PDF page, use the getTextContent method
+                    pdfPage.getTextContent().then(function (textContent) {
+                        
+                        var textItems = textContent.items;
+                        var finalString = "";
+                        // Concatenate the string of the item to the final string
+                        for (var i = 0; i < textItems.length; i++) {
+                            var item = textItems[i];
+                            finalString += item.str + " ";
+                        }
+                        // Solve promise with the text retrieven from the page
+                        resolve(finalString);
+                    });
+                });
+            });
+        }
+
+        //Compare
+        function compare_n_save(pdfArrayOfObject) {
+            var arr3 = pdfArrayOfObject;
+            datass.push(arr3);
+           
+		}
+		
 			
 }
 
@@ -461,7 +650,7 @@ function stringToDate(_date,_format,_delimiter)
         <description/>
         <docs/>
         <field_list/>
-        <has_preview>false</has_preview>
+        <has_preview>true</has_preview>
         <id>expense_bill_form</id>
         <internal>false</internal>
         <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
@@ -474,6 +663,7 @@ function stringToDate(_date,_format,_delimiter)
   /* e.g., data.table = $sp.getValue('table'); */
 	/** Get uSer Connecter **/
 	var user = gs.getUserID();
+	data.confirmAdd="";
 		gs.warn("user sys_id: " + user.street+" , "+user.city);
 	var myUserObject = gs.getUser() ;
 gs.warn(myUserObject.getFirstName()); //print the first name of the user you are currently logged in as 
@@ -583,7 +773,7 @@ gs.warn(myUserObject.getFirstName()); //print the first name of the user you are
             var idd = gr.insert();
 					
 		  data.id = idd;
-					gs.warn("idddd : "+data.id+idd);
+					gs.warn("idddd : "+data.id);
         }
     }   
 	
@@ -606,19 +796,27 @@ gs.warn(myUserObject.getFirstName()); //print the first name of the user you are
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-04-02 12:26:12</sys_created_on>
         <sys_id>97f88f391b20730072fe2136ec4bcb23</sys_id>
-        <sys_mod_count>1170</sys_mod_count>
+        <sys_mod_count>1386</sys_mod_count>
         <sys_name>Expense Bill Form</sys_name>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
         <sys_policy/>
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sp_widget_97f88f391b20730072fe2136ec4bcb23</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-05-22 07:19:10</sys_updated_on>
-        <template><![CDATA[<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <sys_updated_on>2019-06-28 05:53:30</sys_updated_on>
+        <template><![CDATA[
+<!-- CDN PDFJS -->
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.2.2/pdf.js"></script>
+<!-- fin-->
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-<script src='https://cdn.jsdelivr.net/gh/naptha/tesseract.js@v1.0.14/dist/tesseract.min.js'></script>       
+<script src='https://cdn.jsdelivr.net/gh/naptha/tesseract.js@v1.0.14/dist/tesseract.min.js'></script>      
 <form class="form-horizontal" >
+  
 <div class="but_list">
 							<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
 								<ul id="myTab" class="nav nav-tabs" role="tablist">
@@ -634,7 +832,7 @@ gs.warn(myUserObject.getFirstName()); //print the first name of the user you are
 											<sn-record-picker field="c.data.sheet"
 											   table="'x_315710_expense_m_expense_sheet'" 
 											   display-field="'name'" value-field="'sys_id'" search-fields="'name'" 
-												page-size="100"  ></sn-record-picker>
+												page-size="100"   ></sn-record-picker>
 												 </div>
 									   </div>
 
@@ -691,6 +889,7 @@ gs.warn(myUserObject.getFirstName()); //print the first name of the user you are
 											page-size="100"  default-query="c.assigned_to_query" ></sn-record-picker>
 										  </div>
 										   </div>
+                  
 										   <div class="form-group">
 											  <label class="col-md-3 control-label" >Date</label>
 											  <div class="col-md-4">
@@ -701,7 +900,7 @@ gs.warn(myUserObject.getFirstName()); //print the first name of the user you are
 										 <div class="form-group">
 										  <label class="col-md-3 control-label" >Date Process</label>
 										  <div class="col-md-4">
-													<sp-date-picker field="c.data.processd" ng-model="c.data.processd" ></sp-date-picker>
+													<sp-date-picker  field="c.data.processd" ng-model="c.data.processd" ></sp-date-picker>
 										   </div>
 										</div>
 										 <div class="form-group">
@@ -726,7 +925,7 @@ gs.warn(myUserObject.getFirstName()); //print the first name of the user you are
 									<sn-record-picker field="c.data.card"
 									   table="'fm_rate_card'" 
 									   display-field="'name'" value-field="'sys_id'" search-fields="'name'" 
-										page-size="100"  ></sn-record-picker>
+										page-size="100"   ></sn-record-picker>
 									  </div>
 									   </div>
 
@@ -741,18 +940,21 @@ gs.warn(myUserObject.getFirstName()); //print the first name of the user you are
 									   </div>
 
 										<div class="form-group">
-									  <label class="col-md-3 control-label" >To Reimburse</label>
-									  <div class="col-md-4">
-										<input id="To_Reimburse" type="checkbox" class="custom-control-input" name="To_Reimburse" ng-model="c.data.reimburse"  ng-checked="true" />
-									  </div>
+                      <div class="col-md-3 control-label" ></div>
+									  <label>
+										<input  type="checkbox" class="filled-in" id="reimburse" value="r"   ng-checked="data.reimburse == true"  />
+									<span>To Reimburse</span>
+                      </label>
 								   </div>
-
-								   <div class="form-group">
-									  <label class="col-md-3 control-label" >Billable to client</label>
-									  <div class="col-md-4">
-										<input id="Billable" type="checkbox"  class="custom-control-input" name="Billable" ng-model="c.data.billable" />
-									  </div>
-								   </div>
+								<div class="form-group">
+                    <div class="col-md-3 control-label" ></div>
+                   <label>
+                <input type="checkbox" ng-checked="data.billable == true " class="filled-in"  id="billable" value="b"   />
+                <span>Billable to client</span>
+              </label>
+                  </div>
+								  
+									 
 
 									   <div class="form-group">
 										  <label class="col-md-3 control-label" >Type</label>
@@ -775,17 +977,20 @@ gs.warn(myUserObject.getFirstName()); //print the first name of the user you are
 												</select>
 											  </div>
 										   </div>
+                   
 											<div class="form-group">
+                       
 											  <label class="col-md-3 control-label" >Image</label>
-
-											  <div class="col-md-4">
+													 <div class="col-md-4">
+                            
+											 
 												 <label class="btn btn-info btn-sm"> <span><i class="glyphicon glyphicon-paperclip"
 																		aria-hidden="true"></i> <b>Choose file</b></span>
 											   <input  style='opacity:0; width:0px; height:0px;' type="file" id="fileToUpload" multiple onchange="angular.element(this).scope().setFiles(this)"/>
 												</label> 
 												   <br/>  <div ng-show="files.length">
 													  <div ng-repeat="file in files.slice(0)">
-														  <span>{{file.webkitRelativePath || file.name}}</span>
+														  <span>New : {{file.webkitRelativePath || file.name}}</span>
 														  (<span ng-switch="file.size > 1024*1024">
 															  <span ng-switch-when="true">{{file.size / 1024 / 1024 | number:2}} MB</span>
 															  <span ng-switch-default>{{file.size / 1024 | number:2}} kB</span>

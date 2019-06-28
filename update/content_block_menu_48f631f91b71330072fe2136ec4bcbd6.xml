@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="content_block_menu">
+    <content_block_menu action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <align_sections_with_tab>false</align_sections_with_tab>
+        <category>general</category>
+        <condition/>
+        <conditional>false</conditional>
+        <frame display_value="cms_admin_home_frame">f1d6b294ef202000914304167b2256a0</frame>
+        <logged_on>false</logged_on>
+        <name>ExpenseMenu</name>
+        <sys_class_name>content_block_menu</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-06-03 09:47:31</sys_created_on>
+        <sys_id>48f631f91b71330072fe2136ec4bcbd6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ExpenseMenu</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>content_block_menu_48f631f91b71330072fe2136ec4bcbd6</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-06-03 09:47:31</sys_updated_on>
+        <type>section_navigation</type>
+    </content_block_menu>
+</record_update>

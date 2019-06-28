@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="content_css">
+    <content_css action="INSERT_OR_UPDATE">
+        <name>chartist-plugin-tooltip</name>
+        <style>.chartist-tooltip {&#13;
+  position: absolute;&#13;
+  display: inline-block;&#13;
+  opacity: 0;&#13;
+  min-width: 5em;&#13;
+  padding: .5em;&#13;
+  background: #F4C63D;&#13;
+  color: #453D3F;&#13;
+  font-family: Oxygen,Helvetica,Arial,sans-serif;&#13;
+  font-weight: 700;&#13;
+  text-align: center;&#13;
+  pointer-events: none;&#13;
+  z-index: 1;&#13;
+  -webkit-transition: opacity .2s linear;&#13;
+  -moz-transition: opacity .2s linear;&#13;
+  -o-transition: opacity .2s linear;&#13;
+  transition: opacity .2s linear; }&#13;
+  .chartist-tooltip:before {&#13;
+    content: "";&#13;
+    position: absolute;&#13;
+    top: 100%;&#13;
+    left: 50%;&#13;
+    width: 0;&#13;
+    height: 0;&#13;
+    margin-left: -15px;&#13;
+    border: 15px solid transparent;&#13;
+    border-top-color: #F4C63D; }&#13;
+  .chartist-tooltip.tooltip-show {&#13;
+    opacity: 1; }&#13;
+&#13;
+.ct-area, .ct-line {&#13;
+  pointer-events: none; }&#13;
+&#13;
+/*# sourceMappingURL=chartist-plugin-tooltip.css.map */</style>
+        <sys_class_name>content_css</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-06-08 05:56:07</sys_created_on>
+        <sys_id>25223ad71b35730072fe2136ec4bcb71</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>chartist-plugin-tooltip</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>content_css_25223ad71b35730072fe2136ec4bcb71</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-06-08 05:56:07</sys_updated_on>
+        <type>local</type>
+        <url/>
+    </content_css>
+</record_update>
