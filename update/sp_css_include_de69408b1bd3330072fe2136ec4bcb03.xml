@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_css_include">
+    <sp_css_include action="INSERT_OR_UPDATE">
+        <name>chartist.min</name>
+        <source>local</source>
+        <sp_css display_value="chartist.min">8a59008b1bd3330072fe2136ec4bcbfe</sp_css>
+        <sys_class_name>sp_css_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-08-20 12:34:15</sys_created_on>
+        <sys_id>de69408b1bd3330072fe2136ec4bcb03</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>chartist.min</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sp_css_include_de69408b1bd3330072fe2136ec4bcb03</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-08-20 12:34:15</sys_updated_on>
+        <url/>
+    </sp_css_include>
+</record_update>

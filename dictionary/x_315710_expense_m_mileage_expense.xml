@@ -11,7 +11,7 @@
         <element label="Title" mandatory="true" max_length="255" name="title" type="string"/>
         <element label="Trip(s)" max_length="40" name="trips" type="integer"/>
         <element default="gs.getUser()" label="User" max_length="32" name="user" reference="sys_user" type="reference"/>
-        <element label="Vehicle" mandatory="true" max_length="32" name="vehicle" reference="x_315710_expense_m_vehicle" reference_qual="user=javascript:gs.getUserID()" type="reference" use_reference_qualifier="advanced"/>
+        <element label="Vehicle" mandatory="true" max_length="32" name="vehicle" reference="x_315710_expense_m_vehicle" reference_qual="user=javascript:gs.getUserID()" reference_qual_condition="user=javascript:gs.getUserID()" type="reference"/>
         <index name="index">
             <element name="rate"/>
         </index>

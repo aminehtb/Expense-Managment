@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_script">
+    <sys_ui_script action="INSERT_OR_UPDATE">
+        <active>false</active>
+        <description/>
+        <global>false</global>
+        <name>x_315710_expense_m.paginationTab</name>
+        <script><![CDATA[/* eslint-env browser */
+/* global document */
+
+function Pager(tableName, itemsPerPage) {
+    'use strict';
+
+    this.tableName = tableName;
+    this.itemsPerPage = itemsPerPage;
+    this.currentPage = 1;
+    this.pages = 0;
+    this.inited = false;
+
+    this.showRecords = function (from, to) {
+        var rows = document.getElementById(tableName).rows;
+
+        // i starts from 1 to skip table header row
+        for (var i = 1; i < rows.length; i++) {
+            if (i < from || i > to) {
+                rows[i].style.display = 'none';
+            } else {
+                rows[i].style.display = '';
+            }
+        }
+    };
+
+    this.showPage = function (pageNumber) {
+        if (!this.inited) {
+            // Not initialized
+            return;
+        }
+
+        var oldPageAnchor = document.getElementById('pg' + this.currentPage);
+        oldPageAnchor.className = 'pg-normal';
+
+        this.currentPage = pageNumber;
+        var newPageAnchor = document.getElementById('pg' + this.currentPage);
+        newPageAnchor.className = 'pg-selected';
+
+        var from = (pageNumber - 1) * itemsPerPage + 1;
+        var to = from + itemsPerPage - 1;
+        this.showRecords(from, to);
+
+        var pgNext = document.querySelector('.pg-next'),
+            pgPrev = document.querySelector('.pg-prev');
+
+        if (this.currentPage == this.pages) {
+            pgNext.style.display = 'none';
+        } else {
+            pgNext.style.display = '';
+        }
+
+        if (this.currentPage === 1) {
+            pgPrev.style.display = 'none';
+        } else {
+            pgPrev.style.display = '';
+        }
+    };
+
+    this.prev = function () {
+        if (this.currentPage > 1) {
+            this.showPage(this.currentPage - 1);
+        }
+    };
+
+    this.next = function () {
+        if (this.currentPage < this.pages) {
+            this.showPage(this.currentPage + 1);
+        }
+    };
+
+    this.init = function () {
+        var rows = document.getElementById(tableName).rows;
+        var records = (rows.length - 1);
+
+        this.pages = Math.ceil(records / itemsPerPage);
+        this.inited = true;
+    };
+
+    this.showPageNav = function (pagerName, positionId) {
+        if (!this.inited) {
+            // Not initialized
+            return;
+        }
+
+        var element = document.getElementById(positionId),
+            pagerHtml = '<span onclick="' + pagerName + '.prev();" class="pg-normal pg-prev">&#171;</span>';
+
+        for (var page = 1; page <= this.pages; page++) {
+            pagerHtml += '<span id="pg' + page + '" class="pg-normal pg-next" onclick="' + pagerName + '.showPage(' + page + ');">' + page + '</span>';
+        }
+
+        pagerHtml += '<span onclick="' + pagerName + '.next();" class="pg-normal">&#187;</span>';
+
+        element.innerHTML = pagerHtml;
+    };
+}]]></script>
+        <script_name>paginationTab</script_name>
+        <sys_class_name>sys_ui_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-07-05 08:13:36</sys_created_on>
+        <sys_id>4834da881b22330072fe2136ec4bcba0</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>x_315710_expense_m.paginationTab</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sys_ui_script_4834da881b22330072fe2136ec4bcba0</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-07-09 08:28:16</sys_updated_on>
+        <ui_type>10</ui_type>
+        <use_scoped_format>false</use_scoped_format>
+    </sys_ui_script>
+</record_update>

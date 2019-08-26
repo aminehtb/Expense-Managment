@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_page_route_map">
+    <sp_page_route_map action="INSERT_OR_UPDATE">
+        <active>false</active>
+        <order>10</order>
+        <portals>ad63ee381bb1330072fe2136ec4bcb3e</portals>
+        <route_from_page display_value="merchant">0d49f2e41bb2330072fe2136ec4bcb4a</route_from_page>
+        <route_to_page display_value="formmerchant">187023751bb2330072fe2136ec4bcb6a</route_to_page>
+        <short_description>Redirect to Form of Merchant</short_description>
+        <sys_class_name>sp_page_route_map</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-07-23 10:36:56</sys_created_on>
+        <sys_id>e6716b391bb2330072fe2136ec4bcb5f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>0d49f2e41bb2330072fe2136ec4bcb4a</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sp_page_route_map_e6716b391bb2330072fe2136ec4bcb5f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-07-23 10:36:56</sys_updated_on>
+    </sp_page_route_map>
+</record_update>

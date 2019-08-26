@@ -5,46 +5,103 @@
             <element>state</element>
             <hint/>
             <inactive>false</inactive>
-            <label>Pending</label>
+            <label>Requested</label>
             <language>en</language>
             <name>x_315710_expense_m_expense_bill</name>
             <sequence>0</sequence>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2019-03-11 09:30:56</sys_created_on>
+            <sys_created_on>2019-08-05 08:07:47</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>69ed41b61bc0ff0072fe2136ec4bcb72</sys_id>
+            <sys_id>249cfdca1b03330072fe2136ec4bcb2b</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2019-03-11 09:30:56</sys_updated_on>
-            <value>pending</value>
+            <sys_updated_on>2019-08-05 08:07:47</sys_updated_on>
+            <value>13</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
             <dependent_value/>
             <element>state</element>
             <hint/>
             <inactive>false</inactive>
-            <label>Processed</label>
+            <label>Awainting Approval</label>
             <language>en</language>
             <name>x_315710_expense_m_expense_bill</name>
             <sequence>1</sequence>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2019-03-11 09:30:56</sys_created_on>
+            <sys_created_on>2019-08-05 08:07:47</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>a9ed41b61bc0ff0072fe2136ec4bcb73</sys_id>
+            <sys_id>e09cfdca1b03330072fe2136ec4bcb2d</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2019-03-11 09:30:56</sys_updated_on>
-            <value>processed</value>
+            <sys_updated_on>2019-08-05 08:07:47</sys_updated_on>
+            <value>14</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>state</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Approved</label>
+            <language>en</language>
+            <name>x_315710_expense_m_expense_bill</name>
+            <sequence>2</sequence>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2019-08-05 08:07:47</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>ac9cfdca1b03330072fe2136ec4bcb2e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2019-08-05 08:07:47</sys_updated_on>
+            <value>15</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>state</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Closed Complete</label>
+            <language>en</language>
+            <name>x_315710_expense_m_expense_bill</name>
+            <sequence>3</sequence>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2019-08-05 08:07:47</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>689cfdca1b03330072fe2136ec4bcb30</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2019-08-05 08:07:47</sys_updated_on>
+            <value>3</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>state</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>With drown</label>
+            <language>en</language>
+            <name>x_315710_expense_m_expense_bill</name>
+            <sequence>4</sequence>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2019-08-05 08:07:47</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>e09cfdca1b03330072fe2136ec4bcb32</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2019-08-05 08:07:47</sys_updated_on>
+            <value>4</value>
         </sys_choice>
         <sys_choice_set action="INSERT_OR_UPDATE">
             <element>state</element>
             <name>x_315710_expense_m_expense_bill</name>
             <sys_class_name>sys_choice_set</sys_class_name>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2019-03-11 09:30:56</sys_created_on>
-            <sys_id>a1ed41b61bc0ff0072fe2136ec4bcb73</sys_id>
+            <sys_created_on>2019-08-05 08:07:47</sys_created_on>
+            <sys_id>2c9cfdca1b03330072fe2136ec4bcb2b</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>state</sys_name>
             <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
@@ -52,7 +109,7 @@
             <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
             <sys_update_name>sys_choice_x_315710_expense_m_expense_bill_state</sys_update_name>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2019-03-11 09:30:56</sys_updated_on>
+            <sys_updated_on>2019-08-05 08:07:47</sys_updated_on>
         </sys_choice_set>
     </sys_choice>
 </record_update>

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function(spUtil) {
+  /* widget controller */
+  var c = this;
+	
+	spUtil.get("expense_bill_form").then(function(response) {
+			c.data.myWidget = response;
+			console.log(c.data.myWidget);
+		});
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.pad{
+	padding-left: 10%;
+  width:122%;
+  
+}
+.scrollmenu {
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-height: 100vh;
+ // background-color: #ededed;
+}
+
+.loader {
+  max-width: 15rem;
+  width: 100%;
+  height: 100%;
+  stroke-linecap: round;
+}
+
+circle {
+  fill: none;
+  stroke-width: 3.5;
+  -webkit-animation-name: preloader;
+          animation-name: preloader;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-transform-origin: 170px 170px;
+          transform-origin: 170px 170px;
+  will-change: transform;
+}
+circle:nth-of-type(1) {
+  stroke-dasharray: 550;
+}
+circle:nth-of-type(2) {
+  stroke-dasharray: 500;
+}
+circle:nth-of-type(3) {
+  stroke-dasharray: 450;
+}
+circle:nth-of-type(4) {
+  stroke-dasharray: 300;
+}
+circle:nth-of-type(1) {
+  -webkit-animation-delay: -0.15s;
+          animation-delay: -0.15s;
+}
+circle:nth-of-type(2) {
+  -webkit-animation-delay: -0.3s;
+          animation-delay: -0.3s;
+}
+circle:nth-of-type(3) {
+  -webkit-animation-delay: -0.45s;
+  -moz-animation-delay:  -0.45s;
+          animation-delay: -0.45s;
+}
+circle:nth-of-type(4) {
+  -webkit-animation-delay: -0.6s;
+  -moz-animation-delay: -0.6s;
+          animation-delay: -0.6s;
+}
+
+@-webkit-keyframes preloader {
+  50% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes preloader {
+  50% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>widget_form_bill</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>widget form bill</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {  /* populate the 'data' object */  /* e.g., data.table = $sp.getValue('table'); */})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-07-26 10:55:33</sys_created_on>
+        <sys_id>a4134f761bb2330072fe2136ec4bcbdc</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>widget form bill</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sp_widget_a4134f761bb2330072fe2136ec4bcbdc</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-07-26 11:44:44</sys_updated_on>
+        <template><![CDATA[ 
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<div class="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu 2-columns  " data-open="click" data-menu="vertical-modern-menu" data-col="2-columns">
+
+  
+ 
+<aside style="z-index: 1"   class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-light sidenav-active-square"  id="style-2">
+      
+      <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
+        <li ><a href="?id=dashboard" class="waves-effect waves-cyan " ng-class="{true:'active',false:''}[c.options.widget_name=='widget_dashboard']"><i class="material-icons">settings_input_svideo</i>Dashboard</a>
+        </li>
+        <li class="navigation-header"><a class="navigation-header-text">Expense</a><i class="navigation-header-icon material-icons">more_horiz</i>
+        </li>
+        <li class="bold"><a class="waves-effect waves-cyan " href="?id=list_of_bills" ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_bill']"><i class="material-icons">receipt</i><span class="menu-title" data-i18n="">Bills</span></a>
+        </li>
+        <li class="bold"><a class=" waves-effect waves-cyan " href="?id=sheets"  ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_sheets']"><i class="material-icons">assignment</i><span class="menu-title" data-i18n="">Sheets</span></a>
+          
+        </li>
+        <li class="bold"><a class="waves-effect waves-cyan " href="?id=vehicles"  ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_vehicles']"><i class="material-icons">time_to_leave</i><span class="menu-title" data-i18n="">Vehicles</span></a>
+        </li>
+        <li class="navigation-header"><a class="navigation-header-text">Company</a><i class="navigation-header-icon material-icons">more_horiz</i>
+        </li>
+        <li class="bold"><a class="waves-effect waves-cyan " href="?id=categories"  ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_categorie']"><i class="material-icons">class</i><span class="menu-title" data-i18n="">Categories</span></a>
+        </li>
+        <li class="bold"><a class="waves-effect waves-cyan "  href="?id=payment_instruments"  ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_payment_instrument']"><i class="material-icons">payment</i><span class="menu-title" data-i18n="">Payment Instruments</span></a>
+        </li>
+        <li class="bold"><a class="waves-effect waves-cyan " href="?id=rates"   ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_rate']" ><i class="material-icons">rate_review</i><span class="menu-title" data-i18n="">Rates</span></a>
+        </li>
+        <li class="bold"><a class="waves-effect waves-cyan "  href="?id=merchant"  ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_merchant']"><i class="material-icons">store</i><span class="menu-title" data-i18n="">Merchants</span></a>
+        </li>
+        <li class="bold"><a class=" waves-effect waves-cyan " href="?id=mileage_expenses"   ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_mileage_expenses']"><i class="material-icons">rv_hookup</i><span class="menu-title" data-i18n="">Mileage expenses</span></a>
+          
+        </li>
+        <li class="bold"><a class="waves-effect waves-cyan " href="#"><i class="material-icons">settings</i><span class="menu-title" data-i18n="">Company Settings</span></a>
+        </li>
+       </ul>
+      <div class="navigation-background"></div><a class="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium waves-effect waves-light hide-on-large-only" href="#" data-target="slide-out"><i class="material-icons">menu</i></a>
+    </aside>
+<div  class="pad">
+      
+    
+          <!--<div class="pad">-->
+         
+				<div  ng-if="!c.data.myWidget" class="container" >
+		
+					<svg class="loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340">
+						 <circle cx="170" cy="170" r="160" stroke="#E2007C"/>
+						 <circle cx="170" cy="170" r="135" stroke="#404041"/>
+						 <circle cx="170" cy="170" r="110" stroke="#E2007C"/>
+						 <circle cx="170" cy="170" r="85" stroke="#404041"/>
+					</svg>
+		
+				</div>
+				  <sp-widget widget="c.data.myWidget"></sp-widget>
+				  
+   </div>  
+  </div>
+ <!-- </div> 
+       </div></div></div></div></div></div></div>-->
+
+     <script src="x_315710_expense_m.vendors.jsdbx" language="javascript"></script>
+       <script src="x_315710_expense_m.plugins.jsdbx" language="javascript"></script>
+     
+  <script src="x_315710_expense_m.customizer.jsdbx" language="javascript"></script>
+     
+
+ 
+
+     
+
+]]></template>
+    </sp_widget>
+</record_update>

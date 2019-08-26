@@ -3,11 +3,34 @@
         <category>custom</category>
         <client_script><![CDATA[function($scope,$http,$rootScope) {	
 
+ var c = this;
+	c.data.updateName = c.data.title;
+	$scope.testComplete = function(){
+	var ok = true ; 
+	if(c.data.title == null || $scope.sheet == null || $scope.dated == null){
+		ok = false ; 
+		console.log("ok : "+ok);
+	}
+	else{
+		ok = true ; 
+		console.log("ok : "+ok);
+	}
+	return ok ;
+}
+	
+	
+$scope.dated = {
+		displayValue: '',
+		value: '',
+		name: 'c.data.dated'
+	};
+	$scope.processd = {
+		displayValue: '',
+		value: '',
+		name: 'c.data.processd'
+	};	
 
-	var c = this;
-
-
-	$scope.data.card = {
+	$scope.card = {
 
 		displayValue: c.data.cardName,
 
@@ -16,7 +39,7 @@
 		name: 'c.data.card'
 
 	};
-	$scope.data.category = {
+	$scope.category = {
 
 		displayValue: c.data.categoryName,
 
@@ -25,7 +48,7 @@
 		name: 'c.data.category'
 
 	};
-	$scope.data.sheet = {
+	$scope.sheet = {
 
 		displayValue: c.data.sheetName,
 
@@ -34,7 +57,7 @@
 		name: 'c.data.sheet'
 
 	};
-	$scope.data.country = {
+	$scope.country = {
 
 		displayValue: c.data.countryName,
 
@@ -43,7 +66,7 @@
 		name: 'c.data.country'
 
 	};
-	$scope.data.payment = { 
+	$scope.payment = { 
 		displayValue:c.data.paymentName,
 		value:c.data.payment ,
 		name:'c.data.payment'
@@ -53,7 +76,7 @@
 	var BASE64_MARKER = ';base64,';
 	$scope.files = []; 
 	/*****User*****/
-	$scope.data.user = {
+	$scope.user = {
 		displayValue:c.data.userConName,
 		value:c.data.userCon 
 	};
@@ -71,27 +94,25 @@
 		$scope.$apply(function() {
 			var dates=[];
 			for (var i = 0; i < element.files.length; i++) {
-				c.data.im = element.files[i] ; 
 				var type = element.files[i].type;
 				$scope.files.push(element.files[i]);
 				var datass = []; 
-				pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.2.2/pdf.worker.js'; 
-				/******************************If File IS PDF********************************/
+				pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.2.2/pdf.worker.js';   
 				if( type  == 'application/pdf')
 				{
 					var input =element.files[i];
 					var fReader = new FileReader();
 					fReader.readAsDataURL(input);
+					console.log(input);
 					fReader.onloadend = function (event) {
 						convertDataURIToBinary(event.target.result);
 					}
 				}
-				/**********************************If File IS IMG************************/
 				if (type == 'image/jpeg'){
-					c.data.im = element.files[i] ; 
 					//Tesseract : SCan Image
 					Tesseract.recognize(element.files[i])
 						.then(function(result){
+						console.log(result.lines);
 						//Parcour line result
 						for(var i=0 ; i<result.lines.length;i++){	
 							var model = result.lines[i].text ;
@@ -106,11 +127,14 @@
 							}
 							// test Existe Mode de Payement 
 							var testPay = testExistePay(model);
-							if(testPay.name != null){
-								c.data.payment = { 
+							if(testPay.sys_id != null ){
+								console.log("txt de i : "+model);
+								console.log("mode de payment : "+testPay);
+									$('#payment').select2('val',testPay.sys_id );
+								/*c.data.payment = { 
 									displayValue:testPay.name,
 									value:testPay.sys_id 
-								}
+								}*/
 							}
 							//Date
 							var dd = model.match("([a-zA-Z]{3,}|[0-9]{1,4})(\-|\/|\ |\.)([a-zA-Z]{3,}|[0-9]{1,4})(\-|\/|\. |\ )[0-9]{1,4}");
@@ -118,19 +142,24 @@
 								var regex = /[0-9]{1,4}(\-|\/|\ |\.)([a-zA-Z]{3,}|[0-9]{1,4})(\-|\/|\. |\ )[0-9]{1,4}/mg;
 								var regex2 = /([a-zA-Z]{3,}|[0-9]{1,4})(\-|\/|\ |\.)[0-9]{1,4}(\-|\/|\. |\ )[0-9]{1,4}/mg;
 								var s = $scope.getDate(regex,model);
+								console.log('res'+s);
 								if(s != undefined){
 									if($scope.validateDate(s._i)){
 										if(!findDuplicate(dates,s)){
 											dates.push(s._i);
+											console.log('date found : '+s.toString());
 										}
 									}
 									s = $scope.getDate(regex2,model);
 									if($scope.validateDate(s._i)){
 										if(!findDuplicate(dates,s)){
 											dates.push(s._i);
+											console.log('date found 2 : '+s.toString());
 											//var dd = new Date(s._i) ;
 											var r = convert(s);
-											document.getElementById('sp_formfield_').value=r;
+											console.log("rrrrrrrrr" + r);
+											document.getElementById('sp_formfield_c.data.dated').value=r;
+											$scope.dated = r ;
 										}
 									}
 								}
@@ -140,25 +169,33 @@
 							model.toUpperCase();
 							//Date
 							if(model.indexOf("DATE") != -1){
+								console.log(model);
+								console.log("indexOf Date :"+model.indexOf(" "));
 								l=model.substring(model.indexOf("DATE"),model.indexOf(lastIndexOfDigit(model)));
+								console.log("********** la date : "+l);
 							}
 							//Total
 							if(model.indexOf('TO') !=-1)	{	
+								console.log("indexOf : "+model.indexOf('TO'));
 								l=model.substring(model.indexOf('TO'),model.indexOf(' '));
+								console.log("chaine : "+l);
 							}
 							if(model.indexOf('PRIX') !=-1)	{	
 								l=model.substring(model.indexOf('PRIX'),model.indexOf(' '));
-							}
+								console.log("chaine : "+l);
+							}	
 							//Test pour récuperer Value
 							if(JaroWrinker(l.toUpperCase(),'TO') > 0.70  || JaroWrinker(l.toUpperCase(),'PRIX') > 0.70)
 							{  
 								var matches = model.match(/\d{1,3}[,\\.]?(\\d{1,2})?/g).join("");
+								console.log(matches);
 								var val = parseInt(matches+"" ,10);
 								document.getElementById('value').value =val;
 								c.data.value=val;
 							}
 						}
 
+						console.log(dates);
 					});
 				}}});
 	};
@@ -167,87 +204,125 @@
 		if(index>-1)
 			$scope.files.splice(index,1);
 	};  
-
-	$scope.uploadFiles = function() { 
-		$scope.fd = new FormData();
+	$scope.scanFiles = function() {
 		$scope.files.forEach(function(file){
-			$scope.fd.set('files', file);
+			var formData = new FormData();
+
+			formData.append('file', file);
 			var request = {
 				method: 'POST',
-				url: 'https://'+c.data.instanceName+'.service-now.com/api/now/attachment/file?table_name='+c.data.table+'&table_sys_id='+c.data.tableSys+'&file_name='+file.name,
-				data: $scope.fd.get('files'),
+				url: 'https://api.ocr.space/parse/image',
+				data:formData,
 				headers: {
-					'Content-Type': file.type,
+					'Content-Type': undefined,
+					'apikey':'616fed4edc88957',
+					'scale':true,
 					'Accept':'application/json'         
 				}
 			};
+			console.log('HTTP request : '+request);
 
 			// SEND THE FILES.
 			$http(request)
 				.success(function (d) {
-				var json_data = JSON.stringify(d);
-				json_data = JSON.parse(json_data);
-				c.data.action = 'append_image';
-				c.data.rec_id = c.data.sysBill;
-				console.log("rec : "+c.data.rec_id); 
-				c.data.attachment_id = json_data.result.sys_id;
-				c.server.update().then(function(){
-						$rootScope.ok = "ok";
-		         $rootScope.$emit('listB', "ok");
-					c.data.action = undefined;
-							
-				})
+				// On success code here
+				console.log('response :',d.ParsedResults[0]);
+
 			})
 				.error(function (err) {
 				// On error code here
+				console.log('error :',err);
 			});
 
 		});
 
 	}
-	$scope.submit_record=function() {
+	$scope.uploadFiles = function() { 
+		$scope.fd = new FormData();
+if($scope.files.length == 0){
+	console.log("aucun imaga a modifier");
+			var URL = "https://"+c.data.instanceName+".service-now.com/em?id=bills";
+					console.log("URL : "+URL) ; 
+		     //window.top.location = URL;
+				window.location.href = URL ;
+		}
+		else{
+			console.log("update image ");
+			$scope.files.forEach(function(file){
+				$scope.fd.set('files', file);
+				var request = {
+					method: 'POST',
+					url: 'https://'+c.data.instanceName+'.service-now.com/api/now/attachment/file?table_name='+c.data.table+'&table_sys_id='+c.data.tableSys+'&file_name='+file.name,
+					data: $scope.fd.get('files'),
+					headers: {
+						'Content-Type': file.type,
+						'Accept':'application/json'         
+					}
+				};
 
-		c.data.action = 'ala';
-			c.data.idBill = c.data.sysBill ; 
-		console.log(c.data.sysBill);
-		console.log("billable : "+$scope.data.billable+" , reimburse : "+$scope.data.reimburse);
-		c.data.reimburse = document.getElementById("reimburse").checked ;
-		console.log("r "+c.data.reimburse);
-	
-		c.data.billable =  document.getElementById("billable").checked ;
-		console.log("billabel : "+c.data.billable);
-		
-	/*	c.data.billable =$scope.data.billable;
-		c.data.reimburse = $scope.data.reimburse;*/
+				// SEND THE FILES.
+				$http(request)
+					.success(function (d) {
+					var json_data = JSON.stringify(d);
+					json_data = JSON.parse(json_data);
+					c.data.action = 'append_image';
+					c.data.rec_id = c.data.sysBill;
+					console.log("rec : "+c.data.rec_id); 
+					c.data.attachment_id = json_data.result.sys_id;
+					c.server.update().then(function(){
+					var URL = "https://"+c.data.instanceName+".service-now.com/em?id=bills";
+					console.log("URL : "+URL) ; 
+		     //window.top.location = URL;
+				window.location.href = URL ;
+					c.data.action = undefined;
+
+					})
+				})
+					.error(function (err) {
+					// On error code here
+				});
+			
+													 });
+		}
+		}
+	$scope.submit_record=function() {
+		console.log('started submit');
+
+		c.data.action = 'update';
+c.data.idBill = c.data.sysBill ; 
+		c.data.billable =$scope.data.billable;
+		c.data.reimburse = $scope.data.reimburse;
 		c.data.title = $scope.data.title;
 		c.data.value=$scope.data.value;
-		console.log(c.data.value);
 		c.data.tips=$scope.data.tips;
 		c.data.processd= $scope.data.processd; 
 		c.data.dated= $scope.data.dated;
 		c.data.state=$scope.data.state;
 		c.data.type=$scope.data.type;
-		c.data.sheet=$scope.data.sheet; 
-		c.data.payment = $scope.data.payment;
-		c.data.category = $scope.data.category ;
-		c.data.card = $scope.data.card ;
-		c.data.country = $scope.data.country ;
-		c.data.user = $scope.data.user ;
-		//c.data.merchId = merchId ; 
+		c.data.sheet= $scope.sheet; 
+		console.log("sheet "+c.data.sheet);
+		c.data.payment =$scope.payment;
+		c.data.category =$scope.category ;
+		c.data.card = $scope.card ;
+		c.data.country =$scope.country ;
+		c.data.user = $scope.user ;
+		c.data.merchId = merchId ; 
 
 		c.data.merchname = $scope.data.merchname;
+		console.log("salma test  : "+  $scope.data.merchId);
 
 		c.data.merchVat = $scope.data.merchVat;
 
 		c.data.merchCity = $scope.data.merchCity;
 		c.data.merchZipCode = $scope.data.merchZipCode;
-
-
 		c.server.update().then(function(){
+
 			c.data.table = 'x_315710_expense_m_expense_bill';
-			c.data.tableSys = c.data.sysBill;
+			c.data.tableSys =c.data.sysBill;
+			console.log('id : '+c.data.sysBill);
+			console.log('tbl : '+c.data.table);
 			$scope.uploadFiles();
-			
+
 			c.data.action = undefined;
 		});
 
@@ -276,6 +351,8 @@
 		return res ;
 	}
 
+	/********* test PAyment ******/
+
 	function testExistePay(lignee){
 		var resPay = {};
 		var number = c.data.payList.length ;
@@ -283,8 +360,8 @@
 		var ok = false ;
 		while(i < number && !ok){
 			var name = c.data.payList[i].name ;
-			var res = parseFloat(""+JaroWrinker(lignee.toUpperCase(),name.toUpperCase() )).toFixed(1);
-			if(res >= 0.8) {
+			var res = parseFloat(""+JaroWrinker(lignee.toUpperCase(),name.toUpperCase())).toFixed(1);
+			if(res >= 0.7) {
 				resPay = c.data.payList[i];
 				ok=true;
 			}
@@ -324,6 +401,7 @@
 			d = moment(m[0], list) ;
 			if(d.isValid() )
 			{ 
+				console.log(d._i);
 				flag=true;
 			}
 		}
@@ -334,6 +412,7 @@
 	findDuplicate = function(tab,obj){
 		tab.forEach(function(item){
 			var b= item+'' == obj+'';
+			console.log( typeof obj+' testin '+typeof item+"  are "+b );
 			if(b)
 				return true;
 		});
@@ -420,7 +499,9 @@
 			}
 			weight = weight + l * p * (1 - weight);
 		}
-
+		/* if ( weight > 0.7 ) {	
+									console.log(" jaro weight : "+s1+" , "+s2+" = "+weight);
+						 }*/
 		return weight;
 	} 
 	//Convertion PDF Array
@@ -428,6 +509,7 @@
 	function pdfAsArray(pdfAsArray) {
 		var l = pdfjsLib.getDocument(pdfAsArray);
 		l.promise.then(function (pdf) {
+			console.log( pdf);
 			var pdfDocument = pdf;
 			// Create an array that will contain our promises
 			var pagesPromises = [];
@@ -440,6 +522,9 @@
 			}
 			// Execute all the promises
 			Promise.all(pagesPromises).then(function (pagesText) {
+				//var tab= new RegExp('[\r\n]');
+				// Display text of all the pages in the console
+				// e.g ["Text content page 1", "Text content page 2", "Text content page 3" ... ]
 				var txt ; 
 				pagesText.forEach(function(item){
 					txt = item.split('  ');
@@ -451,43 +536,54 @@
 
 					var l ;
 					txt[i].toUpperCase();
+					console.log(txt[i]);
 
 					/************************ TOTAL ************************/
 					var ch = 'TOTAL';
 					if(txt[i].indexOf(ch) !=-1)	{	
+						console.log("Total indexOf : "+txt[i].indexOf(ch));
 						l=txt[i].substring(txt[i].indexOf(ch),txt[i].indexOf(ch)+ch.length+50) ;
+						console.log("chaine tot : "+l);
 					}
 					var ch2 = "PRIX";
 					if(txt[i].indexOf(ch2) !=-1)	{	
 						l=txt[i].substring(txt[i].indexOf(ch2),txt[i].indexOf(ch2)+ch2.length+50) ;
+						console.log("chaine tot : "+l);
 					}	
 
 					//Test pour récuperer Value
 					if(JaroWrinker(txt[i].toUpperCase(),'TOTAL') > 0.70  || JaroWrinker(txt[i].toUpperCase(),'PRIX') > 0.70){  
 						var matches = l.match(/\d{1,3}[,\\.]?(\\d{1,2})?/g).join("");
+						console.log("Res TOTAL "+matches);
 						var val = parseInt(matches+"" ,10);
 
 						document.getElementById('value').value =val;
-						c.data.value=val;
+						c.data.value = val ; 
+						/***************************TVA*********************************/
+						var tva = "TVA";
+						var t ;
+						if(txt[i].indexOf(tva) !=-1)	{	
+							t=txt[i].substring(txt[i].indexOf(tva),txt[i].indexOf(tva)+tva.length+4) ;
+							console.log("TVA: "+t);
+							var matches = t.match(/\d{1,3}[,\\.]?(\\d{1,2})?/g).join("");
+							console.log("Res TOTAL "+matches);
+							var val = parseInt(matches+"",10);
+
+							document.getElementById('vat').value =val;
+							c.data.value= val ;
+						}	
+
 					}
-					/***************************TVA*********************************/
-					var tva = "TVA";
-					var t ;
-					if(txt[i].indexOf(tva) !=-1)	{	
-						t=txt[i].substring(txt[i].indexOf(tva),txt[i].indexOf(tva)+tva.length+4) ;
-						var matches = t.match(/\d{1,3}[,\\.]?(\\d{1,2})?/g).join("");
-						var val = parseInt(matches+"",10);
-						document.getElementById('vat').value =val;
-					}	
-
-
 					/************************ Mode de PAyment  ************************/
 					var testPay = testExistePay(txt[i]);
 					if(testPay.sys_id != null ){
-						c.data.payment = { 
+						console.log("txt de i : "+txt[i]);
+						console.log("mode de payment : "+testPay);
+						$('#payment').select2('val',testPay.sys_id );
+						/*c.data.payment = { 
 							displayValue:testPay.name,
 							value:testPay.sys_id 
-						}
+						}*/
 					}
 					/************************ Merchant ************************/
 					var test = testExiste(txt[i]);
@@ -500,13 +596,19 @@
 					}
 					/************************ Date  ************************/
 					var rech = "Emise le";
-					var pos = txt[i].indexOf(rech); 
+					var pos = txt[i].indexOf(rech); //+rech.length
+					console.log("position : "+pos+" length "+rech.length);
+					console.log("Date chercher: "+txt[i].substring(pos,pos+rech.length+11));
 					var o = txt[i].substring(pos,pos+rech.length+11) ;
+					console.log("O : "+o);
 					var ddd = o.match("[0-9]{2}([\-\/\ \.])[0-9]{2}[\-\/\ \.][0-9]{4}");
 					if ( ddd != null){
 						var date = ddd[0].split('/');
-						var m = moment(ddd[0]).format("YYYY-MM-DD");
+						console.log(ddd[0] +' aaa');
+						var m = moment(ddd[0]).format("YYYY-MM-DD");;
+						console.log("moment :"+m);
 						document.getElementById('sp_formfield_').value=m;
+						$scope.dated = m ;
 
 					}
 					else{
@@ -516,6 +618,7 @@
 							var regex = /[0-9]{1,4}(\-|\/|\ |\.)([a-zA-Z]{3,}|[0-9]{1,4})(\-|\/|\. |\ )[0-9]{1,4}/mg;
 							var regex2 = /([a-zA-Z]{3,}|[0-9]{1,4})(\-|\/|\ |\.)[0-9]{1,4}(\-|\/|\. |\ )[0-9]{1,4}/mg;
 							var s = $scope.getDate(regex,txt[i]);
+							console.log('res'+s);
 							if(s != undefined){
 								if($scope.validateDate(s._i)){
 									if(!findDuplicate(dates,s)){
@@ -527,7 +630,8 @@
 									if(!findDuplicate(dates,s)){
 										dates.push(s._i);
 										var r = convert(s);
-										document.getElementById('sp_formfield_').value=r;
+										document.getElementById('sp_formfield_c.data.dated').value=r;
+										$scope.dated = r ;
 									}
 								}
 							}
@@ -598,7 +702,13 @@
 
 ]]></client_script>
         <controller_as>c</controller_as>
-        <css>.input-group {
+        <css>
+.fixed {
+  position: fixed;
+
+}
+
+.input-group {
   display: table;
   white-space: nowrap;
   vertical-align: top;
@@ -632,7 +742,7 @@
         <internal>false</internal>
         <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
         <name>widget update bill</name>
-        <option_schema>[{"name":"idbill","section":"other","label":"idbill","type":"string"}]</option_schema>
+        <option_schema>[{"name":"sys_id","section":"other","label":"sys_id","type":"string"}]</option_schema>
         <public>false</public>
         <roles/>
         <script><![CDATA[(function() {
@@ -650,10 +760,10 @@
 
 
 
-	gr.get(input.idbill);
+	gr.get(input.sys_id);
 
 
-	data.sysBill = input.idbill ;  
+	data.sysBill =input.sys_id ;  
 	gs.warn("remplir formulaire : "+data.sysBill);
 	data.title=gr.getDisplayValue("title");
 
@@ -668,13 +778,14 @@
 	data.dated = gr.getDisplayValue("date");
 	data.image = gr.getDisplayValue("image");
 	data.user = gr.getDisplayValue("user") ;
-	data.state = gr.getDisplayValue("state") ;
+	data.state = gr.getDisplayValue("state_bill") ;
 	//data.sheet={"sys_id":gr.getValue("expense_sheet"),"display_value":gr.getDisplayValue("expense_sheet")};
 
 	/* Sheet */
 	data.sheet = gr.getValue("expense_sheet") ;
 	sheet.get(data.sheet);
 	data.sheetName = sheet.getValue("name");
+	data.sheetId=sheet.getValue("sys_id");
 	/*Payment*/
 	data.payment = gr.getValue("payment_instrument") ;
 	p.get(data.payment);
@@ -683,11 +794,11 @@
 	/*Country*/
 	data.country = gr.getValue("country") ;
 	count.get(data.country);
-	data.countryName = count.getValue("name");
+	data.countryName = count.getDisplayValue("name");
 	/*Category*/
 	data.category = gr.getValue("category") ;
 	categ.get(data.category);
-	data.categoryName = categ.getValue("name");
+	data.categoryName = categ.getDisplayValue("name");
 	/*Card*/
 	data.card = gr.getValue("rate_card") ;
 	card.get(data.card);
@@ -696,7 +807,7 @@
 	data.country = gr.getValue("country") ;
 	data.reimburse =gr.getValue("to_reimburse") ;
 	data.billable = gr.getValue("billable_to_client") ;
-	data.type=gr.getDisplayValue("type");
+	data.type=gr.getDisplayValue("type_bill");
 	data.processd=gr.getDisplayValue("process_date");
 
 	var idMerch = gr.getValue("merchant");
@@ -745,11 +856,11 @@
 	}
 
 
-	gs.warn('script called  input : '+input.idbill);
+	gs.warn('script called  input : '+data.sysBill);
+	gs.warn("amine "+gr.getValue('category'));
+	if(input && input.action=='update'){
 
-	if(input && input.action=='ala'){
-
-		gs.warn('script called  data : '+input.idBill);
+		gs.warn('script called  data : '+data.sysBill);
 		gs.warn("Update ***********");
 		//gs.warn("eee "+gr.sys_id);
 		/*Recuperer Merchant*/
@@ -786,32 +897,36 @@
 		data.merchId = idM;
 		var grr = new GlideRecord(data.table);
 			grr.get( input.idBill) ; 
-		
-				grr.title = input.title; 
+		gs.warn("updateeeeeee "+input.idBill);
+				gs.warn(JSON.stringify(grr));
+				grr.title = input.title;
 				grr.value = input.value; 
-				grr.state = input.state;
+				grr.state_bill = input.state;
 				grr.process_date = input.processd;
 				grr.date=input.dated;
-				grr.type=input.type;
+				grr.type_bill=input.type;
 				grr.tips=input.tips;
 				grr.expense_sheet=input.sheet.value;
 				grr.payment_instrument=input.payment.value;
 				grr.category = input.category.value ;
 				grr.rate_card = input.card.value ;
 				grr.country = input.country.value ;
-				grr.user = input.user.value ;
+				grr.user = input.user.value;
 				grr.billable_to_client = input.billable;
 				grr.to_reimburse= input.reimburse;
 				grr.vat = input.vat ;
 		grr.merchant =data.merchId ;
 
 			grr.update();
-			
+			gs.warn("updated");
+				gs.warn(JSON.stringify(grr));
 		
 
 
 	
 	}
+	
+
 	if(input && input.action=='append_image'){
 		gs.warn('append started by attach : '+input.attachment_id+' and id is : '+input.rec_id);
 		if(input.rec_id && input.attachment_id){
@@ -825,22 +940,23 @@
 		}
 	}
 
-
 })();]]></script>
         <servicenow>false</servicenow>
         <sys_class_name>sp_widget</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-06-19 07:43:17</sys_created_on>
         <sys_id>1734b3fe1b4e330072fe2136ec4bcbec</sys_id>
-        <sys_mod_count>648</sys_mod_count>
+        <sys_mod_count>840</sys_mod_count>
         <sys_name>widget update bill</sys_name>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
         <sys_policy/>
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sp_widget_1734b3fe1b4e330072fe2136ec4bcbec</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-06-27 14:15:28</sys_updated_on>
-        <template><![CDATA[
+        <sys_updated_on>2019-08-16 13:45:33</sys_updated_on>
+        <template><![CDATA[<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
+
 <!-- CDN PDFJS -->
  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.2.2/pdf.js"></script>
 <!-- fin-->
@@ -848,24 +964,52 @@
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-<script src='https://cdn.jsdelivr.net/gh/naptha/tesseract.js@v1.0.14/dist/tesseract.min.js'></script>      
-<form class="form-horizontal" >
-  
-<div class="but_list">
-							<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
-								<ul id="myTab" class="nav nav-tabs" role="tablist">
-								  <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true"><i class="glyphicon glyphicon-pencil"></i> Bill</a></li>
-								  <li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile"><i class="glyphicon glyphicon-shopping-cart"></i> Merchant</a></li>
-								</ul>
-							<div id="myTabContent" class="tab-content">
-							  <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
-                  <br/><br/>
+
+<script src='https://cdn.jsdelivr.net/gh/naptha/tesseract.js@v1.0.14/dist/tesseract.min.js'></script> 
+<form class="form-horizontal">
+ 
+     <div class="col s12 m6 l10">
+                <h6 class="card-title">Update Expense Bill {{c.data.updateName}}</h6>
+    <hr  size="1" color="blue">
+     </div>
+                  
+                    <div class="form-group">
+
+                        <label class="col-md-3 control-label">Image</label>
+                        <div class="col-md-4">
+
+                            <img style="width:320px;height:320px" ng-src="{{::data.image}}" />
+                            <br>
+                            <br>
+
+                            <label class="btn btn-info btn-sm">
+                                <span>
+                                    <i class="glyphicon glyphicon-paperclip" aria-hidden="true"></i>
+                                    <b>Choose file</b>
+                                </span>
+                                <input style='opacity:0; width:0px; height:0px;' type="file" id="fileToUpload"  onchange="angular.element(this).scope().setFiles(this)"
+                                />
+                            </label>
+                            <br/>
+                            <div ng-show="files.length">
+                                <div ng-repeat="file in files.slice(0)">
+                                    <span>New : {{file.webkitRelativePath || file.name}}</span>
+                                    <span ng-switch="file.size > 1024*1024">
+                                        <span ng-switch-when="true">{{file.size / 1024 / 1024 | number:2}} MB</span>
+                                        <span ng-switch-default>{{file.size / 1024 | number:2}} kB</span>
+                                    </span>
+                                    <span class="glyphicon glyphicon-remove-circle" id="removeicon" ng-click="removeFiles(file)"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                  
+                                 
 									   <div class="form-group">
 										  <label class="col-md-3 control-label" >Expense Sheet</label>
 										  <div class="col-md-4">
-											<sn-record-picker field="c.data.sheet"
+											<sn-record-picker field="sheet"
 											   table="'x_315710_expense_m_expense_sheet'" 
 											   display-field="'name'" value-field="'sys_id'" search-fields="'name'" 
 												page-size="100"   ></sn-record-picker>
@@ -875,7 +1019,7 @@
 									  <div class="form-group">
 										  <label class="col-md-3 control-label" >Category</label>
 										  <div class="col-md-4">
-											<sn-record-picker field="c.data.category"
+											<sn-record-picker field="category"
 											   table="'x_315710_expense_m_category'" 
 											   display-field="'name'" value-field="'sys_id'" search-fields="'name'" 
 												page-size="100"  ></sn-record-picker>
@@ -919,7 +1063,7 @@
 										<div class="form-group">
 											  <label class="col-md-3 control-label" >Payment Instrument</label>
 											  <div class="col-md-4">
-										<sn-record-picker field="c.data.payment"
+										<sn-record-picker field="payment"
 										   table="'x_315710_expense_m_payment_instrument'" 
 										   display-field="'name'" value-field="'sys_id'" search-fields="'name'" 
 											page-size="100"  default-query="c.assigned_to_query" ></sn-record-picker>
@@ -929,21 +1073,21 @@
 										   <div class="form-group">
 											  <label class="col-md-3 control-label" >Date</label>
 											  <div class="col-md-4">
-										 <sp-date-picker field="c.data.dated" sn-change="" ng-model="c.data.dated"  id='date' ></sp-date-picker>
+										 <sp-date-picker field="dated" sn-change="" ng-model="c.data.dated"  id='date' ></sp-date-picker>
 											 </div>
 											</div>
 
 										 <div class="form-group">
 										  <label class="col-md-3 control-label" >Date Process</label>
 										  <div class="col-md-4">
-													<sp-date-picker  field="c.data.processd" ng-model="c.data.processd" ></sp-date-picker>
+													<sp-date-picker  field="processd" ng-model="c.data.processd" ></sp-date-picker>
 										   </div>
 										</div>
 										 <div class="form-group">
 										  <label class="col-md-3 control-label" >User</label>
 										  <div class="col-md-4">
 											<div ng-if="c.data.userConName == 'admin'">
-											  <sn-record-picker field="c.data.user" table="'sys_user'" 
+											  <sn-record-picker field="user" table="'sys_user'" 
 											 display-field="'name'" value-field="'sys_id'" search-fields="'name'" 
 											   page-size="100"  ></sn-record-picker>
 											</div>
@@ -958,7 +1102,7 @@
 										 <div class="form-group">
 										  <label class="col-md-3 control-label" >Rate Card</label>
 										  <div class="col-md-4">
-									<sn-record-picker field="c.data.card"
+									<sn-record-picker field="card"
 									   table="'fm_rate_card'" 
 									   display-field="'name'" value-field="'sys_id'" search-fields="'name'" 
 										page-size="100"   ></sn-record-picker>
@@ -968,7 +1112,7 @@
 										 <div class="form-group">
 										  <label class="col-md-3 control-label" >Country</label>
 										  <div class="col-md-4">
-									<sn-record-picker field="c.data.country"
+									<sn-record-picker field="country"
 									   table="'core_country'" 
 									   display-field="'name'" value-field="'sys_id'" search-fields="'name'" 
 										page-size="100"  ></sn-record-picker>
@@ -978,14 +1122,14 @@
 										<div class="form-group">
                       <div class="col-md-3 control-label" ></div>
 									  <label>
-										<input  type="checkbox" class="filled-in" id="reimburse" value="r"   ng-checked="data.reimburse == true"  />
+										<input  type="checkbox" ng-model="data.reimburse" class="filled-in" id="reimburse" value="r"   ng-checked="data.reimburse == true"  />
 									<span>To Reimburse</span>
                       </label>
 								   </div>
 								<div class="form-group">
                     <div class="col-md-3 control-label" ></div>
                    <label>
-                <input type="checkbox" ng-checked="data.billable == true " class="filled-in"  id="billable" value="b"   />
+                <input type="checkbox" ng-model="data.billable" ng-checked="data.billable == true " class="filled-in"  id="billable" value="b"   />
                 <span>Billable to client</span>
               </label>
                   </div>
@@ -1014,35 +1158,14 @@
 											  </div>
 										   </div>
                    
-											<div class="form-group">
-                       
-											  <label class="col-md-3 control-label" >Image</label>
-													 <div class="col-md-4">
-                            
-                         <img   style="width:320px;height:320px" ng-src="{{::data.image}}"/>
-                   
-                  
-                             
-                               <br><br>
-											 
-												 <label class="btn btn-info btn-sm"> <span><i class="glyphicon glyphicon-paperclip"
-																		aria-hidden="true"></i> <b>Choose file</b></span>
-											   <input  style='opacity:0; width:0px; height:0px;' type="file" id="fileToUpload" multiple onchange="angular.element(this).scope().setFiles(this)"/>
-												</label> 
-												   <br/>  <div ng-show="files.length">
-													  <div ng-repeat="file in files.slice(0)">
-														  <span>New : {{file.webkitRelativePath || file.name}}</span>
-														  (<span ng-switch="file.size > 1024*1024">
-															  <span ng-switch-when="true">{{file.size / 1024 / 1024 | number:2}} MB</span>
-															  <span ng-switch-default>{{file.size / 1024 | number:2}} kB</span>
-														  </span>)<span class="glyphicon glyphicon-remove-circle" id="removeicon" ng-click="removeFiles(file)"></span>
-												</div></div>
+                 
 
-											  </div>
-								   </div>
-                </div>
-							  <div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
-                  <br/><br/>
+  
+       <div class="col s12 m6 l10">
+                <h6 >Merchant</h6>
+         <hr size=2>
+     </div>
+        
 									<div class="form-group">
 										   <label class="col-md-3 control-label" >Name</label>
 										   <div class="col-md-4">
@@ -1065,24 +1188,12 @@
 										<label class="col-md-3 control-label" >Zip Code</label>
 										<div class="col-md-4">
 											<input id="zipCode" type="text" placeholder="" class="form-control" name="z" ng-model="c.data.merchZipCode" />
-										</div>
-									</div>
+									   </div>
+        </div>
 
-							</div>
-							 
-							</div>
-					   </div>
-					   
-					     <button type="button" id="submit" ng-click="submit_record()" name="submit" class="btn btn-primary pull-left">Submit </button>
-					   </div>
+    <button ng-disabled="testComplete() == false" class="btn waves-effect waves-light " ng-click="testComplete();submit_record()" type="submit" name="action">Send<i class="material-icons right">send</i>
+  </button>
 
-
- 
-       
-
-
-</form>
-
-]]></template>
+</form>]]></template>
     </sp_widget>
 </record_update>

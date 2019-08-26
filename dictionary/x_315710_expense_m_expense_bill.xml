@@ -1,56 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element label="Expense Bill" max_length="40" name="x_315710_expense_m_expense_bill" type="collection">
-        <element label="Billable to client" max_length="40" name="billable_to_client" type="boolean"/>
-        <element label="Category" max_length="32" name="category" reference="x_315710_expense_m_category" type="reference"/>
-        <element choice="3" label="Country" max_length="32" name="country" reference="core_country" type="reference">
-            <choice/>
-        </element>
+    <element extends="task" label="Expense Bill" max_length="40" name="x_315710_expense_m_expense_bill" sizeclass="3" type="collection">
+        <element label="Billable to client" max_length="5" name="billable_to_client" type="boolean"/>
+        <element label="Category" mandatory="true" max_length="32" name="category" reference="x_315710_expense_m_category" type="reference"/>
+        <element label="Country" max_length="32" name="country" reference="core_country" type="reference"/>
         <element label="Date" mandatory="true" max_length="40" name="date" type="glide_date"/>
-        <element label="Expense Sheet" max_length="32" name="expense_sheet" reference="x_315710_expense_m_expense_sheet" type="reference"/>
-        <element label="Image" max_length="40" name="image" reference_qual="javascript: new global.AttachmentRefQualifier().fetchAttachmentRecords(current.sys_id)" type="user_image" use_reference_qualifier="advanced"/>
+        <element label="Expense Sheet" mandatory="true" max_length="32" name="expense_sheet" reference="x_315710_expense_m_expense_sheet" type="reference"/>
+        <element label="Image" max_length="40" name="image" type="user_image"/>
         <element label="Merchant" max_length="32" name="merchant" reference="x_315710_expense_m_merchant" type="reference"/>
-        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
-        <element label="Payment Instrument" max_length="32" name="payment_instrument" reference="x_315710_expense_m_payment_instrument" reference_qual=" javascript: new test().test()" type="reference" use_reference_qualifier="advanced"/>
-        <element label="Process date" mandatory="true" max_length="40" name="process_date" type="glide_date"/>
-        <element label="Rate Card" max_length="32" name="rate_card" reference="fm_rate_card" type="reference"/>
-        <element choice="1" label="State" mandatory="true" max_length="40" name="state" type="choice">
+        <element label="Payment Instrument" mandatory="true" max_length="32" name="payment_instrument" reference="x_315710_expense_m_payment_instrument" type="reference"/>
+        <element label="Process Date" max_length="40" name="process_date" type="glide_date"/>
+        <element label="Rate Card" max_length="32" name="rate_card" reference="x_315710_expense_m_rate" type="reference"/>
+        <element choice="1" label="State Bill" mandatory="true" max_length="20" name="state_bill" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Pending" sequence="0" value="pending"/>
-                <element inactive_on_update="false" label="Processed" sequence="1" value="processed"/>
+                <element inactive_on_update="false" label="Pending" value="pending"/>
+                <element inactive_on_update="false" label="Processed" value="processed"/>
             </choice>
         </element>
         <element label="Tips" max_length="20" name="tips" type="price"/>
-        <element label="Title" mandatory="true" max_length="255" name="title" type="string"/>
+        <element label="Title" mandatory="true" max_length="50" name="title" type="string"/>
         <element label="To Reimburse" max_length="40" name="to_reimburse" type="boolean"/>
-        <element choice="1" label="Type" mandatory="true" max_length="40" name="type" type="choice">
+        <element choice="2" label="Type Bill" mandatory="true" max_length="20" name="type_bill" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Capex" sequence="0" value="capex"/>
-                <element inactive_on_update="false" label="Opex" sequence="1" value="opex"/>
+                <element inactive_on_update="false" label="Capex" value="capex"/>
+                <element inactive_on_update="false" label="Opex" value="opex"/>
             </choice>
         </element>
         <element label="User" max_length="32" name="user" reference="sys_user" type="reference"/>
         <element label="Value" mandatory="true" max_length="20" name="value" type="price"/>
-        <element label="VAT" max_length="15" name="vat" type="percent_complete"/>
-        <index name="index">
-            <element name="country"/>
-        </index>
-        <index name="index2">
-            <element name="payment_instrument"/>
-        </index>
-        <index name="index3">
-            <element name="merchant"/>
-        </index>
-        <index name="index4">
-            <element name="category"/>
-        </index>
-        <index name="index5">
-            <element name="expense_sheet"/>
-        </index>
-        <index name="index6">
-            <element name="user"/>
-        </index>
-        <index name="index7">
-            <element name="rate_card"/>
-        </index>
+        <element label="VAT" max_length="40" name="vat" type="integer"/>
     </element>
 </database>

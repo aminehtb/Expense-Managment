@@ -45,7 +45,8 @@
         <reference_floats>false</reference_floats>
         <reference_key/>
         <reference_qual>user=javascript:gs.getUserID()</reference_qual>
-        <reference_qual_condition/>
+        <reference_qual_condition table="x_315710_expense_m_vehicle">user=javascript:gs.getUserID()<item endquery="false" field="user" goto="false" newquery="false" operator="=" or="false" value="javascript:gs.getUserID()"/>
+        </reference_qual_condition>
         <reference_type/>
         <sizeclass/>
         <spell_check>false</spell_check>
@@ -67,7 +68,7 @@
         <unique>false</unique>
         <use_dependent_field>false</use_dependent_field>
         <use_dynamic_default>false</use_dynamic_default>
-        <use_reference_qualifier>advanced</use_reference_qualifier>
+        <use_reference_qualifier>simple</use_reference_qualifier>
         <virtual>false</virtual>
         <widget/>
         <write_roles/>

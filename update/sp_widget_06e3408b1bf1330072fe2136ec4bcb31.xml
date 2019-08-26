@@ -1,93 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <client_script><![CDATA[function($scope,spUtil, $rootScope) {
+        <client_script><![CDATA[function($scope,spUtil) {
 	/* widget controller */
+
+
 	var c = this;
-	$rootScope.$on('selectBill', function(event,data) { 
-		c.data.myWidget = null ;
-		console.log('Listener caught BillID: ' + $rootScope.billID); 
-		console.log("appel au update : "+ $rootScope.billID);
-		spUtil.get("widget_update_bill", {idbill:$rootScope.billID}).then(function(response) {
-			c.data.myWidget= response;
-		});
-	});
-	$rootScope.$on('listB', function(event,data) { 
-		c.data.myWidget = null ;
-		console.log('Listener caught BillID: ' + $rootScope.ok); 
-		console.log("appel au update : "+ $rootScope.ok);
-		spUtil.get("widget_list_of_bill").then(function(response) {
-			c.data.myWidget= response;
-		});
-	});
-	
-	var widg="";
 
-
-	$scope.formBill=function(action) {
-		c.data.myWidget = null ;
-		if(action=="addBill"){
-			console.log("addBill");
-			widg="expense_bill_form"; 	
-			console.log(widg);
-
-		}
-		if(action=="ListBill"){
-			console.log("ListBill ");
-
-			widg="widget_list_of_bill";
-			console.log(widg);
-
-		}
-
-		spUtil.get(widg).then(function(response) {
+		var id = c.data.id ;
+		console.log("id : "+id);
+	if (c.options.table != null && c.options.table != "x_315710_expense_m_expense_bill"){
+		spUtil.get(c.options.widget_name,{ table:c.options.table, sys_id: "-1" , hideRelatedLists: false }).then(function(response) {
 			c.data.myWidget = response;
 			console.log(c.data.myWidget);
 		});
-
 	}
-	$scope.formSheet=function(action) {
-		c.data.myWidget = null ;
-
-		if(action=="addSheet"){
-			console.log("addSheet");
-			widg="widget-form"; 	
-			console.log(widg);
-	
-   spUtil.get(widg, { table: "x_315710_expense_m_expense_sheet", sys_id: "-1", hideRelatedLists: false }).then(function(response) {
-			c.data.myWidget= response;
-		});
-		}
+		if (c.options.table != null && id != null){
 		
+			console.log("table : "+c.options.table);
+		if(c.options.table == "x_315710_expense_m_expense_bill"){
+			console.log("bill");
+			spUtil.get(c.options.widget_name,{ sys_id: id }).then(function(response) {
+			c.data.myWidget = response;
+					console.log(c.data.myWidget);
+					});
+			}
+			else{
+		spUtil.get(c.options.widget_name,{ table:c.options.table, sys_id: id , hideRelatedLists: false }).then(function(response) {
+			c.data.myWidget = response;
+				console.log(c.data.myWidget);
+					});
+			}
+		}
+	
+		
+	
+	//}
+/*	if (c.options.table == "" ){
+			var idd = c.options.sys_id ;
+		console.log("pffffffff 3ed ");
+		console.log("widget : "+idd   +" , "+c.options.widget_name);
+		spUtil.get(c.options.widget_name, { table:c.options.table,sys_id:idd}).then(function(response) {
+			c.data.myWidget= response;
+		});*/
+		/*spUtil.get(c.options.widget_name,{ sys_id: idd }).then(function(response) {
+			c.data.myWidget = response;
+			console.log(c.data.myWidget);
+		});*/
+	//}
+	else{
+		spUtil.get(c.options.widget_name).then(function(response) {
+			c.data.myWidget = response;
+			console.log(c.data.myWidget);
+		});
 	}
-
-	/*c.action = function(action) {
-		c.data.action = action;
-
-			c.server.update().then(function() {
-				c.data.action = undefined;
-			})
-		}*/
-	/*$scope.formBill=function(widgetApp) {
-
-		console.log('Apple Widget : '+widgetApp) ;
-		c.data.action = 'AppelWidget';
-		c.data.widg =widgetApp;
-		c.server.update().then(function(response){
-			console.log(response);
-							c.data.myWidget = response.myWidget;
-
-						});
-
-	}*/
-
 }]]></client_script>
         <controller_as>c</controller_as>
-        <css>
+        <css>.pad{
+	padding-left: 10%;
+  width:122%;
+  
+}
 .scrollmenu {
- 
   overflow: auto;
   white-space: nowrap;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-height: 100vh;
+ // background-color: #ededed;
+}
+
+.loader {
+  max-width: 15rem;
+  width: 100%;
+  height: 100%;
+  stroke-linecap: round;
+}
+
+circle {
+  fill: none;
+  stroke-width: 3.5;
+  -webkit-animation-name: preloader;
+          animation-name: preloader;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-transform-origin: 170px 170px;
+          transform-origin: 170px 170px;
+  will-change: transform;
+}
+circle:nth-of-type(1) {
+  stroke-dasharray: 550;
+}
+circle:nth-of-type(2) {
+  stroke-dasharray: 500;
+}
+circle:nth-of-type(3) {
+  stroke-dasharray: 450;
+}
+circle:nth-of-type(4) {
+  stroke-dasharray: 300;
+}
+circle:nth-of-type(1) {
+  -webkit-animation-delay: -0.15s;
+          animation-delay: -0.15s;
+}
+circle:nth-of-type(2) {
+  -webkit-animation-delay: -0.3s;
+          animation-delay: -0.3s;
+}
+circle:nth-of-type(3) {
+  -webkit-animation-delay: -0.45s;
+  -moz-animation-delay:  -0.45s;
+          animation-delay: -0.45s;
+}
+circle:nth-of-type(4) {
+  -webkit-animation-delay: -0.6s;
+  -moz-animation-delay: -0.6s;
+          animation-delay: -0.6s;
+}
+
+@-webkit-keyframes preloader {
+  50% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes preloader {
+  50% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }
 </css>
         <data_table>sp_instance</data_table>
@@ -100,10 +157,11 @@
         <internal>false</internal>
         <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
         <name>widget_expense</name>
-        <option_schema/>
+        <option_schema>[{"hint":"","name":"widget_name","section":"other","default_value":"widget_dashboard","label":"widget name","type":"string"},{"name":"table","section":"other","label":"table","type":"string"},{"name":"sys_id","section":"other","default_value":"","label":"sys_id","type":"string"}]</option_schema>
         <public>false</public>
         <roles/>
         <script><![CDATA[(function() {
+	 data.id = $sp.getParameter("sys_id");
 	//data.myWidget=$sp.getWidget('widget_list_of_bill');
 /*	if(input && input.action == 'AppelWidget'){
 		data.myWidget="";
@@ -124,148 +182,81 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-06-06 22:36:01</sys_created_on>
         <sys_id>06e3408b1bf1330072fe2136ec4bcb31</sys_id>
-        <sys_mod_count>262</sys_mod_count>
+        <sys_mod_count>609</sys_mod_count>
         <sys_name>widget_expense</sys_name>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
         <sys_policy/>
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sp_widget_06e3408b1bf1330072fe2136ec4bcb31</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-06-27 15:17:49</sys_updated_on>
-        <template><![CDATA[  <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
+        <sys_updated_on>2019-07-30 07:46:51</sys_updated_on>
+        <template><![CDATA[ 
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <div class="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu 2-columns  " data-open="click" data-menu="vertical-modern-menu" data-col="2-columns">
 
-      <!-- BEGIN: Header-->
-   <!-- <header class="page-topbar" id="header">
-      <div class="navbar navbar-fixed"> 
-        <nav class="navbar-main navbar-color nav-collapsible sideNav-lock navbar-dark gradient-45deg-indigo-purple no-shadow">
-          <div class="nav-wrapper">
-            <div class="header-search-wrapper hide-on-med-and-down"><i class="material-icons">search</i>
-              <input class="header-search-input z-depth-2" type="text" name="Search" placeholder="               Search">
-            </div>
-            <ul class="navbar-list right">
-              <li class="hide-on-med-and-down"><a class="waves-effect waves-block waves-light translation-button" href="javascript:void(0);" data-target="translation-dropdown"><span class="flag-icon flag-icon-gb"></span></a></li>
-              <li class="hide-on-large-only"><a class="waves-effect waves-block waves-light search-button" href="javascript:void(0);"><i class="material-icons">search</i></a></li>
-              <li><a class="waves-effect waves-block waves-light notification-button" href="javascript:void(0);" data-target="notifications-dropdown"><i class="material-icons">notifications_none<small class="notification-badge">0</small></i></a></li>
-              <li><a class="waves-effect waves-block waves-light sidenav-trigger" href="#" data-target="slide-out-right"><i class="material-icons">format_indent_increase</i></a></li>
-            </ul>
-           
-            <ul class="dropdown-content" id="translation-dropdown">
-              <li><a class="grey-text text-darken-1" href="#!"><i class="flag-icon flag-icon-gb"></i> English</a></li>
-              <li><a class="grey-text text-darken-1" href="#!"><i class="flag-icon flag-icon-fr"></i> French</a></li>
-              <li><a class="grey-text text-darken-1" href="#!"><i class="flag-icon flag-icon-cn"></i> Chinese</a></li>
-              <li><a class="grey-text text-darken-1" href="#!"><i class="flag-icon flag-icon-de"></i> German</a></li>
-            </ul>
-        
-            <ul class="dropdown-content" id="notifications-dropdown">
-              <li>
-                <h6>NOTIFICATIONS</h6>
-              </li>
-             
-            </ul>
-            
-          </div>
-          
-        </nav>
-      </div>
-    </header>-->
-    <!-- END: Header-->
-
-
-
-    <!-- BEGIN: SideNav-->
-    <aside class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-light sidenav-active-square  "  id="style-2">
+  
+ 
+<aside style="z-index: 1"   class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-light sidenav-active-square"  id="style-2">
       
       <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
-        <li ><a href="#"><i class="material-icons">settings_input_svideo</i>Dashboard</a>
-        </li>
-        <li class="navigation-header"><a class="navigation-header-text">Users</a><i class="navigation-header-icon material-icons">more_horiz</i>
-        </li>
-        <li class="bold"><a class="waves-effect waves-cyan " href="#"><i class="material-icons">group</i><span class="menu-title" data-i18n="">Users</span></a>
+        <li ><a href="?id=dashboard" class="waves-effect waves-cyan " ng-class="{true:'active',false:''}[c.options.widget_name=='widget_dashboard']"><i class="material-icons">settings_input_svideo</i>Dashboard</a>
         </li>
         <li class="navigation-header"><a class="navigation-header-text">Expense</a><i class="navigation-header-icon material-icons">more_horiz</i>
         </li>
-        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">receipt</i><span class="menu-title" data-i18n="">Bills</span></a>
-          <div class="collapsible-body">
-            <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-              <li><a class="collapsible-body" ng-click="formBill('ListBill')" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>List</span></a></li>
-                    <li><a class="collapsible-body"   ng-click="formBill('addBill')" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add</span></a>
-                    </li>
-            </ul>
-          </div>
+        <li class="bold"><a class="waves-effect waves-cyan " href="?id=bills" ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_bill']"><i class="material-icons">receipt</i><span class="menu-title" data-i18n="">Bills</span></a>
         </li>
-        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">assignment</i><span class="menu-title" data-i18n="">Sheets</span></a>
-          <div class="collapsible-body">
-            <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-              <li><a class="collapsible-body" href="#" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>List</span></a></li>
-                    <li><a class="collapsible-body"  ng-click="formSheet('addSheet')" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add</span></a>
-                    </li>
-            </ul>
-          </div>
+        <li class="bold"><a class=" waves-effect waves-cyan " href="?id=sheets"  ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_sheets']"><i class="material-icons">assignment</i><span class="menu-title" data-i18n="">Sheets</span></a>
+          
         </li>
-        <li class="bold"><a class="waves-effect waves-cyan " href="#"><i class="material-icons">time_to_leave</i><span class="menu-title" data-i18n="">Vehicles</span></a>
+        <li class="bold"><a class="waves-effect waves-cyan " href="?id=vehicles"  ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_vehicles']"><i class="material-icons">time_to_leave</i><span class="menu-title" data-i18n="">Vehicles</span></a>
         </li>
         <li class="navigation-header"><a class="navigation-header-text">Company</a><i class="navigation-header-icon material-icons">more_horiz</i>
         </li>
-        <li class="bold"><a class="waves-effect waves-cyan " href="#"><i class="material-icons">class</i><span class="menu-title" data-i18n="">Categories</span></a>
+        <li class="bold"><a class="waves-effect waves-cyan " href="?id=categories"  ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_categorie']"><i class="material-icons">class</i><span class="menu-title" data-i18n="">Categories</span></a>
         </li>
-        <li class="bold"><a class="waves-effect waves-cyan " href="#"><i class="material-icons">payment</i><span class="menu-title" data-i18n="">Payment Instruments</span></a>
+        <li class="bold"><a class="waves-effect waves-cyan "  href="?id=payment_instruments"  ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_payment_instrument']"><i class="material-icons">payment</i><span class="menu-title" data-i18n="">Payment Instruments</span></a>
         </li>
-        <li class="bold"><a class="waves-effect waves-cyan " href="#"><i class="material-icons">rate_review</i><span class="menu-title" data-i18n="">Rates</span></a>
+        <li class="bold"><a class="waves-effect waves-cyan " href="?id=rates"   ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_rate']" ><i class="material-icons">rate_review</i><span class="menu-title" data-i18n="">Rates</span></a>
         </li>
-        <li class="bold"><a class="waves-effect waves-cyan " href="#"><i class="material-icons">store</i><span class="menu-title" data-i18n="">Merchants</span></a>
+        <li class="bold"><a class="waves-effect waves-cyan "  href="?id=merchant"  ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_merchant']"><i class="material-icons">store</i><span class="menu-title" data-i18n="">Merchants</span></a>
         </li>
-        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">rv_hookup</i><span class="menu-title" data-i18n="">Mileage expenses</span></a>
-          <div class="collapsible-body">
-            <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-              <li><a class="collapsible-body" href="#" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>List</span></a></li>
-                    <li><a class="collapsible-body" href="#" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add</span></a>
-                    </li>
-            </ul>
-          </div>
+        <li class="bold"><a class=" waves-effect waves-cyan " href="?id=mileage_expenses"   ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_mileage_expenses']"><i class="material-icons">rv_hookup</i><span class="menu-title" data-i18n="">Mileage expenses</span></a>
+          
         </li>
         <li class="bold"><a class="waves-effect waves-cyan " href="#"><i class="material-icons">settings</i><span class="menu-title" data-i18n="">Company Settings</span></a>
         </li>
        </ul>
       <div class="navigation-background"></div><a class="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium waves-effect waves-light hide-on-large-only" href="#" data-target="slide-out"><i class="material-icons">menu</i></a>
     </aside>
- 
-  
-  
-  
-
-  
- 
- 
-  
-   <div id="main">
-<div class="row">
-  <div class="col s12">
-    <div id="input-fields" class="card card-tabs">
-      <div class="card-content">
-       
-        <div id="view-input-fields">
-          <div class="row scrollmenu">
-            <div  ng-if="c.data.myWidget" class="col s12">
-            <sp-widget widget="c.data.myWidget"></sp-widget>
-              
-      </div>
-    </div>
-        </div></div></div>
-   
-   </div>
-   
+<div  class="pad">
+      
+    
+          <!--<div class="pad">-->
+         
+				<div  ng-if="!c.data.myWidget" class="container" >
+		
+					<svg class="loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340">
+						 <circle cx="170" cy="170" r="160" stroke="#E2007C"/>
+						 <circle cx="170" cy="170" r="135" stroke="#404041"/>
+						 <circle cx="170" cy="170" r="110" stroke="#E2007C"/>
+						 <circle cx="170" cy="170" r="85" stroke="#404041"/>
+					</svg>
+		
+				</div>
+				  <sp-widget widget="c.data.myWidget"></sp-widget>
+				  
+   </div>  
   </div>
+ <!-- </div> 
+       </div></div></div></div></div></div></div>-->
+
      <script src="x_315710_expense_m.vendors.jsdbx" language="javascript"></script>
        <script src="x_315710_expense_m.plugins.jsdbx" language="javascript"></script>
      
   <script src="x_315710_expense_m.customizer.jsdbx" language="javascript"></script>
-      <script src="x_315710_expense_m.data-tables.jsdbx" language="javascript"></script>
+     
+
  
 
      

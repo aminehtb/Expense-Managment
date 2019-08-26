@@ -12,14 +12,15 @@
 $(function () {
 
   // Simple Data Table
-
-  $('#data-table-simple').DataTable({
+var $j_custom = jQuery.noConflict(true);
+  $j_custom(function() {
+   $j_custom('#data-table-simple').DataTable({
     "responsive": true,
   });
-
+});
   // Row Grouping Table
 
-  var table = $('#data-table-row-grouping').DataTable({
+  var table =   $j_custom(function() {$j_custom('#data-table-row-grouping').DataTable({
     "responsive": true,
     "columnDefs": [{
       "visible": false,
@@ -49,36 +50,36 @@ $(function () {
       });
     }
   });
-
+									 });
   // Page Length Option Table
 
-  $('#page-length-option').DataTable({
+   $j_custom(function() {$j_custom('#page-length-option').DataTable({
     "responsive": true,
     "lengthMenu": [
       [10, 25, 50, -1],
       [10, 25, 50, "All"]
     ]
   });
-
+						});
   // Dynmaic Scroll table
 
-  $('#scroll-dynamic').DataTable({
+   $j_custom(function() {$j_custom('#scroll-dynamic').DataTable({
     "responsive": true,
     scrollY: '50vh',
     scrollCollapse: true,
     paging: false
   })
-
+   });
   // Horizontal And Vertical Scroll Table
 
-  $('#scroll-vert-hor').DataTable({
+  $j_custom(function() {$j_custom('#scroll-vert-hor').DataTable({
     "scrollY": 200,
     "scrollX": true
-  })
+  })});
 
   // Multi Select Table
 
-  $('#multi-select').DataTable({
+  $j_custom(function() {$j_custom('#multi-select').DataTable({
     responsive: true,
     "paging": true,
     "ordering": false,
@@ -96,8 +97,8 @@ $(function () {
 
 
 // Datatable click on select issue fix
-$(window).on('load', function () {
-  $(".dropdown-content.select-dropdown li").on("click", function () {
+$j_custom(function() {$j_custom(window).on('load', function () {
+  $j_custom(".dropdown-content.select-dropdown li").on("click", function () {
     var that = this;
     setTimeout(function () {
       if ($(that).parent().parent().find('.select-dropdown').hasClass('active')) {
@@ -107,17 +108,17 @@ $(window).on('load', function () {
       }
     }, 100);
   });
-});
+})});
 
-var checkbox = $('#multi-select tbody tr th input')
-var selectAll = $('#multi-select .select-all')
+var checkbox = $j_custom(function() {$j_custom('#multi-select tbody tr th input')})
+var selectAll =$j_custom(function() { $j_custom('#multi-select .select-all')})
 
 // Select A Row Function
 
-$(document).ready(function () {
+$j_custom(function() {$j_custom(document).ready(function () {
   checkbox.on('click', function () {
     $(this).parent().parent().parent().toggleClass('selected');
-  })
+  });
 
   checkbox.on('click', function () {
     if ($(this).attr("checked")) {
@@ -125,7 +126,7 @@ $(document).ready(function () {
     } else {
       $(this).attr('checked', true);
     }
-  })
+  });
 
 
   // Select Every Row 
@@ -133,12 +134,12 @@ $(document).ready(function () {
   selectAll.on('click', function () {
     $(this).toggleClass('clicked');
     if (selectAll.hasClass('clicked')) {
-      $('#multi-select tbody tr').addClass('selected');
+      $j_custom(function() {$j_custom('#multi-select tbody tr').addClass('selected');});
     } else {
-      $('#multi-select tbody tr').removeClass('selected');
+      $j_custom('#multi-select tbody tr').removeClass('selected');
     }
 
-    if ($('#multi-select tbody tr').hasClass('selected')) {
+    if ($j_custom(function() {$j_custom('#multi-select tbody tr').hasClass('selected')})) {
       checkbox.prop('checked', true);
 
     } else {
@@ -146,20 +147,21 @@ $(document).ready(function () {
 
     }
   })
+})})
 })]]></script>
         <script_name>data-tables</script_name>
         <sys_class_name>sys_ui_script</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-06-27 14:35:09</sys_created_on>
         <sys_id>f50fd2611bd2730072fe2136ec4bcbd1</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>8</sys_mod_count>
         <sys_name>x_315710_expense_m.data-tables</sys_name>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
         <sys_policy/>
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sys_ui_script_f50fd2611bd2730072fe2136ec4bcbd1</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-06-27 14:41:09</sys_updated_on>
+        <sys_updated_on>2019-07-05 10:34:21</sys_updated_on>
         <ui_type>10</ui_type>
         <use_scoped_format>false</use_scoped_format>
     </sys_ui_script>

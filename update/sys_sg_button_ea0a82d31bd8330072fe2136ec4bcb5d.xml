@@ -45,7 +45,7 @@
         <table>x_315710_expense_m_expense_bill</table>
         <take_value_from_field>false</take_value_from_field>
         <type>write_back</type>
-        <write_back_action_item display_value="Delete Bill">100e8a571bd8330072fe2136ec4bcbf4</write_back_action_item>
+        <write_back_action_item display_value="">100e8a571bd8330072fe2136ec4bcbf4</write_back_action_item>
     </sys_sg_button>
     <sys_translated_text action="delete_multiple" query="documentkey=ea0a82d31bd8330072fe2136ec4bcb5d"/>
 </record_update>

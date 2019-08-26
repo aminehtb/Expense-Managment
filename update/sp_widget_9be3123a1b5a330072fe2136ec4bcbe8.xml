@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function() {  /* widget controller */  var c = this;}]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>view_sheet</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>View Sheet</name>
+        <option_schema>[{"name":"idsheet","section":"other","label":"idsheet","type":"string"}]</option_schema>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+		var gr = new GlideRecord("x_315710_expense_m_expense_bill");
+	var sheet = new GlideRecord("x_315710_expense_m_expense_sheet");
+	sheet.get(input.idsheet);
+	gs.warn("Sheet : "+input.idsheet);
+	data.name = sheet.getDisplayValue("name");
+	data.number = sheet.getDisplayValue("number");
+	
+	data.bills=[];
+	gr.addQuery("expense_sheet",input.idsheet);
+	gr.query();
+	while(gr.next()){
+		var billobj={};
+		$sp.getRecordDisplayValues(billobj, gr, 'image,title,value,state,process_date,type,tips,expense_sheet,payment_instrument,category,rate_card,country,user,billable_to_client,to_reimburse,vat,merchant,sys_id');
+			data.bills.push(billobj);
+	}
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-07-01 10:58:10</sys_created_on>
+        <sys_id>9be3123a1b5a330072fe2136ec4bcbe8</sys_id>
+        <sys_mod_count>29</sys_mod_count>
+        <sys_name>View Sheet</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sp_widget_9be3123a1b5a330072fe2136ec4bcbe8</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-07-16 09:04:04</sys_updated_on>
+        <template><![CDATA[<div>
+  
+
+<div  ng-if="data.bills.length != 0">
+
+  <table  id="data-table-simple" class="display">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Title</th>
+        <th>Value</th>
+        <th>Tips</th>
+        <th>Process Date</th>
+
+
+    </thead>
+    <tbody  ng-repeat="item in data.bills" >
+      <tr>
+        <td><img   style="width:100px;height:100px" src="{{item.image}}"/></td>
+        <td>{{item.title}}</td>
+        <td>{{item.value}}</td>
+        <td>{{item.tips}}</td>
+        <td>{{item.process_date}}</td>
+
+      </tr>
+    </tbody>
+
+  </table>
+
+</div>
+
+<div ng-if="data.bills.length == 0">
+  <div class="alert alert-warning" role="alert">
+    no Bill exists
+  </div>
+
+</div>
+</div>
+]]></template>
+    </sp_widget>
+</record_update>

@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope) {
+	/* widget controller */
+	var c = this;
+	
+	
+	 $('.date-own').datepicker({
+	       minViewMode: 1,
+	       format: 'yyyy-mm'
+	     });
+	
+	
+$scope.show_month = function(){
+ console.log("month : "+c.data.month);
+		c.data.action = 'update';
+	c.server.update().then(function(){
+		console.log("month : "+JSON.stringify(c.data.aff));
+			c.data.action = undefined;
+		testUpdate();
+		});
+
+ }
+	function testUpdate(){
+			/********** Category *********/
+	var chart = Highcharts.chart('container2', {
+
+		title: {
+			text: 'Total Of Bill With Category '
+		},
+
+		
+
+		xAxis: {
+			categories:c.data.list
+		},
+
+		series: [{
+			type: 'column',
+			colorByPoint: true,
+			data:c.data.aff,
+			showInLegend: false
+		}]
+
+	});
+
+
+	$('#plain').click(function () {
+		chart.update({
+			chart: {
+				inverted: false,
+				polar: false
+			},
+			subtitle: {
+				text: 'Plain'
+			}
+		});
+	});
+
+	$('#inverted').click(function () {
+		chart.update({
+			chart: {
+				inverted: true,
+				polar: false
+			},
+			subtitle: {
+				text: 'Inverted'
+			}
+		});
+	});
+
+	$('#polar').click(function () {
+		chart.update({
+			chart: {
+				inverted: false,
+				polar: true
+			},
+			subtitle: {
+				text: 'Polar'
+			}
+		});
+	});
+
+	}
+	/********** Category *********/
+	var chart = Highcharts.chart('container2', {
+
+		title: {
+			text: 'Total Of Bill With Category'
+		},
+
+		subtitle: {
+			text: 'Plain'
+		},
+
+		xAxis: {
+			categories:c.data.list
+		},
+
+		series: [{
+			type: 'column',
+			colorByPoint: true,
+			data:c.data.aff,
+			showInLegend: false
+		}]
+
+	});
+
+
+	$('#plain').click(function () {
+		chart.update({
+			chart: {
+				inverted: false,
+				polar: false
+			},
+			subtitle: {
+				text: 'Plain'
+			}
+		});
+	});
+
+	$('#inverted').click(function () {
+		chart.update({
+			chart: {
+				inverted: true,
+				polar: false
+			},
+			subtitle: {
+				text: 'Inverted'
+			}
+		});
+	});
+
+	$('#polar').click(function () {
+		chart.update({
+			chart: {
+				inverted: false,
+				polar: true
+			},
+			subtitle: {
+				text: 'Polar'
+			}
+		});
+	});
+
+
+
+
+	/******** Bill***********/
+	Highcharts.chart('container', {
+		chart: {
+			plotBackgroundColor: null,
+			plotBorderWidth: null,
+			plotShadow: false,
+			type: 'pie'
+		},
+		title: {
+			text: 'Approval Or Not'
+		},
+		tooltip: {
+			pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+		},
+		plotOptions: {
+			pie: {
+				allowPointSelect: true,
+				cursor: 'pointer',
+				dataLabels: {
+					enabled: true,
+					format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+				}
+			}
+		},
+		series: [{
+			name: 'Bills',
+			colorByPoint: true,
+			data: [{
+				name: 'Approved',
+				y: c.data.approval,
+				sliced: true,
+				selected: true
+			}, {
+				name: 'Requested',
+				y: c.data.req
+			},
+						 {
+							 name: 'Rejected',
+							 y: c.data.not
+						 }
+						]
+		}]
+	});
+
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>widget_dashboard</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>widget_dashboard</name>
+        <option_schema>[]</option_schema>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	var gr = new GlideRecord('x_315710_expense_m_expense_bill');
+	/********* Start  Chart Pie ***************/
+	function getByApprovalState(state){
+		var gr = new GlideRecord('x_315710_expense_m_expense_bill');
+		gr.addQuery('approval',state);
+		gr.query();
+		return	gr.getRowCount();
+	}
+
+
+	gr.query();
+
+	var tot = gr.getRowCount();
+	data.tot = tot ;
+
+	data.approval = 100*(getByApprovalState("approved")/tot);
+	data.req = 100*(getByApprovalState("requested")/tot);
+	data.not =100*(getByApprovalState("rejected")/tot);
+	/********* End Chart Pie ***************/
+
+	/********* Start Chart Column  ***************/
+	//List Of Category
+	var categ = new GlideRecord("x_315710_expense_m_category");
+	gr.orderByDesc('sys_created_on');
+	categ.query();
+	data.list=[];
+	while(categ.next()){
+		data.list.push(categ.getDisplayValue("name"));
+	}
+	var json=new global.JSON();
+
+	listOfSUMlRegrouedByCat();
+	//json.encode(data.listSum);
+	//gs.warn(data.listSum);
+
+	//Search cat in list Of SUM
+	function search(mot){
+		var ok = true ;
+		var r =null;
+		var j =0 ;
+		while(j<data.listSum.length && ok){
+
+			if(mot == data.listSum[j].cat){
+				r =data.listSum[j].sum ; 
+				ok=false;
+			}
+			j++;
+
+		}
+		return r ;
+	}
+
+	//List des somme with value 0
+	function aff(){
+		data.aff=[];
+		for(var i=0 ; i<data.list.length;i++){
+			var r = search(data.list[i]) ;
+
+			if(r != null)
+				data.aff.push(parseInt(r,10));
+			if(r == null)
+				data.aff.push(0);
+
+		}
+	}
+
+	aff();
+	if(input && input.action=="update"){
+		gs.warn("update list "+input.month);
+		listOfSUMlRegrouedByCatAndDate(input.month);
+		aff();
+		json.encode(data.listSum);
+		gs.warn("new list");
+		gs.warn(data.listSum);
+	}
+
+
+	function listOfSUMlRegrouedByCat(){
+		data.listSum=[];
+		var sum = new GlideAggregate('x_315710_expense_m_expense_bill');
+
+		sum.addAggregate('SUM', 'value');
+		//gr.setGroup(true);
+		sum.groupBy("category");
+		sum.query();
+		while(sum.next()){
+			var r = sum.getAggregate("SUM","value");
+			var obj={"cat":sum.getDisplayValue("category"),"sum":r};
+			data.listSum.push(obj);
+		}
+	}
+
+	function listOfSUMlRegrouedByCatAndDate(mo , year){
+		data.listSum=[];
+		var month =mo;
+	var start =year+"-"+month+"-01";
+	var end=year+"-"+month+"-31";
+var str_query="dateBETWEENjavascript:gs.dateGenerate('"+start+"','start')@javascript:gs.dateGenerate('"+end+"','end')";
+
+		gs.warn("param : "+d+" m : "+mo);
+		var sum = new GlideAggregate('x_315710_expense_m_expense_bill');
+		sum.addEncodedQuery(str_query);
+		sum.addAggregate('SUM', 'value');
+		//gr.setGroup(true);
+		sum.groupBy("category");
+		sum.query();
+		while(sum.next()){
+			var r = sum.getAggregate("SUM","value");
+		
+			var obj={"cat":sum.getDisplayValue("category"),"sum":r};
+			data.listSum.push(obj);
+		}
+		
+	}
+
+
+	/********* End Chart  Column  ***************/
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-07-24 11:44:50</sys_created_on>
+        <sys_id>d72bb0561bf2330072fe2136ec4bcb83</sys_id>
+        <sys_mod_count>261</sys_mod_count>
+        <sys_name>widget_dashboard</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sp_widget_d72bb0561bf2330072fe2136ec4bcb83</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-08-26 09:22:22</sys_updated_on>
+        <template><![CDATA[   
+ 
+
+   
+<h4>
+  Dashboard 
+</h4>
+
+<div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto">
+</div>
+<br><br>
+     
+
+
+<br><br>
+<input class="date-own form-control" style="width: 300px;" type="text">
+
+<div id="container2" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto" ></div>
+
+
+
+
+
+
+
+<script src="https://code.highcharts.com/highcharts.src.js"></script>
+<script src="x_315710_expense_m.highcharts.jsdbx" language="javascript"></script>
+
+
+]]></template>
+    </sp_widget>
+</record_update>

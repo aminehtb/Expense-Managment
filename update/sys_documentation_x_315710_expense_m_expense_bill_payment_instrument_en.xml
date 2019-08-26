@@ -10,8 +10,8 @@
             <plural>Payment Instruments</plural>
             <sys_class_name>sys_documentation</sys_class_name>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2019-03-12 10:18:04</sys_created_on>
-            <sys_id>e942668b1b40334072fe2136ec4bcb66</sys_id>
+            <sys_created_on>2019-08-02 15:01:29</sys_created_on>
+            <sys_id>6b7e7f491b47330072fe2136ec4bcb3e</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>Payment Instrument</sys_name>
             <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
@@ -19,7 +19,7 @@
             <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
             <sys_update_name>sys_documentation_x_315710_expense_m_expense_bill_payment_instrument_en</sys_update_name>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2019-03-12 10:18:04</sys_updated_on>
+            <sys_updated_on>2019-08-02 15:01:29</sys_updated_on>
             <url/>
             <url_target/>
         </sys_documentation>

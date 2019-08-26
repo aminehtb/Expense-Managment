@@ -14,7 +14,7 @@
         <choice/>
         <choice_field/>
         <choice_table/>
-        <column_label>Process date</column_label>
+        <column_label>Process Date</column_label>
         <comments/>
         <create_roles/>
         <default_value/>
@@ -33,7 +33,7 @@
         <function_definition/>
         <function_field>false</function_field>
         <internal_type display_value="">glide_date</internal_type>
-        <mandatory>true</mandatory>
+        <mandatory>false</mandatory>
         <max_length>40</max_length>
         <name>x_315710_expense_m_expense_bill</name>
         <next_element/>
@@ -52,16 +52,16 @@
         <staged>false</staged>
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2019-03-11 08:52:44</sys_created_on>
-        <sys_id>64054dbe1b80ff0072fe2136ec4bcbbb</sys_id>
+        <sys_created_on>2019-08-02 14:39:41</sys_created_on>
+        <sys_id>6f697f451b47330072fe2136ec4bcbed</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name>Process date</sys_name>
+        <sys_name>Process Date</sys_name>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
         <sys_policy/>
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sys_dictionary_x_315710_expense_m_expense_bill_process_date</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-03-11 08:52:44</sys_updated_on>
+        <sys_updated_on>2019-08-02 14:39:41</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

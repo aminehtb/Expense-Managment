@@ -44,7 +44,7 @@
         <reference_cascade_rule/>
         <reference_floats>false</reference_floats>
         <reference_key/>
-        <reference_qual>javascript: new global.AttachmentRefQualifier().fetchAttachmentRecords(current.sys_id)</reference_qual>
+        <reference_qual/>
         <reference_qual_condition/>
         <reference_type/>
         <sizeclass/>
@@ -52,22 +52,22 @@
         <staged>false</staged>
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2019-03-18 12:44:22</sys_created_on>
-        <sys_id>830d358d1b90330072fe2136ec4bcbdc</sys_id>
-        <sys_mod_count>10</sys_mod_count>
+        <sys_created_on>2019-08-02 14:52:50</sys_created_on>
+        <sys_id>897cb7c51b47330072fe2136ec4bcbd6</sys_id>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>Image</sys_name>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
         <sys_policy/>
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sys_dictionary_x_315710_expense_m_expense_bill_image</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-04-08 13:31:52</sys_updated_on>
+        <sys_updated_on>2019-08-08 12:35:22</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
         <use_dependent_field>false</use_dependent_field>
         <use_dynamic_default>false</use_dynamic_default>
-        <use_reference_qualifier>advanced</use_reference_qualifier>
+        <use_reference_qualifier>simple</use_reference_qualifier>
         <virtual>false</virtual>
         <widget/>
         <write_roles/>

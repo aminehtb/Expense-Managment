@@ -2,89 +2,17 @@
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
         <client_script><![CDATA[function($scope) {
-  /* widget controller */
-function TestCtrl($scope) {
-    $scope.range = function(n) {
-        return new Array(n);
-    };
-}
-  var c = this;
-	var dragSrcEl = null;
-
-function handleDragStart(e) {
-  // Target (this) element is the source node.
-  dragSrcEl = this;
-
-  e.dataTransfer.effectAllowed = 'move';
-  e.dataTransfer.setData('text/html', this.outerHTML);
-
-  this.classList.add('dragElem');
-}
-function handleDragOver(e) {
-  if (e.preventDefault) {
-    e.preventDefault(); // Necessary. Allows us to drop.
-  }
-  this.classList.add('over');
-
-  e.dataTransfer.dropEffect = 'move';  // See the section on the DataTransfer object.
-
-  return false;
-}
-
-function handleDragEnter(e) {
-  // this / e.target is the current hover target.
-}
-
-function handleDragLeave(e) {
-  this.classList.remove('over');  // this / e.target is previous target element.
-}
-
-function handleDrop(e) {
-  // this/e.target is current target element.
-
-  if (e.stopPropagation) {
-    e.stopPropagation(); // Stops some browsers from redirecting.
-  }
-
-  // Don't do anything if dropping the same column we're dragging.
-  if (dragSrcEl != this) {
-    // Set the source column's HTML to the HTML of the column we dropped on.
-    //alert(this.outerHTML);
-    //dragSrcEl.innerHTML = this.innerHTML;
-    //this.innerHTML = e.dataTransfer.getData('text/html');
-    this.parentNode.removeChild(dragSrcEl);
-    var dropHTML = e.dataTransfer.getData('text/html');
-    this.insertAdjacentHTML('beforebegin',dropHTML);
-    var dropElem = this.previousSibling;
-    addDnDHandlers(dropElem);
-    
-  }
-  this.classList.remove('over');
-  return false;
-}
-
-function handleDragEnd(e) {
-  // this/e.target is the source node.
-  this.classList.remove('over');
-
-  /*[].forEach.call(cols, function (col) {
-    col.classList.remove('over');
+ /* $(".datepicker").datepicker({
+     autoclose: true,
+		viewMode : 'months',
+    minViewMode: "months",
+		startView:"months",
+	  format: 'yyyy-mm'
   });*/
-}
-
-function addDnDHandlers(elem) {
-  elem.addEventListener('dragstart', handleDragStart, false);
-  elem.addEventListener('dragenter', handleDragEnter, false)
-  elem.addEventListener('dragover', handleDragOver, false);
-  elem.addEventListener('dragleave', handleDragLeave, false);
-  elem.addEventListener('drop', handleDrop, false);
-  elem.addEventListener('dragend', handleDragEnd, false);
-
-}
-
-var cols = document.querySelectorAll('#columns .column');
-[].forEach.call(cols, addDnDHandlers);
-
+ $('.date-own').datepicker({
+	       minViewMode: 1,
+	       format: 'yyyy-mm'
+	     });
 
 }]]></client_script>
         <controller_as>c</controller_as>
@@ -141,27 +69,41 @@ var cols = document.querySelectorAll('#columns .column');
         <option_schema/>
         <public>false</public>
         <roles/>
-        <script><![CDATA[(function() {  /* populate the 'data' object */  /* e.g., data.table = $sp.getValue('table'); */})();]]></script>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+
+})();]]></script>
         <servicenow>false</servicenow>
         <sys_class_name>sp_widget</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-06-24 12:34:54</sys_created_on>
         <sys_id>44f6a6e41bd2330072fe2136ec4bcb26</sys_id>
-        <sys_mod_count>16</sys_mod_count>
+        <sys_mod_count>56</sys_mod_count>
         <sys_name>amine</sys_name>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
         <sys_policy/>
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sp_widget_44f6a6e41bd2330072fe2136ec4bcb26</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-06-25 10:24:59</sys_updated_on>
-        <template><![CDATA[<div>
-<ul  >
-  <li    ng-repeat="a in range(5) track by $index">{{$index + 1}}</li>
- </ul>
+        <sys_updated_on>2019-08-26 09:21:29</sys_updated_on>
+        <template><![CDATA[
+    <title>Bootstrap - datepicker change view mode like yyyy-mm</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
 
 
 
-</div>]]></template>
+<div class="container text-center">
+     <h2>Bootstrap - datepicker change view mode like yyyy-mm</h2>
+     <input class="date-own form-control" style="width: 300px;" type="text">
+
+
+</div>
+
+]]></template>
     </sp_widget>
 </record_update>

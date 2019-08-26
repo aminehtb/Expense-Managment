@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope,spModal,spUtil,$filter,$rootScope) {
+var c = this;
+	
+$scope.range = function (size,start, end) {
+    var ret = [];        
+    console.log(size,start, end);
+
+       if (size < end) {
+        end = size;
+        if(size<$scope.gap){
+             start = 0;
+        }else{
+             start = size-$scope.gap;
+        }
+
+    }
+    for (var i = start; i < end; i++) {
+        ret.push(i);
+    }        
+     console.log(ret);        
+    return ret;
+};
+
+		c.ctrlRead =function(data ) 
+	{
+
+	$scope.sortingOrder = sortingOrder;
+	$scope.reverse = false;
+	$scope.filteredItems = [];
+	$scope.groupedItems = [];
+	$scope.itemsPerPage = 5;
+	$scope.pagedItems = [];
+	$scope.currentPage = 0;
+	/* $scope.items =[{"billIndex":1,"image":"","number":"EXP001605","process_date":"2019-05-29","title":"hj,jh,","value":"398.5733"},{"billIndex":2,"image":"","number":"EXP001604","process_date":"2019-04-10","title":"hgjj","value":"4855.1048"},{"billIndex":3,"image":"","number":"EXP001603","process_date":"2019-06-14","title":"kljl","value":"512.7062"},{"billIndex":4,"image":"","number":"EXP001602","process_date":"2019-04-09","title":"ouio","value":"178.3326"},{"billIndex":5,"image":"f4a2d2b61b5a330072fe2136ec4bcb99","number":"EXP001601","process_date":"2019-04-10","title":"eg","value":"4876.9772"},{"billIndex":6,"image":"497e31bd1bda730072fe2136ec4bcb6c","number":"EXP001599","process_date":"2019-06-28","title":"titre","value":"32449"},{"billIndex":7,"image":"92d922a51bd2730072fe2136ec4bcbed","number":"EXP001550","process_date":"2019-05-26","title":"test update","value":"569330"},{"billIndex":8,"image":"bf431ea11b92730072fe2136ec4bcbc0","number":"EXP001522","process_date":"2019-11-01","title":"tetst update99","value":"963"}] ; 
+	console.log($scope.items);*/
+	$scope.items =JSON.parse(c.data.tableData);
+	//$scope.items=getData2();
+	var searchMatch = function (haystack, needle) {
+		if (!needle) {
+			return true;
+		}
+		return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
+	};
+
+	// init the filtered items
+	$scope.search = function () {
+		$scope.filteredItems = $filter('filter')($scope.items, function (item) {
+			for(var attr in item) {
+				if (searchMatch(item[attr], $scope.query))
+					return true;
+			}
+			return false;
+		});
+		// take care of the sorting order
+		if ($scope.sortingOrder !== '') {
+			$scope.filteredItems = $filter('orderBy')($scope.filteredItems, $scope.sortingOrder, $scope.reverse);
+		}
+		$scope.currentPage = 0;
+		// now group by pages
+		$scope.groupToPages();
+	};
+
+	// calculate page in place
+	$scope.groupToPages = function () {
+		$scope.pagedItems = [];
+
+		for (var i = 0; i < $scope.filteredItems.length; i++) {
+			if (i % $scope.itemsPerPage === 0) {
+				$scope.pagedItems[Math.floor(i / $scope.itemsPerPage)] = [ $scope.filteredItems[i] ];
+			} else {
+				$scope.pagedItems[Math.floor(i / $scope.itemsPerPage)].push($scope.filteredItems[i]);
+			}
+		}
+	};
+
+	$scope.range = function (start, end) {
+		var ret = [];
+		if (!end) {
+			end = start;
+			start = 0;
+		}
+		for (var i = start; i < end; i++) {
+			ret.push(i);
+		}
+		return ret;
+	};
+
+	$scope.prevPage = function () {
+		if ($scope.currentPage > 0) {
+			$scope.currentPage--;
+		}
+	};
+
+	$scope.nextPage = function () {
+		if ($scope.currentPage < $scope.pagedItems.length - 1) {
+			$scope.currentPage++;
+		}
+	};
+
+	$scope.setPage = function () {
+		$scope.currentPage = this.n;
+	};
+
+	// functions have been describe process the data for display
+	$scope.search();
+
+	// change sorting order
+	$scope.sort_by = function(newSortingOrder) {
+		if ($scope.sortingOrder == newSortingOrder)
+			$scope.reverse = !$scope.reverse;
+
+		$scope.sortingOrder = newSortingOrder;
+
+		// icon setup
+		$('th i').each(function(){
+			// icon reset
+			$(this).removeClass().addClass('icon-sort');
+		});
+		if ($scope.reverse)
+			$('th.'+$scope.sortingOrder+' i').removeClass().addClass('icon-chevron-up');
+		else
+			$('th.'+$scope.sortingOrder+' i').removeClass().addClass('icon-chevron-down');
+	};
+		}
+
+	//c.getData();
+	c.ctrlRead(c.data.tableData );
+
+
+	c.selectItem = function(id,action) {  
+		// Set the position indicator to the index value passed in on select
+		//c.sheetPos = idx;
+		console.log("id : "+id);
+		//var id = c.data.sheets[idx].sys_id;
+	
+		if(action == 'delete'){
+	
+			c.confirmDelete(id);	
+		}
+		if(action == 'update'){
+			$rootScope.sheetID = id;
+		$rootScope.$emit('selectsheet', id);
+		
+		}
+	}
+
+
+	
+
+	c.selectItem = function(id ,action) {  
+		// Set the position indicator to the index value passed in on select
+		/*c.paymentPos = idx;
+		console.log("idx : "+idx);
+		var id = c.data.payments[idx].sys_id;
+		console.log(id);*/
+		
+		console.log("id : "+id);
+		if(action == 'delete'){
+
+			c.confirmDelete(id);	
+		}
+		if(action == 'update'){
+			$rootScope.paymentID = id;
+			$rootScope.$emit('selectpayment', id);
+
+		}
+	}
+c.add = function(){
+		$rootScope.addpayment = "ok";
+		$rootScope.$emit('addpayment', "ok");
+	}
+	c.confirmDelete = function(idd){
+
+		spModal.confirm("Are you sure you want to delete this payment record?").then(function(confirmed){
+			if(confirmed){
+				c.deletepayment(idd);
+			}
+		});
+	}
+	c.deletepayment = function(iddd) {
+		
+			c.data.action = 'deletepayment';
+			c.data.paymentID = iddd ;
+		c.server.update().then(function(r) {
+
+			console.log(r);
+			spUtil.addTrivialMessage("The record has been deleted.");
+			//$scope.data.tableData = c.data.tableData ; 
+			c.ctrlRead(c.data.tableData );
+			c.data.action = undefined;
+		});
+	}
+
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.container{  
+    white-space:nowrap;
+    overflow-x:auto;
+}
+
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>widget_list_of_payment_instrument</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>widget list of payment instrument</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+var gr=new GlideRecord("x_315710_expense_m_payment_instrument");
+var listpayments= function(){ 
+	var gr=new GlideRecord("x_315710_expense_m_payment_instrument");
+
+		var i=0;
+		var json=new global.JSON();
+		data.payments=[];
+		gr.orderByDesc('sys_created_on');
+		gr.query();
+		while (gr.next()) {
+			var paymentObj = {};
+			$sp.getRecordDisplayValues(paymentObj,gr,'name,instrument_type,bank_account_type,accounting_number,auxiliary_account,journal_code,description,sys_id');	
+
+			data.payments.push(paymentObj);
+			gs.warn('payment  : '+data.payments);
+		}
+		gs.warn("length : "+i);
+		data.tableData = null ; 
+		data.tableData = json.encode(data.payments);
+	}
+	//if (!input){
+		listpayments();
+//	}
+	
+	if (input && input.action == 'deletepayment') {
+		var grr=new GlideRecord("x_315710_expense_m_payment_instrument");
+
+		grr.get(input.paymentID)
+			gs.warn("sheet deleted : "+input.paymentID);
+
+			gs.warn('delete');
+			grr.deleteRecord(); 
+			listpayments();
+
+	}
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-07-02 18:24:29</sys_created_on>
+        <sys_id>cba34dd71b12330072fe2136ec4bcb87</sys_id>
+        <sys_mod_count>70</sys_mod_count>
+        <sys_name>widget list of payment instrument</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sp_widget_cba34dd71b12330072fe2136ec4bcb87</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-08-15 09:04:58</sys_updated_on>
+        <template><![CDATA[<link href="https://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" rel="stylesheet">
+
+   <p>
+      <a class="right btn-floating btn-large primary-text gradient-shadow cyan pull-right"  href="?id=form_payment_instrument">
+        <i class="material-icons">add</i>
+      </a>
+    </p>
+  <h4 class="card-title">List Of Payment Instruments</h4>
+
+
+    <div ng-controller="ctrlRead">
+      <div class="input-append">
+        <input type="text" ng-model="query" ng-change="search()" class="input-large search-query" placeholder="Search">
+        <span class="add-on"><i class="icon-search"></i></span>
+      </div>
+
+      <script type="text/javascript">
+      var sortingOrder = 'name';
+      </script>
+
+      <table  id="data-table-simple" class="display" >
+        <thead>
+          <tr>
+            <th class="text-center" >Name &nbsp;<a ng-click="sort_by('name')"><i class="icon-sort"></i></a></th>
+            <th class="text-center" >Instrument type &nbsp;<a ng-click="sort_by('instrument_type')"><i class="icon-sort"></i></a></th>
+            <th class="text-center" >Bank account type &nbsp;<a ng-click="sort_by('bank_account_type')"><i class="icon-sort"></i></a></th>
+            <th class="text-center" >Accounting number &nbsp;<a ng-click="sort_by('accounting_number')"><i class="icon-sort"></i></a></th>
+            <th class="text-center" >Auxiliary account &nbsp;<a ng-click="sort_by('auxiliary_account')"><i class="icon-sort"></i></a></th>
+            <!--<th class="text-center" >Journal code &nbsp;<a ng-click="sort_by('journal_code')"><i class="icon-sort"></i></a></th>-->
+            <th class="text-center" colspan="2"> Options </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  ng-repeat="item in pagedItems[currentPage]  | orderBy:sortingOrder:reverse track by $index">
+            <td class="text-center" >{{item.name}}</td>
+            <td class="text-center" >{{item.instrument_type}}</td>
+            <td class="text-center" >{{item.bank_account_type}}</td>
+            <td class="text-center" >{{item.accounting_number}}</td>
+            <td class="text-center" >{{item.auxiliary_account}}</td>
+            <!--<td class="text-center" >{{item.journal_code}}</td>-->
+            <td class="text-center"> <button class="mb-6 btn waves-effect waves-light red accent-2"  ng-click="c.selectItem(item.sys_id,'delete')" >
+              <span class="glyphicon glyphicon-trash"></span></button>
+            </td>
+            <td class="text-center">
+               <a  class="mb-6 btn waves-effect waves-light purple lightrn-1"  href="?id=form_update_payment_instrument&table=x_315710_expense_m_payment_instrument&sys_id={{item.sys_id}}" >
+                      <span class="glyphicon glyphicon glyphicon-pencil"></span></a>
+                 </td>
+          </tr>
+        </tbody>
+         
+ </table>
+    <div class="pagination pull-right">
+                            <ul>
+                                <li ng-class="{disabled: currentPage == 0}">
+                                    <a href ng-click="prevPage()">« Prev</a>
+                                </li>
+                                <li ng-repeat="n in range(pagedItems.length)"
+                                    ng-class="{active: n == currentPage}"
+                                ng-click="setPage()">
+                                    <a href ng-bind="n + 1">1</a>
+                                </li>
+                                <li ng-class="{disabled: currentPage == pagedItems.length - 1}">
+                                    <a href ng-click="nextPage()">Next »</a>
+                                </li>
+                            </ul>
+                        </div>
+                   
+
+          </div>
+   
+
+  ]]></template>
+    </sp_widget>
+</record_update>
