@@ -16,9 +16,12 @@
             <element name="rate"/>
         </index>
         <index name="index2">
-            <element name="user"/>
+            <element name="departure"/>
         </index>
         <index name="index3">
+            <element name="user"/>
+        </index>
+        <index name="index4">
             <element name="vehicle"/>
         </index>
     </element>

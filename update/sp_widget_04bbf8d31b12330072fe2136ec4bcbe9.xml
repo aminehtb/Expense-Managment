@@ -238,14 +238,14 @@ listRates();
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-07-02 17:49:36</sys_created_on>
         <sys_id>04bbf8d31b12330072fe2136ec4bcbe9</sys_id>
-        <sys_mod_count>77</sys_mod_count>
+        <sys_mod_count>78</sys_mod_count>
         <sys_name>widget list of Rate</sys_name>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
         <sys_policy/>
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sp_widget_04bbf8d31b12330072fe2136ec4bcbe9</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-08-15 09:00:40</sys_updated_on>
+        <sys_updated_on>2019-08-29 15:45:31</sys_updated_on>
         <template><![CDATA[<link href="https://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" rel="stylesheet">
 <script type="text/javascript">
   var sortingOrder = 'name';
@@ -258,9 +258,10 @@ listRates();
     </p>
     <h4>List Of Rates</h4>
     <div ng-controller="ctrlRead">
-      <div class="input-append">
+       <div class="input-field col m12">
+         <i class="icon-search prefix"></i>
         <input type="text" ng-model="query" ng-change="search()" class="input-large search-query" placeholder="Search">
-        <span class="add-on"><i class="icon-search"></i></span>
+      
       </div>
             <table id="data-table-simple" class="display">
               <thead>

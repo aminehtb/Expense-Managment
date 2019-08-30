@@ -14,7 +14,7 @@
         <choice>1</choice>
         <choice_field/>
         <choice_table/>
-        <column_label>Bank account type </column_label>
+        <column_label>Bank account type</column_label>
         <comments/>
         <create_roles/>
         <default_value/>
@@ -53,15 +53,15 @@
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-03-12 10:10:45</sys_created_on>
-        <sys_id>2c90624b1b40334072fe2136ec4bcb7f</sys_id>
+        <sys_id>c5684bb91b27730072fe2136ec4bcb40</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name>Bank account type </sys_name>
+        <sys_name>Bank account type</sys_name>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
         <sys_policy/>
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sys_dictionary_x_315710_expense_m_payment_instrument_bank_account_type</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-03-12 10:10:45</sys_updated_on>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2019-08-29 15:32:08</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

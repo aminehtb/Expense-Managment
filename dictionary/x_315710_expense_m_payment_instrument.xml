@@ -2,7 +2,7 @@
     <element label="Payment Instrument" max_length="40" name="x_315710_expense_m_payment_instrument" type="collection">
         <element label="Accounting number" max_length="40" name="accounting_number" type="integer"/>
         <element label="Auxiliary account" max_length="40" name="auxiliary_account" type="integer"/>
-        <element choice="1" label="Bank account type " max_length="40" name="bank_account_type" type="choice">
+        <element choice="1" label="Bank account type" max_length="40" name="bank_account_type" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Not indicated" sequence="0" value="not indicated"/>
                 <element inactive_on_update="false" label="Personal" sequence="1" value="personal"/>
