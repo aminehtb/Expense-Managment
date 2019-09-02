@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_report">
     <sys_report action="INSERT_OR_UPDATE">
         <additional_groupby/>
-        <aggregate>COUNT</aggregate>
+        <aggregate>SUM</aggregate>
         <allow_data_label_overlap>false</allow_data_label_overlap>
         <axis_max_color display_value="UI14 Blue Light">b0d449b3d7332100fa6c0c12ce610383</axis_max_color>
         <axis_min_color display_value="White">65b303c7a9fe3dba00629aff95ee3597</axis_min_color>
@@ -51,7 +51,7 @@
         <group/>
         <import_table/>
         <interval>year</interval>
-        <is_published>false</is_published>
+        <is_published>true</is_published>
         <is_real_time>false</is_real_time>
         <is_scheduled>false</is_scheduled>
         <legend_align_columns>true</legend_align_columns>
@@ -73,8 +73,8 @@
         <page_hdrftr/>
         <pivot_expanded>true</pivot_expanded>
         <report_drilldown/>
-        <report_source display_value="amino (Expense Bill)">92555b83dbef3300dedbab7dca9619b2</report_source>
-        <roles/>
+        <report_source display_value="Sum of Value of by By Category (Expense Bill)">3f9b9bc7dbef3300dedbab7dca961901</report_source>
+        <roles>public</roles>
         <row/>
         <sc_groupby_item_id/>
         <sc_groupby_variable_id/>
@@ -82,7 +82,7 @@
         <sc_stackby_variable_id/>
         <score_color display_value="Black">65b30218a9fe3dba0120df8611520d97</score_color>
         <series_name_text/>
-        <set_color>color_palette</set_color>
+        <set_color>one_color</set_color>
         <show_chart_border>false</show_chart_border>
         <show_chart_data_label>false</show_chart_data_label>
         <show_chart_title>report</show_chart_title>
@@ -97,25 +97,25 @@
         <source_type>source</source_type>
         <start_time/>
         <style_config/>
-        <sumfield/>
+        <sumfield>value</sumfield>
         <sys_class_name>sys_report</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2019-09-02 13:43:19</sys_created_on>
-        <sys_id>b8e51f83dbef3300dedbab7dca961999</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>amino</sys_name>
+        <sys_created_on>2019-09-02 14:13:09</sys_created_on>
+        <sys_id>65bc5f0bdbef3300dedbab7dca96198e</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Sum of Value Bills With Category</sys_name>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
         <sys_policy/>
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
-        <sys_update_name>sys_report_b8e51f83dbef3300dedbab7dca961999</sys_update_name>
+        <sys_update_name>sys_report_65bc5f0bdbef3300dedbab7dca96198e</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-09-02 13:43:19</sys_updated_on>
+        <sys_updated_on>2019-09-02 14:13:12</sys_updated_on>
         <table>x_315710_expense_m_expense_bill</table>
-        <title>amino</title>
+        <title>Sum of Value Bills With Category</title>
         <title_horizontal_alignment>center</title_horizontal_alignment>
         <title_vertical_alignment>top</title_vertical_alignment>
         <to/>
-        <trend_field>active</trend_field>
+        <trend_field/>
         <type>bar</type>
         <upper_limit/>
         <use_color_heatmap>false</use_color_heatmap>

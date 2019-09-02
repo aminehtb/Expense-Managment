@@ -3,168 +3,238 @@
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>number</element>
             <position>0</position>
-            <sys_created_by>abraham.lincoln</sys_created_by>
-            <sys_created_on>2019-09-02 13:23:43</sys_created_on>
-            <sys_id>2561978fdbaf3300dedbab7dca9619f6</sys_id>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2019-09-02 14:03:52</sys_created_on>
+            <sys_id>a99ad3c7dbef3300dedbab7dca9619d9</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
-            <sys_updated_by>abraham.lincoln</sys_updated_by>
-            <sys_updated_on>2019-09-02 13:23:43</sys_updated_on>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2019-09-02 14:03:52</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>assigned_to</element>
+            <element>opened_by</element>
             <position>1</position>
-            <sys_created_by>abraham.lincoln</sys_created_by>
-            <sys_created_on>2019-09-02 13:23:43</sys_created_on>
-            <sys_id>2d61978fdbaf3300dedbab7dca9619f6</sys_id>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2019-09-02 14:03:52</sys_created_on>
+            <sys_id>219ad3c7dbef3300dedbab7dca9619da</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
-            <sys_updated_by>abraham.lincoln</sys_updated_by>
-            <sys_updated_on>2019-09-02 13:23:43</sys_updated_on>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2019-09-02 14:03:52</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>cmdb_ci</element>
+            <element>title</element>
             <position>2</position>
-            <sys_created_by>abraham.lincoln</sys_created_by>
-            <sys_created_on>2019-09-02 13:23:43</sys_created_on>
-            <sys_id>ad61978fdbaf3300dedbab7dca9619f6</sys_id>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2019-09-02 14:03:52</sys_created_on>
+            <sys_id>a59ad3c7dbef3300dedbab7dca9619da</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
-            <sys_updated_by>abraham.lincoln</sys_updated_by>
-            <sys_updated_on>2019-09-02 13:23:43</sys_updated_on>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2019-09-02 14:03:52</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>active</element>
+            <element>value</element>
             <position>3</position>
-            <sys_created_by>abraham.lincoln</sys_created_by>
-            <sys_created_on>2019-09-02 13:23:43</sys_created_on>
-            <sys_id>2161978fdbaf3300dedbab7dca9619f7</sys_id>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2019-09-02 14:03:52</sys_created_on>
+            <sys_id>ed9a17c7dbef3300dedbab7dca961918</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
-            <sys_updated_by>abraham.lincoln</sys_updated_by>
-            <sys_updated_on>2019-09-02 13:23:43</sys_updated_on>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2019-09-02 14:03:52</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>vat</element>
+            <position>4</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2019-09-02 14:03:52</sys_created_on>
+            <sys_id>659a17c7dbef3300dedbab7dca961919</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2019-09-02 14:03:52</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>tips</element>
+            <position>5</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2019-09-02 14:03:52</sys_created_on>
+            <sys_id>e99a17c7dbef3300dedbab7dca961919</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2019-09-02 14:03:52</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.split</element>
-            <position>4</position>
-            <sys_created_by>abraham.lincoln</sys_created_by>
-            <sys_created_on>2019-09-02 13:23:43</sys_created_on>
-            <sys_id>a161978fdbaf3300dedbab7dca9619f7</sys_id>
+            <position>6</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2019-09-02 14:03:52</sys_created_on>
+            <sys_id>619a17c7dbef3300dedbab7dca96191a</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
-            <sys_updated_by>abraham.lincoln</sys_updated_by>
-            <sys_updated_on>2019-09-02 13:23:43</sys_updated_on>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2019-09-02 14:03:52</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>priority</element>
-            <position>5</position>
-            <sys_created_by>abraham.lincoln</sys_created_by>
-            <sys_created_on>2019-09-02 13:23:43</sys_created_on>
-            <sys_id>2561978fdbaf3300dedbab7dca9619f7</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
-            <sys_updated_by>abraham.lincoln</sys_updated_by>
-            <sys_updated_on>2019-09-02 13:23:43</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>state</element>
-            <position>6</position>
-            <sys_created_by>abraham.lincoln</sys_created_by>
-            <sys_created_on>2019-09-02 13:23:43</sys_created_on>
-            <sys_id>a561978fdbaf3300dedbab7dca9619f7</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
-            <sys_updated_by>abraham.lincoln</sys_updated_by>
-            <sys_updated_on>2019-09-02 13:23:43</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>parent</element>
+            <element>to_reimburse</element>
             <position>7</position>
-            <sys_created_by>abraham.lincoln</sys_created_by>
-            <sys_created_on>2019-09-02 13:23:43</sys_created_on>
-            <sys_id>2961978fdbaf3300dedbab7dca9619f7</sys_id>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2019-09-02 14:03:52</sys_created_on>
+            <sys_id>e59a17c7dbef3300dedbab7dca96191a</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
-            <sys_updated_by>abraham.lincoln</sys_updated_by>
-            <sys_updated_on>2019-09-02 13:23:43</sys_updated_on>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2019-09-02 14:03:52</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>billable_to_client</element>
+            <position>8</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2019-09-02 14:03:52</sys_created_on>
+            <sys_id>6d9a17c7dbef3300dedbab7dca96191a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2019-09-02 14:03:52</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>category</element>
+            <position>9</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2019-09-02 14:03:52</sys_created_on>
+            <sys_id>e19a17c7dbef3300dedbab7dca96191b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2019-09-02 14:03:52</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>image</element>
+            <position>10</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2019-09-02 14:03:52</sys_created_on>
+            <sys_id>699a17c7dbef3300dedbab7dca96191b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2019-09-02 14:03:52</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.end_split</element>
-            <position>8</position>
-            <sys_created_by>abraham.lincoln</sys_created_by>
-            <sys_created_on>2019-09-02 13:23:43</sys_created_on>
-            <sys_id>a961978fdbaf3300dedbab7dca9619f7</sys_id>
+            <position>11</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2019-09-02 14:03:52</sys_created_on>
+            <sys_id>ed9a17c7dbef3300dedbab7dca96191b</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
-            <sys_updated_by>abraham.lincoln</sys_updated_by>
-            <sys_updated_on>2019-09-02 13:23:43</sys_updated_on>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2019-09-02 14:03:52</sys_updated_on>
             <sys_user/>
             <type>.end_split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>expense_sheet</element>
+            <position>12</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2019-09-02 14:03:52</sys_created_on>
+            <sys_id>659a17c7dbef3300dedbab7dca96191c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2019-09-02 14:03:52</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>country</element>
+            <position>13</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2019-09-02 14:03:52</sys_created_on>
+            <sys_id>e99a17c7dbef3300dedbab7dca96191c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2019-09-02 14:03:52</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>merchant</element>
+            <position>14</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2019-09-02 14:03:52</sys_created_on>
+            <sys_id>619a17c7dbef3300dedbab7dca96191d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2019-09-02 14:03:52</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>payment_instrument</element>
+            <position>15</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2019-09-02 14:03:52</sys_created_on>
+            <sys_id>e59a17c7dbef3300dedbab7dca96191d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2019-09-02 14:03:52</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
             <element>short_description</element>
-            <position>9</position>
-            <sys_created_by>abraham.lincoln</sys_created_by>
-            <sys_created_on>2019-09-02 13:23:43</sys_created_on>
-            <sys_id>2d61978fdbaf3300dedbab7dca9619f7</sys_id>
+            <position>16</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2019-09-02 14:03:52</sys_created_on>
+            <sys_id>6d9a17c7dbef3300dedbab7dca96191d</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
-            <sys_updated_by>abraham.lincoln</sys_updated_by>
-            <sys_updated_on>2019-09-02 13:23:43</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>description</element>
-            <position>10</position>
-            <sys_created_by>abraham.lincoln</sys_created_by>
-            <sys_created_on>2019-09-02 13:23:43</sys_created_on>
-            <sys_id>ad61978fdbaf3300dedbab7dca9619f7</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
-            <sys_updated_by>abraham.lincoln</sys_updated_by>
-            <sys_updated_on>2019-09-02 13:23:43</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>work_notes</element>
-            <position>11</position>
-            <sys_created_by>abraham.lincoln</sys_created_by>
-            <sys_created_on>2019-09-02 13:23:43</sys_created_on>
-            <sys_id>2161978fdbaf3300dedbab7dca9619f8</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
-            <sys_updated_by>abraham.lincoln</sys_updated_by>
-            <sys_updated_on>2019-09-02 13:23:43</sys_updated_on>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2019-09-02 14:03:52</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
