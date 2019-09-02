@@ -1,32 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element extends="task" label="Expense Bill" max_length="40" name="x_315710_expense_m_expense_bill" type="collection">
-        <element label="Billable to client" max_length="5" name="billable_to_client" type="boolean"/>
-        <element label="Category" mandatory="true" max_length="32" name="category" reference="x_315710_expense_m_category" type="reference"/>
-        <element label="Country" max_length="32" name="country" reference="core_country" type="reference"/>
-        <element label="Date" mandatory="true" max_length="40" name="date" type="glide_date"/>
-        <element label="Expense Sheet" mandatory="true" max_length="32" name="expense_sheet" reference="x_315710_expense_m_expense_sheet" type="reference"/>
-        <element label="Image" max_length="40" name="image" type="user_image"/>
-        <element label="Merchant" max_length="32" name="merchant" reference="x_315710_expense_m_merchant" type="reference"/>
-        <element label="Payment Instrument" mandatory="true" max_length="32" name="payment_instrument" reference="x_315710_expense_m_payment_instrument" type="reference"/>
-        <element label="Process Date" max_length="40" name="process_date" type="glide_date"/>
-        <element label="Rate Card" max_length="32" name="rate_card" reference="x_315710_expense_m_rate" type="reference"/>
-        <element choice="1" label="State Bill" mandatory="true" max_length="20" name="state_bill" type="choice">
-            <choice>
-                <element inactive_on_update="false" label="Pending" value="pending"/>
-                <element inactive_on_update="false" label="Processed" value="processed"/>
-            </choice>
-        </element>
-        <element label="Tips" max_length="20" name="tips" type="price"/>
-        <element label="Title" mandatory="true" max_length="50" name="title" type="string"/>
-        <element label="To Reimburse" max_length="40" name="to_reimburse" type="boolean"/>
-        <element choice="2" label="Type Bill" mandatory="true" max_length="20" name="type_bill" type="choice">
-            <choice>
-                <element inactive_on_update="false" label="Capex" value="capex"/>
-                <element inactive_on_update="false" label="Opex" value="opex"/>
-            </choice>
-        </element>
-        <element label="User" max_length="32" name="user" reference="sys_user" type="reference"/>
-        <element label="Value" mandatory="true" max_length="20" name="value" type="price"/>
-        <element label="VAT" max_length="40" name="vat" type="integer"/>
-    </element>
+    <element extends="task" label="Expense Bill" max_length="40" name="x_315710_expense_m_expense_bill" type="collection"/>
 </database>

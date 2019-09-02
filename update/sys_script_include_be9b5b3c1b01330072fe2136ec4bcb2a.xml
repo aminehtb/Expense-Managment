@@ -3,7 +3,6 @@
         <access>public</access>
         <active>true</active>
         <api_name>x_315710_expense_m.Similarite</api_name>
-        <caller_access/>
         <client_callable>true</client_callable>
         <description/>
         <name>Similarite</name>

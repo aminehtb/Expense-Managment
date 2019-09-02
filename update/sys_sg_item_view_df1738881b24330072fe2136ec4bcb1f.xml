@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_sg_item_view">
     <sys_sg_item_view action="INSERT_OR_UPDATE">
-        <data_item display_value="Vehicle Data">90b6b0881b24330072fe2136ec4bcb19</data_item>
+        <data_item/>
         <dependency_fields>number,name_and_registration_number,user.photo,registration_number</dependency_fields>
         <item_view_json>{"Type":"ViewGroup","Margin":{"Bottom":15,"Top":17},"Orientation":"Vertical","Alignment":"Left","Distribution":"Auto","Children":[{"Type":"Text","Margin":{},"studio_template_field_id":"E1","TextColor":"#7d8a8c","TextAlignment":"Left","MaxLines":1,"Font":{"Weight":"regular","Size":13},"CellId":"number"},{"Type":"Text","Margin":{"Top":10},"studio_template_field_id":"E2","TextColor":"#293E40","TextAlignment":"Left","MaxLines":1,"Font":{"Size":18,"Weight":"medium"},"CellId":"name_and_registration_number"},{"Type":"ViewGroup","Margin":{"Top":11},"Orientation":"Horizontal","Alignment":"Center","Distribution":"Auto","Children":[{"Type":"Image","CornerRadius":11,"Height":22,"Width":22,"Margin":{"Right":8},"studio_template_field_id":"E3","Scaling":"Fill","CellId":"user.photo"},{"Type":"Text","Margin":{},"studio_template_field_id":"E4","TextColor":"#293e40","TextAlignment":"Center","MaxLines":1,"Font":{"Weight":"regular","Size":15},"CellId":"registration_number"}]}],"studio_card_id":"d2f9a01173c12300d396c8168bf6a74e"}</item_view_json>
         <name>Vehicle detail item view</name>

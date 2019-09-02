@@ -45,7 +45,7 @@
         <table>x_315710_expense_m_vehicle</table>
         <take_value_from_field>false</take_value_from_field>
         <type>write_back</type>
-        <write_back_action_item display_value="Delete Vehicle">17c0115c1ba0330072fe2136ec4bcb37</write_back_action_item>
+        <write_back_action_item display_value="">17c0115c1ba0330072fe2136ec4bcb37</write_back_action_item>
     </sys_sg_button>
     <sys_translated_text action="delete_multiple" query="documentkey=3552119c1ba0330072fe2136ec4bcb51"/>
 </record_update>

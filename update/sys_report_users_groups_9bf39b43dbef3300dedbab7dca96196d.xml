@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_report_users_groups">
+    <sys_report_users_groups action="INSERT_OR_UPDATE">
+        <group_id/>
+        <report_id display_value="State of bill (current month)">17f39b43dbef3300dedbab7dca96196d</report_id>
+        <sys_class_name>sys_report_users_groups</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-09-02 13:35:02</sys_created_on>
+        <sys_id>9bf39b43dbef3300dedbab7dca96196d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>17f39b43dbef3300dedbab7dca96196d</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sys_report_users_groups_9bf39b43dbef3300dedbab7dca96196d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-09-02 13:35:02</sys_updated_on>
+        <user_id display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</user_id>
+    </sys_report_users_groups>
+</record_update>

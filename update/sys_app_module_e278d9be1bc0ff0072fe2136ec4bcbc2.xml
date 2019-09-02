@@ -18,14 +18,14 @@
         <override_menu_roles>false</override_menu_roles>
         <query/>
         <report/>
-        <roles>x_315710_expense_m.user</roles>
+        <roles>x_315710_expense_m.employee</roles>
         <sys_class_name>sys_app_module</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-03-11 10:17:10</sys_created_on>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>e278d9be1bc0ff0072fe2136ec4bcbc2</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>Expense Sheets</sys_name>
         <sys_overrides/>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
@@ -33,7 +33,7 @@
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sys_app_module_e278d9be1bc0ff0072fe2136ec4bcbc2</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-03-11 10:17:10</sys_updated_on>
+        <sys_updated_on>2019-09-02 10:40:50</sys_updated_on>
         <timeline_page/>
         <title>Expense Sheets</title>
         <uncancelable>false</uncancelable>

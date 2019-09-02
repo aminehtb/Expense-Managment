@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element label="Vehicle" max_length="40" name="x_315710_expense_m_vehicle" type="collection">
-        <element label="Attached File" max_length="40" name="attached_file" type="user_image"/>
-        <element label="Vehicle name" mandatory="true" max_length="255" name="name_and_registration_number" type="string"/>
+        <element attributes="edge_encryption_enabled=true,pdf_cell_type=image" label="Attachment" max_length="40" name="attachment" type="user_image"/>
         <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
-        <element label="Registration number" mandatory="true" max_length="255" name="registration_number" type="string"/>
-        <element label="User" mandatory="true" max_length="32" name="user" reference="sys_user" type="reference"/>
-        <element choice="1" label="Vehicle type" mandatory="true" max_length="40" name="vehicle_type" type="choice">
-            <choice>
-                <element inactive_on_update="false" label="car" sequence="0" value="car"/>
-                <element inactive_on_update="false" label="Moped" sequence="1" value="moped"/>
-                <element inactive_on_update="false" label="Motocycle" sequence="2" value="motocycle"/>
-                <element inactive_on_update="false" label="Scooter" sequence="3" value="scooter"/>
-                <element inactive_on_update="false" label="Bicycle" sequence="4" value="bicycle"/>
-            </choice>
+        <element label="Registration number" max_length="40" name="registration_number" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="User" max_length="32" name="user" reference="sys_user" type="reference"/>
+        <element label="Vehicle Name" max_length="40" name="vehicle_name" type="string"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Vehicle Type" max_length="40" name="vehicle_type" type="choice">
+            <choice/>
         </element>
         <index name="index">
             <element name="registration_number"/>
