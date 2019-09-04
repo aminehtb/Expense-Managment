@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element extends="task" label="Expense Sheet" max_length="40" name="x_315710_expense_m_expense_sheet" sizeclass="3" type="collection">
+    <element extends="task" label="Expense Sheet" max_length="40" name="x_315710_expense_m_expense_sheet" type="collection">
         <element label="Billable to the client" max_length="40" name="billable_to_the_client" type="boolean"/>
         <element label="Client Name" max_length="26" name="client_name" type="string"/>
         <element label="Internal_identifier" mandatory="true" max_length="255" name="internal_identifier" type="string"/>

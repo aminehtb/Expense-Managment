@@ -45,7 +45,7 @@
         <table>x_315710_expense_m_rate</table>
         <take_value_from_field>false</take_value_from_field>
         <type>write_back</type>
-        <write_back_action_item display_value="Delete Rate">3b7bd1141be0330072fe2136ec4bcbe9</write_back_action_item>
+        <write_back_action_item display_value="">3b7bd1141be0330072fe2136ec4bcbe9</write_back_action_item>
     </sys_sg_button>
     <sys_translated_text action="delete_multiple" query="documentkey=44fb91541be0330072fe2136ec4bcb82"/>
 </record_update>

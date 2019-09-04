@@ -20,9 +20,6 @@
             <element name="registration_number"/>
         </index>
         <index name="index2">
-            <element name="registration_number"/>
-        </index>
-        <index name="index3">
             <element name="user"/>
         </index>
     </element>

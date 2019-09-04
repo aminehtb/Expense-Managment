@@ -1,28 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element label="Mileage Expense" max_length="40" name="x_315710_expense_m_mileage_expense" type="collection">
         <element label="Arrival" mandatory="true" max_length="20" name="arrival" type="string"/>
-        <element choice="1" label="Departure" mandatory="true" max_length="20" name="departure" reference="cmn_location" type="reference">
-            <choice/>
-        </element>
+        <element label="Departure" mandatory="true" max_length="20" name="departure" type="string"/>
         <element label="Description" max_length="630" name="description" type="string"/>
         <element label="KM" mandatory="true" max_length="40" name="km" type="integer"/>
         <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
         <element label="Period" max_length="40" name="period" type="glide_date"/>
-        <element label="Rate" max_length="32" name="rate" reference="x_315710_expense_m_rate" reference_qual="javascript: new FilterListRate().getList()" type="reference" use_reference_qualifier="advanced"/>
         <element label="Title" mandatory="true" max_length="255" name="title" type="string"/>
         <element label="Trip(s)" max_length="40" name="trips" type="integer"/>
         <element default="gs.getUser()" label="User" max_length="32" name="user" reference="sys_user" type="reference"/>
         <element label="Vehicle" mandatory="true" max_length="32" name="vehicle" reference="x_315710_expense_m_vehicle" reference_qual="user=javascript:gs.getUserID()" reference_qual_condition="user=javascript:gs.getUserID()" type="reference"/>
         <index name="index">
-            <element name="rate"/>
-        </index>
-        <index name="index2">
             <element name="departure"/>
         </index>
-        <index name="index3">
+        <index name="index2">
             <element name="user"/>
         </index>
-        <index name="index4">
+        <index name="index3">
             <element name="vehicle"/>
         </index>
     </element>

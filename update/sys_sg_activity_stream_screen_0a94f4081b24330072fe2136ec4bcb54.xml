@@ -5,7 +5,7 @@
         <add_work_note_button>true</add_work_note_button>
         <application_roles/>
         <available_offline>false</available_offline>
-        <data_item display_value="Rate Data">ca933cc41b24330072fe2136ec4bcb7b</data_item>
+        <data_item/>
         <description/>
         <fetch_type>background</fetch_type>
         <hidden>false</hidden>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element extends="task" label="Expense Bill" max_length="40" name="x_315710_expense_m_expense_bill" sizeclass="5" type="collection">
+    <element extends="task" label="Expense Bill" max_length="40" name="x_315710_expense_m_expense_bill" type="collection">
         <element label="Billable To Client" max_length="5" name="billable_to_client" type="boolean"/>
         <element label="Category" mandatory="true" max_length="32" name="category" reference="x_315710_expense_m_category" type="reference"/>
         <element label="Country" max_length="32" name="country" reference="core_country" type="reference"/>
@@ -9,7 +9,6 @@
         <element label="Merchant" max_length="32" name="merchant" reference="x_315710_expense_m_merchant" type="reference"/>
         <element label="Payment Instrument" mandatory="true" max_length="32" name="payment_instrument" reference="x_315710_expense_m_payment_instrument" type="reference"/>
         <element label="Process Date" max_length="40" name="process_date" type="glide_date"/>
-        <element label="Rate Card" max_length="32" name="rate_card" reference="x_315710_expense_m_rate" type="reference"/>
         <element choice="1" label="State" mandatory="true" max_length="20" name="state_bill" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Pending" sequence="0" value="Pending"/>

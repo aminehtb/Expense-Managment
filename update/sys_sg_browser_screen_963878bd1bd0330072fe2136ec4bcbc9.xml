@@ -7,7 +7,7 @@
         <external_browser>false</external_browser>
         <fetch_type>not_required</fetch_type>
         <hidden>false</hidden>
-        <icon display_value="flag">9c274975673023005326c3105685efb7</icon>
+        <icon display_value="">9c274975673023005326c3105685efb7</icon>
         <name>Add Expense Bill</name>
         <order>20</order>
         <parent>cd0653d91bd0330072fe2136ec4bcb74</parent>
