@@ -18,14 +18,14 @@
         <override_menu_roles>false</override_menu_roles>
         <query/>
         <report/>
-        <roles>x_315710_expense_m.employee</roles>
+        <roles>x_315710_expense_m.employee,x_315710_expense_m.manager,x_315710_expense_m.user</roles>
         <sys_class_name>sys_app_module</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-09-01 18:24:06</sys_created_on>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>409c0772db273300dedbab7dca961944</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>3</sys_mod_count>
         <sys_name>Expense Bills</sys_name>
         <sys_overrides/>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
@@ -33,7 +33,7 @@
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sys_app_module_409c0772db273300dedbab7dca961944</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-09-02 10:40:41</sys_updated_on>
+        <sys_updated_on>2019-09-03 08:04:36</sys_updated_on>
         <timeline_page/>
         <title>Expense Bills</title>
         <uncancelable>false</uncancelable>

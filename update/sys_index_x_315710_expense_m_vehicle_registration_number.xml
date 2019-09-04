@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_index">
     <sys_index action="INSERT_OR_UPDATE">
         <col_name_string>registration_number</col_name_string>
-        <index_col_name element="registration_number" name="x_315710_expense_m_vehicle">d5ef4f0bdbaf3300dedbab7dca9619ca</index_col_name>
+        <index_col_name element="registration_number" name="x_315710_expense_m_vehicle">04680bb91b27730072fe2136ec4bcb95</index_col_name>
         <logical_table_name>x_315710_expense_m_vehicle</logical_table_name>
         <sys_class_name>sys_index</sys_class_name>
         <sys_created_by>system</sys_created_by>
