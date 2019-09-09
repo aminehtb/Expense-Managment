@@ -2,8 +2,10 @@
     <sys_sg_button_instance action="INSERT_OR_UPDATE">
         <active>true</active>
         <button display_value="Rate">4a85bd941b24330072fe2136ec4bcbc2</button>
+        <color_theme/>
         <description/>
         <field_name/>
+        <icon/>
         <label>Liste Of Rate</label>
         <location>top</location>
         <name>Liste Of Rate</name>

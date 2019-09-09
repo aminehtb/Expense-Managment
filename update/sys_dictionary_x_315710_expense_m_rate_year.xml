@@ -53,7 +53,7 @@
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-09-04 09:27:05</sys_created_on>
-        <sys_id>055ee4bfdb23330050708809489619e0</sys_id>
+        <sys_id>f3c49a991bbb330066b0fcc8cc4bcbbc</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Year</sys_name>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
@@ -61,7 +61,7 @@
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sys_dictionary_x_315710_expense_m_rate_year</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-09-04 09:27:05</sys_updated_on>
+        <sys_updated_on>2019-09-09 08:45:33</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

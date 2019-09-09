@@ -2,8 +2,10 @@
     <sys_sg_button_instance action="INSERT_OR_UPDATE">
         <active>true</active>
         <button display_value="Update Rate">7eac711c1b24330072fe2136ec4bcb8a</button>
+        <color_theme/>
         <description/>
         <field_name/>
+        <icon/>
         <label>Update</label>
         <location>trailing_swipe</location>
         <name>Update</name>

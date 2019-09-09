@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_sg_details_screen">
     <sys_sg_details_screen action="INSERT_OR_UPDATE">
-        <application_roles/>
         <available_offline>false</available_offline>
-        <data_item/>
         <description/>
+        <dynamic_prefetch_count/>
         <fetch_type>not_required</fetch_type>
-        <hidden>false</hidden>
+        <hide_filters>false</hide_filters>
         <icon display_value="thumbs-up">78581f1d1bd0330072fe2136ec4bcb61</icon>
-        <item_view display_value="Expense bill detail item view">81585f1d1bd0330072fe2136ec4bcbed</item_view>
         <name>Details</name>
-        <order>10</order>
-        <parent>19585f1d1bd0330072fe2136ec4bcbf1</parent>
-        <parent_table>sys_sg_master_item</parent_table>
         <roles_override/>
         <sys_class_name>sys_sg_details_screen</sys_class_name>
         <sys_created_by>admin</sys_created_by>
@@ -25,6 +20,7 @@
         <sys_update_name>sys_sg_details_screen_69589f1d1bd0330072fe2136ec4bcb5b</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2019-03-19 14:00:35</sys_updated_on>
+        <table/>
     </sys_sg_details_screen>
     <sys_translated_text action="delete_multiple" query="documentkey=69589f1d1bd0330072fe2136ec4bcb5b"/>
 </record_update>

@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_sg_browser_screen">
     <sys_sg_browser_screen action="INSERT_OR_UPDATE">
-        <application_roles/>
         <available_offline>false</available_offline>
-        <data_item/>
         <description/>
+        <dynamic_prefetch_count/>
         <external_browser>false</external_browser>
         <fetch_type>not_required</fetch_type>
-        <hidden>false</hidden>
+        <hide_filters>false</hide_filters>
         <icon/>
         <name>Add Vehicle</name>
-        <order>30</order>
-        <parent>3286303d1bd0330072fe2136ec4bcb59</parent>
-        <parent_table>sys_sg_folder</parent_table>
         <relative_url>false</relative_url>
         <roles_override/>
         <sys_class_name>sys_sg_browser_screen</sys_class_name>
