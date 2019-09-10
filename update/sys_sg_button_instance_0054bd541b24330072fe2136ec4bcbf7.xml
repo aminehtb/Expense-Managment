@@ -2,10 +2,8 @@
     <sys_sg_button_instance action="INSERT_OR_UPDATE">
         <active>true</active>
         <button display_value="Expense Sheet">f5cd95021b10730072fe2136ec4bcbc4</button>
-        <color_theme/>
         <description/>
         <field_name/>
-        <icon/>
         <label>Liste Of Expense Sheet </label>
         <location>top</location>
         <name>Liste Of Expense Sheet </name>

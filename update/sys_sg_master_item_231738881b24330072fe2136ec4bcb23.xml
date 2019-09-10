@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_sg_master_item">
     <sys_sg_master_item action="INSERT_OR_UPDATE">
+        <condition/>
         <condition_order/>
-        <datasource_table/>
-        <datasource_table_condition/>
-        <embedded_screen/>
         <item_view display_value="Vehicle item view">df17f4881b24330072fe2136ec4bcba3</item_view>
         <name>Master Item</name>
+        <screen/>
         <sys_class_name>sys_sg_master_item</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-03-27 15:19:30</sys_created_on>
@@ -18,5 +17,6 @@
         <sys_update_name>sys_sg_master_item_231738881b24330072fe2136ec4bcb23</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2019-03-27 15:19:30</sys_updated_on>
+        <table/>
     </sys_sg_master_item>
 </record_update>

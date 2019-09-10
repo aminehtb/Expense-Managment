@@ -30,7 +30,6 @@
         <sys_updated_on>2019-07-15 15:16:55</sys_updated_on>
         <theme/>
         <title>Hello World</title>
-        <ts_index_group/>
         <url_suffix>helloworld</url_suffix>
     </sp_portal>
     <sys_translated_text action="delete_multiple" query="documentkey=7a8e0f9b1b66330072fe2136ec4bcb25"/>

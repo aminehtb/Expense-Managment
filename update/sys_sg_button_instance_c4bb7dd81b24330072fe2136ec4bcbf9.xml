@@ -2,10 +2,8 @@
     <sys_sg_button_instance action="INSERT_OR_UPDATE">
         <active>true</active>
         <button display_value="New Expense Bill">28af99d41be0330072fe2136ec4bcba3</button>
-        <color_theme/>
         <description/>
         <field_name/>
-        <icon/>
         <label>New</label>
         <location>top</location>
         <name>New</name>

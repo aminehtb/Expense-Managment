@@ -2,10 +2,8 @@
     <sys_sg_button_instance action="INSERT_OR_UPDATE">
         <active>true</active>
         <button display_value="New Payment Instrument">304bf5d81b24330072fe2136ec4bcba7</button>
-        <color_theme/>
         <description/>
         <field_name/>
-        <icon/>
         <label>New</label>
         <location>top</location>
         <name>New</name>

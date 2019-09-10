@@ -4,13 +4,13 @@
             <element>number</element>
             <position>0</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2019-09-09 11:23:05</sys_created_on>
-            <sys_id>7ae83ed51b7f330066b0fcc8cc4bcb62</sys_id>
+            <sys_created_on>2019-09-10 08:49:12</sys_created_on>
+            <sys_id>aa4fd7eddb333300518284da0b9619f9</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2019-09-09 11:23:05</sys_updated_on>
+            <sys_updated_on>2019-09-10 08:49:12</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -18,13 +18,13 @@
             <element>opened_by</element>
             <position>1</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2019-09-09 11:23:05</sys_created_on>
-            <sys_id>f2e83ed51b7f330066b0fcc8cc4bcb63</sys_id>
+            <sys_created_on>2019-09-10 08:49:12</sys_created_on>
+            <sys_id>2e4fd7eddb333300518284da0b9619f9</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2019-09-09 11:23:05</sys_updated_on>
+            <sys_updated_on>2019-09-10 08:49:12</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -32,13 +32,13 @@
             <element>title</element>
             <position>2</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2019-09-09 11:23:05</sys_created_on>
-            <sys_id>7ae83ed51b7f330066b0fcc8cc4bcb63</sys_id>
+            <sys_created_on>2019-09-10 08:49:12</sys_created_on>
+            <sys_id>ae4fd7eddb333300518284da0b9619f9</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2019-09-09 11:23:05</sys_updated_on>
+            <sys_updated_on>2019-09-10 08:49:12</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -46,13 +46,13 @@
             <element>value</element>
             <position>3</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2019-09-09 11:23:05</sys_created_on>
-            <sys_id>fee83ed51b7f330066b0fcc8cc4bcb63</sys_id>
+            <sys_created_on>2019-09-10 08:49:12</sys_created_on>
+            <sys_id>224fd7eddb333300518284da0b9619fa</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2019-09-09 11:23:05</sys_updated_on>
+            <sys_updated_on>2019-09-10 08:49:12</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -60,13 +60,13 @@
             <element>vat</element>
             <position>4</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2019-09-09 11:23:05</sys_created_on>
-            <sys_id>76e83ed51b7f330066b0fcc8cc4bcb64</sys_id>
+            <sys_created_on>2019-09-10 08:49:12</sys_created_on>
+            <sys_id>a24fd7eddb333300518284da0b9619fa</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2019-09-09 11:23:05</sys_updated_on>
+            <sys_updated_on>2019-09-10 08:49:12</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -74,13 +74,13 @@
             <element>tips</element>
             <position>5</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2019-09-09 11:23:05</sys_created_on>
-            <sys_id>fae83ed51b7f330066b0fcc8cc4bcb64</sys_id>
+            <sys_created_on>2019-09-10 08:49:12</sys_created_on>
+            <sys_id>264fd7eddb333300518284da0b9619fa</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2019-09-09 11:23:05</sys_updated_on>
+            <sys_updated_on>2019-09-10 08:49:12</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -88,13 +88,13 @@
             <element>.split</element>
             <position>6</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2019-09-09 11:23:05</sys_created_on>
-            <sys_id>72e83ed51b7f330066b0fcc8cc4bcb65</sys_id>
+            <sys_created_on>2019-09-10 08:49:12</sys_created_on>
+            <sys_id>a64fd7eddb333300518284da0b9619fa</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2019-09-09 11:23:05</sys_updated_on>
+            <sys_updated_on>2019-09-10 08:49:12</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
@@ -102,13 +102,13 @@
             <element>to_reimburse</element>
             <position>7</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2019-09-09 11:23:05</sys_created_on>
-            <sys_id>f6e83ed51b7f330066b0fcc8cc4bcb65</sys_id>
+            <sys_created_on>2019-09-10 08:49:12</sys_created_on>
+            <sys_id>2a4fd7eddb333300518284da0b9619fa</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2019-09-09 11:23:05</sys_updated_on>
+            <sys_updated_on>2019-09-10 08:49:12</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -116,13 +116,13 @@
             <element>billable_to_client</element>
             <position>8</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2019-09-09 11:23:05</sys_created_on>
-            <sys_id>7ee83ed51b7f330066b0fcc8cc4bcb65</sys_id>
+            <sys_created_on>2019-09-10 08:49:12</sys_created_on>
+            <sys_id>aa4fd7eddb333300518284da0b9619fa</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2019-09-09 11:23:05</sys_updated_on>
+            <sys_updated_on>2019-09-10 08:49:12</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -130,13 +130,13 @@
             <element>category</element>
             <position>9</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2019-09-09 11:23:05</sys_created_on>
-            <sys_id>f2e83ed51b7f330066b0fcc8cc4bcb66</sys_id>
+            <sys_created_on>2019-09-10 08:49:12</sys_created_on>
+            <sys_id>2e4fd7eddb333300518284da0b9619fa</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2019-09-09 11:23:05</sys_updated_on>
+            <sys_updated_on>2019-09-10 08:49:12</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -144,13 +144,13 @@
             <element>image</element>
             <position>10</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2019-09-09 11:23:05</sys_created_on>
-            <sys_id>7ae83ed51b7f330066b0fcc8cc4bcb66</sys_id>
+            <sys_created_on>2019-09-10 08:49:12</sys_created_on>
+            <sys_id>ae4fd7eddb333300518284da0b9619fa</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2019-09-09 11:23:05</sys_updated_on>
+            <sys_updated_on>2019-09-10 08:49:12</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -158,13 +158,13 @@
             <element>date</element>
             <position>11</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2019-09-09 11:23:05</sys_created_on>
-            <sys_id>fee83ed51b7f330066b0fcc8cc4bcb66</sys_id>
+            <sys_created_on>2019-09-10 08:49:12</sys_created_on>
+            <sys_id>224fd7eddb333300518284da0b9619fb</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2019-09-09 11:23:05</sys_updated_on>
+            <sys_updated_on>2019-09-10 08:49:12</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -172,13 +172,13 @@
             <element>type_bill</element>
             <position>12</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2019-09-09 11:23:05</sys_created_on>
-            <sys_id>76e83ed51b7f330066b0fcc8cc4bcb67</sys_id>
+            <sys_created_on>2019-09-10 08:49:12</sys_created_on>
+            <sys_id>a24fd7eddb333300518284da0b9619fb</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2019-09-09 11:23:05</sys_updated_on>
+            <sys_updated_on>2019-09-10 08:49:12</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -186,13 +186,13 @@
             <element>state_bill</element>
             <position>13</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2019-09-09 11:23:05</sys_created_on>
-            <sys_id>fae83ed51b7f330066b0fcc8cc4bcb67</sys_id>
+            <sys_created_on>2019-09-10 08:49:12</sys_created_on>
+            <sys_id>264fd7eddb333300518284da0b9619fb</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2019-09-09 11:23:05</sys_updated_on>
+            <sys_updated_on>2019-09-10 08:49:12</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -200,13 +200,13 @@
             <element>.end_split</element>
             <position>14</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2019-09-09 11:23:05</sys_created_on>
-            <sys_id>72e83ed51b7f330066b0fcc8cc4bcb68</sys_id>
+            <sys_created_on>2019-09-10 08:49:12</sys_created_on>
+            <sys_id>a64fd7eddb333300518284da0b9619fb</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2019-09-09 11:23:05</sys_updated_on>
+            <sys_updated_on>2019-09-10 08:49:12</sys_updated_on>
             <sys_user/>
             <type>.end_split</type>
         </sys_ui_element>
@@ -214,13 +214,13 @@
             <element>expense_sheet</element>
             <position>15</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2019-09-09 11:23:05</sys_created_on>
-            <sys_id>f6e83ed51b7f330066b0fcc8cc4bcb68</sys_id>
+            <sys_created_on>2019-09-10 08:49:12</sys_created_on>
+            <sys_id>2a4fd7eddb333300518284da0b9619fb</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2019-09-09 11:23:05</sys_updated_on>
+            <sys_updated_on>2019-09-10 08:49:12</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -228,13 +228,13 @@
             <element>country</element>
             <position>16</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2019-09-09 11:23:05</sys_created_on>
-            <sys_id>7ee83ed51b7f330066b0fcc8cc4bcb68</sys_id>
+            <sys_created_on>2019-09-10 08:49:12</sys_created_on>
+            <sys_id>aa4fd7eddb333300518284da0b9619fb</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2019-09-09 11:23:05</sys_updated_on>
+            <sys_updated_on>2019-09-10 08:49:12</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -242,13 +242,13 @@
             <element>merchant</element>
             <position>17</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2019-09-09 11:23:05</sys_created_on>
-            <sys_id>f2e83ed51b7f330066b0fcc8cc4bcb69</sys_id>
+            <sys_created_on>2019-09-10 08:49:12</sys_created_on>
+            <sys_id>2e4fd7eddb333300518284da0b9619fb</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2019-09-09 11:23:05</sys_updated_on>
+            <sys_updated_on>2019-09-10 08:49:12</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -256,27 +256,13 @@
             <element>payment_instrument</element>
             <position>18</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2019-09-09 11:23:05</sys_created_on>
-            <sys_id>7ae83ed51b7f330066b0fcc8cc4bcb69</sys_id>
+            <sys_created_on>2019-09-10 08:49:12</sys_created_on>
+            <sys_id>ae4fd7eddb333300518284da0b9619fb</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2019-09-09 11:23:05</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>short_description</element>
-            <position>19</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2019-09-09 11:23:05</sys_created_on>
-            <sys_id>fee83ed51b7f330066b0fcc8cc4bcb69</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_315710_expense_m_expense_bill" sys_domain="global" view="Default view">2161978fdbaf3300dedbab7dca961947</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2019-09-09 11:23:05</sys_updated_on>
+            <sys_updated_on>2019-09-10 08:49:12</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>

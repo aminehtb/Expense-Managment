@@ -2,10 +2,8 @@
     <sys_sg_button_instance action="INSERT_OR_UPDATE">
         <active>true</active>
         <button display_value="Vehicle">5ac6bdd41b24330072fe2136ec4bcb5a</button>
-        <color_theme/>
         <description/>
         <field_name/>
-        <icon/>
         <label>Liste Of Vehicle</label>
         <location>top</location>
         <name>Liste Of Vehicle</name>

@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_sg_map_screen">
     <sys_sg_map_screen action="INSERT_OR_UPDATE">
+        <application_roles/>
         <available_offline>false</available_offline>
+        <data_item/>
+        <data_item_table/>
         <description/>
-        <dynamic_prefetch_count/>
         <fetch_type>not_required</fetch_type>
-        <hide_filters>false</hide_filters>
+        <hidden>false</hidden>
         <icon display_value="map">bf5cf8a51b20330072fe2136ec4bcb33</icon>
+        <info/>
+        <location/>
         <name>Mileage</name>
+        <order/>
+        <parent/>
+        <parent_table/>
+        <phone/>
+        <pin_color/>
+        <pin_color_type/>
         <roles_override/>
+        <sub_title/>
         <sys_class_name>sys_sg_map_screen</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-04-01 07:33:23</sys_created_on>
@@ -20,6 +31,11 @@
         <sys_update_name>sys_sg_map_screen_dc6c78a51b20330072fe2136ec4bcb7d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2019-04-01 07:33:23</sys_updated_on>
+        <tag/>
+        <tag_background_color/>
+        <tag_font_color/>
+        <tag_style/>
+        <title/>
     </sys_sg_map_screen>
     <sys_translated_text action="delete_multiple" query="documentkey=dc6c78a51b20330072fe2136ec4bcb7d"/>
 </record_update>

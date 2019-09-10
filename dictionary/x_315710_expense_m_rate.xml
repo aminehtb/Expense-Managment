@@ -6,6 +6,7 @@
                 <element inactive_on_update="false" label="MI" value="MI"/>
             </choice>
         </element>
+        <element label="Value" mandatory="true" max_length="40" name="value" type="integer"/>
         <element choice="1" label="Vehicle Type" max_length="40" name="vehicle_type" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Bicycle" value="Bicycle"/>
