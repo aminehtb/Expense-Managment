@@ -7,20 +7,20 @@
         <id>add_expense_bill</id>
         <internal>false</internal>
         <public>false</public>
-        <roles/>
+        <roles>x_315710_expense_m.user,x_315710_expense_m.employee,x_315710_expense_m.manager</roles>
         <short_description/>
         <sys_class_name>sp_page</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-04-02 12:25:17</sys_created_on>
         <sys_id>3dc843b51b20730072fe2136ec4bcb35</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>add_expense_bill</sys_name>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
         <sys_policy/>
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sp_page_3dc843b51b20730072fe2136ec4bcb35</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-04-02 12:25:17</sys_updated_on>
+        <sys_updated_on>2019-09-16 08:07:19</sys_updated_on>
         <title>Add Expense Bill</title>
     </sp_page>
     <sys_translated_text action="delete_multiple" query="documentkey=3dc843b51b20730072fe2136ec4bcb35"/>

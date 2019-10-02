@@ -4,7 +4,7 @@
         <order>10</order>
         <portals>ad63ee381bb1330072fe2136ec4bcb3e</portals>
         <route_from_page display_value="em_index">016172b01bf1330072fe2136ec4bcb84</route_from_page>
-        <route_to_page display_value="something">0975e2a41b72330072fe2136ec4bcbd5</route_to_page>
+        <route_to_page/>
         <short_description>test redirect</short_description>
         <sys_class_name>sp_page_route_map</sys_class_name>
         <sys_created_by>admin</sys_created_by>

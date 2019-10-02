@@ -2,7 +2,7 @@
     <sp_portal action="INSERT_OR_UPDATE">
         <css_variables/>
         <default>false</default>
-        <homepage display_value="helloworld_homepage">66dec31b1b66330072fe2136ec4bcb9b</homepage>
+        <homepage/>
         <icon/>
         <kb_knowledge_base/>
         <kb_knowledge_page/>

@@ -1,24 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <client_script><![CDATA[function($scope,$http,$rootScope) {	
+        <client_script><![CDATA[function($scope,$http,$rootScope,glideUserSession) {	
 
  var c = this;
+	glideUserSession.loadCurrentUser().then(function(currentUser) {
+		c.data.role = currentUser.hasRoleFromList('x_315710_expense_m.employee, x_315710_expense_m.manager');
+
+		c.data.name = currentUser.getFullName();
+
+
+	});
+	c.data.ok = false;
+	$scope.addMerchant=function(){
+		c.data.ok = true ;
+		$scope.merchant = {
+			displayValue:'',
+			value: '',
+			name:'c.data.merchant'
+		}
+	}
+
+
+	var merchId ; 
+	var BASE64_MARKER = ';base64,';
+	$scope.files = []; 
+
+
+
+	$scope.getFields=function(){
+		c.data.ok = false ;
+
+
+	}
 	c.data.updateName = c.data.title;
 	$scope.testComplete = function(){
 	var ok = true ; 
 	if(c.data.title == null || $scope.sheet == null || $scope.dated == null){
 		ok = false ; 
-		console.log("ok : "+ok);
 	}
 	else{
 		ok = true ; 
-		console.log("ok : "+ok);
 	}
 	return ok ;
 }
 	
-	
+	$scope.merchant = {
+			displayValue:c.data.merchnamee,
+			value: c.data.merchId,
+			name:'c.data.merchant'
+		}
 $scope.dated = {
 		displayValue: '',
 		value: '',
@@ -71,9 +102,6 @@ $scope.dated = {
 		value:c.data.payment ,
 		name:'c.data.payment'
 	}
-
-	var merchId ; 
-	var BASE64_MARKER = ';base64,';
 	$scope.files = []; 
 	/*****User*****/
 	$scope.user = {
@@ -103,7 +131,6 @@ $scope.dated = {
 					var input =element.files[i];
 					var fReader = new FileReader();
 					fReader.readAsDataURL(input);
-					console.log(input);
 					fReader.onloadend = function (event) {
 						convertDataURIToBinary(event.target.result);
 					}
@@ -112,7 +139,6 @@ $scope.dated = {
 					//Tesseract : SCan Image
 					Tesseract.recognize(element.files[i])
 						.then(function(result){
-						console.log(result.lines);
 						//Parcour line result
 						for(var i=0 ; i<result.lines.length;i++){	
 							var model = result.lines[i].text ;
@@ -120,21 +146,24 @@ $scope.dated = {
 							var test = testExiste(model);
 							if (test.name != null){
 								merchId = test.sys_id ; 
-								document.getElementById('merchName').value =test.name;
+								/*document.getElementById('merchName').value =test.name;
 								document.getElementById('vatNumber').value =test.vat_number;
 								document.getElementById('city').value =test.city;
-								document.getElementById('zipCode').value =test.zip_code;
+								document.getElementById('zipCode').value =test.zip_code;*/
+								$scope.merchant = {
+									displayValue:test.name,
+									value: merchId,
+									name:'c.data.merchant'
+								}
 							}
 							// test Existe Mode de Payement 
 							var testPay = testExistePay(model);
 							if(testPay.sys_id != null ){
-								console.log("txt de i : "+model);
-								console.log("mode de payment : "+testPay);
-									$('#payment').select2('val',testPay.sys_id );
-								/*c.data.payment = { 
+							//$('#payment').select2('val',testPay.sys_id );
+								c.data.payment = { 
 									displayValue:testPay.name,
 									value:testPay.sys_id 
-								}*/
+								}
 							}
 							//Date
 							var dd = model.match("([a-zA-Z]{3,}|[0-9]{1,4})(\-|\/|\ |\.)([a-zA-Z]{3,}|[0-9]{1,4})(\-|\/|\. |\ )[0-9]{1,4}");
@@ -142,22 +171,19 @@ $scope.dated = {
 								var regex = /[0-9]{1,4}(\-|\/|\ |\.)([a-zA-Z]{3,}|[0-9]{1,4})(\-|\/|\. |\ )[0-9]{1,4}/mg;
 								var regex2 = /([a-zA-Z]{3,}|[0-9]{1,4})(\-|\/|\ |\.)[0-9]{1,4}(\-|\/|\. |\ )[0-9]{1,4}/mg;
 								var s = $scope.getDate(regex,model);
-								console.log('res'+s);
+								
 								if(s != undefined){
 									if($scope.validateDate(s._i)){
 										if(!findDuplicate(dates,s)){
 											dates.push(s._i);
-											console.log('date found : '+s.toString());
 										}
 									}
 									s = $scope.getDate(regex2,model);
 									if($scope.validateDate(s._i)){
 										if(!findDuplicate(dates,s)){
 											dates.push(s._i);
-											console.log('date found 2 : '+s.toString());
 											//var dd = new Date(s._i) ;
 											var r = convert(s);
-											console.log("rrrrrrrrr" + r);
 											document.getElementById('sp_formfield_c.data.dated').value=r;
 											$scope.dated = r ;
 										}
@@ -169,41 +195,32 @@ $scope.dated = {
 							model.toUpperCase();
 							//Date
 							if(model.indexOf("DATE") != -1){
-								console.log(model);
-								console.log("indexOf Date :"+model.indexOf(" "));
 								l=model.substring(model.indexOf("DATE"),model.indexOf(lastIndexOfDigit(model)));
-								console.log("********** la date : "+l);
 							}
 							//Total
 							if(model.indexOf('TO') !=-1)	{	
-								console.log("indexOf : "+model.indexOf('TO'));
 								l=model.substring(model.indexOf('TO'),model.indexOf(' '));
-								console.log("chaine : "+l);
 							}
 							if(model.indexOf('PRIX') !=-1)	{	
 								l=model.substring(model.indexOf('PRIX'),model.indexOf(' '));
-								console.log("chaine : "+l);
-							}	
 							//Test pour récuperer Value
 							if(JaroWrinker(l.toUpperCase(),'TO') > 0.70  || JaroWrinker(l.toUpperCase(),'PRIX') > 0.70)
 							{  
 								var matches = model.match(/\d{1,3}[,\\.]?(\\d{1,2})?/g).join("");
-								console.log(matches);
 								var val = parseInt(matches+"" ,10);
 								document.getElementById('value').value =val;
 								c.data.value=val;
 							}
 						}
 
-						console.log(dates);
-					});
-				}}});
+					
+				}});
 	};
 	$scope.removeFiles = function(fname) {
 		var index = $scope.files.indexOf(fname);
 		if(index>-1)
 			$scope.files.splice(index,1);
-	};  
+	}
 	$scope.scanFiles = function() {
 		$scope.files.forEach(function(file){
 			var formData = new FormData();
@@ -220,18 +237,15 @@ $scope.dated = {
 					'Accept':'application/json'         
 				}
 			};
-			console.log('HTTP request : '+request);
 
 			// SEND THE FILES.
 			$http(request)
 				.success(function (d) {
 				// On success code here
-				console.log('response :',d.ParsedResults[0]);
 
 			})
 				.error(function (err) {
 				// On error code here
-				console.log('error :',err);
 			});
 
 		});
@@ -240,14 +254,12 @@ $scope.dated = {
 	$scope.uploadFiles = function() { 
 		$scope.fd = new FormData();
 if($scope.files.length == 0){
-	console.log("aucun imaga a modifier");
+
 			var URL = "https://"+c.data.instanceName+".service-now.com/em?id=bills";
-					console.log("URL : "+URL) ; 
 		     //window.top.location = URL;
 				window.location.href = URL ;
 		}
 		else{
-			console.log("update image ");
 			$scope.files.forEach(function(file){
 				$scope.fd.set('files', file);
 				var request = {
@@ -267,11 +279,9 @@ if($scope.files.length == 0){
 					json_data = JSON.parse(json_data);
 					c.data.action = 'append_image';
 					c.data.rec_id = c.data.sysBill;
-					console.log("rec : "+c.data.rec_id); 
 					c.data.attachment_id = json_data.result.sys_id;
 					c.server.update().then(function(){
 					var URL = "https://"+c.data.instanceName+".service-now.com/em?id=bills";
-					console.log("URL : "+URL) ; 
 		     //window.top.location = URL;
 				window.location.href = URL ;
 					c.data.action = undefined;
@@ -286,7 +296,6 @@ if($scope.files.length == 0){
 		}
 		}
 	$scope.submit_record=function() {
-		console.log('started submit');
 
 		c.data.action = 'update';
 c.data.idBill = c.data.sysBill ; 
@@ -300,27 +309,28 @@ c.data.idBill = c.data.sysBill ;
 		c.data.state=$scope.data.state;
 		c.data.type=$scope.data.type;
 		c.data.sheet= $scope.sheet; 
-		console.log("sheet "+c.data.sheet);
 		c.data.payment =$scope.payment;
 		c.data.category =$scope.category ;
 		c.data.card = $scope.card ;
 		c.data.country =$scope.country ;
 		c.data.user = $scope.user ;
-		c.data.merchId = merchId ; 
+		if(c.data.merchant != null){
+			c.data.merchant = $scope.merchant ;
+		}
+		if(c.data.merchant == null){
+		//c.data.merchId = merchId ; 
 
 		c.data.merchname = $scope.data.merchname;
-		console.log("salma test  : "+  $scope.data.merchId);
 
 		c.data.merchVat = $scope.data.merchVat;
 
 		c.data.merchCity = $scope.data.merchCity;
 		c.data.merchZipCode = $scope.data.merchZipCode;
+		}
 		c.server.update().then(function(){
 
 			c.data.table = 'x_315710_expense_m_expense_bill';
 			c.data.tableSys =c.data.sysBill;
-			console.log('id : '+c.data.sysBill);
-			console.log('tbl : '+c.data.table);
 			$scope.uploadFiles();
 
 			c.data.action = undefined;
@@ -401,7 +411,6 @@ c.data.idBill = c.data.sysBill ;
 			d = moment(m[0], list) ;
 			if(d.isValid() )
 			{ 
-				console.log(d._i);
 				flag=true;
 			}
 		}
@@ -412,7 +421,6 @@ c.data.idBill = c.data.sysBill ;
 	findDuplicate = function(tab,obj){
 		tab.forEach(function(item){
 			var b= item+'' == obj+'';
-			console.log( typeof obj+' testin '+typeof item+"  are "+b );
 			if(b)
 				return true;
 		});
@@ -499,9 +507,7 @@ c.data.idBill = c.data.sysBill ;
 			}
 			weight = weight + l * p * (1 - weight);
 		}
-		/* if ( weight > 0.7 ) {	
-									console.log(" jaro weight : "+s1+" , "+s2+" = "+weight);
-						 }*/
+		
 		return weight;
 	} 
 	//Convertion PDF Array
@@ -509,7 +515,6 @@ c.data.idBill = c.data.sysBill ;
 	function pdfAsArray(pdfAsArray) {
 		var l = pdfjsLib.getDocument(pdfAsArray);
 		l.promise.then(function (pdf) {
-			console.log( pdf);
 			var pdfDocument = pdf;
 			// Create an array that will contain our promises
 			var pagesPromises = [];
@@ -522,9 +527,7 @@ c.data.idBill = c.data.sysBill ;
 			}
 			// Execute all the promises
 			Promise.all(pagesPromises).then(function (pagesText) {
-				//var tab= new RegExp('[\r\n]');
-				// Display text of all the pages in the console
-				// e.g ["Text content page 1", "Text content page 2", "Text content page 3" ... ]
+				
 				var txt ; 
 				pagesText.forEach(function(item){
 					txt = item.split('  ');
@@ -536,25 +539,19 @@ c.data.idBill = c.data.sysBill ;
 
 					var l ;
 					txt[i].toUpperCase();
-					console.log(txt[i]);
 
 					/************************ TOTAL ************************/
 					var ch = 'TOTAL';
 					if(txt[i].indexOf(ch) !=-1)	{	
-						console.log("Total indexOf : "+txt[i].indexOf(ch));
 						l=txt[i].substring(txt[i].indexOf(ch),txt[i].indexOf(ch)+ch.length+50) ;
-						console.log("chaine tot : "+l);
 					}
 					var ch2 = "PRIX";
 					if(txt[i].indexOf(ch2) !=-1)	{	
 						l=txt[i].substring(txt[i].indexOf(ch2),txt[i].indexOf(ch2)+ch2.length+50) ;
-						console.log("chaine tot : "+l);
-					}	
 
 					//Test pour récuperer Value
 					if(JaroWrinker(txt[i].toUpperCase(),'TOTAL') > 0.70  || JaroWrinker(txt[i].toUpperCase(),'PRIX') > 0.70){  
 						var matches = l.match(/\d{1,3}[,\\.]?(\\d{1,2})?/g).join("");
-						console.log("Res TOTAL "+matches);
 						var val = parseInt(matches+"" ,10);
 
 						document.getElementById('value').value =val;
@@ -564,9 +561,7 @@ c.data.idBill = c.data.sysBill ;
 						var t ;
 						if(txt[i].indexOf(tva) !=-1)	{	
 							t=txt[i].substring(txt[i].indexOf(tva),txt[i].indexOf(tva)+tva.length+4) ;
-							console.log("TVA: "+t);
 							var matches = t.match(/\d{1,3}[,\\.]?(\\d{1,2})?/g).join("");
-							console.log("Res TOTAL "+matches);
 							var val = parseInt(matches+"",10);
 
 							document.getElementById('vat').value =val;
@@ -576,37 +571,37 @@ c.data.idBill = c.data.sysBill ;
 					}
 					/************************ Mode de PAyment  ************************/
 					var testPay = testExistePay(txt[i]);
-					if(testPay.sys_id != null ){
-						console.log("txt de i : "+txt[i]);
-						console.log("mode de payment : "+testPay);
-						$('#payment').select2('val',testPay.sys_id );
-						/*c.data.payment = { 
-							displayValue:testPay.name,
-							value:testPay.sys_id 
-						}*/
-					}
-					/************************ Merchant ************************/
-					var test = testExiste(txt[i]);
-					if (test.name != null ){
-						merchId = test.sys_id ; 
-						document.getElementById('merchName').value =test.name;
-						document.getElementById('vatNumber').value =test.vat_number;
-						document.getElementById('city').value =test.city;
-						document.getElementById('zipCode').value =test.zip_code;
-					}
+						if (test.name != null){
+								merchId = test.sys_id ; 
+								/*document.getElementById('merchName').value =test.name;
+								document.getElementById('vatNumber').value =test.vat_number;
+								document.getElementById('city').value =test.city;
+								document.getElementById('zipCode').value =test.zip_code;*/
+								$scope.merchant = {
+									displayValue:test.name,
+									value: merchId,
+									name:'c.data.merchant'
+								}
+							}
+							// test Existe Mode de Payement 
+							var testPay = testExistePay(model);
+							if(testPay.sys_id != null ){
+							//$('#payment').select2('val',testPay.sys_id );
+								c.data.payment = { 
+									displayValue:testPay.name,
+									value:testPay.sys_id 
+								}
+							}
 					/************************ Date  ************************/
 					var rech = "Emise le";
 					var pos = txt[i].indexOf(rech); //+rech.length
-					console.log("position : "+pos+" length "+rech.length);
-					console.log("Date chercher: "+txt[i].substring(pos,pos+rech.length+11));
+					
 					var o = txt[i].substring(pos,pos+rech.length+11) ;
-					console.log("O : "+o);
+					
 					var ddd = o.match("[0-9]{2}([\-\/\ \.])[0-9]{2}[\-\/\ \.][0-9]{4}");
 					if ( ddd != null){
 						var date = ddd[0].split('/');
-						console.log(ddd[0] +' aaa');
-						var m = moment(ddd[0]).format("YYYY-MM-DD");;
-						console.log("moment :"+m);
+						var m = moment(ddd[0]).format("YYYY-MM-DD");
 						document.getElementById('sp_formfield_').value=m;
 						$scope.dated = m ;
 
@@ -618,7 +613,6 @@ c.data.idBill = c.data.sysBill ;
 							var regex = /[0-9]{1,4}(\-|\/|\ |\.)([a-zA-Z]{3,}|[0-9]{1,4})(\-|\/|\. |\ )[0-9]{1,4}/mg;
 							var regex2 = /([a-zA-Z]{3,}|[0-9]{1,4})(\-|\/|\ |\.)[0-9]{1,4}(\-|\/|\. |\ )[0-9]{1,4}/mg;
 							var s = $scope.getDate(regex,txt[i]);
-							console.log('res'+s);
 							if(s != undefined){
 								if($scope.validateDate(s._i)){
 									if(!findDuplicate(dates,s)){
@@ -650,7 +644,7 @@ c.data.idBill = c.data.sysBill ;
 
 		}, function (reason) {
 			// PDF loading error
-			console.error(reason);
+		
 		});
 	}
 
@@ -813,11 +807,11 @@ c.data.idBill = c.data.sysBill ;
 	var idMerch = gr.getValue("merchant");
 	if(idMerch != null){
 		merch.get("sys_id",idMerch);
-		data.merchZipCode = merch.getDisplayValue("zip_code") ;
-
-		data.merchCity = merch.getDisplayValue("city") ;
+	//	data.merchZipCode = merch.getDisplayValue("zip_code") ;
+data.merchId = idMerch ;
+		/*data.merchCity = merch.getDisplayValue("city") ;
 		data.merchVat = merch.getDisplayValue("vat_number") ;
-		data.merchname = merch.getDisplayValue("name") ;
+	*/	data.merchnamee = merch.getDisplayValue("name") ;
 		gs.warn ("merchant : "+merch.name+" , "+merch.city+" , "+merch.vat_number+" , "+merch.zip_code);
 	}
 
@@ -857,9 +851,9 @@ c.data.idBill = c.data.sysBill ;
 
 
 	gs.warn('script called  input : '+data.sysBill);
-	gs.warn("amine "+gr.getValue('category'));
+	
 	if(input && input.action=='update'){
-
+var grr = new GlideRecord(data.table);
 		gs.warn('script called  data : '+data.sysBill);
 		gs.warn("Update ***********");
 		//gs.warn("eee "+gr.sys_id);
@@ -874,28 +868,19 @@ c.data.idBill = c.data.sysBill ;
 		//var gr = new GlideRecord(data.table);
 		gs.warn('insert started');   
 
-		
-		merch.addQuery('name',data.merchName);
-		merch.addQuery('city',data.merchCity);
-		merch.addQuery('vat_number',data.merchVat);
-		merch.addQuery('zip_code',data.merchZipCode);
-		merch.query();
-		var idM  ;
-		while(merch.next()){
-			idM = merch.sys_id; 
-		}
-		gs.warn("id : "+idM);
-		//var sysIdMerch ;
-		if(idM== null ){
+		if(input.merchant == null ){
 			merch.vat_number = data.merchVat ;
 			merch.name = data.merchName ; 
 			merch.city = data.merchCity ; 
 			merch.zip_code = data.merchZipCode ;
-			idM =merch.insert();
-			gs.warn("new merchant !!!!"+idM);
+			grr.merchant =merch.insert();
+			//gs.warn("new merchant !!!!"+idM);
+		}
+		else{
+					grr.merchant =input.merchant.value;
 		}
 		data.merchId = idM;
-		var grr = new GlideRecord(data.table);
+		
 			grr.get( input.idBill) ; 
 		gs.warn("updateeeeeee "+input.idBill);
 				gs.warn(JSON.stringify(grr));
@@ -915,7 +900,7 @@ c.data.idBill = c.data.sysBill ;
 				grr.billable_to_client = input.billable;
 				grr.to_reimburse= input.reimburse;
 				grr.vat = input.vat ;
-		grr.merchant =data.merchId ;
+
 
 			grr.update();
 			gs.warn("updated");
@@ -946,14 +931,14 @@ c.data.idBill = c.data.sysBill ;
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-06-19 07:43:17</sys_created_on>
         <sys_id>1734b3fe1b4e330072fe2136ec4bcbec</sys_id>
-        <sys_mod_count>840</sys_mod_count>
+        <sys_mod_count>855</sys_mod_count>
         <sys_name>widget update bill</sys_name>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
         <sys_policy/>
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sp_widget_1734b3fe1b4e330072fe2136ec4bcbec</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-08-16 13:45:33</sys_updated_on>
+        <sys_updated_on>2019-09-20 14:13:51</sys_updated_on>
         <template><![CDATA[<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
 
@@ -1025,6 +1010,22 @@ c.data.idBill = c.data.sysBill ;
 												page-size="100"  ></sn-record-picker>
 												</div>
 									   </div>
+  
+  <div class="form-group">
+          <label class="col-md-3 control-label" >Merchant </label>
+          <div class="col-md-4">
+            <sn-record-picker field="merchant"
+                              table="'x_315710_expense_m_merchant'" 
+                              display-field="'name'" value-field="'sys_id'" search-fields="'name'" 
+                              page-size="100" on-change="getFields()" ></sn-record-picker>
+           
+          </div>
+     <div class="col-md-1">
+        <a class="btn btn-floating btn-small btn-info  gradient-shadow " ng-click="addMerchant()"><i class="material-icons">add</i></a>
+     </div>
+        </div> 
+  
+  
                
 										<div class="form-group">
 										  <label class="col-md-3 control-label" >Title</label>
@@ -1099,15 +1100,7 @@ c.data.idBill = c.data.sysBill ;
 									  </div>
 									   </div>
 
-										 <div class="form-group">
-										  <label class="col-md-3 control-label" >Rate Card</label>
-										  <div class="col-md-4">
-									<sn-record-picker field="card"
-									   table="'fm_rate_card'" 
-									   display-field="'name'" value-field="'sys_id'" search-fields="'name'" 
-										page-size="100"   ></sn-record-picker>
-									  </div>
-									   </div>
+										
 
 										 <div class="form-group">
 										  <label class="col-md-3 control-label" >Country</label>
@@ -1161,37 +1154,41 @@ c.data.idBill = c.data.sysBill ;
                  
 
   
+     <div ng-show="c.data.ok == true">
+  
        <div class="col s12 m6 l10">
                 <h6 >Merchant</h6>
          <hr size=2>
      </div>
         
-									<div class="form-group">
-										   <label class="col-md-3 control-label" >Name</label>
-										   <div class="col-md-4">
-											   <input id="merchName" type="text" placeholder="" class="form-control" name="n" ng-model="c.data.merchname"  />
-											</div>
-									 </div>
-									<div class="form-group">
-									<label class="col-md-3 control-label" >Vat Number</label>
-									 <div class="col-md-4">
-										<input id="vatNumber" type="text" placeholder="" class="form-control" name="v" ng-model="c.data.merchVat"  />
-									  </div>
-								   </div>
-									<div class="form-group">
-										<label class="col-md-3 control-label" >City</label>
-										 <div class="col-md-4">
-											<input id="city" type="text" placeholder="" class="form-control" name="c" ng-model="c.data.merchCity"/>
-										 </div>
-									</div>
-									<div class="form-group">
-										<label class="col-md-3 control-label" >Zip Code</label>
-										<div class="col-md-4">
-											<input id="zipCode" type="text" placeholder="" class="form-control" name="z" ng-model="c.data.merchZipCode" />
-									   </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label" >Name</label>
+          <div class="col-md-4">
+            <input id="merchName" type="text" placeholder="" class="form-control" name="n" ng-model="data.merchname"  />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label" >Vat Number</label>
+          <div class="col-md-4">
+            <input id="vatNumber" type="text" placeholder="" class="form-control" name="v" ng-model="data.merchVat"  />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label" >City</label>
+          <div class="col-md-4">
+            <input id="city" type="text" placeholder="" class="form-control" name="c" ng-model="data.merchCity"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label" >Zip Code</label>
+          <div class="col-md-4">
+            <input id="zipCode" type="text" placeholder="" class="form-control" name="z" ng-model="data.merchZipCode" />
+          </div>
         </div>
 
-    <button ng-disabled="testComplete() == false" class="btn waves-effect waves-light " ng-click="testComplete();submit_record()" type="submit" name="action">Send<i class="material-icons right">send</i>
+  </div>
+
+    <button ng-disabled="testComplete() == false" class="btn waves-effect waves-light " ng-click="submit_record()" type="submit" name="action">Send<i class="material-icons right">send</i>
   </button>
 
 </form>]]></template>

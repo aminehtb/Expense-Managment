@@ -5,7 +5,7 @@
 	var c = this;
 $scope.range = function (size,start, end) {
     var ret = [];        
-    console.log(size,start, end);
+
 
        if (size < end) {
         end = size;
@@ -19,7 +19,7 @@ $scope.range = function (size,start, end) {
     for (var i = start; i < end; i++) {
         ret.push(i);
     }        
-     console.log(ret);        
+         
     return ret;
 };
 
@@ -34,10 +34,9 @@ $scope.range = function (size,start, end) {
 	$scope.itemsPerPage = 5;
 	$scope.pagedItems = [];
 	$scope.currentPage = 0;
-	/* $scope.items =[{"billIndex":1,"image":"","number":"EXP001605","process_date":"2019-05-29","title":"hj,jh,","value":"398.5733"},{"billIndex":2,"image":"","number":"EXP001604","process_date":"2019-04-10","title":"hgjj","value":"4855.1048"},{"billIndex":3,"image":"","number":"EXP001603","process_date":"2019-06-14","title":"kljl","value":"512.7062"},{"billIndex":4,"image":"","number":"EXP001602","process_date":"2019-04-09","title":"ouio","value":"178.3326"},{"billIndex":5,"image":"f4a2d2b61b5a330072fe2136ec4bcb99","number":"EXP001601","process_date":"2019-04-10","title":"eg","value":"4876.9772"},{"billIndex":6,"image":"497e31bd1bda730072fe2136ec4bcb6c","number":"EXP001599","process_date":"2019-06-28","title":"titre","value":"32449"},{"billIndex":7,"image":"92d922a51bd2730072fe2136ec4bcbed","number":"EXP001550","process_date":"2019-05-26","title":"test update","value":"569330"},{"billIndex":8,"image":"bf431ea11b92730072fe2136ec4bcbc0","number":"EXP001522","process_date":"2019-11-01","title":"tetst update99","value":"963"}] ; 
-	console.log($scope.items);*/
+	
 	$scope.items =JSON.parse(c.data.tableData);
-	//$scope.items=getData2();
+	
 	var searchMatch = function (haystack, needle) {
 		if (!needle) {
 			return true;
@@ -132,7 +131,7 @@ $scope.range = function (size,start, end) {
 	
 	
 	c.detail=function(id,name){
-		console.log("detail");
+
 		spModal.open({
                    title:'Detail of '+name,
                     //size:'lg',
@@ -147,9 +146,7 @@ $scope.range = function (size,start, end) {
 		
 
 	c.selectItem = function(id,action) {  
-		// Set the position indicator to the index value passed in on select
-		//c.sheetPos = idx;
-		console.log("id : "+id);
+	
 		//var id = c.data.sheets[idx].sys_id;
 	
 		if(action == 'delete'){
@@ -177,7 +174,7 @@ $scope.range = function (size,start, end) {
 			c.data.sheetID = iddd ;
 		c.server.update().then(function(r) {
 					
-			console.log(r);
+			
 			spUtil.addTrivialMessage("The record has been deleted.");
 			//$scope.data.tableData = c.data.tableData ; 
 						c.ctrlRead(c.data.tableData );
@@ -249,14 +246,14 @@ grr.get(input.sheetID);
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-06-30 19:51:16</sys_created_on>
         <sys_id>aa5407621b12330072fe2136ec4bcb02</sys_id>
-        <sys_mod_count>131</sys_mod_count>
+        <sys_mod_count>133</sys_mod_count>
         <sys_name>widget list of sheets</sys_name>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
         <sys_policy/>
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sp_widget_aa5407621b12330072fe2136ec4bcb02</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-08-29 15:38:00</sys_updated_on>
+        <sys_updated_on>2019-09-11 14:35:32</sys_updated_on>
         <template><![CDATA[<link href="https://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" rel="stylesheet">
 <script type="text/javascript">
   var sortingOrder = 'name';

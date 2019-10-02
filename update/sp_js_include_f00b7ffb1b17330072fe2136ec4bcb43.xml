@@ -11,7 +11,7 @@
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
         <sys_policy/>
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
-        <sys_ui_script display_value="x_315710_expense_m.datepicker">b7da7bfb1b17330072fe2136ec4bcbfd</sys_ui_script>
+        <sys_ui_script/>
         <sys_update_name>sp_js_include_f00b7ffb1b17330072fe2136ec4bcb43</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2019-08-23 14:06:05</sys_updated_on>

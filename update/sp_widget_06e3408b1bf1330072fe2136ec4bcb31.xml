@@ -1,62 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <client_script><![CDATA[function($scope,spUtil) {
+        <client_script><![CDATA[function($scope,spUtil,glideUserSession) {
 	/* widget controller */
 
 
+
 	var c = this;
+	glideUserSession.loadCurrentUser().then(function(currentUser) {
+		c.data.role = currentUser.hasRoleFromList('x_315710_expense_m.employee, x_315710_expense_m.manager');
+		c.data.role2 = currentUser.hasRoleFromList('x_315710_expense_m.user, x_315710_expense_m.manager');
+	c.data.user = currentUser.hasRole('x_315710_expense_m.user');
+		c.data.name = currentUser.getFullName();
+
+ });
 
 		var id = c.data.id ;
-		console.log("id : "+id);
 	if (c.options.table != null && c.options.table != "x_315710_expense_m_expense_bill"){
 		spUtil.get(c.options.widget_name,{ table:c.options.table, sys_id: "-1" , hideRelatedLists: false }).then(function(response) {
 			c.data.myWidget = response;
-			console.log(c.data.myWidget);
 		});
 	}
 		if (c.options.table != null && id != null){
 		
-			console.log("table : "+c.options.table);
 		if(c.options.table == "x_315710_expense_m_expense_bill"){
-			console.log("bill");
+	
 			spUtil.get(c.options.widget_name,{ sys_id: id }).then(function(response) {
 			c.data.myWidget = response;
-					console.log(c.data.myWidget);
 					});
 			}
 			else{
 		spUtil.get(c.options.widget_name,{ table:c.options.table, sys_id: id , hideRelatedLists: false }).then(function(response) {
 			c.data.myWidget = response;
-				console.log(c.data.myWidget);
 					});
 			}
 		}
 	
 		
 	
-	//}
-/*	if (c.options.table == "" ){
-			var idd = c.options.sys_id ;
-		console.log("pffffffff 3ed ");
-		console.log("widget : "+idd   +" , "+c.options.widget_name);
-		spUtil.get(c.options.widget_name, { table:c.options.table,sys_id:idd}).then(function(response) {
-			c.data.myWidget= response;
-		});*/
-		/*spUtil.get(c.options.widget_name,{ sys_id: idd }).then(function(response) {
-			c.data.myWidget = response;
-			console.log(c.data.myWidget);
-		});*/
-	//}
+
 	else{
 		spUtil.get(c.options.widget_name).then(function(response) {
 			c.data.myWidget = response;
-			console.log(c.data.myWidget);
 		});
 	}
+	
+	
+	$scope.logOut = function(){
+	c.data.action = 'logout';
+c.server.update().then(function(){
+});	
+}
+	
 }]]></client_script>
         <controller_as>c</controller_as>
-        <css>.pad{
+        <css>
+.material-tooltip{
+  visibility: hidden !important;
+}
+
+
+
+
+
+.pad{
 	padding-left: 10%;
   width:122%;
   
@@ -162,35 +169,40 @@ circle:nth-of-type(4) {
         <roles/>
         <script><![CDATA[(function() {
 	 data.id = $sp.getParameter("sys_id");
-	//data.myWidget=$sp.getWidget('widget_list_of_bill');
-/*	if(input && input.action == 'AppelWidget'){
-		data.myWidget="";
-		var app =input.widg ;
-			gs.warn("input widget un if  :"+app);
-		if(app == "addBill"){
-    data.myWidget = $sp.getWidget('expense_bill_form');
-		gs.warn("***** IF Add bill "+JSON.stringify(data.myWidget));
-		}
-		else if(app == "ListBill"){
-    data.myWidget = $sp.getWidget('widget_list_of_bill');
-			gs.warn("***** IF List bill "+JSON.stringify(data.myWidget));
-		}
-	}*/
+	
+	var user = gs.getUserID();
+if(input && input.action== 'logout'){
+var sessions =gs.getSession();
+var it = sessions.iterator();
+while(it.hasNext()) {
+var session = it.next();
+if (session == gs.getUserName()) {
+var httpSession = session.getHS();
+httpSession.setAttribute("locked_out", "true");
+}
+}
+
+}
+	
 })();]]></script>
         <servicenow>false</servicenow>
         <sys_class_name>sp_widget</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-06-06 22:36:01</sys_created_on>
         <sys_id>06e3408b1bf1330072fe2136ec4bcb31</sys_id>
-        <sys_mod_count>609</sys_mod_count>
+        <sys_mod_count>663</sys_mod_count>
         <sys_name>widget_expense</sys_name>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
         <sys_policy/>
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sp_widget_06e3408b1bf1330072fe2136ec4bcb31</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-07-30 07:46:51</sys_updated_on>
-        <template><![CDATA[ 
+        <sys_updated_on>2019-09-16 13:33:31</sys_updated_on>
+        <template><![CDATA[ <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <div class="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu 2-columns  " data-open="click" data-menu="vertical-modern-menu" data-col="2-columns">
@@ -202,30 +214,30 @@ circle:nth-of-type(4) {
       <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
         <li ><a href="?id=dashboard" class="waves-effect waves-cyan " ng-class="{true:'active',false:''}[c.options.widget_name=='widget_dashboard']"><i class="material-icons">settings_input_svideo</i>Dashboard</a>
         </li>
-        <li class="navigation-header"><a class="navigation-header-text">Expense</a><i class="navigation-header-icon material-icons">more_horiz</i>
+        <li ng-if="c.data.role" class="navigation-header"><a class="navigation-header-text">Expense</a><i class="navigation-header-icon material-icons">more_horiz</i>
         </li>
-        <li class="bold"><a class="waves-effect waves-cyan " href="?id=bills" ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_bill']"><i class="material-icons">receipt</i><span class="menu-title" data-i18n="">Bills</span></a>
+        <li ng-if="c.data.role" class="bold"><a class="waves-effect waves-cyan " href="?id=bills" ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_bill']"><i class="material-icons">receipt</i><span class="menu-title" data-i18n="">Bills</span></a>
         </li>
-        <li class="bold"><a class=" waves-effect waves-cyan " href="?id=sheets"  ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_sheets']"><i class="material-icons">assignment</i><span class="menu-title" data-i18n="">Sheets</span></a>
+        <li ng-if="c.data.role2" class="bold"><a class=" waves-effect waves-cyan " href="?id=sheets"  ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_sheets']"><i class="material-icons">assignment</i><span class="menu-title" data-i18n="">Sheets</span></a>
           
         </li>
-        <li class="bold"><a class="waves-effect waves-cyan " href="?id=vehicles"  ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_vehicles']"><i class="material-icons">time_to_leave</i><span class="menu-title" data-i18n="">Vehicles</span></a>
+        <li ng-if="c.data.role" class="bold"><a class="waves-effect waves-cyan " href="?id=vehicles"  ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_vehicles']"><i class="material-icons">time_to_leave</i><span class="menu-title" data-i18n="">Vehicles</span></a>
         </li>
-        <li class="navigation-header"><a class="navigation-header-text">Company</a><i class="navigation-header-icon material-icons">more_horiz</i>
+         <li ng-if="c.data.role" class="bold"><a class=" waves-effect waves-cyan " href="?id=mileage_expenses"   ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_mileage_expenses']"><i class="material-icons">rv_hookup</i><span class="menu-title" data-i18n="">Mileage expenses</span></a>
+         
+        <li ng-if="c.data.user"class="navigation-header"><a class="navigation-header-text">Company</a><i class="navigation-header-icon material-icons">more_horiz</i>
         </li>
-        <li class="bold"><a class="waves-effect waves-cyan " href="?id=categories"  ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_categorie']"><i class="material-icons">class</i><span class="menu-title" data-i18n="">Categories</span></a>
+        <li ng-if="c.data.user" class="bold"><a class="waves-effect waves-cyan " href="?id=categories"  ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_categorie']"><i class="material-icons">class</i><span class="menu-title" data-i18n="">Categories</span></a>
         </li>
-        <li class="bold"><a class="waves-effect waves-cyan "  href="?id=payment_instruments"  ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_payment_instrument']"><i class="material-icons">payment</i><span class="menu-title" data-i18n="">Payment Instruments</span></a>
+        <li ng-if="c.data.user" class="bold"><a class="waves-effect waves-cyan "  href="?id=payment_instruments"  ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_payment_instrument']"><i class="material-icons">payment</i><span class="menu-title" data-i18n="">Payment Instruments</span></a>
         </li>
-        <li class="bold"><a class="waves-effect waves-cyan " href="?id=rates"   ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_rate']" ><i class="material-icons">rate_review</i><span class="menu-title" data-i18n="">Rates</span></a>
+        <li ng-if="c.data.user" class="bold"><a class="waves-effect waves-cyan " href="?id=rates"   ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_rate']" ><i class="material-icons">rate_review</i><span class="menu-title" data-i18n="">Rates</span></a>
         </li>
-        <li class="bold"><a class="waves-effect waves-cyan "  href="?id=merchant"  ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_merchant']"><i class="material-icons">store</i><span class="menu-title" data-i18n="">Merchants</span></a>
+        <li ng-if="c.data.user" class="bold"><a class="waves-effect waves-cyan "  href="?id=merchant"  ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_merchant']"><i class="material-icons">store</i><span class="menu-title" data-i18n="">Merchants</span></a>
         </li>
-        <li class="bold"><a class=" waves-effect waves-cyan " href="?id=mileage_expenses"   ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_mileage_expenses']"><i class="material-icons">rv_hookup</i><span class="menu-title" data-i18n="">Mileage expenses</span></a>
-          
-        </li>
-        <li class="bold"><a class="waves-effect waves-cyan " href="#"><i class="material-icons">settings</i><span class="menu-title" data-i18n="">Company Settings</span></a>
-        </li>
+        
+       <!-- <li  class="bold"><a class="waves-effect waves-cyan "  ng-click="logOut()" ><i class="material-icons"></i><span class="menu-title" data-i18n="">LogOut</span></a>
+        </li>-->
        </ul>
       <div class="navigation-background"></div><a class="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium waves-effect waves-light hide-on-large-only" href="#" data-target="slide-out"><i class="material-icons">menu</i></a>
     </aside>

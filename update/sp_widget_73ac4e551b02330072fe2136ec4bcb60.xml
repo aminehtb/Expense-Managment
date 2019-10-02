@@ -3,140 +3,138 @@
         <category>custom</category>
         <client_script><![CDATA[function($scope,$filter,spModal,spUtil,$rootScope)
 {
-var c = this;
-	
-$scope.range = function (size,start, end) {
-    var ret = [];        
-    console.log(size,start, end);
+	var c = this;
 
-       if (size < end) {
-        end = size;
-        if(size<$scope.gap){
-             start = 0;
-        }else{
-             start = size-$scope.gap;
-        }
+	$scope.range = function (size,start, end) {
+		var ret = [];        
 
-    }
-    for (var i = start; i < end; i++) {
-        ret.push(i);
-    }        
-     console.log(ret);        
-    return ret;
-};
-	c.ctrlRead =function(data ) 
-	{
 
-	$scope.sortingOrder = sortingOrder;
-	$scope.reverse = false;
-	$scope.filteredItems = [];
-	$scope.groupedItems = [];
-	$scope.itemsPerPage = 5;
-	$scope.pagedItems = [];
-	$scope.currentPage = 0;
-	/* $scope.items =[{"billIndex":1,"image":"","number":"EXP001605","process_date":"2019-05-29","title":"hj,jh,","value":"398.5733"},{"billIndex":2,"image":"","number":"EXP001604","process_date":"2019-04-10","title":"hgjj","value":"4855.1048"},{"billIndex":3,"image":"","number":"EXP001603","process_date":"2019-06-14","title":"kljl","value":"512.7062"},{"billIndex":4,"image":"","number":"EXP001602","process_date":"2019-04-09","title":"ouio","value":"178.3326"},{"billIndex":5,"image":"f4a2d2b61b5a330072fe2136ec4bcb99","number":"EXP001601","process_date":"2019-04-10","title":"eg","value":"4876.9772"},{"billIndex":6,"image":"497e31bd1bda730072fe2136ec4bcb6c","number":"EXP001599","process_date":"2019-06-28","title":"titre","value":"32449"},{"billIndex":7,"image":"92d922a51bd2730072fe2136ec4bcbed","number":"EXP001550","process_date":"2019-05-26","title":"test update","value":"569330"},{"billIndex":8,"image":"bf431ea11b92730072fe2136ec4bcbc0","number":"EXP001522","process_date":"2019-11-01","title":"tetst update99","value":"963"}] ; 
-	console.log($scope.items);*/
-	$scope.items =JSON.parse(c.data.tableData);
-	//$scope.items=getData2();
-	var searchMatch = function (haystack, needle) {
-		if (!needle) {
-			return true;
-		}
-	if(haystack != null)
-{		return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
-		
-}
-	};
-
-	// init the filtered items
-	$scope.search = function () {
-		$scope.filteredItems = $filter('filter')($scope.items, function (item) {
-			for(var attr in item) {
-				if (searchMatch(item[attr], $scope.query))
-					return true;
+		if (size < end) {
+			end = size;
+			if(size<$scope.gap){
+				start = 0;
+			}else{
+				start = size-$scope.gap;
 			}
-			return false;
-		});
-		// take care of the sorting order
-		if ($scope.sortingOrder !== '') {
-			$scope.filteredItems = $filter('orderBy')($scope.filteredItems, $scope.sortingOrder, $scope.reverse);
-		}
-		$scope.currentPage = 0;
-		// now group by pages
-		$scope.groupToPages();
-	};
 
-	// calculate page in place
-	$scope.groupToPages = function () {
-		$scope.pagedItems = [];
-
-		for (var i = 0; i < $scope.filteredItems.length; i++) {
-			if (i % $scope.itemsPerPage === 0) {
-				$scope.pagedItems[Math.floor(i / $scope.itemsPerPage)] = [ $scope.filteredItems[i] ];
-			} else {
-				$scope.pagedItems[Math.floor(i / $scope.itemsPerPage)].push($scope.filteredItems[i]);
-			}
-		}
-	};
-
-	$scope.range = function (start, end) {
-		var ret = [];
-		if (!end) {
-			end = start;
-			start = 0;
 		}
 		for (var i = start; i < end; i++) {
 			ret.push(i);
-		}
+		}        
+
 		return ret;
 	};
+	c.ctrlRead =function(data ) 
+	{
 
-	$scope.prevPage = function () {
-		if ($scope.currentPage > 0) {
-			$scope.currentPage--;
-		}
-	};
+		$scope.sortingOrder = sortingOrder;
+		$scope.reverse = false;
+		$scope.filteredItems = [];
+		$scope.groupedItems = [];
+		$scope.itemsPerPage = 5;
+		$scope.pagedItems = [];
+		$scope.currentPage = 0;
 
-	$scope.nextPage = function () {
-		if ($scope.currentPage < $scope.pagedItems.length - 1) {
-			$scope.currentPage++;
-		}
-	};
+		$scope.items =JSON.parse(c.data.tableData);
+		//$scope.items=getData2();
+		var searchMatch = function (haystack, needle) {
+			if (!needle) {
+				return true;
+			}
+			if(haystack != null)
+			{		return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
 
-	$scope.setPage = function () {
-		$scope.currentPage = this.n;
-	};
+			}
+		};
 
-	// functions have been describe process the data for display
-	$scope.search();
+		// init the filtered items
+		$scope.search = function () {
+			$scope.filteredItems = $filter('filter')($scope.items, function (item) {
+				for(var attr in item) {
+					if (searchMatch(item[attr], $scope.query))
+						return true;
+				}
+				return false;
+			});
+			// take care of the sorting order
+			if ($scope.sortingOrder !== '') {
+				$scope.filteredItems = $filter('orderBy')($scope.filteredItems, $scope.sortingOrder, $scope.reverse);
+			}
+			$scope.currentPage = 0;
+			// now group by pages
+			$scope.groupToPages();
+		};
 
-	// change sorting order
-	$scope.sort_by = function(newSortingOrder) {
-		if ($scope.sortingOrder == newSortingOrder)
-			$scope.reverse = !$scope.reverse;
+		// calculate page in place
+		$scope.groupToPages = function () {
+			$scope.pagedItems = [];
 
-		$scope.sortingOrder = newSortingOrder;
+			for (var i = 0; i < $scope.filteredItems.length; i++) {
+				if (i % $scope.itemsPerPage === 0) {
+					$scope.pagedItems[Math.floor(i / $scope.itemsPerPage)] = [ $scope.filteredItems[i] ];
+				} else {
+					$scope.pagedItems[Math.floor(i / $scope.itemsPerPage)].push($scope.filteredItems[i]);
+				}
+			}
+		};
 
-		// icon setup
-		$('th i').each(function(){
-			// icon reset
-			$(this).removeClass().addClass('icon-sort');
-		});
-		if ($scope.reverse)
-			$('th.'+$scope.sortingOrder+' i').removeClass().addClass('icon-chevron-up');
-		else
-			$('th.'+$scope.sortingOrder+' i').removeClass().addClass('icon-chevron-down');
-	};
-		}
+		$scope.range = function (start, end) {
+			var ret = [];
+			if (!end) {
+				end = start;
+				start = 0;
+			}
+			for (var i = start; i < end; i++) {
+				ret.push(i);
+			}
+			return ret;
+		};
+
+		$scope.prevPage = function () {
+			if ($scope.currentPage > 0) {
+				$scope.currentPage--;
+			}
+		};
+
+		$scope.nextPage = function () {
+			if ($scope.currentPage < $scope.pagedItems.length - 1) {
+				$scope.currentPage++;
+			}
+		};
+
+		$scope.setPage = function () {
+			$scope.currentPage = this.n;
+		};
+
+		// functions have been describe process the data for display
+		$scope.search();
+
+		// change sorting order
+		$scope.sort_by = function(newSortingOrder) {
+			if ($scope.sortingOrder == newSortingOrder)
+				$scope.reverse = !$scope.reverse;
+
+			$scope.sortingOrder = newSortingOrder;
+
+			// icon setup
+			$('th i').each(function(){
+				// icon reset
+				$(this).removeClass().addClass('icon-sort');
+			});
+			if ($scope.reverse)
+				$('th.'+$scope.sortingOrder+' i').removeClass().addClass('icon-chevron-up');
+			else
+				$('th.'+$scope.sortingOrder+' i').removeClass().addClass('icon-chevron-down');
+		};
+	}
 
 	//c.getData();
 	c.ctrlRead(c.data.tableData );
 
-	
-	
+
+
 
 	c.affimage=function(idimage){
-		console.log("pf image"+idimage);
 		spModal.open({
 			// title:'Image',
 			size:'lg',
@@ -154,18 +152,10 @@ $scope.range = function (size,start, end) {
 	c.selectItem = function(id,idx,action) {  
 		// Set the position indicator to the index value passed in on select
 		c.billPos = idx;
-	console.log("idx : "+idx);
-		console.log("id : "+id);
-		//	var idpos= c.data.bills[idx].sys_id;
-		//console.log(idx+" "+idpos);
-		/*var val = id;
-		c.index = c.data.tableData.find(function(item, i){
-			if(item.sys_id === val)
-				return i;
 
-		});*/
 
-		
+
+
 		if(action == 'delete'){
 
 			c.confirmDelete(id);	
@@ -186,35 +176,22 @@ $scope.range = function (size,start, end) {
 		});
 	}
 	c.deleteBill = function(iddd) {
-		//c.server.get({
-		console.log("DELETE");
-			c.data.action = 'deleteBill';
-			c.data.billID=iddd ; 
-		//})
-				c.server.update().then(function(r) {
-					
-			console.log(r);
-			spUtil.addTrivialMessage("The record has been deleted.");
-			//$scope.data.tableData = c.data.tableData ; 
-						c.ctrlRead(c.data.tableData );
-			c.data.action = undefined;
-					});
-	}	
-					
-					/*	console.log("position : "+c.billPos);
-			c.data.bills.splice(c.billPos, 1);*/
-			//data.tableData=json.encode(data.bills);
-			//c.data.tableData = c.data.tabl;
-			//c.data.tableData.splice(c.billPos, 1);
-		//	console.log(c.data.tableData);
 
-			//c.getData();
-			//	setTimeout(function(){
-				//spUtil.update($scope);
-			//});
-	
-	
-		
+		c.data.action = 'deleteBill';
+		c.data.billID=iddd ; 
+
+		c.server.update().then(function(r) {
+
+			spUtil.addTrivialMessage("The record has been deleted.");
+
+			c.ctrlRead(c.data.tableData );
+			c.data.action = undefined;
+		});
+	}	
+
+
+
+
 }]]></client_script>
         <controller_as>c</controller_as>
         <css>div.scrollmenu {
@@ -265,62 +242,54 @@ $scope.range = function (size,start, end) {
 		var i=0;
 		var json=new global.JSON();
 		var gr = new GlideRecord('x_315710_expense_m_expense_bill');
-		gr.orderByDesc('sys_created_on');
-		gr.query();
+
+	
+
+		if(gs.hasRole("x_315710_expense_m.employee")){
+			gr.addQuery("user",gs.getUserID());
+			gr.orderByDesc('sys_created_on');
+			gr.query();
+		}
+			gr.orderByDesc('sys_created_on');
+			gr.query();
+
 		gs.warn("While**********");
 		while (gr.next()) {
 			var billObj = {};
-			//use service portal helper method to get some display values
 			$sp.getRecordDisplayValues(billObj, gr, 'image,title,value,state,date,process_date,type,tips,expense_sheet,payment_instrument,category,rate_card,country,user,billable_to_client,to_reimburse,vat,merchant,sys_id');
-			//	list.push({billIndex:i,title:gr.title+'',number:gr.number+'',image:gr.getDisplayValue("image"),value:gr.value+'',process_date:gr.process_date+'',sys_id:gr.sys_id+''});
 			i++ ; 
 			data.bills.push(billObj);
 			gs.warn(billObj);
-			//list.push(billObj);
 
 		}
 		//data.tableData=null ; 
 		gs.warn("length in  "+msg+" : "+i);
 		//data.tableData = null ; 
-		
-		data.tableData = json.encode(data.bills);
-				console.log("*******data.tableData");
 
-		console.log(data.tableData);
+		data.tableData = json.encode(data.bills);
+
+
 		data.length = i ; 
 
 	}
-	//var listBills = function(){
 
 
 
-	/*
-	data.bills = [];
-	var gr = new GlideRecord('x_315710_expense_m_expense_bill');
-	gr.orderByDesc('sys_created_on');
-	gr.query();
-	while (gr.next()) {
-		var billObj = {};
-		//use service portal helper method to get some display values
-		$sp.getRecordDisplayValues(billObj, gr, 'title,value,state,process_date,type,tips,expense_sheet,.payment_instrument,category,rate_card,country,user,billable_to_client,to_reimburse,vat,merchant,sys_id');
-		data.bills.push(billObj);
-	}*/
-	//if(!input){ 
-		load(" load ");
-	//}
+
+	load(" load ");
+
 
 
 
 
 	if (input && input.action == 'deleteBill') {
 		var grr = new GlideRecord('x_315710_expense_m_expense_bill');
-		//if (gr.get(input.billID)) {
-		//gs.warn("Bill deleted : "+input.billID);
+
 		grr.get(input.billID);
 		grr.deleteRecord(); 
 
 		load("delete");
-		//}
+
 
 	}
 
@@ -332,14 +301,14 @@ $scope.range = function (size,start, end) {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-06-14 08:19:57</sys_created_on>
         <sys_id>73ac4e551b02330072fe2136ec4bcb60</sys_id>
-        <sys_mod_count>701</sys_mod_count>
+        <sys_mod_count>709</sys_mod_count>
         <sys_name>widget list of Bill</sys_name>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
         <sys_policy/>
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sp_widget_73ac4e551b02330072fe2136ec4bcb60</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-08-29 15:36:25</sys_updated_on>
+        <sys_updated_on>2019-09-23 13:30:09</sys_updated_on>
         <template><![CDATA[
 <link href="https://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" rel="stylesheet">
 

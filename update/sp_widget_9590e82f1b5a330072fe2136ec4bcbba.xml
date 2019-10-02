@@ -4,8 +4,7 @@
         <client_script><![CDATA[function($scope,spModal,spUtil,$filter,$rootScope) {
 	var c = this;
 $scope.range = function (size,start, end) {
-    var ret = [];        
-    console.log(size,start, end);
+    var ret = [];  
 
        if (size < end) {
         end = size;
@@ -19,7 +18,7 @@ $scope.range = function (size,start, end) {
     for (var i = start; i < end; i++) {
         ret.push(i);
     }        
-     console.log(ret);        
+       
     return ret;
 };
 
@@ -130,11 +129,8 @@ $scope.range = function (size,start, end) {
 	
 	
 	c.selectItem = function(id,idx,action) {  
-		// Set the position indicator to the index value passed in on select
-		/*c.mileage_expPos = idx;
-		console.log("idx : "+idx);
-		var id = c.data.mileage_exps[idx].sys_id;*/
-		console.log(id);
+	
+
 		if(action == 'delete'){
 	
 			c.confirmDelete(id);	
@@ -166,9 +162,8 @@ $scope.range = function (size,start, end) {
 			c.data.mileage_expID=iddd;
 		c.server.update().then(function(r) {
 
-			console.log(r);
 			spUtil.addTrivialMessage("The record has been deleted.");
-			//$scope.data.tableData = c.data.tableData ; 
+	
 			c.ctrlRead(c.data.tableData );
 			c.data.action = undefined;
 		});
@@ -242,19 +237,19 @@ $scope.range = function (size,start, end) {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-07-03 10:29:40</sys_created_on>
         <sys_id>9590e82f1b5a330072fe2136ec4bcbba</sys_id>
-        <sys_mod_count>56</sys_mod_count>
+        <sys_mod_count>60</sys_mod_count>
         <sys_name>widget list of Mileage expenses</sys_name>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
         <sys_policy/>
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sp_widget_9590e82f1b5a330072fe2136ec4bcbba</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-08-29 15:47:38</sys_updated_on>
+        <sys_updated_on>2019-09-11 14:47:59</sys_updated_on>
         <template><![CDATA[
 <link href="https://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" rel="stylesheet">
 <div class="controls">
   <p>
-  <a class="right btn-floating btn-large primary-text gradient-shadow cyan pull-right"  href="?id=form_mileage_expenses">
+  <a class="right btn-floating btn-large primary-text gradient-shadow cyan pull-right"  href="?id=form_mileage_expenses&sys_id=-1">
     <i class="material-icons">add</i>
   </a>
 </p>

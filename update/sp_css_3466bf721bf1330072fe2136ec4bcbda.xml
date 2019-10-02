@@ -1,19 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_css">
     <sp_css action="INSERT_OR_UPDATE">
-        <css>.ps__rail-x,.ps__rail-y{display:none;opacity:0;position:absolute}.ps{overflow:hidden!important;overflow-anchor:none;-ms-overflow-style:none;touch-action:auto;-ms-touch-action:auto}.ps__rail-x{transition:background-color .2s linear,opacity .2s linear;-webkit-transition:background-color .2s linear,opacity .2s linear;height:15px;bottom:0}.ps__rail-y{transition:background-color .2s linear,opacity .2s linear;-webkit-transition:background-color .2s linear,opacity .2s linear;width:15px;right:0}.ps--active-x&gt;.ps__rail-x,.ps--active-y&gt;.ps__rail-y{display:block;background-color:transparent}.ps--focus&gt;.ps__rail-x,.ps--focus&gt;.ps__rail-y,.ps--scrolling-x&gt;.ps__rail-x,.ps--scrolling-y&gt;.ps__rail-y,.ps:hover&gt;.ps__rail-x,.ps:hover&gt;.ps__rail-y{opacity:.6}.ps .ps__rail-x.ps--clicking,.ps .ps__rail-x:focus,.ps .ps__rail-x:hover,.ps .ps__rail-y.ps--clicking,.ps .ps__rail-y:focus,.ps .ps__rail-y:hover{background-color:#eee;opacity:.9}.ps__thumb-x,.ps__thumb-y{background-color:#aaa;border-radius:6px;position:absolute}.ps__thumb-x{transition:background-color .2s linear,height .2s ease-in-out;-webkit-transition:background-color .2s linear,height .2s ease-in-out;height:6px;bottom:2px}.ps__thumb-y{transition:background-color .2s linear,width .2s ease-in-out;-webkit-transition:background-color .2s linear,width .2s ease-in-out;width:6px;right:2px}.ps__rail-x.ps--clicking .ps__thumb-x,.ps__rail-x:focus&gt;.ps__thumb-x,.ps__rail-x:hover&gt;.ps__thumb-x{background-color:#999;height:11px}.ps__rail-y.ps--clicking .ps__thumb-y,.ps__rail-y:focus&gt;.ps__thumb-y,.ps__rail-y:hover&gt;.ps__thumb-y{background-color:#999;width:11px}@supports (-ms-overflow-style:none){.ps{overflow:auto!important}}@media screen and (-ms-high-contrast:active),(-ms-high-contrast:none){.ps{overflow:auto!important}}&#13;
-</css>
+        <css>.ps__rail-x,&#13;
+.ps__rail-y {&#13;
+    display: none;&#13;
+    opacity: 0;&#13;
+    position: absolute&#13;
+}&#13;
+&#13;
+.ps {&#13;
+    overflow: hidden!important;&#13;
+    overflow-anchor: none;&#13;
+    -ms-overflow-style: none;&#13;
+    touch-action: auto;&#13;
+    -ms-touch-action: auto&#13;
+}&#13;
+&#13;
+.ps__rail-x {&#13;
+    transition: background-color .2s linear, opacity .2s linear;&#13;
+    -webkit-transition: background-color .2s linear, opacity .2s linear;&#13;
+    height: 15px;&#13;
+    bottom: 0&#13;
+}&#13;
+&#13;
+.ps__rail-y {&#13;
+    transition: background-color .2s linear, opacity .2s linear;&#13;
+    -webkit-transition: background-color .2s linear, opacity .2s linear;&#13;
+    width: 15px;&#13;
+    right: 0&#13;
+}&#13;
+&#13;
+.ps--active-x&gt;.ps__rail-x,&#13;
+.ps--active-y&gt;.ps__rail-y {&#13;
+    display: block;&#13;
+    background-color: transparent&#13;
+}&#13;
+&#13;
+.ps--focus&gt;.ps__rail-x,&#13;
+.ps--focus&gt;.ps__rail-y,&#13;
+.ps--scrolling-x&gt;.ps__rail-x,&#13;
+.ps--scrolling-y&gt;.ps__rail-y,&#13;
+.ps:hover&gt;.ps__rail-x,&#13;
+.ps:hover&gt;.ps__rail-y {&#13;
+    opacity: .6&#13;
+}&#13;
+&#13;
+.ps .ps__rail-x.ps--clicking,&#13;
+.ps .ps__rail-x:focus,&#13;
+.ps .ps__rail-x:hover,&#13;
+.ps .ps__rail-y.ps--clicking,&#13;
+.ps .ps__rail-y:focus,&#13;
+.ps .ps__rail-y:hover {&#13;
+    background-color: #eee;&#13;
+    opacity: .9&#13;
+}&#13;
+&#13;
+.ps__thumb-x,&#13;
+.ps__thumb-y {&#13;
+    background-color: #aaa;&#13;
+    border-radius: 6px;&#13;
+    position: absolute&#13;
+}&#13;
+&#13;
+.ps__thumb-x {&#13;
+    transition: background-color .2s linear, height .2s ease-in-out;&#13;
+    -webkit-transition: background-color .2s linear, height .2s ease-in-out;&#13;
+    height: 6px;&#13;
+    bottom: 2px&#13;
+}&#13;
+&#13;
+.ps__thumb-y {&#13;
+    transition: background-color .2s linear, width .2s ease-in-out;&#13;
+    -webkit-transition: background-color .2s linear, width .2s ease-in-out;&#13;
+    width: 6px;&#13;
+    right: 2px&#13;
+}&#13;
+&#13;
+.ps__rail-x.ps--clicking .ps__thumb-x,&#13;
+.ps__rail-x:focus&gt;.ps__thumb-x,&#13;
+.ps__rail-x:hover&gt;.ps__thumb-x {&#13;
+    background-color: #999;&#13;
+    height: 11px&#13;
+}&#13;
+&#13;
+.ps__rail-y.ps--clicking .ps__thumb-y,&#13;
+.ps__rail-y:focus&gt;.ps__thumb-y,&#13;
+.ps__rail-y:hover&gt;.ps__thumb-y {&#13;
+    background-color: #999;&#13;
+    width: 11px&#13;
+}&#13;
+&#13;
+@supports (-ms-overflow-style:none) {&#13;
+    .ps {&#13;
+        overflow: auto!important&#13;
+    }&#13;
+}&#13;
+&#13;
+@media screen and (-ms-high-contrast:active),&#13;
+(-ms-high-contrast:none) {&#13;
+    .ps {&#13;
+        overflow: auto!important&#13;
+    }&#13;
+}</css>
         <name>vendors</name>
         <sys_class_name>sp_css</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-06-06 21:37:15</sys_created_on>
         <sys_id>3466bf721bf1330072fe2136ec4bcbda</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>3</sys_mod_count>
         <sys_name>vendors</sys_name>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
         <sys_policy/>
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sp_css_3466bf721bf1330072fe2136ec4bcbda</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-06-25 07:26:55</sys_updated_on>
+        <sys_updated_on>2019-09-16 11:52:17</sys_updated_on>
     </sp_css>
 </record_update>

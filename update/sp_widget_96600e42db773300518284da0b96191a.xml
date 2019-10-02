@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function() {  /* widget controller */  var c = this;}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>widget_404</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>widget 404</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {  /* populate the 'data' object */  /* e.g., data.table = $sp.getValue('table'); */})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-09-11 15:11:39</sys_created_on>
+        <sys_id>96600e42db773300518284da0b96191a</sys_id>
+        <sys_mod_count>45</sys_mod_count>
+        <sys_name>widget 404</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sp_widget_96600e42db773300518284da0b96191a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-09-12 08:30:04</sys_updated_on>
+        <template><![CDATA[
+       <div class="section section-404 p-0 m-0 height-100vh">
+
+
+   <img src="erreur.png" alt="">
+          <div class="center">
+            <h1>404</h1><p>BAD REQUEST</p>
+         
+      <a class="waves-effect waves-light btn-small gradient-45deg-deep-purple-blue gradient-shadow"  href="?id=dashboard">Back
+        TO Home</a>
+   
+         </div>
+      
+    </div>
+     
+
+]]></template>
+    </sp_widget>
+</record_update>

@@ -7,20 +7,20 @@
         <id>payment_instruments</id>
         <internal>false</internal>
         <public>false</public>
-        <roles/>
+        <roles>x_315710_expense_m.user</roles>
         <short_description/>
         <sys_class_name>sp_page</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-07-19 10:24:55</sys_created_on>
         <sys_id>ebe872e41bb2330072fe2136ec4bcbf0</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>payment_instruments</sys_name>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
         <sys_policy/>
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sp_page_ebe872e41bb2330072fe2136ec4bcbf0</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-07-19 10:24:55</sys_updated_on>
+        <sys_updated_on>2019-09-16 08:18:00</sys_updated_on>
         <title>Payment Instruments</title>
     </sp_page>
     <sys_translated_text action="delete_multiple" query="documentkey=ebe872e41bb2330072fe2136ec4bcbf0"/>

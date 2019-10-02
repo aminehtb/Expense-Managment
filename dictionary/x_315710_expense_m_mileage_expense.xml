@@ -6,17 +6,21 @@
         <element label="KM" mandatory="true" max_length="40" name="km" type="integer"/>
         <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
         <element label="Period" max_length="40" name="period" type="glide_date"/>
+        <element label="Rate" max_length="32" name="rate" reference="x_315710_expense_m_rate" type="reference"/>
         <element label="Title" mandatory="true" max_length="255" name="title" type="string"/>
         <element label="Trip(s)" max_length="40" name="trips" type="integer"/>
         <element default="javascript:gs.getUserID();" dynamic_default_value="2fd8e97bef3221002841f7f775c0fbc1" label="User" max_length="32" name="user" read_only="true" reference="sys_user" type="reference" use_dynamic_default="true"/>
         <element label="Vehicle" mandatory="true" max_length="32" name="vehicle" reference="x_315710_expense_m_vehicle" reference_qual="user=javascript:gs.getUserID()" reference_qual_condition="user=javascript:gs.getUserID()" type="reference"/>
         <index name="index">
-            <element name="departure"/>
+            <element name="rate"/>
         </index>
         <index name="index2">
-            <element name="user"/>
+            <element name="departure"/>
         </index>
         <index name="index3">
+            <element name="user"/>
+        </index>
+        <index name="index4">
             <element name="vehicle"/>
         </index>
     </element>
