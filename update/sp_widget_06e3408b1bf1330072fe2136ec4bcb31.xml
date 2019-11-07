@@ -190,14 +190,14 @@ httpSession.setAttribute("locked_out", "true");
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-06-06 22:36:01</sys_created_on>
         <sys_id>06e3408b1bf1330072fe2136ec4bcb31</sys_id>
-        <sys_mod_count>663</sys_mod_count>
+        <sys_mod_count>665</sys_mod_count>
         <sys_name>widget_expense</sys_name>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
         <sys_policy/>
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sp_widget_06e3408b1bf1330072fe2136ec4bcb31</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-09-16 13:33:31</sys_updated_on>
+        <sys_updated_on>2019-10-15 23:29:31</sys_updated_on>
         <template><![CDATA[ <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -236,8 +236,8 @@ httpSession.setAttribute("locked_out", "true");
         <li ng-if="c.data.user" class="bold"><a class="waves-effect waves-cyan "  href="?id=merchant"  ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_merchant']"><i class="material-icons">store</i><span class="menu-title" data-i18n="">Merchants</span></a>
         </li>
         
-       <!-- <li  class="bold"><a class="waves-effect waves-cyan "  ng-click="logOut()" ><i class="material-icons"></i><span class="menu-title" data-i18n="">LogOut</span></a>
-        </li>-->
+       <li  class="bold"><a href="{{::portal.logoutUrl}}"class="waves-effect waves-cyan " ><i class="material-icons">keyboard_tab</i><span class="menu-title" data-i18n="">Log Out</span></a>
+        </li>
        </ul>
       <div class="navigation-background"></div><a class="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium waves-effect waves-light hide-on-large-only" href="#" data-target="slide-out"><i class="material-icons">menu</i></a>
     </aside>

@@ -2,131 +2,136 @@
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
         <client_script><![CDATA[function($scope,spModal,spUtil,$filter,$rootScope) {
-	var c = this;
-$scope.range = function (size,start, end) {
-    var ret = [];        
-   
+var c = this;
 
-       if (size < end) {
-        end = size;
-        if(size<$scope.gap){
-             start = 0;
-        }else{
-             start = size-$scope.gap;
-        }
-
-    }
-    for (var i = start; i < end; i++) {
-        ret.push(i);
-    }        
-             
-    return ret;
-};
+	$scope.range = function (size,start, end) {
+		var ret = [];        
 
 
-		c.ctrlRead =function(data ) 
-	{
-
-	$scope.sortingOrder = sortingOrder;
-	$scope.reverse = false;
-	$scope.filteredItems = [];
-	$scope.groupedItems = [];
-	$scope.itemsPerPage = 5;
-	$scope.pagedItems = [];
-	$scope.currentPage = 0;
-	
-	$scope.items =JSON.parse(c.data.tableData);
-	//$scope.items=getData2();
-	var searchMatch = function (haystack, needle) {
-		if (!needle) {
-			return true;
-		}
-		return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
-	};
-
-	// init the filtered items
-	$scope.search = function () {
-		$scope.filteredItems = $filter('filter')($scope.items, function (item) {
-			for(var attr in item) {
-				if (searchMatch(item[attr], $scope.query))
-					return true;
+		if (size < end) {
+			end = size;
+			if(size<$scope.gap){
+				start = 0;
+			}else{
+				start = size-$scope.gap;
 			}
-			return false;
-		});
-		// take care of the sorting order
-		if ($scope.sortingOrder !== '') {
-			$scope.filteredItems = $filter('orderBy')($scope.filteredItems, $scope.sortingOrder, $scope.reverse);
-		}
-		$scope.currentPage = 0;
-		// now group by pages
-		$scope.groupToPages();
-	};
 
-	// calculate page in place
-	$scope.groupToPages = function () {
-		$scope.pagedItems = [];
-
-		for (var i = 0; i < $scope.filteredItems.length; i++) {
-			if (i % $scope.itemsPerPage === 0) {
-				$scope.pagedItems[Math.floor(i / $scope.itemsPerPage)] = [ $scope.filteredItems[i] ];
-			} else {
-				$scope.pagedItems[Math.floor(i / $scope.itemsPerPage)].push($scope.filteredItems[i]);
-			}
-		}
-	};
-
-	$scope.range = function (start, end) {
-		var ret = [];
-		if (!end) {
-			end = start;
-			start = 0;
 		}
 		for (var i = start; i < end; i++) {
 			ret.push(i);
-		}
+		}        
+
 		return ret;
 	};
+	c.ctrlRead =function(data ) 
+	{
 
-	$scope.prevPage = function () {
-		if ($scope.currentPage > 0) {
-			$scope.currentPage--;
-		}
-	};
+		$scope.sortingOrder = sortingOrder;
+		$scope.reverse = false;
+		$scope.filteredItems = [];
+		$scope.groupedItems = [];
+		$scope.itemsPerPage = 5;
+		$scope.pagedItems = [];
+		$scope.currentPage = 0;
 
-	$scope.nextPage = function () {
-		if ($scope.currentPage < $scope.pagedItems.length - 1) {
-			$scope.currentPage++;
-		}
-	};
+		$scope.items =JSON.parse(c.data.tableData);
+		//$scope.items=getData2();
+		var searchMatch = function (haystack, needle) {
+			if (!needle) {
+				return true;
+			}
+			if(haystack != null)
+			{		return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
 
-	$scope.setPage = function () {
-		$scope.currentPage = this.n;
-	};
+			}
+		};
 
-	// functions have been describe process the data for display
-	$scope.search();
+		// init the filtered items
+		$scope.search = function () {
+			$scope.filteredItems = $filter('filter')($scope.items, function (item) {
+				for(var attr in item) {
+					if (searchMatch(item[attr], $scope.query))
+						return true;
+				}
+				return false;
+			});
+			// take care of the sorting order
+			if ($scope.sortingOrder !== '') {
+				$scope.filteredItems = $filter('orderBy')($scope.filteredItems, $scope.sortingOrder, $scope.reverse);
+			}
+			$scope.currentPage = 0;
+			// now group by pages
+			$scope.groupToPages();
+		};
 
-	// change sorting order
-	$scope.sort_by = function(newSortingOrder) {
-		if ($scope.sortingOrder == newSortingOrder)
-			$scope.reverse = !$scope.reverse;
+		// calculate page in place
+		$scope.groupToPages = function () {
+			$scope.pagedItems = [];
 
-		$scope.sortingOrder = newSortingOrder;
+			for (var i = 0; i < $scope.filteredItems.length; i++) {
+				if (i % $scope.itemsPerPage === 0) {
+					$scope.pagedItems[Math.floor(i / $scope.itemsPerPage)] = [ $scope.filteredItems[i] ];
+				} else {
+					$scope.pagedItems[Math.floor(i / $scope.itemsPerPage)].push($scope.filteredItems[i]);
+				}
+			}
+		};
 
-		// icon setup
-		$('th i').each(function(){
-			// icon reset
-			$(this).removeClass().addClass('icon-sort');
-		});
-		if ($scope.reverse)
-			$('th.'+$scope.sortingOrder+' i').removeClass().addClass('icon-chevron-up');
-		else
-			$('th.'+$scope.sortingOrder+' i').removeClass().addClass('icon-chevron-down');
-	};
-		}
+		$scope.range = function (start, end) {
+			var ret = [];
+			if (!end) {
+				end = start;
+				start = 0;
+			}
+			for (var i = start; i < end; i++) {
+				ret.push(i);
+			}
+			return ret;
+		};
 
+		$scope.prevPage = function () {
+			if ($scope.currentPage > 0) {
+				$scope.currentPage--;
+			}
+		};
 
+		$scope.nextPage = function () {
+			if ($scope.currentPage < $scope.pagedItems.length - 1) {
+				$scope.currentPage++;
+			}
+		};
+
+		$scope.setPage = function () {
+			$scope.currentPage = this.n;
+		};
+
+		// functions have been describe process the data for display
+		$scope.search();
+
+		// change sorting order
+		$scope.sort_by = function(newSortingOrder) {
+			if ($scope.sortingOrder == newSortingOrder)
+				$scope.reverse = !$scope.reverse;
+
+			$scope.sortingOrder = newSortingOrder;
+
+			// icon setup
+			$('th i').each(function(){
+				// icon reset
+				$(this).removeClass().addClass('icon-sort');
+			});
+			if ($scope.reverse)
+				$('th.'+$scope.sortingOrder+' i').removeClass().addClass('icon-chevron-up');
+			else
+				$('th.'+$scope.sortingOrder+' i').removeClass().addClass('icon-chevron-down');
+		};
+	}
+
+	//c.getData();
 	c.ctrlRead(c.data.tableData );
+
+
+	
 c.selectItem = function(id,action) {  
 	
 		if(action == 'delete'){
@@ -185,7 +190,7 @@ c.selectItem = function(id,action) {
 	//var gr=new GlideRecord("x_315710_expense_m_vehicle");
 
 	var listvehicles = function(){            
-	var gr=new GlideRecord("x_315710_expense_m_vehicle");
+	var gr=new GlideRecordSecure("x_315710_expense_m_vehicle");
 
 		data.vehicles=[];
 	var i = 0 ; 
@@ -226,14 +231,14 @@ c.selectItem = function(id,action) {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-07-01 13:43:46</sys_created_on>
         <sys_id>70d9be7e1b9a330072fe2136ec4bcb3e</sys_id>
-        <sys_mod_count>144</sys_mod_count>
+        <sys_mod_count>146</sys_mod_count>
         <sys_name>widget list of vehicles</sys_name>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
         <sys_policy/>
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sp_widget_70d9be7e1b9a330072fe2136ec4bcb3e</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-09-11 14:59:56</sys_updated_on>
+        <sys_updated_on>2019-10-15 22:48:15</sys_updated_on>
         <template><![CDATA[<link href="https://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" rel="stylesheet">
 
 

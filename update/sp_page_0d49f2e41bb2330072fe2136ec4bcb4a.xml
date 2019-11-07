@@ -13,15 +13,15 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-07-19 10:26:23</sys_created_on>
         <sys_id>0d49f2e41bb2330072fe2136ec4bcb4a</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>merchant</sys_name>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
         <sys_policy/>
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sp_page_0d49f2e41bb2330072fe2136ec4bcb4a</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-09-16 08:17:30</sys_updated_on>
-        <title>merchant</title>
+        <sys_updated_on>2019-11-07 09:23:02</sys_updated_on>
+        <title>Merchants</title>
     </sp_page>
     <sys_translated_text action="delete_multiple" query="documentkey=0d49f2e41bb2330072fe2136ec4bcb4a"/>
 </record_update>

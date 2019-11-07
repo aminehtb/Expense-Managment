@@ -3,10 +3,11 @@
         <category>custom</category>
         <client_script><![CDATA[function($scope,$http ,$rootScope,glideUserSession) {	
 	var c = this;
-
+	var merchId =null ; 
 	glideUserSession.loadCurrentUser().then(function(currentUser) {
-		c.data.role = currentUser.hasRoleFromList('x_315710_expense_m.employee, x_315710_expense_m.manager');
-
+		//c.data.role = currentUser.hasRoleFromList('x_315710_expense_m.employee, x_315710_expense_m.manager');
+		c.data.role = currentUser.hasRoleFromList('admin');
+console.log("role "+c.data.role);
 		c.data.name = currentUser.getFullName();
 
 
@@ -14,7 +15,7 @@
 	c.data.ok = false;
 	$scope.addMerchant=function(){
 		c.data.ok = true ;
-	
+		merchId = null ; 
 		$scope.merchant = {
 			displayValue:'',
 			value: '',
@@ -23,7 +24,7 @@
 	}
 
 
-	var merchId ; 
+	
 	var BASE64_MARKER = ';base64,';
 	$scope.files = []; 
 
@@ -31,7 +32,7 @@
 
 	$scope.getFields=function(){
 		c.data.ok = false ;
-
+		
 	}
 	$scope.testFile = function(){
 		var ok = false ; 
@@ -44,8 +45,10 @@
 	}
 	$scope.testComplete = function(){
 		var ok = false ; 
-		if( c.data.scanFinish && c.data.value && c.data.title && $scope.sheet  && $scope.dated ){
-			ok = true ;
+		//if( c.data.scanFinish && c.data.value && c.data.title && $scope.sheet  && $scope.dated ){
+		if( c.data.value && c.data.title && $scope.sheet  && $scope.dated ){
+				
+		ok = true ;
 		}
 		return ok ;
 	}
@@ -63,6 +66,7 @@
 		value:'',
 		name:'c.data.sheet'
 	};
+		
 	$scope.payment = {
 		displayValue:c.data.payName,
 		value: c.data.paySysId,
@@ -91,8 +95,6 @@
 		name:'c.data.category'
 	};
 
-
-
 	$scope.dated = {
 		displayValue: '',
 		value: '',
@@ -117,6 +119,13 @@
 		$scope.$apply(function() {
 			c.data.show_progress = true ;
 			var dates=[];
+			var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#image_show').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(element.files[0]);
+			
 			for (var i = 0; i < element.files.length; i++) {
 
 				var type = element.files[i].type;
@@ -330,14 +339,19 @@
 		c.data.card =$scope.card ;
 		c.data.country =$scope.country ;
 		c.data.user =  $scope.user ;
-		c.data.merchId = merchId ; 
-
-		c.data.merchname = $scope.data.merchname;
+		if(c.data.ok == false){
+			c.data.merchId = $scope.merchant ; 
+			console.log("merch : "+c.data.merchId);
+		}
+		if(c.data.ok == true ) {
+					c.data.merchname = $scope.data.merchname;
 
 		c.data.merchVat = $scope.data.merchVat;
 
 		c.data.merchCity = $scope.data.merchCity;
 		c.data.merchZipCode = $scope.data.merchZipCode;
+		}
+
 		
 		
 		c.server.update().then(function(){
@@ -737,6 +751,13 @@
   padding: 50px;
   margin: 20px;
 }
+.annimate{
+ background-size: 30px 30px;
+    background-image: -webkit-linear-gradient(135deg,#F6F6F6 25%,transparent 25%,transparent 50%,#F6F6F6 50%,#F6F6F6 75%,transparent 75%,transparent);
+    background-image: linear-gradient(-45deg,#F6F6F6 25%,transparent 25%,transparent 50%,#F6F6F6 50%,#F6F6F6 75%,transparent 75%,transparent);
+    -webkit-animation: stripes 2s linear infinite;
+    animation: stripes 2s linear infinite
+}
 </css>
         <data_table>sp_instance</data_table>
         <demo_data/>
@@ -754,25 +775,9 @@
         <script><![CDATA[(function() {
 		var merch = new GlideRecord("x_315710_expense_m_merchant");
 	var user = gs.getUserID();
-data.userId = user ;
-	data.userName =  gs.getUserName() ;
-	
-	
-	
-/*	if(input && input.action=="rechMerchant"){
-	var m = new GlideRecord("x_315710_expense_m_merchant");
-	m.get("sys_id",input.merchantt);
-		m.query();
-		while(m.next()){
-			data.merchZipCode = m.getDisplayValue("zip_code") ;
-		data.merchCity = m.getDisplayValue("city") ;
-		data.merchVat = m.getDisplayValue("vat_number") ;
-		data.merchname = m.getDisplayValue("name") ;
-		}
+   data.userId = gs.getUserID() ;
+	data.userName =  gs.getUserDisplayName() ;
 
-			gs.warn ("**merchant : "+data.merchname+" , "+data.merchCity+" , "+data.merchVat+" , "+data.merchZipCode);
-			
-	}*/
 	var categ = new GlideRecord("x_315710_expense_m_category");
 	categ.addQuery("name",'Miels');
 	categ.query();
@@ -794,7 +799,7 @@ data.userId = user ;
 	data.vat=0;
 	data.state="Pending";
 	data.type = "Opex";
-	var user = gs.getUserID();
+//	var user = gs.getUserID();
 	data.confirmAdd="";
 	gs.warn("user sys_id: " + user.street+" , "+user.city);
 	var myUserObject = gs.getUser() ;
@@ -813,7 +818,6 @@ data.userId = user ;
 	data.table ='x_315710_expense_m_expense_bill';
 	data.instanceName = gs.getProperty('instance_name');
 	data.merch=[];
-	//var merch = new GlideRecord("x_315710_expense_m_merchant");
 	merch.query();
 	while(merch.next()){
 		merchobj={};
@@ -837,14 +841,8 @@ data.userId = user ;
 		var action=input.action;
 
 		data.title=input.title;
-
-		/*Recuperer Merchant*/
-		gs.warn("name merchant : "+input.merchname);
-		data.merchZipCode = input.merchZipCode ;
-		data.merchCity = input.merchCity ;
-		data.merchVat = input.merchVat ;
-		data.merchName = input.merchname ;
-		gs.warn ("merchant : "+data.merchName+" , "+data.merchCity+" , "+data.merchVat+" , "+data.merchZipCode);
+	
+		
 		/*bill*/
 		data.value=input.value;
 		data.vat = input.vat ;
@@ -861,43 +859,35 @@ data.userId = user ;
 		data.reimburse =input.reimburse ;
 		data.billable = input.billable ;
 		data.type=input.type;
-		data.merchId = input.merchId ;
-		gs.warn("les dates : "+data.process+" , "+data.date);
-		gs.warn("id depuis clinet script : "+data.merchId);
-	//	if(action=='insert'){
+		
 			var gr = new GlideRecord(data.table);
 			gs.warn('insert started');   
 
-			/*Merchant*/
-			merch.addQuery('name',data.merchName);
-			merch.addQuery('city',data.merchCity);
-			merch.addQuery('vat_number',data.merchVat);
-			merch.addQuery('zip_code',data.merchZipCode);
-			merch.query();
-			var idM  ;
-			while(merch.next()){
-				idM = merch.sys_id; 
-			}
-			gs.warn("id : "+idM);
-			if(idM != null){
-				gr.merchant =idM ;
-			}
-			
-			if(idM == null ){
-				if(data.merchVat == null && data.merchCity == null && data.merchName == null && data.merchZipCode == null){
-
-				}
-				else{
-					merch.vat_number = data.merchVat ;
+		var idM  ;
+		gs.warn("ook = "+input.ok);
+		if(input.ok == false){
+			gr.merchant = input.merchId.value;
+			gs.warn("id from liste = "+input.merchId.value);
+		}
+		else if(input.ok == true){
+	
+		gs.warn("name merchant : "+input.merchname);
+		data.merchZipCode = input.merchZipCode ;
+		data.merchCity = input.merchCity ;
+		data.merchVat = input.merchVat ;
+		data.merchName = input.merchname ;
+		gs.warn ("merchant : "+data.merchName+" , "+data.merchCity+" , "+data.merchVat+" , "+data.merchZipCode);
+		merch.vat_number = data.merchVat ;
 					merch.name = data.merchName ; 
 					merch.city = data.merchCity ; 
 					merch.zip_code = data.merchZipCode ;
-					idM =merch.insert();
+			merch.vat_number = data.merchVat;
+				idM =merch.insert();
 					gr.merchant =idM ;
 					gs.warn("new merchant !!!!"+idM);
-				}
-			}
-			//data.merchId = idM;
+	}
+			
+			
 			/*Add Bill*/
 			gr.title = data.title; 
 			gr.value = data.value; 
@@ -911,17 +901,17 @@ data.userId = user ;
 			gr.category = data.category.value ;
 
 			gr.country = data.country.value ;
-			gr.user = data.user ;
+			gr.user = data.user.value ;
 		gs.warn("Opend By : "+data.user);
 			gr.billable_to_client = data.billable;
 			gr.to_reimburse= data.reimburse;
 			gr.vat = data.vat ;
-			//gr.merchant =data.merchId ;
+		
 			var idd = gr.insert();
 
 			data.id = idd;
 			gs.warn("idddd : "+data.id);
-		//}
+	
 	}   
 
 	if(input && input.action=='append_image'){
@@ -945,14 +935,14 @@ data.userId = user ;
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-04-02 12:26:12</sys_created_on>
         <sys_id>97f88f391b20730072fe2136ec4bcb23</sys_id>
-        <sys_mod_count>1826</sys_mod_count>
+        <sys_mod_count>1879</sys_mod_count>
         <sys_name>Expense Bill Form</sys_name>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
         <sys_policy/>
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sp_widget_97f88f391b20730072fe2136ec4bcb23</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-09-23 12:35:31</sys_updated_on>
+        <sys_updated_on>2019-10-24 08:52:39</sys_updated_on>
         <template><![CDATA[<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
 
@@ -964,250 +954,279 @@ data.userId = user ;
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
-<script src='https://cdn.jsdelivr.net/gh/naptha/tesseract.js@v1.0.14/dist/tesseract.min.js'></script>     
+<script src='https://cdn.jsdelivr.net/gh/naptha/tesseract.js@v1.0.14/dist/tesseract.min.js'></script>
 
 
-<form class="form-horizontal" >
-
- 
-   
-  <div class="col s12 m6 l10">
+<form class="form-horizontal">
+        <div class="col s12 m6 l10">
                 <h6 class="card-title">Expense Bill</h6>
-    <hr  size="1" color="blue">
-     </div>
-        
-        <div class="form-group" >
-
-          <label class="col-md-3 control-label" >Image <span style="color:red;">*</span> </label>
-          <div class="col-md-6">
-              <label class="btn btn-info btn-lg "> <span><i class="glyphicon glyphicon-paperclip"
-                                                         aria-hidden="true"></i> <b>Choose file</b></span>
-            <input  type="file" style='opacity:0; width:0px; height:0px;'
-                id="fileToUpload" ng-model="c.data.file" name='file' onchange="angular.element(this).scope().setFiles(this)" required/>
-            </label>
-          
-            <!--
-            <label class="btn btn-info "> <span><i class="glyphicon glyphicon-paperclip"
-                                                         aria-hidden="true"></i> <b>Choose file</b></span>
-              <input  style='opacity:0; width:0px; height:0px;' ng-model="im" type="file" required id="fileToUpload" 
-                     onchange="angular.element(this).scope().setFiles(this)" /> 
-            </label> 
-                
-           <br/>  <div ng-show="files.length">
-           <!-- <div ng-repeat="file in files.slice(0)">
-              <span>New : {{im.webkitRelativePath ||im.name}}</span>
-              (<span ng-switch="files[0].size > 1024*1024">
-              <span ng-switch-when="true">{{im.size / 1024 / 1024 | number:2}} MB</span>
-              <span ng-switch-default>{{im.size / 1024 | number:2}} kB</span>
-              </span>)<span class="glyphicon glyphicon-remove-circle" id="removeicon" ng-click="removeFiles(im)"></span>
+                <hr size="1" color="blue">
             </div>
-					
-          </div>-->
-          </div></div>
-
-      <!-- Start  Load Image -->
-      <div class="form-group">
-        <label class="col-md-3 control-label" ></label>
-        <div class="col-md-4">
-          <div ng-class="{true:'progress',false:''}[c.data.show_progress]" >
-          <div class="indeterminate"></div>
-        </div>
-       
-        </div></div>
-        <!-- End Load Image -->
-
-      
-        <div class="form-group">
-          <label class="col-md-3 control-label" >Expense Sheet <span style="color:red;">*</span></label>
-          <div class="col-md-4">
-            <sn-record-picker field="sheet"
-                              table="'x_315710_expense_m_expense_sheet'" 
-                              display-field="'name'" value-field="'sys_id'" search-fields="'name'" 
-                              page-size="100"   ></sn-record-picker>
+        
+<div class="row">
+    <div class="col-md-8">
             
-          </div>
+                <div class="form-group">
+            
+                    <label class="col-md-3 control-label">Image
+                        <span style="color:red;">*</span>
+                    </label>
+                    <div class="col-md-6">
+                        <label class="btn btn-info btn-lg ">
+                            <span>
+                                <i class="glyphicon glyphicon-paperclip" aria-hidden="true"></i>
+                                <b>Choose file</b>
+                            </span>
+                            <input type="file" style='opacity:0; width:0px; height:0px;' id="fileToUpload" ng-model="c.data.file" name='file' onchange="angular.element(this).scope().setFiles(this)"
+                                required/>
+                        </label>
+            
+                        <!--
+                        <label class="btn btn-info "> <span><i class="glyphicon glyphicon-paperclip"
+                                                                     aria-hidden="true"></i> <b>Choose file</b></span>
+                          <input  style='opacity:0; width:0px; height:0px;' ng-model="im" type="file" required id="fileToUpload" 
+                                 onchange="angular.element(this).scope().setFiles(this)" /> 
+                        </label> 
+                            
+                       <br/>  <div ng-show="files.length">
+                       <!-- <div ng-repeat="file in files.slice(0)">
+                          <span>New : {{im.webkitRelativePath ||im.name}}</span>
+                          (<span ng-switch="files[0].size > 1024*1024">
+                          <span ng-switch-when="true">{{im.size / 1024 / 1024 | number:2}} MB</span>
+                          <span ng-switch-default>{{im.size / 1024 | number:2}} kB</span>
+                          </span>)<span class="glyphicon glyphicon-remove-circle" id="removeicon" ng-click="removeFiles(im)"></span>
+                        </div>
+                                
+                      </div>-->
+                    </div>
+                </div>
+            
+                <!-- Start  Load Image -->
+                <div class="form-group">
+                    <label class="col-md-3 control-label"></label>
+                    <div class="col-md-4">
+                        <div ng-class="{true:'progress',false:''}[c.data.show_progress]">
+                            <div class="indeterminate"></div>
+                        </div>
+            
+                    </div>
+                </div>
+                <!-- End Load Image -->
+            
+            
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Expense Sheet
+                        <span style="color:red;">*</span>
+                    </label>
+                    <div class="col-md-4">
+                        <sn-record-picker field="sheet" table="'x_315710_expense_m_expense_sheet'" display-field="'name'" value-field="'sys_id'"
+                            search-fields="'name'" page-size="100"></sn-record-picker>
+            
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Category </label>
+                    <div class="col-md-4">
+                        <sn-record-picker field="category" table="'x_315710_expense_m_category'" display-field="'name'" value-field="'sys_id'" search-fields="'name'"
+                            page-size="100"></sn-record-picker>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Merchant </label>
+                    <div class="col-md-4">
+                        <sn-record-picker field="merchant" table="'x_315710_expense_m_merchant'" display-field="'name'" value-field="'sys_id'" search-fields="'name'"
+                            page-size="100" ng-change="getFields()"></sn-record-picker>
+            
+                    </div>
+                    <div class="col-md-1">
+                        <a class="btn btn-floating btn-small btn-info  gradient-shadow " ng-click="addMerchant()">
+                            <i class="material-icons">add</i>
+                        </a>
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Title
+                        <span style="color:red;">*</span>
+                    </label>
+                    <div class="col-md-4">
+                        <input id="Title" type="text" placeholder="" class="form-control" name="title" ng-model="c.data.title" required>
+                    </div>
+                </div>
+            
+            
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Value
+                        <span style="color:red;">*</span>
+                    </label>
+                    <div class="col-md-4">
+                        <input id="value" type="number" class="form-control" name="value" ng-model="c.data.value">
+                    </div>
+                </div>
+            
+            
+                <div class="form-group">
+            
+                    <label class="col-md-3 control-label">VAT</label>
+            
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <input min="0" max="100" id="vat" type="number" class="form-control" name="vat" ng-model="c.data.vat" />
+                            <label class="input-group-addon" for="number">%</label>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Tip(s)</label>
+                    <div class="col-md-4">
+                        <input id="tips" type="number" class="form-control" name="tips" ng-model="c.data.tips" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Payment Instrument
+                        <span style="color:red;">*</span>
+                    </label>
+                    <div class="col-md-4">
+                        <sn-record-picker field="payment" table="'x_315710_expense_m_payment_instrument'" display-field="'name'" value-field="'sys_id'"
+                            search-fields="'name'" page-size="100" default-query="c.assigned_to_query"></sn-record-picker>
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Date
+                        <span style="color:red;">*</span>
+                    </label>
+                    <div class="col-md-4">
+                        <sp-date-picker field="dated" display-field="'value'" ng-model="dated" sn-change=""></sp-date-picker>
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Process date </label>
+                    <div class="col-md-4">
+                        <sp-date-picker display-field="'value'" field="processd" ng-model="processd" sn-change=""></sp-date-picker>
+            
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">User</label>
+                    <div class="col-md-4">
+                        <div ng-if="!c.data.role">
+                            <sn-record-picker sn-disabled="true" field="user" table="'sys_user'" display-field="'name'" value-field="'sys_id'" search-fields="'name'"
+                                page-size="100"></sn-record-picker>
+                        </div>
+                        <div ng-if="c.data.role">
+                            <sn-record-picker field="user" table="'sys_user'" display-field="'name'" value-field="'sys_id'" search-fields="'name'" page-size="100"></sn-record-picker>
+                        </div>
+                        <!--<div ng-if="!c.data.role">
+                          <sn-record-picker sn-disabled="!c.data.role" field="user" table="'sys_user'" 
+                                            display-field="'name'" value-field="'sys_id'" search-fields="'name'" 
+                                            page-size="100"  ></sn-record-picker>
+                     </div>
+                         <div ng-if="c.data.role">
+                          <sn-record-picker  field="user" table="'sys_user'" 
+                                            display-field="'name'" value-field="'sys_id'" search-fields="'name'" 
+                                            page-size="100"  ></sn-record-picker>
+                        </div>-->
+                    </div>
+                </div>
+            
+            
+            
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Country</label>
+                    <div class="col-md-4">
+                        <sn-record-picker field="country" table="'core_country'" display-field="'name'" value-field="'sys_id'" search-fields="'name'"
+                            page-size="100"></sn-record-picker>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3 control-label"></div>
+                    <label>
+            
+                        <input type="checkbox" ng-model="c.data.reimburse" class="filled-in" id="reimburse" value="r" ng-checked="data.reimburse == true"
+                        />
+                        <span>To Reimburse</span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3 control-label"></div>
+                    <label>
+                        <input type="checkbox" ng-model="c.data.billable" class="filled-in" id="billable" value="b" />
+                        <span>Billable to client</span>
+                    </label>
+                </div>
+            
+            
+            
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Type</label>
+                    <div class="col-md-4">
+                        <select class="form-control" name="type" id="type" ng-model="c.data.type">
+                            <!--[ng-value]='data.type'-->
+                            <option value="Capex">Capex</option>
+                            <option value="Opex">Opex</option>
+                        </select>
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label class="col-md-3 control-label">State</label>
+                    <div class="col-md-4">
+                        <select class="form-control" name="state" id="state" ng-model="c.data.state">
+                            <!-- [ng-value]='data.state'-->
+                            <option value="Pending">Pending</option>
+                            <option value="Processed">Processed</option>
+                        </select>
+                    </div>
+                </div>
+            
+    </div>
+    <div class="col-md-4">
+        <img id="image_show" class="annimate" width="300px" height="500px">
+        </div>
+
+</div>
+   
+    <div ng-show="c.data.ok == true">
+
+        <div class="col s12 m6 l10">
+            <h6>Merchant</h6>
+            <hr size=2>
         </div>
 
         <div class="form-group">
-          <label class="col-md-3 control-label" >Category </label>
-          <div class="col-md-4">
-            <sn-record-picker field="category"
-                              table="'x_315710_expense_m_category'" 
-                              display-field="'name'" value-field="'sys_id'" search-fields="'name'" 
-                              page-size="100" ></sn-record-picker>
-          </div>
-        </div>
-   <div class="form-group">
-          <label class="col-md-3 control-label" >Merchant </label>
-          <div class="col-md-4">
-            <sn-record-picker field="merchant"
-                              table="'x_315710_expense_m_merchant'" 
-                              display-field="'name'" value-field="'sys_id'" search-fields="'name'" 
-                              page-size="100"></sn-record-picker>
-           
-          </div>
-     <div class="col-md-1">
-        <a class="btn btn-floating btn-small btn-info  gradient-shadow " ng-click="addMerchant()"><i class="material-icons">add</i></a>
-     </div>
-        </div>
-
-        <div class="form-group">
-          <label class="col-md-3 control-label" >Title <span style="color:red;">*</span> </label>
-          <div class="col-md-4">
-            <input id="Title" type="text" placeholder="" class="form-control" name="title" ng-model="c.data.title" required>
-          </div>
-        </div>
-
-
-        <div class="form-group">
-          <label class="col-md-3 control-label" >Value <span style="color:red;">*</span> </label>
-          <div class="col-md-4">
-            <input id="value" type="number" class="form-control" name="value"  ng-model="c.data.value" >
-          </div>
-        </div>
-
-
-        <div class="form-group">
-
-          <label class="col-md-3 control-label" >VAT</label>
-
-          <div class="col-md-4">
-            <div class="input-group">
-              <input min="0" max="100" id="vat" type="number" class="form-control" name="vat"  ng-model="c.data.vat" />
-              <label class="input-group-addon" for="number">%</label> 
+            <label class="col-md-3 control-label">Name</label>
+            <div class="col-md-4">
+                <input id="merchName" type="text" placeholder="" class="form-control" name="n" ng-model="c.data.merchname" />
             </div>
-          </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">Vat Number</label>
+            <div class="col-md-4">
+                <input id="vatNumber" type="text" placeholder="" class="form-control" name="v" ng-model="c.data.merchVat" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">City</label>
+            <div class="col-md-4">
+                <input id="city" type="text" placeholder="" class="form-control" name="c" ng-model="c.data.merchCity" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">Zip Code</label>
+            <div class="col-md-4">
+                <input id="zipCode" type="text" placeholder="" class="form-control" name="z" ng-model="c.data.merchZipCode" />
+            </div>
         </div>
 
-        <div class="form-group">
-          <label class="col-md-3 control-label" >Tip(s)</label>
-          <div class="col-md-4">
-            <input id="tips" type="number" class="form-control" name="tips" ng-model="c.data.tips" />
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-3 control-label" >Payment Instrument <span style="color:red;">*</span></label>
-          <div class="col-md-4">
-            <sn-record-picker field="payment"
-                              table="'x_315710_expense_m_payment_instrument'" 
-                              display-field="'name'" value-field="'sys_id'" search-fields="'name'" 
-                              page-size="100"  default-query="c.assigned_to_query" ></sn-record-picker>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="col-md-3 control-label" >Date <span style="color:red;">*</span> </label>
-          <div class="col-md-4">
-            <sp-date-picker field="dated" display-field="'value'" ng-model="dated" sn-change="" ></sp-date-picker> </div>
-        </div>
-
-        <div class="form-group">
-          <label class="col-md-3 control-label" >Date Process</label>
-          <div class="col-md-4">
-            <sp-date-picker  display-field="'value'"  field="processd" ng-model="processd" sn-change="" ></sp-date-picker>
-     
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-3 control-label" >User</label>
-          <div class="col-md-4">
-            
-              <sn-record-picker sn-disabled="!c.data.role" field="user" table="'sys_user'" 
-                                display-field="'name'" value-field="'sys_id'" search-fields="'name'" 
-                                page-size="100"  ></sn-record-picker>
-           
-         <!--   <div ng-if="c.data.userConName != 'admin'">
-              <sn-record-picker sn-disabled="c.data.userConName" field="c.data.user" table="'sys_user'" 
-                                display-field="'name'" value-field="'sys_id'" search-fields="'name'" 
-                                page-size="100"  ></sn-record-picker>
-            </div>-->
-          </div>
-        </div>
-
-        
-
-        <div class="form-group">
-          <label class="col-md-3 control-label" >Country</label>
-          <div class="col-md-4">
-            <sn-record-picker field="country"
-                              table="'core_country'" 
-                              display-field="'name'" value-field="'sys_id'" search-fields="'name'" 
-                              page-size="100"  ></sn-record-picker>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-md-3 control-label" ></div>
-          <label>
-        
-            <input  type="checkbox" ng-model="c.data.reimburse" class="filled-in" id="reimburse" value="r"   ng-checked="data.reimburse == true"  />
-            <span>To Reimburse</span>
-          </label>
-        </div>
-        <div class="form-group">
-          <div class="col-md-3 control-label" ></div>
-          <label>
-            <input type="checkbox" ng-model="c.data.billable"  class="filled-in"  id="billable" value="b"   />
-            <span>Billable to client</span>
-          </label>
-        </div>
-
-
-
-        <div class="form-group">
-          <label class="col-md-3 control-label" >Type</label>
-          <div class="col-md-4">
-            <select class="form-control" name="type" id="type" ng-model="c.data.type" [ng-value]='data.type'>
-              <option value="Capex">Capex</option> 
-              <option value="Opex">Opex</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="col-md-3 control-label" >State</label>
-          <div class="col-md-4">
-            <select class="form-control" name="state" id="state" ng-model="c.data.state"  [ng-value]='data.state'>
-              <option value="Pending" >Pending</option> 
-              <option value="Processed">Processed</option>
-            </select>
-          </div>
-        </div>
-
-<div ng-show="c.data.ok == true">
-  
-       <div class="col s12 m6 l10">
-                <h6 >Merchant</h6>
-         <hr size=2>
-     </div>
-        
-        <div class="form-group">
-          <label class="col-md-3 control-label" >Name</label>
-          <div class="col-md-4">
-            <input id="merchName" type="text" placeholder="" class="form-control" name="n" ng-model="c.data.merchname"  />
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-3 control-label" >Vat Number</label>
-          <div class="col-md-4">
-            <input id="vatNumber" type="text" placeholder="" class="form-control" name="v" ng-model="c.data.merchVat"  />
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-3 control-label" >City</label>
-          <div class="col-md-4">
-            <input id="city" type="text" placeholder="" class="form-control" name="c" ng-model="c.data.merchCity"/>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-3 control-label" >Zip Code</label>
-          <div class="col-md-4">
-            <input id="zipCode" type="text" placeholder="" class="form-control" name="z" ng-model="c.data.merchZipCode" />
-          </div>
-        </div>
-
-  </div>
-    <button ng-disabled="testComplete()	==false " class="btn waves-effect waves-light " ng-click="testComplete();submit_record()" type="submit" name="action">Send<i class="material-icons right">send</i>
-  </button>
+    </div>
+    <button ng-disabled="testComplete()	==false " class="btn waves-effect waves-light " ng-click="testComplete();submit_record()"
+        type="submit" name="action">Send
+        <i class="material-icons right">send</i>
+    </button>
 
 </form>]]></template>
     </sp_widget>

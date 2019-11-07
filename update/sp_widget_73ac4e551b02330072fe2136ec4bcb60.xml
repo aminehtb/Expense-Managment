@@ -241,27 +241,22 @@
 		data.bills=[];
 		var i=0;
 		var json=new global.JSON();
-		var gr = new GlideRecord('x_315710_expense_m_expense_bill');
-
-	
-
-		if(gs.hasRole("x_315710_expense_m.employee")){
-			gr.addQuery("user",gs.getUserID());
-			gr.orderByDesc('sys_created_on');
-			gr.query();
-		}
+		//var gr = new GlideRecord('x_315710_expense_m_expense_bill');
+var gr = new GlideRecordSecure('x_315710_expense_m_expense_bill');
 			gr.orderByDesc('sys_created_on');
 			gr.query();
 
 		gs.warn("While**********");
 		while (gr.next()) {
 			var billObj = {};
+			//if(gr.canRead()){
 			$sp.getRecordDisplayValues(billObj, gr, 'image,title,value,state,date,process_date,type,tips,expense_sheet,payment_instrument,category,rate_card,country,user,billable_to_client,to_reimburse,vat,merchant,sys_id');
 			i++ ; 
 			data.bills.push(billObj);
 			gs.warn(billObj);
 
-		}
+		//}
+			}
 		//data.tableData=null ; 
 		gs.warn("length in  "+msg+" : "+i);
 		//data.tableData = null ; 
@@ -301,14 +296,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-06-14 08:19:57</sys_created_on>
         <sys_id>73ac4e551b02330072fe2136ec4bcb60</sys_id>
-        <sys_mod_count>709</sys_mod_count>
+        <sys_mod_count>712</sys_mod_count>
         <sys_name>widget list of Bill</sys_name>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
         <sys_policy/>
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sp_widget_73ac4e551b02330072fe2136ec4bcb60</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-09-23 13:30:09</sys_updated_on>
+        <sys_updated_on>2019-10-14 23:30:42</sys_updated_on>
         <template><![CDATA[
 <link href="https://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" rel="stylesheet">
 
