@@ -2,8 +2,10 @@
     <sys_sg_button_instance action="INSERT_OR_UPDATE">
         <active>true</active>
         <button display_value="Phone">e9f8559f1b18330072fe2136ec4bcb0e</button>
+        <color_theme/>
         <description/>
         <field_name>mobile_phone</field_name>
+        <icon/>
         <label>Mobile phone_field</label>
         <location>field</location>
         <name>Mobile phone_field</name>

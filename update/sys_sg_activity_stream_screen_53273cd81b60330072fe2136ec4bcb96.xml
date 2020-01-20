@@ -3,17 +3,13 @@
         <add_additional_comment_button>true</add_additional_comment_button>
         <add_attachment_button>true</add_attachment_button>
         <add_work_note_button>true</add_work_note_button>
-        <application_roles/>
         <available_offline>false</available_offline>
-        <data_item/>
         <description/>
+        <dynamic_prefetch_count/>
         <fetch_type>background</fetch_type>
-        <hidden>false</hidden>
+        <hide_filters>false</hide_filters>
         <icon display_value="file-alt">f7bdf0101ba0330072fe2136ec4bcbf9</icon>
         <name>Activity Stream</name>
-        <order/>
-        <parent/>
-        <parent_table/>
         <roles_override/>
         <sys_class_name>sys_sg_activity_stream_screen</sys_class_name>
         <sys_created_by>admin</sys_created_by>
@@ -27,6 +23,7 @@
         <sys_update_name>sys_sg_activity_stream_screen_53273cd81b60330072fe2136ec4bcb96</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2019-03-28 10:27:00</sys_updated_on>
+        <table/>
     </sys_sg_activity_stream_screen>
     <sys_translated_text action="delete_multiple" query="documentkey=53273cd81b60330072fe2136ec4bcb96"/>
 </record_update>

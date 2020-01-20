@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope,spUtil,glideUserSession) {
+	/* widget controller */
+
+
+
+	var c = this;
+	glideUserSession.loadCurrentUser().then(function(currentUser) {
+		c.data.role = currentUser.hasRoleFromList('x_315710_expense_m.employee, x_315710_expense_m.manager');
+		c.data.role2 = currentUser.hasRoleFromList('x_315710_expense_m.user, x_315710_expense_m.manager');
+	c.data.user = currentUser.hasRole('x_315710_expense_m.user');
+		c.data.name = currentUser.getFullName();
+
+ });
+
+		var id = c.data.id ;
+	if (c.options.table != null && c.options.table != "x_315710_expense_m_expense_bill"){
+		spUtil.get(c.options.widget_name,{ table:c.options.table, sys_id: "-1" , hideRelatedLists: false }).then(function(response) {
+			c.data.myWidget = response;
+		});
+	}
+		if (c.options.table != null && id != null){
+		
+		if(c.options.table == "x_315710_expense_m_expense_bill"){
+	
+			spUtil.get(c.options.widget_name,{ sys_id: id }).then(function(response) {
+			c.data.myWidget = response;
+					});
+			}
+			else{
+		spUtil.get(c.options.widget_name,{ table:c.options.table, sys_id: id , hideRelatedLists: false }).then(function(response) {
+			c.data.myWidget = response;
+					});
+			}
+		}
+	
+		
+	
+
+	else{
+		spUtil.get(c.options.widget_name).then(function(response) {
+			c.data.myWidget = response;
+		});
+	}
+	
+	
+	$scope.logOut = function(){
+	c.data.action = 'logout';
+c.server.update().then(function(){
+});	
+}
+	
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>
+.material-tooltip{
+  visibility: hidden !important;
+}
+
+
+
+
+
+.pad{
+	padding-left: 10%;
+  width:122%;
+  
+}
+.scrollmenu {
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-height: 100vh;
+ // background-color: #ededed;
+}
+
+.loader {
+  max-width: 15rem;
+  width: 100%;
+  height: 100%;
+  stroke-linecap: round;
+}
+
+circle {
+  fill: none;
+  stroke-width: 3.5;
+  -webkit-animation-name: preloader;
+          animation-name: preloader;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-transform-origin: 170px 170px;
+          transform-origin: 170px 170px;
+  will-change: transform;
+}
+circle:nth-of-type(1) {
+  stroke-dasharray: 550;
+}
+circle:nth-of-type(2) {
+  stroke-dasharray: 500;
+}
+circle:nth-of-type(3) {
+  stroke-dasharray: 450;
+}
+circle:nth-of-type(4) {
+  stroke-dasharray: 300;
+}
+circle:nth-of-type(1) {
+  -webkit-animation-delay: -0.15s;
+          animation-delay: -0.15s;
+}
+circle:nth-of-type(2) {
+  -webkit-animation-delay: -0.3s;
+          animation-delay: -0.3s;
+}
+circle:nth-of-type(3) {
+  -webkit-animation-delay: -0.45s;
+  -moz-animation-delay:  -0.45s;
+          animation-delay: -0.45s;
+}
+circle:nth-of-type(4) {
+  -webkit-animation-delay: -0.6s;
+  -moz-animation-delay: -0.6s;
+          animation-delay: -0.6s;
+}
+
+@-webkit-keyframes preloader {
+  50% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes preloader {
+  50% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>widget_expense2</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Widget_expense2</name>
+        <option_schema>[{"hint":"","name":"widget_name","section":"other","default_value":"widget_dashboard","label":"widget name","type":"string"},{"name":"table","section":"other","label":"table","type":"string"},{"name":"sys_id","section":"other","default_value":"","label":"sys_id","type":"string"}]</option_schema>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	 data.id = $sp.getParameter("sys_id");
+	
+	var user = gs.getUserID();
+if(input && input.action== 'logout'){
+var sessions =gs.getSession();
+var it = sessions.iterator();
+while(it.hasNext()) {
+var session = it.next();
+if (session == gs.getUserName()) {
+var httpSession = session.getHS();
+httpSession.setAttribute("locked_out", "true");
+}
+}
+
+}
+	
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-01-17 09:38:55</sys_created_on>
+        <sys_id>20cff70bdb520010256528df4b961938</sys_id>
+        <sys_mod_count>86</sys_mod_count>
+        <sys_name>Widget_expense2</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sp_widget_20cff70bdb520010256528df4b961938</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-01-20 11:12:25</sys_updated_on>
+        <template><![CDATA[ 
+ <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
+</script>
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">    <!-- Page Wrapper -->
+<div id="page-top">
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+  
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="?id=dashboard_version2">
+         
+          <div class="sidebar-brand-text mx-3">Management</div>
+        </a>
+  
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+  
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item">
+          <a class="nav-link" href="?id=dashboard_version2" ng-class="{true:'active',false:''}[c.options.widget_name=='widget_dashboard']">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+        </li>
+  
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+  
+        <!-- Heading -->
+        <div class="sidebar-heading">
+          Expense
+        </div>
+  
+        <!-- Nav Item -Bills -->
+         <li class="nav-item">
+          <a class="nav-link" href="?id=bills" ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_bill']">
+          <i class="fas fa-fw fa-file-invoice-dollar"></i>
+            <span>Bills</span></a>
+        </li>
+  
+        <!-- Nav Item - sheet-->
+       <li class="nav-item">
+          <a class="nav-link"  href="?id=sheets"  ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_sheets']">
+            <i class="fas fa-fw fa-clipboard-list"></i>
+            <span>Sheets</span></a>
+        </li>
+  	 <!-- Nav Item - Vehicle-->
+       <li class="nav-item">
+          <a class="nav-link"g-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_vehicles']">
+        <i class="fas fa-fw fa-car"></i>
+            <span>Vehicle</span></a>
+        </li>
+         <!-- Nav Item - sheet-->
+       <li class="nav-item">
+          <a class="nav-link" ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_mileage_expenses']">
+          <i class="fas fa-map-marked-alt"></i>
+            <span>Mileage Expenses</span></a>
+        </li>
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+  
+        <!-- Heading -->
+        <div class="sidebar-heading">
+          Company
+        </div>
+    <!-- Nav Item - Category -->
+        <li class="nav-item">
+          <a class="nav-link"  href="?id=categories"  ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_categorie']">
+         <i class="fas fa-sitemap"></i>
+            <span>Category</span></a>
+        </li>
+  
+        <!-- Nav Item - Payment -->
+        <li class="nav-item">
+          <a class="nav-link" href="?id=payment_instruments"  ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_payment_instrument']">
+            <i class="far fa-credit-card"></i>
+            <span>Payment Instruments</span></a>
+        </li>
+  <!-- Nav Item - Rate -->
+        <li class="nav-item">
+          <a class="nav-link" href="?id=rates"   ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_rate']">
+        <i class="fas fa-percentage"></i>
+            <span>Rate</span></a>
+        </li>
+  
+        <!-- Nav Item - Merchant -->
+        <li class="nav-item">
+          <a class="nav-link" href="?id=merchant"  ng-class="{true:'active',false:''}[c.options.widget_name=='widget_list_of_merchant']">
+            <i class="fas fa-store"></i>
+            <span>Merchant</span></a>
+        </li>
+         <!-- Nav Item - Log out -->
+        <li class="nav-item">
+          <a class="nav-link"  href="{{::portal.logoutUrl}}">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Log Out</span></a>
+        </li>
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+  
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+          <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+  
+      </ul>
+  <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+         <!-- Begin Page Content -->
+        <div class="container-fluid">
+    
+          <!--<div class="pad">-->
+         
+				<div  ng-if="!c.data.myWidget" class="container" >
+		
+					<svg class="loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340">
+						 <circle cx="170" cy="170" r="160" stroke="#E2007C"/>
+						 <circle cx="170" cy="170" r="135" stroke="#404041"/>
+						 <circle cx="170" cy="170" r="110" stroke="#E2007C"/>
+						 <circle cx="170" cy="170" r="85" stroke="#404041"/>
+					</svg>
+		
+				</div>
+				  <sp-widget widget="c.data.myWidget"></sp-widget>
+				  
+   </div>  
+  </div>
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Your Website 2019</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+
+       <script src="x_315710_expense_m.bootstrap.bundle.min.jsdbx" language="javascript"></script>
+     
+  <script src="x_315710_expense_m.jquery.easing.min.jsdbx" language="javascript"></script>
+     <script src="x_315710_expense_m.sb-admin-2.min.jsdbx" language="javascript"></script>]]></template>
+    </sp_widget>
+</record_update>

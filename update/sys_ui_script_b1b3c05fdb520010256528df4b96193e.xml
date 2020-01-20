@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_script">
+    <sys_ui_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description/>
+        <global>false</global>
+        <name>x_315710_expense_m.sb-admin-2.min</name>
+        <script><![CDATA[(function($) {
+  "use strict"; // Start of use strict
+
+  // Toggle the side navigation
+  $("#sidebarToggle, #sidebarToggleTop").on('click', function(e) {
+    $("body").toggleClass("sidebar-toggled");
+    $(".sidebar").toggleClass("toggled");
+    if ($(".sidebar").hasClass("toggled")) {
+      $('.sidebar .collapse').collapse('hide');
+    };
+  });
+
+  // Close any open menu accordions when window is resized below 768px
+  $(window).resize(function() {
+    if ($(window).width() < 768) {
+      $('.sidebar .collapse').collapse('hide');
+    };
+  });
+
+  // Prevent the content wrapper from scrolling when the fixed side navigation hovered over
+  $('body.fixed-nav .sidebar').on('mousewheel DOMMouseScroll wheel', function(e) {
+    if ($(window).width() > 768) {
+      var e0 = e.originalEvent,
+        delta = e0.wheelDelta || -e0.detail;
+      this.scrollTop += (delta < 0 ? 1 : -1) * 30;
+      e.preventDefault();
+    }
+  });
+
+  // Scroll to top button appear
+  $(document).on('scroll', function() {
+    var scrollDistance = $(this).scrollTop();
+    if (scrollDistance > 100) {
+      $('.scroll-to-top').fadeIn();
+    } else {
+      $('.scroll-to-top').fadeOut();
+    }
+  });
+
+  // Smooth scrolling using jQuery easing
+  $(document).on('click', 'a.scroll-to-top', function(e) {
+    var $anchor = $(this);
+    $('html, body').stop().animate({
+      scrollTop: ($($anchor.attr('href')).offset().top)
+    }, 1000, 'easeInOutExpo');
+    e.preventDefault();
+  });
+
+})(jQuery); // End of use strict
+]]></script>
+        <script_name>sb-admin-2.min</script_name>
+        <sys_class_name>sys_ui_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-01-17 09:56:37</sys_created_on>
+        <sys_id>b1b3c05fdb520010256528df4b96193e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_315710_expense_m.sb-admin-2.min</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sys_ui_script_b1b3c05fdb520010256528df4b96193e</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-01-17 09:56:37</sys_updated_on>
+        <ui_type>0</ui_type>
+        <use_scoped_format>false</use_scoped_format>
+    </sys_ui_script>
+</record_update>

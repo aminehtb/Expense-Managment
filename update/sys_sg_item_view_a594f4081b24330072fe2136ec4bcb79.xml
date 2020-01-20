@@ -17,6 +17,7 @@
         <sys_update_name>sys_sg_item_view_a594f4081b24330072fe2136ec4bcb79</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2019-03-27 15:08:27</sys_updated_on>
+        <table/>
         <ui_styles/>
     </sys_sg_item_view>
     <sys_translated_text action="delete_multiple" query="documentkey=a594f4081b24330072fe2136ec4bcb79"/>

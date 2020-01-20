@@ -2,7 +2,7 @@
     <pa_m2m_dashboard_tabs action="INSERT_OR_UPDATE">
         <dashboard display_value="Expense Management Homepage">6227fe8cdb208010518284da0b9619dc</dashboard>
         <home>false</home>
-        <homepage display_value="Expense Management Homepage">6332af61db733300518284da0b9619d3</homepage>
+        <homepage display_value="">6332af61db733300518284da0b9619d3</homepage>
         <order>1</order>
         <sys_class_name>pa_m2m_dashboard_tabs</sys_class_name>
         <sys_created_by>admin</sys_created_by>

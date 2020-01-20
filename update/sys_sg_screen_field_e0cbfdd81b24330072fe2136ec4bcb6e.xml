@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_sg_screen_field">
     <sys_sg_screen_field action="INSERT_OR_UPDATE">
         <data_item_field_name>departure</data_item_field_name>
+        <description_text/>
+        <description_text_field/>
+        <description_text_type/>
+        <field_name/>
         <hidden>false</hidden>
         <order>10</order>
+        <record_id_field/>
         <screen display_value="Details">0666fc481b24330072fe2136ec4bcba2</screen>
         <screen_data_item_table>x_315710_expense_m_mileage_expense</screen_data_item_table>
         <sys_class_name>sys_sg_screen_field</sys_class_name>
@@ -18,5 +23,7 @@
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2019-03-28 14:57:53</sys_updated_on>
         <type>auto</type>
+        <value_only>false</value_only>
     </sys_sg_screen_field>
+    <sys_translated_text action="delete_multiple" query="documentkey=e0cbfdd81b24330072fe2136ec4bcb6e"/>
 </record_update>

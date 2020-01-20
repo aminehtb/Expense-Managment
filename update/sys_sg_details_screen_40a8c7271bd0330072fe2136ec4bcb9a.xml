@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_sg_details_screen">
     <sys_sg_details_screen action="INSERT_OR_UPDATE">
-        <application_roles/>
         <available_offline>false</available_offline>
-        <data_item/>
         <description/>
+        <dynamic_prefetch_count/>
         <fetch_type>not_required</fetch_type>
-        <hidden>false</hidden>
+        <hide_filters>false</hide_filters>
         <icon display_value="chart-bar">5398c7271bd0330072fe2136ec4bcb86</icon>
-        <item_view/>
         <name>Details</name>
-        <order/>
-        <parent/>
-        <parent_table/>
         <roles_override/>
         <sys_class_name>sys_sg_details_screen</sys_class_name>
         <sys_created_by>admin</sys_created_by>
@@ -25,6 +20,7 @@
         <sys_update_name>sys_sg_details_screen_40a8c7271bd0330072fe2136ec4bcb9a</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2019-03-26 12:46:13</sys_updated_on>
+        <table/>
     </sys_sg_details_screen>
     <sys_translated_text action="delete_multiple" query="documentkey=40a8c7271bd0330072fe2136ec4bcb9a"/>
 </record_update>
