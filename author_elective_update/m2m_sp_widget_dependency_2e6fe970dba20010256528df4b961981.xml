@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_widget_dependency">
+    <m2m_sp_widget_dependency action="DELETE">
+        <sp_dependency display_value="dependence_em">3ab98cb61b06330072fe2136ec4bcb70</sp_dependency>
+        <sp_widget display_value="Login Expense Management">a66fe970dba20010256528df4b96197f</sp_widget>
+        <sys_class_name>m2m_sp_widget_dependency</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-01-22 09:37:40</sys_created_on>
+        <sys_id>2e6fe970dba20010256528df4b961981</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>dependence_em.Login Expense Management</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>m2m_sp_widget_dependency_2e6fe970dba20010256528df4b961981</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-01-22 09:37:40</sys_updated_on>
+    </m2m_sp_widget_dependency>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</application>
+        <file_path/>
+        <instance_id>2d2f2d70db95cc103050ac44d496197d</instance_id>
+        <instance_name>dev95064</instance_name>
+        <name>m2m_sp_widget_dependency_2e6fe970dba20010256528df4b961981</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_widget_dependency"><m2m_sp_widget_dependency action="INSERT_OR_UPDATE"><sp_dependency display_value="dependence_em">3ab98cb61b06330072fe2136ec4bcb70</sp_dependency><sp_widget display_value="Login Expense Management">a66fe970dba20010256528df4b96197f</sp_widget><sys_class_name>m2m_sp_widget_dependency</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2020-01-22 09:37:40</sys_created_on><sys_id>2e6fe970dba20010256528df4b961981</sys_id><sys_mod_count>0</sys_mod_count><sys_name>dependence_em.Login Expense Management</sys_name><sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package><sys_policy/><sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope><sys_update_name>m2m_sp_widget_dependency_2e6fe970dba20010256528df4b961981</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-01-22 09:37:40</sys_updated_on></m2m_sp_widget_dependency></record_update>]]></payload>
+        <payload_hash>-1326143997</payload_hash>
+        <record_name>dependence_em.Login Expense Management</record_name>
+        <reverted_from/>
+        <source>8379765adb020010256528df4b9619dc</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-01-22 09:37:40</sys_created_on>
+        <sys_id>fa6fe970dba20010256528df4b961983</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>16fcc9d52f00000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-01-22 09:37:40</sys_updated_on>
+        <type>Widget Dependency</type>
+        <update_guid>266fe9708ca2001027c3bb3f55052983</update_guid>
+        <update_guid_history>266fe9708ca2001027c3bb3f55052983:-1326143997</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="dependence_em.Login Expense Management">3590bd70dba20010256528df4b961909</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-01-22 09:42:48</sys_created_on>
+        <sys_db_object display_value="" name="m2m_sp_widget_dependency">m2m_sp_widget_dependency</sys_db_object>
+        <sys_id>146ba182617d4e38a159f3a584be96e4</sys_id>
+        <sys_metadata>2e6fe970dba20010256528df4b961981</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>dependence_em.Login Expense Management</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_scope_delete display_value="">2b64644f235f4e69bcdcc076c25ee0b9</sys_scope_delete>
+        <sys_update_name>m2m_sp_widget_dependency_2e6fe970dba20010256528df4b961981</sys_update_name>
+        <sys_update_version display_value="m2m_sp_widget_dependency_2e6fe970dba20010256528df4b961981">fa6fe970dba20010256528df4b961983</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-01-22 09:42:48</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

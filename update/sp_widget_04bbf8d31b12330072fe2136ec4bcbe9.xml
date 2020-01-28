@@ -171,12 +171,7 @@ $scope.range = function (size,start, end) {
 	
 }]]></client_script>
         <controller_as>c</controller_as>
-        <css>.container{  
-    white-space:nowrap;
-    overflow-x:auto;
-}
-
-</css>
+        <css/>
         <data_table>sp_instance</data_table>
         <demo_data/>
         <description/>
@@ -233,14 +228,14 @@ listRates();
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-07-02 17:49:36</sys_created_on>
         <sys_id>04bbf8d31b12330072fe2136ec4bcbe9</sys_id>
-        <sys_mod_count>81</sys_mod_count>
+        <sys_mod_count>85</sys_mod_count>
         <sys_name>widget list of Rate</sys_name>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
         <sys_policy/>
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sp_widget_04bbf8d31b12330072fe2136ec4bcbe9</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-09-11 14:54:20</sys_updated_on>
+        <sys_updated_on>2020-01-22 09:29:45</sys_updated_on>
         <template><![CDATA[<link href="https://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" rel="stylesheet">
 <script type="text/javascript">
   var sortingOrder = 'name';
@@ -261,22 +256,18 @@ listRates();
             <table id="data-table-simple" class="display">
               <thead>
                 <tr>
-                  <th class="text-center" >Name &nbsp;<a ng-click="sort_by('name')"><i class="icon-sort"></i></a></th>
                   <th class="text-center" >Year &nbsp;<a ng-click="sort_by('year')"><i class="icon-sort"></i></a></th>
                   <th class="text-center" >Distance unit &nbsp;<a ng-click="sort_by('distance_unit')"><i class="icon-sort"></i></a></th>
                   <th class="text-center" >Vehicle Type &nbsp;<a ng-click="sort_by('vehicle_type')"><i class="icon-sort"></i></a></th>
-                  <th class="text-center" >Fixed Rate &nbsp;<a ng-click="sort_by('fixed_rate')"><i class="icon-sort"></i></a></th>
                   <th class="text-center" >Active &nbsp;<a ng-click="sort_by('active')"><i class="icon-sort"></i></a></th>
                   <th class="text-center" colspan="2"> Options </th>
                 </tr>
               </thead>
               <tbody>
                 <tr  ng-repeat="item in pagedItems[currentPage]  | orderBy:sortingOrder:reverse   track by $index">
-                  <td class="text-center" >{{item.name}}</td>
                   <td class="text-center" >{{item.year}}</td>
                   <td class="text-center" >{{item.distance_unit}}</td>
                   <td class="text-center" >{{item.vehicle_type}}</td>
-                  <td class="text-center" >{{item.fixed_rate}}</td>
                   <td class="text-center" ng-if="item.active == 'true'" ><i class="green-text material-icons small-icons mr-2">fiber_manual_record </i> </td>
                   <td class="text-center" ng-if="item.active == 'false'"><i class="red-text material-icons small-icons mr-2">fiber_manual_record </i></td>
                   <td class="text-center"> <button class="mb-6 btn waves-effect waves-light red accent-2"  ng-click="c.selectItem(item.sys_id,$index,'delete')" >

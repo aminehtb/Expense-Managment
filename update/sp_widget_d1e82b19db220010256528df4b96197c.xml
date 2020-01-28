@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope) {
+	/* widget controller */
+	var c = this;
+	var colorstest=['#20c9a6', '#4e73df', '#e74a3b', '#01DF74', '#3D96AE',
+   '#DB843D', '#92A8CD', '#A47D7C', '#2E2EFE'];
+	 c.data.listYear =[];
+
+	c.data.Thisyear = new Date().getFullYear();
+	
+	c.data.startYear = 1900 ;
+	for(var i =c.data.Thisyear ; i>= c.data.startYear ; i--){
+		c.data.listYear.push(i);
+		
+	}
+	
+	
+	c.data.month="none";
+c.data.year = c.data.Thisyear;
+	
+	
+
+$scope.show= function(){
+
+	
+		c.data.action = 'update';
+	
+	c.server.update().then(function(){
+		
+			c.data.action = undefined;
+		catUpdate();
+		billUpdate();
+		});
+
+ 
+}
+	function catUpdate(){
+			/********** Category *********/
+	var chart = Highcharts.chart('container2', {
+
+		title: {
+			text: ' '
+		},
+
+		
+
+		xAxis: {
+			categories:c.data.list
+		},
+
+		series: [{
+			type: 'column',
+			colorByPoint: true,
+			data:c.data.aff,
+			showInLegend: false
+		}]
+
+	});
+
+
+	$('#plain').click(function () {
+		chart.update({
+			chart: {
+				inverted: false,
+				polar: false
+			},
+			subtitle: {
+				text: 'Plain'
+			}
+		});
+	});
+
+	$('#inverted').click(function () {
+		chart.update({
+			chart: {
+				inverted: true,
+				polar: false
+			},
+			subtitle: {
+				text: 'Inverted'
+			}
+		});
+	});
+
+	$('#polar').click(function () {
+		chart.update({
+			chart: {
+				inverted: false,
+				polar: true
+			},
+			subtitle: {
+				text: 'Polar'
+			}
+		});
+	});
+
+	}
+	/********** Category *********/
+	
+	var chart = Highcharts.chart('container2', {
+
+		title: {
+			text: ''
+		},
+
+		subtitle: {
+			text: 'Plain'
+		},
+
+		xAxis: {
+			categories:c.data.list
+		},
+
+		series: [{
+			type: 'column',
+			colorByPoint: true,
+			data:c.data.aff,
+			showInLegend: false
+		}]
+
+	});
+
+
+	$('#plain').click(function () {
+		chart.update({
+			chart: {
+				inverted: false,
+				polar: false
+			},
+			subtitle: {
+				text: 'Plain'
+			}
+		});
+	});
+
+	$('#inverted').click(function () {
+		chart.update({
+			chart: {
+				inverted: true,
+				polar: false
+			},
+			subtitle: {
+				text: 'Inverted'
+			}
+		});
+	});
+
+	$('#polar').click(function () {
+		chart.update({
+			chart: {
+				inverted: false,
+				polar: true
+			},
+			subtitle: {
+				text: 'Polar'
+			}
+		});
+	});
+
+
+
+function billUpdate(){
+		Highcharts.chart('container', {
+		chart: {
+			plotBackgroundColor: null,
+			plotBorderWidth: null,
+			plotShadow: false,
+			type: 'pie'
+		},
+		title: {
+			text: ''
+		},
+		tooltip: {
+			pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+		},
+		plotOptions: {
+			pie: {
+				allowPointSelect: true,
+				cursor: 'pointer',
+			 colors:colorstest, //pieColors,
+				dataLabels: {
+					enabled: true,
+					format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+				}
+			}
+		},
+		series: [{
+			name: 'Bills',
+			colorByPoint: true,
+			data: [{
+				name: 'Approved',
+				y: c.data.approval//,
+				//sliced: true,
+				//selected: true
+			}, {
+				name: 'Requested',
+				y: c.data.req
+			},
+						 {
+							 name: 'Rejected',
+							 y: c.data.not
+						 }
+						]
+		}]
+	});
+}
+	
+	// Make monochrome colors
+var pieColors = (function () {
+    var colors = [],
+        base = Highcharts.getOptions().colors[0],
+        i;
+
+    for (i = 0; i < 10; i += 1) {
+        // Start out with a darkened base color (negative brighten), and end
+        // up with a much brighter color
+        colors.push(Highcharts.Color(base).brighten((i - 3) / 7).get());
+    }
+    return colors;
+}());
+
+	/******** Bill***********/
+	Highcharts.chart('container', {
+		chart: {
+			plotBackgroundColor: null,
+			plotBorderWidth: null,
+			plotShadow: false,
+			type: 'pie'
+		},
+		title: {
+			text: ''
+		},
+		tooltip: {
+			pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+		},
+		plotOptions: {
+			pie: {
+				allowPointSelect: true,
+				cursor: 'pointer',
+			 colors:colorstest, //pieColors,
+				dataLabels: {
+					enabled: true,
+					format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+				}
+			}
+		},
+		series: [{
+			name: 'Bills',
+			colorByPoint: true,
+			data: [{
+				name: 'Approved',
+				y: c.data.approval//,
+				//sliced: true,
+				//selected: true
+			}, {
+				name: 'Requested',
+				y: c.data.req
+			},
+						 {
+							 name: 'Rejected',
+							 y: c.data.not
+						 }
+						]
+		}]
+	});
+
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.col88 {
+       flex-basis: 0;
+    flex-grow: 1;
+    max-width: 80% !important;
+  margin-left:5% ;
+    margin-right: 5% ;
+  //padding : 0px ;
+}
+.s{
+  display: flex;
+    flex-wrap: wrap;
+    margin-right: 25%;
+    margin-left: 25%;
+}
+h4, .h4 {
+    font-size: 2rem;
+}
+.left{
+  margin-left : 20px;
+}
+.right{
+  margin-right : 20px;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>widget_dashboard2</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Widget dashboard2</name>
+        <option_schema>[]</option_schema>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	var gr = new GlideRecordSecure('x_315710_expense_m_expense_bill');
+	gr.addEncodedQuery('dateONThis year@javascript:gs.beginningOfThisYear()@javascript:gs.endOfThisYear()');
+	gr.query();
+	data.ThisYear = new Date().getFullYear();
+//	data.month="none";
+	var total = gr.getRowCount();
+	/***********************************************************************Default********************************************************************/
+	///////// Start  Chart Pie /////////
+	pourcentage(total,"none",data.ThisYear);
+	/////// End Chart Pie ////////
+
+	/********* Start Chart Column  ***************/
+	//List Of Category
+	var categ = new GlideRecord("x_315710_expense_m_category");
+	gr.orderByDesc('sys_created_on');
+	categ.query();
+	data.list=[];
+	while(categ.next()){
+		data.list.push(categ.getDisplayValue("name"));
+	}
+	var json=new global.JSON();
+
+	listOfSUMlRegrouedByCat();
+	aff();
+	/*****************************************************Change*****************************************/
+	
+if(input && input.action=="update"){
+		gs.warn("update list "+input.year);
+		listOfSUMlRegrouedByCatAndDate(input.month,input.year);
+		aff();
+	var tot = RowCount(input.month , input.year);
+	gs.warn("total : "+tot);
+	gs.warn("approved " +getByApprovalState("approved",input.month,input.year));
+	pourcentage(tot,input.month , input.year);
+		json.encode(data.listSum);
+		gs.warn("new list");
+		gs.warn(data.listSum);
+	
+		
+	}
+
+	function listOfSUMlRegrouedByCat(){
+		data.listSum=[];
+		var sum = new GlideAggregate('x_315710_expense_m_expense_bill');
+sum.addEncodedQuery('dateONThis year@javascript:gs.beginningOfThisYear()@javascript:gs.endOfThisYear()');
+		sum.addAggregate('SUM', 'value');
+		//gr.setGroup(true);
+		sum.groupBy("category");
+		sum.query();
+		while(sum.next()){
+			var r = sum.getAggregate("SUM","value");
+			var obj={"cat":sum.getDisplayValue("category"),"sum":r};
+			data.listSum.push(obj);
+		}
+	}
+
+	function listOfSUMlRegrouedByCatAndDate(month , year){
+		data.listSum=[];
+var start , end ;
+			var str_query;
+		if(month == "none") {
+			start =year+"-01-01";
+			end=year+"-12-31";
+			str_query = "dateBETWEENjavascript:gs.dateGenerate('"+start+"','start')@javascript:gs.dateGenerate('"+end+"','end')";
+		}
+		else{
+			start =year+"-"+month+"-01";
+			end=year+"-"+month+"-31";
+			str_query="dateBETWEENjavascript:gs.dateGenerate('"+start+"','start')@javascript:gs.dateGenerate('"+end+"','end')";
+		}
+			
+		
+		var sum = new GlideAggregate('x_315710_expense_m_expense_bill');
+		sum.addEncodedQuery(str_query);
+		sum.addAggregate('SUM', 'value');
+		//gr.setGroup(true);
+		sum.groupBy("category");
+		sum.query();
+		while(sum.next()){
+			var r = sum.getAggregate("SUM","value");
+
+			var obj={"cat":sum.getDisplayValue("category"),"sum":r};
+			data.listSum.push(obj);
+		}
+
+	}
+	
+	//Search cat in list Of SUM
+	function search(mot){
+		var ok = true ;
+		var r =null;
+		var j =0 ;
+		while(j<data.listSum.length && ok){
+
+			if(mot == data.listSum[j].cat){
+				r =data.listSum[j].sum ; 
+				ok=false;
+			}
+			j++;
+
+		}
+		return r ;
+	}
+
+	//List des somme with value 0
+	function aff(){
+		data.aff=[];
+		for(var i=0 ; i<data.list.length;i++){
+			var r = search(data.list[i]) ;
+
+			if(r != null)
+				data.aff.push(parseInt(r,10));
+			if(r == null)
+				data.aff.push(0);
+
+		}
+	}
+	//Calcul pourcentage  of State 
+	function pourcentage(tot,mo,year){
+		data.approval = 100*(getByApprovalState("approved",mo,year)/tot);
+		data.req = 100*(getByApprovalState("requested",mo,year)/tot);
+		data.not =100*(getByApprovalState("rejected",mo,year)/tot);
+	}
+		function getByApprovalState(state,month,year){
+		var gr = new GlideRecordSecure('x_315710_expense_m_expense_bill');
+	var start , end ;
+			var str_query;
+		if(month == "none") {
+			start =year+"-01-01";
+			end=year+"-12-31";
+			str_query = "dateBETWEENjavascript:gs.dateGenerate('"+start+"','start')@javascript:gs.dateGenerate('"+end+"','end')";
+		}
+		else{
+			start =year+"-"+month+"-01";
+			end=year+"-"+month+"-31";
+			str_query="dateBETWEENjavascript:gs.dateGenerate('"+start+"','start')@javascript:gs.dateGenerate('"+end+"','end')";
+		}
+			
+			gr.addEncodedQuery(str_query);
+		gr.addQuery('approval',state);
+		gr.query();
+		return	gr.getRowCount();
+	}
+
+	function RowCount(month,year){
+			var gr = new GlideRecordSecure('x_315710_expense_m_expense_bill');
+		var start , end ;
+		var str_query ;
+		if(month == "none") {
+			start =year+"-01-01";
+			end=year+"-12-31";
+			str_query = "dateBETWEENjavascript:gs.dateGenerate('"+start+"','start')@javascript:gs.dateGenerate('"+end+"','end')";
+		}
+		else{
+			start =year+"-"+month+"-01";
+			end=year+"-"+month+"-31";
+			str_query="dateBETWEENjavascript:gs.dateGenerate('"+start+"','start')@javascript:gs.dateGenerate('"+end+"','end')";
+		}
+			
+			gr.addEncodedQuery(str_query);
+		gr.query();
+			return gr.getRowCount();
+	
+	}
+	/********* End Chart  Column  ***************/
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-01-24 07:45:23</sys_created_on>
+        <sys_id>d1e82b19db220010256528df4b96197c</sys_id>
+        <sys_mod_count>51</sys_mod_count>
+        <sys_name>Widget dashboard2</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sp_widget_d1e82b19db220010256528df4b96197c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-01-24 14:30:11</sys_updated_on>
+        <template><![CDATA[    <div class="col s12 m6 l10">
+<h6 class="card-title">
+    Dashboard
+</h6>
+   <hr size="1">
+            </div>
+<div class="row">
+    <div class="col m12">
+            <div class="row">
+                    <div class="col offset-m3 m6">
+                        <div class="row s">
+                            <div class="input-field col88 m6 ">
+                                <select class="form-control" ng-change="show()" ng-model="c.data.month" >
+                                  <option  value="none">Month</option>  
+                                  <option value="01">Jan</option>
+                                    <option value="02">Feb</option>
+                                    <option value="03">Mar</option>
+                                    <option value="04">Apr</option>
+                                    <option value="05">May</option>
+                                    <option value="06">Jun</option>
+                                    <option value="07">Jul</option>
+                                    <option value="08">Aug</option>
+                                    <option value="09">Sep</option>
+                                    <option value="10">Oct</option>
+                                    <option value="11">Nov</option>
+                                    <option value="12">Dec</option>
+                                </select>
+                            </div>
+                            <div class="input-field col88 m6 ">
+                               <!-- <select class="form-control" ng-change="show(year)" >
+                                    <option ng-selected="{{year == c.data.Thisyear}}"  ng-repeat="year in c.data.listYear"   value="{{year}}" >{{year}}</option>
+    
+                                </select>-->
+                                                            
+<select  class="form-control"
+    ng-model="c.data.year" 
+    ng-options='year for year in c.data.listYear'
+    ng-init="c.data.year" 
+    ng-change="show()" >
+</select>
+                            </div>
+                        </div>
+    
+                    </div>
+    
+                </div>
+      <br><br>
+           <!-- <div class="row col m12">
+                    <div class="col m6 ">-->
+        <div class="row">
+
+            <!-- Content Column -->
+            <div class="col-lg-6 mb-4 ">
+
+              <!-- Project Card Example -->
+              <div class="card shadow mb-4 left">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">State of Bills </h6>
+                </div>
+                  <div class="card-body">
+                            <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto">
+                            </div>
+                        </div>
+              </div></div>
+          
+                        <!--<div class="col m6">-->
+           <div class="col-lg-6 mb-4 ">
+
+              <!-- Illustrations -->
+              <div class="card shadow mb-4 right">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Total Of Bill With Category</h6>
+                </div>
+                <div class="card-body">
+                            <div id="container2" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto">
+                            </div>
+                        </div>
+            </div>
+          </div></div>
+        
+
+    </div>
+
+</div>
+<br><br>
+<div class="row">
+    <div class="col m12">
+  <widget id="f37aa302cb70020000f8d856634c9cfc"></widget>
+  </div></div>
+
+<script src="x_315710_expense_m.highcharts.jsdbx" language="javascript"></script>]]></template>
+    </sp_widget>
+</record_update>

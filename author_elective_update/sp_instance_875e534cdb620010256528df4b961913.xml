@@ -28,7 +28,7 @@
         <url/>
         <widget_parameters/>
     </sp_instance>
-    <sys_translated_text action="delete_multiple" query="documentkey=875e534cdb620010256528df4b961913"/>
+    <sys_translated_text action="DELETE" query="documentkey=875e534cdb620010256528df4b961913"/>
     <sys_update_version action="INSERT_OR_UPDATE">
         <action>DELETE</action>
         <application display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</application>

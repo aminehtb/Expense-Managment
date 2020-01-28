@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update>
-    <sys_choice action="DELETE" field="type_bill" table="x_315710_expense_m_expense_bill" version="3">
+    <sys_choice action="INSERT_OR_UPDATE" field="type_bill" table="x_315710_expense_m_expense_bill" version="3">
         <sys_choice action="INSERT_OR_UPDATE">
             <dependent_value/>
             <element>type_bill</element>
@@ -9,14 +9,14 @@
             <language>en</language>
             <name>x_315710_expense_m_expense_bill</name>
             <sequence/>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-01-02 10:18:25</sys_created_on>
+            <sys_created_by>system</sys_created_by>
+            <sys_created_on>2019-09-09 15:36:42</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>3cf8fa9adb020010256528df4b961956</sys_id>
+            <sys_id>b9f2b311db733300518284da0b96196e</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-01-02 10:18:25</sys_updated_on>
+            <sys_updated_by>system</sys_updated_by>
+            <sys_updated_on>2019-09-09 15:36:42</sys_updated_on>
             <value>Capex</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
@@ -28,76 +28,31 @@
             <language>en</language>
             <name>x_315710_expense_m_expense_bill</name>
             <sequence/>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-01-02 10:18:25</sys_created_on>
+            <sys_created_by>system</sys_created_by>
+            <sys_created_on>2019-09-09 15:36:42</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>7cf8fa9adb020010256528df4b961956</sys_id>
+            <sys_id>f9f2b311db733300518284da0b96196e</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-01-02 10:18:25</sys_updated_on>
+            <sys_updated_by>system</sys_updated_by>
+            <sys_updated_on>2019-09-09 15:36:42</sys_updated_on>
             <value>Opex</value>
         </sys_choice>
         <sys_choice_set action="INSERT_OR_UPDATE">
             <element>type_bill</element>
             <name>x_315710_expense_m_expense_bill</name>
             <sys_class_name>sys_choice_set</sys_class_name>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-01-02 10:18:25</sys_created_on>
-            <sys_id>70f8fa9adb020010256528df4b961957</sys_id>
+            <sys_created_by>system</sys_created_by>
+            <sys_created_on>2019-09-09 15:36:42</sys_created_on>
+            <sys_id>061976dadb020010256528df4b96199f</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>type_bill</sys_name>
             <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
             <sys_policy/>
             <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
             <sys_update_name>sys_choice_x_315710_expense_m_expense_bill_type_bill</sys_update_name>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-01-02 10:18:25</sys_updated_on>
+            <sys_updated_by>system</sys_updated_by>
+            <sys_updated_on>2019-09-09 15:36:42</sys_updated_on>
         </sys_choice_set>
     </sys_choice>
-    <sys_update_version action="INSERT_OR_UPDATE">
-        <action>DELETE</action>
-        <application display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</application>
-        <file_path/>
-        <instance_id>2d2f2d70db95cc103050ac44d496197d</instance_id>
-        <instance_name>dev95064</instance_name>
-        <name>sys_choice_x_315710_expense_m_expense_bill_type_bill</name>
-        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_choice action="INSERT_OR_UPDATE" field="type_bill" table="x_315710_expense_m_expense_bill" version="3"><sys_choice action="INSERT_OR_UPDATE"><dependent_value/><element>type_bill</element><hint/><inactive>false</inactive><label>Capex</label><language>en</language><name>x_315710_expense_m_expense_bill</name><sequence/><sys_created_by>admin</sys_created_by><sys_created_on>2020-01-02 10:18:25</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>3cf8fa9adb020010256528df4b961956</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-01-02 10:18:25</sys_updated_on><value>Capex</value></sys_choice><sys_choice action="INSERT_OR_UPDATE"><dependent_value/><element>type_bill</element><hint/><inactive>false</inactive><label>Opex</label><language>en</language><name>x_315710_expense_m_expense_bill</name><sequence/><sys_created_by>admin</sys_created_by><sys_created_on>2020-01-02 10:18:25</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>7cf8fa9adb020010256528df4b961956</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-01-02 10:18:25</sys_updated_on><value>Opex</value></sys_choice><sys_choice_set action="INSERT_OR_UPDATE"><element>type_bill</element><name>x_315710_expense_m_expense_bill</name><sys_class_name>sys_choice_set</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2020-01-02 10:18:25</sys_created_on><sys_id>70f8fa9adb020010256528df4b961957</sys_id><sys_mod_count>0</sys_mod_count><sys_name>type_bill</sys_name><sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package><sys_policy/><sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope><sys_update_name>sys_choice_x_315710_expense_m_expense_bill_type_bill</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-01-02 10:18:25</sys_updated_on></sys_choice_set></sys_choice></record_update>]]></payload>
-        <payload_hash>-184617640</payload_hash>
-        <record_name>Expense Bill.Type Bill</record_name>
-        <reverted_from/>
-        <source>6af7f011db020010256528df4b9619f0</source>
-        <source_table>sys_upgrade_history</source_table>
-        <state>previous</state>
-        <sys_created_by/>
-        <sys_created_on>2019-12-29 22:21:00</sys_created_on>
-        <sys_id>861976dadb020010256528df4b961981</sys_id>
-        <sys_mod_count/>
-        <sys_recorded_at>16f53bf8ce00000000</sys_recorded_at>
-        <sys_updated_by/>
-        <sys_updated_on/>
-        <type>Choice list</type>
-        <update_guid>461976daf2020010e6b4c69811137381</update_guid>
-        <update_guid_history>461976daf2020010e6b4c69811137381:-184617640</update_guid_history>
-    </sys_update_version>
-    <sys_metadata_delete action="INSERT_OR_UPDATE">
-        <sys_audit_delete/>
-        <sys_class_name>sys_metadata_delete</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2020-01-02 10:19:03</sys_created_on>
-        <sys_db_object display_value="" name="sys_choice_set">sys_choice_set</sys_db_object>
-        <sys_id>70f8fa9adb020010256528df4b961957</sys_id>
-        <sys_metadata>70f8fa9adb020010256528df4b961957</sys_metadata>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>type_bill</sys_name>
-        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
-        <sys_parent/>
-        <sys_policy/>
-        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
-        <sys_scope_delete display_value="">2b64644f235f4e69bcdcc076c25ee0b9</sys_scope_delete>
-        <sys_update_name>sys_choice_x_315710_expense_m_expense_bill_type_bill</sys_update_name>
-        <sys_update_version display_value="sys_choice_x_315710_expense_m_expense_bill_type_bill">861976dadb020010256528df4b961981</sys_update_version>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-01-02 10:19:03</sys_updated_on>
-    </sys_metadata_delete>
 </record_update>

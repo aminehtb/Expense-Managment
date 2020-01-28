@@ -33,12 +33,12 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-01-02 14:46:01</sys_created_on>
         <sys_id>30363bd2db060010256528df4b96194c</sys_id>
-        <sys_mod_count>25</sys_mod_count>
+        <sys_mod_count>26</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-01-02 14:47:02</sys_updated_on>
+        <sys_updated_on>2020-01-21 11:08:45</sys_updated_on>
         <table>x_315710_expense_m_expense_bill</table>
         <timezone/>
-        <validated>false</validated>
+        <validated>true</validated>
         <workflow display_value="Notification Validate Bill">9210b6dd1b3f330066b0fcc8cc4bcb7b</workflow>
     </wf_workflow_version>
     <wf_workflow action="INSERT_OR_UPDATE">

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_ng_pro_sp_widget">
+    <m2m_sp_ng_pro_sp_widget action="DELETE">
+        <sp_angular_provider display_value="deleteButtonBill">316dd3d11b06330072fe2136ec4bcbf3</sp_angular_provider>
+        <sp_widget display_value="widegt list of bill2">8a77dc50db660010256528df4b96196c</sp_widget>
+        <sys_class_name>m2m_sp_ng_pro_sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-01-20 13:56:27</sys_created_on>
+        <sys_id>46779490db660010256528df4b96190a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>deleteButtonBill.widegt list of bill2</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>m2m_sp_ng_pro_sp_widget_46779490db660010256528df4b96190a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-01-20 13:56:27</sys_updated_on>
+    </m2m_sp_ng_pro_sp_widget>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</application>
+        <file_path/>
+        <instance_id>2d2f2d70db95cc103050ac44d496197d</instance_id>
+        <instance_name>dev95064</instance_name>
+        <name>m2m_sp_ng_pro_sp_widget_46779490db660010256528df4b96190a</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_ng_pro_sp_widget"><m2m_sp_ng_pro_sp_widget action="INSERT_OR_UPDATE"><sp_angular_provider display_value="deleteButtonBill">316dd3d11b06330072fe2136ec4bcbf3</sp_angular_provider><sp_widget display_value="widegt list of bill2">8a77dc50db660010256528df4b96196c</sp_widget><sys_class_name>m2m_sp_ng_pro_sp_widget</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2020-01-20 13:56:27</sys_created_on><sys_id>46779490db660010256528df4b96190a</sys_id><sys_mod_count>0</sys_mod_count><sys_name>deleteButtonBill.widegt list of bill2</sys_name><sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package><sys_policy/><sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope><sys_update_name>m2m_sp_ng_pro_sp_widget_46779490db660010256528df4b96190a</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-01-20 13:56:27</sys_updated_on></m2m_sp_ng_pro_sp_widget></record_update>]]></payload>
+        <payload_hash>1231789919</payload_hash>
+        <record_name>deleteButtonBill.widegt list of bill2</record_name>
+        <reverted_from/>
+        <source>8379765adb020010256528df4b9619dc</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-01-20 13:56:27</sys_created_on>
+        <sys_id>46779490db660010256528df4b96190c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>16fc33d897a0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-01-20 13:56:27</sys_updated_on>
+        <type>Angular Providers</type>
+        <update_guid>8e77949081660010dcf87f6ba2b2390b</update_guid>
+        <update_guid_history>8e77949081660010dcf87f6ba2b2390b:1231789919</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="deleteButtonBill.widegt list of bill2">bf552060dba20010256528df4b961929</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-01-21 09:35:40</sys_created_on>
+        <sys_db_object display_value="" name="m2m_sp_ng_pro_sp_widget">m2m_sp_ng_pro_sp_widget</sys_db_object>
+        <sys_id>06676f5d9596400a8154f2e38266ca51</sys_id>
+        <sys_metadata>46779490db660010256528df4b96190a</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>deleteButtonBill.widegt list of bill2</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_scope_delete display_value="">2b64644f235f4e69bcdcc076c25ee0b9</sys_scope_delete>
+        <sys_update_name>m2m_sp_ng_pro_sp_widget_46779490db660010256528df4b96190a</sys_update_name>
+        <sys_update_version display_value="m2m_sp_ng_pro_sp_widget_46779490db660010256528df4b96190a">46779490db660010256528df4b96190c</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-01-21 09:35:40</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

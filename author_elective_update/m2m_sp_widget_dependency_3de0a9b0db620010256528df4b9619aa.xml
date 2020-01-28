@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_widget_dependency">
+    <m2m_sp_widget_dependency action="DELETE">
+        <sp_dependency display_value="dependency  second portail">85250c9fdb520010256528df4b96198d</sp_dependency>
+        <sp_widget display_value="Widget_expense2">20cff70bdb520010256528df4b961938</sp_widget>
+        <sys_class_name>m2m_sp_widget_dependency</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-01-22 08:34:15</sys_created_on>
+        <sys_id>3de0a9b0db620010256528df4b9619aa</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>dependency  second portail.Widget_expense2</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>m2m_sp_widget_dependency_3de0a9b0db620010256528df4b9619aa</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-01-22 08:34:15</sys_updated_on>
+    </m2m_sp_widget_dependency>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</application>
+        <file_path/>
+        <instance_id>2d2f2d70db95cc103050ac44d496197d</instance_id>
+        <instance_name>dev95064</instance_name>
+        <name>m2m_sp_widget_dependency_3de0a9b0db620010256528df4b9619aa</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_widget_dependency"><m2m_sp_widget_dependency action="INSERT_OR_UPDATE"><sp_dependency display_value="dependency  second portail">85250c9fdb520010256528df4b96198d</sp_dependency><sp_widget display_value="Widget_expense2">20cff70bdb520010256528df4b961938</sp_widget><sys_class_name>m2m_sp_widget_dependency</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2020-01-22 08:34:15</sys_created_on><sys_id>3de0a9b0db620010256528df4b9619aa</sys_id><sys_mod_count>0</sys_mod_count><sys_name>dependency  second portail.Widget_expense2</sys_name><sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package><sys_policy/><sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope><sys_update_name>m2m_sp_widget_dependency_3de0a9b0db620010256528df4b9619aa</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-01-22 08:34:15</sys_updated_on></m2m_sp_widget_dependency></record_update>]]></payload>
+        <payload_hash>-1777983797</payload_hash>
+        <record_name>dependency  second portail.Widget_expense2</record_name>
+        <reverted_from/>
+        <source>8379765adb020010256528df4b9619dc</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-01-22 08:34:15</sys_created_on>
+        <sys_id>75e0a9b0db620010256528df4b9619ad</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>16fcc6345d90000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-01-22 08:34:15</sys_updated_on>
+        <type>Widget Dependency</type>
+        <update_guid>bde0a9b04d6200102e692912061240ac</update_guid>
+        <update_guid_history>bde0a9b04d6200102e692912061240ac:-1777983797</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="dependency  second portail.Widget_expense2">9cf725b8db620010256528df4b9619f0</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-01-22 09:05:00</sys_created_on>
+        <sys_db_object display_value="" name="m2m_sp_widget_dependency">m2m_sp_widget_dependency</sys_db_object>
+        <sys_id>2dc7a63b3bcd4d3298404ddb655822f1</sys_id>
+        <sys_metadata>3de0a9b0db620010256528df4b9619aa</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>dependency  second portail.Widget_expense2</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_scope_delete display_value="">2b64644f235f4e69bcdcc076c25ee0b9</sys_scope_delete>
+        <sys_update_name>m2m_sp_widget_dependency_3de0a9b0db620010256528df4b9619aa</sys_update_name>
+        <sys_update_version display_value="m2m_sp_widget_dependency_3de0a9b0db620010256528df4b9619aa">75e0a9b0db620010256528df4b9619ad</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-01-22 09:05:00</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
