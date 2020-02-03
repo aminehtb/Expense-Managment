@@ -173,6 +173,8 @@ c.selectItem = function(id,action) {
 }]]></client_script>
         <controller_as>c</controller_as>
         <css>
+
+
 .green-text{
     color: green;
 }
@@ -180,8 +182,9 @@ c.selectItem = function(id,action) {
     color: #ff1a1a;
 }
 .right {
-  padding-top : 15px !important;
+ // padding-top : 10px !important;
     float: right !important;
+  padding: 15px !important;
 }
 table, th, td {
     border: none;
@@ -239,9 +242,9 @@ td, th {
     width: 100%;
     padding-right: 0.75rem;
     padding-left: 0.75rem;
-    margin-right: auto;
+   margin-right: 15px;
     margin-left: 15px !important;
-  padding-top :50px !important;
+  padding-top :25px !important;
 }
 h4 {
     display: block;
@@ -254,7 +257,7 @@ h4 {
 h4 {
     font-size: 3rem !important;
     line-height: 110%;
-    margin: 1.52rem 0 .912rem 0;
+    /*margin: 1.52rem 0 .912rem 0;*/
 }
 
 
@@ -348,13 +351,13 @@ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:
 
 
 
-
+/*
 div.scrollmenu {
  
   overflow: auto;
   white-space: nowrap;
 }
-
+*/
 
 .pager-nav {
     margin: 16px 0;
@@ -432,23 +435,24 @@ div.scrollmenu {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-01-21 12:59:55</sys_created_on>
         <sys_id>271459ecdb260010256528df4b9619fc</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>widget_list_of_vehicles2</sys_name>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
         <sys_policy/>
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sp_widget_271459ecdb260010256528df4b9619fc</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-01-22 08:55:20</sys_updated_on>
+        <sys_updated_on>2020-02-03 11:06:29</sys_updated_on>
         <template><![CDATA[  <link href="https://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-   <p class="right">
+  
+  <!-- Begin Page Content -->
+        <div class="container-fluid"> 
+          <p class="right">
       <a class="btn btn-primary btn-circle btn-lg"  href="?id=form_vehicule2&sys_id=-1">
        <i class="fas fa-plus"></i>
       </a>
     </p>
-  <!-- Begin Page Content -->
-        <div class="container-fluid">
     <h4 class="card-title">List Of Vehicles</h4>
     
           <div ng-controller="ctrlRead">

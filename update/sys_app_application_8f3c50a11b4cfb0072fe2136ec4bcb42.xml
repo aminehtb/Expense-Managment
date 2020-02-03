@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_application">
     <sys_app_application action="INSERT_OR_UPDATE">
         <active>true</active>
-        <category/>
+        <category display_value="Custom Applications">e0355b31ef303000a61d5a3615c0fb78</category>
         <description/>
         <device_type>browser</device_type>
         <hint/>
         <name>Expense Management</name>
-        <order/>
+        <order>0</order>
         <roles>x_315710_expense_m.user,x_315710_expense_m.employee,x_315710_expense_m.manager</roles>
         <sys_class_name>sys_app_application</sys_class_name>
         <sys_created_by>admin</sys_created_by>
@@ -14,7 +14,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>8f3c50a11b4cfb0072fe2136ec4bcb42</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_name>Expense Management</sys_name>
         <sys_overrides/>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
@@ -22,7 +22,7 @@
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sys_app_application_8f3c50a11b4cfb0072fe2136ec4bcb42</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-09-03 10:12:44</sys_updated_on>
+        <sys_updated_on>2020-01-30 09:26:19</sys_updated_on>
         <title>Expense Management</title>
         <view_name/>
     </sys_app_application>

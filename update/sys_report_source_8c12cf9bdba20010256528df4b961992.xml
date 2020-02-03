@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_report_source">
+    <sys_report_source action="INSERT_OR_UPDATE">
+        <description/>
+        <display>Approvals (Expense Bill)</display>
+        <filter table="x_315710_expense_m_expense_bill">approval=requested<item display_value="Requested" endquery="false" field="approval" goto="false" newquery="false" operator="=" or="false" value="requested"/>
+        </filter>
+        <name>Approvals</name>
+        <sys_class_name>sys_report_source</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-01-30 10:04:05</sys_created_on>
+        <sys_id>8c12cf9bdba20010256528df4b961992</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Approvals (Expense Bill)</sys_name>
+        <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
+        <sys_update_name>sys_report_source_8c12cf9bdba20010256528df4b961992</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-01-30 10:04:05</sys_updated_on>
+        <table>x_315710_expense_m_expense_bill</table>
+    </sys_report_source>
+</record_update>

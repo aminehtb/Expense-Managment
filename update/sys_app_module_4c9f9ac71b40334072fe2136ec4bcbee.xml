@@ -13,7 +13,7 @@
         <mobile_title>Payment Instruments</mobile_title>
         <mobile_view_name>Mobile</mobile_view_name>
         <name>x_315710_expense_m_payment_instrument</name>
-        <order/>
+        <order>560</order>
         <override_menu_roles>false</override_menu_roles>
         <query/>
         <report/>
@@ -24,7 +24,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>4c9f9ac71b40334072fe2136ec4bcbee</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>Payment Instruments</sys_name>
         <sys_overrides/>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
@@ -32,7 +32,7 @@
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sys_app_module_4c9f9ac71b40334072fe2136ec4bcbee</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-09-03 08:05:55</sys_updated_on>
+        <sys_updated_on>2020-01-30 09:20:11</sys_updated_on>
         <timeline_page/>
         <title>Payment Instruments</title>
         <uncancelable>false</uncancelable>

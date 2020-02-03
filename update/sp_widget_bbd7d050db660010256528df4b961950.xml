@@ -199,6 +199,8 @@
 }]]></client_script>
         <controller_as>c</controller_as>
         <css>
+
+
 .green-text{
     color: green;
 }
@@ -206,8 +208,9 @@
     color: #ff1a1a;
 }
 .right {
-  padding-top : 15px !important;
+ // padding-top : 10px !important;
     float: right !important;
+  padding: 15px !important;
 }
 table, th, td {
     border: none;
@@ -265,9 +268,9 @@ td, th {
     width: 100%;
     padding-right: 0.75rem;
     padding-left: 0.75rem;
-    margin-right: auto;
+   margin-right: 15px;
     margin-left: 15px !important;
-  padding-top :50px !important;
+  padding-top :25px !important;
 }
 h4 {
     display: block;
@@ -280,7 +283,7 @@ h4 {
 h4 {
     font-size: 3rem !important;
     line-height: 110%;
-    margin: 1.52rem 0 .912rem 0;
+    /*margin: 1.52rem 0 .912rem 0;*/
 }
 
 
@@ -374,13 +377,13 @@ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:
 
 
 
-
+/*
 div.scrollmenu {
  
   overflow: auto;
   white-space: nowrap;
 }
-
+*/
 
 .pager-nav {
     margin: 16px 0;
@@ -477,23 +480,24 @@ var gr = new GlideRecordSecure('x_315710_expense_m_expense_bill');
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-01-20 13:58:12</sys_created_on>
         <sys_id>bbd7d050db660010256528df4b961950</sys_id>
-        <sys_mod_count>71</sys_mod_count>
+        <sys_mod_count>111</sys_mod_count>
         <sys_name>widget list of bill2</sys_name>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
         <sys_policy/>
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sp_widget_bbd7d050db660010256528df4b961950</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-01-24 16:07:49</sys_updated_on>
+        <sys_updated_on>2020-02-03 11:02:43</sys_updated_on>
         <template><![CDATA[<link href="https://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-   <p class="right">
+   
+       <!-- Begin Page Content -->
+        <div class="container-fluid">
+          <p class="right">
       <a class="btn btn-primary btn-circle btn-lg"  href="?id=form_bill2&table=x_315710_expense_m_expense_bill&sys_id=-1">
       <i class="fas fa-plus"></i>
       </a>
     </p>
-       <!-- Begin Page Content -->
-        <div class="container-fluid">
   <h4 >List Of Bills</h4>
 
 
@@ -514,8 +518,7 @@ var gr = new GlideRecordSecure('x_315710_expense_m_expense_bill');
             <th class="text-center">Title&nbsp;<a ng-click="sort_by('title')"><i class="icon-sort"></i></a></th>
             <th class="text-center">Value&nbsp;<a ng-click="sort_by('value')"><i class="icon-sort"></i></a></th>
              <th class="text-center">Date&nbsp;<a ng-click="sort_by('date')"><i class="icon-sort"></i></a></th>
-            <th class="text-center">Process Date&nbsp;<a ng-click="sort_by('process_date')"><i class="icon-sort"></i></a></th>
-             <th class="text-center">To Reimburse&nbsp;<a ng-click="sort_by('to_reimburse')"><i class="icon-sort"></i></a></th>
+            <th class="text-center">To Reimburse&nbsp;<a ng-click="sort_by('to_reimburse')"><i class="icon-sort"></i></a></th>
              <th class="text-center">Billable To Client&nbsp;<a ng-click="sort_by('billable_to_client')"><i class="icon-sort"></i></a></th>
             <th colspan="2" class="text-center"> Options </th>
 
@@ -525,11 +528,11 @@ var gr = new GlideRecordSecure('x_315710_expense_m_expense_bill');
         <tbody>
           <tr ng-repeat="item in pagedItems[currentPage]  | orderBy:sortingOrder:reverse   track by $index">
 
-            <td class="text-center"><img   style="width:100px;height:100px" ng-click="c.affimage(item.image,item.title)" src="{{item.image}}"/></td>
+            <td class="text-center"><img   style="width:150px;height:150px" ng-click="c.affimage(item.image,item.title)" src="{{item.image}}"/></td>
             <td class="text-center">{{item.title}}</td>
             <td class="text-center">{{item.value}}</td>
 						 <td class="text-center">{{item.date}}</td>
-            <td class="text-center">{{item.process_date}}</td>
+        
             <td class="text-center" ng-if="item.to_reimburse == 'true'" ><i class="green-text material-icons small-icons mr-2">fiber_manual_record </i> </td>
                   <td class="text-center" ng-if="item.to_reimburse == 'false'"><i class="red-text material-icons small-icons mr-2">fiber_manual_record </i></td>
             <td class="text-center" ng-if="item.billable_to_client == 'true'" ><i class="green-text material-icons small-icons mr-2">fiber_manual_record </i> </td>
@@ -546,6 +549,7 @@ var gr = new GlideRecordSecure('x_315710_expense_m_expense_bill');
         </tbody>
         
       </table>
+       
           <div class="pagination pull-right">
                             <ul>
                                 <li ng-class="{disabled: currentPage == 0}">
@@ -564,17 +568,8 @@ var gr = new GlideRecordSecure('x_315710_expense_m_expense_bill');
  
        </div>
 </div>
-<!--        <script src="x_315710_expense_m.bootstrap.bundle.min.jsdbx" language="javascript"></script>
-     
-  <script src="x_315710_expense_m.jquery.easing.min.jsdbx" language="javascript"></script>
-     <script src="x_315710_expense_m.sb-admin-2.min.jsdbx" language="javascript"></script>
-
-
-
-
-
-   
--->
-]]></template>
+          
+          
+ ]]></template>
     </sp_widget>
 </record_update>

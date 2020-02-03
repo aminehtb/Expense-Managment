@@ -62,7 +62,23 @@ c.server.update().then(function(){
 	
 }]]></client_script>
         <controller_as>c</controller_as>
-        <css>
+        <css>.sidebar-brand-text {
+    font-size: 2rem !important;
+      color: #fff !important;
+    font-weight: 800;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .05rem;
+}
+.justify-content-center {
+    justify-content: center !important;
+    padding-top: 0px !important;
+}
+a:hover {
+    color: #eeeeee !important;
+    text-decoration: none ! important;
+}
 
 .load {
   display: -webkit-box;
@@ -75,7 +91,7 @@ c.server.update().then(function(){
       -ms-flex-pack: center;
           justify-content: center;
   min-height: 100vh;
- // background-color: #ededed;
+
 }
 .container {
 	margin-right: 0px !important;
@@ -84,10 +100,7 @@ c.server.update().then(function(){
 	padding-right: 15px;
 }
 
-/*.scrollmenu {
-  overflow: auto;
-  white-space: nowrap;
-}*/
+
 
 .sk-folding-cube {
   margin: 20px auto;
@@ -174,8 +187,7 @@ c.server.update().then(function(){
     -webkit-transform: perspective(140px) rotateY(180deg);
             transform: perspective(140px) rotateY(180deg);
     opacity: 0; 
-  }
-}</css>
+  }</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
         <description/>
@@ -215,17 +227,15 @@ httpSession.setAttribute("locked_out", "true");
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-01-17 09:38:55</sys_created_on>
         <sys_id>20cff70bdb520010256528df4b961938</sys_id>
-        <sys_mod_count>145</sys_mod_count>
+        <sys_mod_count>214</sys_mod_count>
         <sys_name>Widget_expense2</sys_name>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
         <sys_policy/>
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sp_widget_20cff70bdb520010256528df4b961938</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-01-27 09:21:36</sys_updated_on>
-        <template><![CDATA[ 
-
-<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+        <sys_updated_on>2020-02-03 10:00:22</sys_updated_on>
+        <template><![CDATA[ <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">    <!-- Page Wrapper -->
 
     <div id="wrapper">
@@ -233,7 +243,7 @@ httpSession.setAttribute("locked_out", "true");
       <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
   
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="?id=dashboard_version2">
+        <a class="d-flex align-items-center justify-content-center" href="?id=dashboard_version2">
          
           <div class="sidebar-brand-text mx-3">Management</div>
         </a>
@@ -331,7 +341,8 @@ httpSession.setAttribute("locked_out", "true");
       </ul>
    
        <!-- Begin Page Content -->
-        <div class="container-fluid">
+      
+        <div class="container-fluid" >
          
 				<div  ng-if="!c.data.myWidget" class="load" >
 		
@@ -346,6 +357,9 @@ httpSession.setAttribute("locked_out", "true");
 				  <sp-widget widget="c.data.myWidget"></sp-widget>
 				  
    </div>  
+       
+      
+        
 
         <!-- /.container-fluid -->
     
@@ -354,7 +368,6 @@ httpSession.setAttribute("locked_out", "true");
 
      
 
-       
 
 
        <script src="x_315710_expense_m.bootstrap.bundle.min.jsdbx" language="javascript"></script>
