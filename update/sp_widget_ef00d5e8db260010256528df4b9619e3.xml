@@ -252,12 +252,12 @@ td, th {
   font-size :1.5rem;
 }
 .container-fluid {
-    width: 100%;
+    width:95%;
     padding-right: 0.75rem;
     padding-left: 0.75rem;
    margin-right: 15px;
     margin-left: 15px !important;
-  padding-top :25px !important;
+  
 }
 h4 {
     display: block;
@@ -449,14 +449,14 @@ grr.get(input.sheetID);
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-01-21 12:42:09</sys_created_on>
         <sys_id>ef00d5e8db260010256528df4b9619e3</sys_id>
-        <sys_mod_count>6</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name>widget list of sheets2</sys_name>
         <sys_package display_value="Expense Management" source="x_315710_expense_m">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_package>
         <sys_policy/>
         <sys_scope display_value="Expense Management">ea3c9ce91b0cfb0072fe2136ec4bcb50</sys_scope>
         <sys_update_name>sp_widget_ef00d5e8db260010256528df4b9619e3</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-02-03 11:05:03</sys_updated_on>
+        <sys_updated_on>2020-02-03 13:54:46</sys_updated_on>
         <template><![CDATA[<script type="text/javascript">
   var sortingOrder = 'name';
 </script>
